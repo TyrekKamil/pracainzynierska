@@ -1,0 +1,17 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.log
+*.gz
+*.out
+*.toc
+*.xdv
+
+*.synctex(busy)
+amuthesis.cls
+
+amuthesis-doc.pdf
+amuthesis-doc.tex
