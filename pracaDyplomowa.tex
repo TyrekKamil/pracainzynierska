@@ -14,7 +14,7 @@
 % --- Autor pracy
 \author{Kamil Tyrek, Mateusz Hypś, Jakub Kozubal}
 % --- Numer albumu
-\album{434797, xxxxxx, xxxxxx}
+\album{434797, 434699, 434726}
 % --- Tytuł pracy (w języku polskim i angielskim)
 \titlePL{Projekt i implementacja gry „The Lore: Story of the fallen warrior”}
 \titleEN{Project and implementation of game „The Lore: Story of the fallen warrior”}
@@ -43,7 +43,7 @@
 % --- Specjalność (w formie mianownikowej)
 % --- (ustaw puste, jeśli bez specjalności)
 % --- Promotor (w dopełniaczu)
-\supervisor{dr Bartłomieaj Przybylskiego}
+\supervisor{dr Bartłomieja Przybylskiego}
 % --- Data złożenia pracy (Miasto, miesiąc rok)
 \date{Poznań, styczeń 2021}
 
@@ -72,24 +72,6 @@
 \maketitle
 % Oświadczenie
 \makestatement
-
-% Blok abstraktu w języku polskim
-\begin{streszczenie}
-Treść streszczenia
-
-\paragraph{Słowa kluczowe:} klasa
-\end{streszczenie}
-
-% Blok abstraktu w języku angielskim
-\begin{abstract}
-Abstract 
-\end{abstract}
-
-% Opcjonalny blok dedykacji
-\begin{dedykacja}
-Dedykacja
-\end{dedykacja}
-
 % Spis treści
 \tableofcontents
 
@@ -98,6 +80,8 @@ Dedykacja
 % ======================================================== %
 
 \chapter{Wstęp}
+\section{Cel i założenia projektu}
+Celem projektu jest stworzenie gry platformowej, zawierającej elementy zręcznościowe oraz łamigłówki. Głównym założeniem projektu jest gra, która zaciekawi swoją fabułą oraz trudnością. Wstępnie prosty zamysł samouczka, w większości gier jest raczej elementem wprowadzającym do rozgrywki, która powinna robić się trudniejsza w im dalszym etapie rozgrywki się znajdujemy, w przypadku naszej gry jest odwrócony. Samouczek poza wprowadzaniu poszczególnych elementów rozgrywki, którymi jest między innymi przedstawienie sterowania oraz funkcjonalności i wstępnych mechanik jest również wymagający, od gracza zależy jakie umiejętności w trakcie rozgrywki będzie rozwijać, aby przejście kolejnych poziomów było łatwiejsze (z perspektywy gracza). Dużą wagę w projekcie przywiązujemy do mini-gier, które występują w trakcie przechodzenia poszczególnych poziomów. Występują dwa rodzaje mini-gier: opcjonalne (te które przejść możemy w celu sprawdzenia siebie oraz zdobycia punktów doświadczenia) oraz wymagane, które trzeba przejść, aby znaleźć się w dalszym etapie gry. Użytkownik posiada do dyspozycji punkty doświadczenia, drzewko umiejętności oraz ekwipunek. Punkty doświadczenia możemy wydawać bezpośrednio w drzewku umiejętności, w którym zadaniem gracza jest wybranie odpowiednich umiejętności zależnie od tego jaką strategię rozgrywki chce przyjąć. Warto pamiętać jednak, że im głębiej będziemy rozwijać daną gałęź tym umiejętności będą bardziej pomocne co sprawia, że gracz musi zastanowić się dobrze nad decyzjami dotyczącymi rozwijania konkretnych umiejętności w drzewku. Ekwipunek służy do zdobywania przedmiotów potrzebnych w trakcie rozgrywki m.in. do otwierania drzwi czy rozpoczęcia opcjonalnej mini-gry. W projekcie są wykorzystane 2 style tworzenia poziomów: ortographic i perspective. Wszystkie animacje w projekcie są tworzone z użyciem technologii inverse kinematics co pozwala na stałe dodawanie nowych animacji i poprawianie już istniejących.
 \section{Organizacja pracy}
 Charakter projektu sprawił, iż nie można w naszym zespole jasno podzielić typów zadań, które realizujemy w ramach projektu. Wynikiem tego jest to, iż nowe funkcjonalności są realizowane zazwyczaj przez jedną osobę od początku do końca, nie ma podziału, podobnego jak w przypadku aplikacji z frontendem i backendem.
 
@@ -129,4 +113,13 @@ Następnym przykładem będzie logika stojąca za rozgrywką, która nie jest do
 \subsection{Jakub Kozubal}
 (tutaj co zrobił Jakub)
 
+\section{Użyta technologia - Unity}
+ W naszym projekcie postanowiliśmy wybrać UNITY jako środowisko do stworzenia naszej gry. Wynikało to z możliwości jakie oferuje oraz z jakości i czytelności, stworzonej przez twórców, oficjalnej dokumentacji. Pozwala nam na tworzenie gier dwuwymiarowych czy trójwymiarowych oraz interaktywnych materiałów, na przykład animacje czy wizualizacje. W razie problemów możemy również wykorzystywać oficjalne forum na którym rzesza użytkowników dzieli się swoimi wskazówkami a także oficjalny sklep – Asset Store, w którym możemy wykupić materiały potrzebne do naszej gry. UNITY działa na każdym systemie operacyjnym, tj. Windows, macOS oraz Linux. Gwarantuje nam również możliwość stworzenia aplikacji nie tylko na komputery osobiste, ale także przeglądarki internetowe, konsole gier wideo oraz urządzenia mobilne. Dzięki aktualizacji silnika do wersji 5.1.1 ta lista wzrasta do 22 platform sprzętowych, w tym gogle wirtualnej rzeczywistości takie jak Oculus Rift.
+W przeszłości można było tworzyć aplikacje w trzech językach:
+\begin{itemize}
+	\item UnityScript (swego rodzaju pochodna JavaScript’u)
+	\item C\#
+	\item Boo
+\end{itemize}
+Jednak wraz z piątą wersją silnika (wydaną w roku 2015) możliwość pisania w języku Boo została usunięta, pozostała tylko wsteczna kompatybilność w postaci możliwości kompilacji skryptów przez środowisko MonoDevelop. Podobny los dotknął UnityScript, którego wsparcie zakończyło się na wersji 2018.2 (najnowsza wersja stabilna to 2019.3.4). Z tych względów nasz wybór musiał paść na język C\#, w którym zostały napisane wszystkie nasze skrypty. Jako jedyny jest wciąż wspierany przez autorów, co zaowocowało drastycznym wzrostem popularności wśród użytkowników.
 \end{document}
