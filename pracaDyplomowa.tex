@@ -20,6 +20,7 @@
 \titleEN{Project and implementation of game „The Lore: Story of the fallen warrior”}
 % --- Typ pracy (inżynierska, licencjacka, magisterska)
 \type{inżynierska}
+\graphicspath{ {./images} }
 % --- Wydział (wykaz skrótów):
 % --- --- WA    --- Wydział Anglistyki
 % --- --- WB    --- Wydział Biologii
@@ -138,9 +139,46 @@ Jednak wraz z piątą wersją silnika (wydaną w roku 2015) możliwość pisania
 
 \chapter{Zagadki logiczne}
 \section{Przesuwane puzzle}
-\subsection{Omówienie zagadnienia}
-Przesuwane puzzle to układanka, złożona często z kwadratowej liczby elementów, najczęściej jest to dziewięć pól. Pola są jednakowych rozmiarów i oznaczone są liczbami od 1 do (n-1), gdzie n to liczba dostępnych pól w układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzla względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w odpowiedniej kolejności, według kolejności liczb lub powstania odpowiedniego obrazka.
+\subsection{Omówienie zagadnienia i ogólne założenia}
+Przesuwane puzzle to układanka, złożona zazwyczaj z kwadratowej liczby elementów, najczęściej jest to szesnaście pól. Pola są jednakowych rozmiarów i oznaczone są liczbami od 1 do (n-1), gdzie n to liczba dostępnych pól w układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzli względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w odpowiedniej kolejności, według rosnącego porządku liczb lub powstania odpowiedniego obrazka. Trudno określić kto odpowiada za stworzenie zagadaki. Wiadomym jest, że w 1878 roku pochodzący ze Stanów Zjednoczonych Samuel Loyd wypromował układankę, jednak prawdopodobnie nie jest to jego pomysł. Dość popularną nazwą na rozgrywkę jest "piętnastka", określającą ilość dostępnych pól w najpopularniejszym ułożeniu - 4x4.  
+
+W grze The Lore gracze staną przez rozwiązaniem zagadki gdzie do dyspozycji mamy dziewięć pól. Podczas projektowania układanki w grze uznano, iż zagadka może być dość trudna, a korzyści płynące z rozwiązania jej będą nieadekwatne do straconego czasu, stąd ilość pól jest mniejsza niż w najpopularniejszej wersji rozgrywki.
 \subsection{Algorytmika}
+\subsubsection{Pojedynczy element puzzle - PuzzleBlock}
+
+Każdy pojedynczy element puzzla jest zainicjalizowany jako obiekt, który określamy jako PuzzleBlock. Obiekt posiada koordynaty, które określają jego położenie w przestrzeni na układance.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=6cm]{images/tyrek/coord_puzzle.png}
+	\caption{Koordynaty każdego pola. Przykład z gry The Lore}
+\end{figure}
+
+Tak jak na załączonym przykładzie, wartość x rośnie w prawą stronę, zaś Y w górę, gdzie x dotyczy położenia w poziomie, a y w pionie. W założeniach przedstawiona została logika, która mówiła, iż element może zostać przemieszczony wtedy i tylko wtedy, gdy pole obok niego jest wolne, czyli nie posiada żadnego PuzzleBlock - elementu z liczbą lub obrazkiem. Dla lepszego efektu wizualnego, w grze The Lore element porusza się stopniowo, aby sprawiał wrażenie, iż porusza się realistycznie. Z racji, iż w Unity każda akcja wykonuje się podczas pokazywania kolejnej klatki, element porusza się w minimalnym stopniu przez sekundę. 
+(TODO: tu można jakoś opisać, o ile jest sens - nie wpływa to na algorytmikę)
+
+\subsubsection{Plansza - Puzzle. Losowanie kolejności puzzli}
+Plansza rozgrywki posiada 8 elementów PuzzleBlock oraz jedno puste pole.  Algorytm powinien wylosować dla 8 pól ich położenie na planszy - tak jak w wyżej przedstawionym przykładzie. W tym celu na początku losujemy dla każdego bloku wartość od 0 do 8. W C\# możemy to zrobić przy użyciu funkcji  System.Random().Next(a, b). Przykładowo:
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{Puzzle.cs}}
+]
+private int randomPosition()
+{
+    int pos = 0;
+    do
+    {
+        pos = new System.Random().Next(0, 9);
+    }
+    while (isOnBoard[pos]);
+    isOnBoard[pos] = true;
+    return pos;
+}
+\end{lstlisting}
+
+Gdzie isOnBoard[pos] jest tablicą, która weryfikuje, czy dane pole nie jest już zajęte. Jeśli jest, ponownie losujemy wartość dla PuzzleBlock. Oczywiście to nie koniec - z tej wartości musimy stworzyć położenie w postaci (x, y), gdzie x to położenie w poziomie, a y w pionie. W tym celu jedna z tych wartości będzie resztą dzielenia wylosowanej pozycji przez trzy (ilość pól w linii), a druga ilorazem całkowitym pozycji i liczby trzy. 
+
 \subsection{Przedstawienie przykładu w grze The Lore}
 
 \section{Zagadka z rurami}
