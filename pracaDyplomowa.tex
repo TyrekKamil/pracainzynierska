@@ -6,6 +6,7 @@
 
 % Zdefiniuj kodowanie pliku źródłowego (domyślnie utf8)
 \usepackage[utf8]{inputenc}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 
 % ======================================================== %
 % Dane autora i pracy                                      %
@@ -75,6 +76,8 @@
 \makestatement
 % Spis treści
 \tableofcontents
+\addcontentsline{toc}{chapter}{Bibliography}
+
 
 % ======================================================== %
 % Właściwa część pracy                                     %
@@ -140,11 +143,10 @@ Jednak wraz z piątą wersją silnika (wydaną w roku 2015) możliwość pisania
 \chapter{Zagadki logiczne}
 \section{Wprowadzenie do zagadek logicznych}
 \subsection{Omówienie zagadnienia}
-Zagadką logiczną określamy zadanie, którego celem jest odnalezienie odpowiedzi na pytanie, logiczne dojście do rozwiązania problemu czy też czasami abstrakcyjne myślenie. Możemy wyróżnić różne rodzaje zagadek, między innymi graficzne, czego przykładem jest znany, często używany w szkołach podstawowych rebus. Główną ideą takiej rozgrywki jest rozwój swoich intelektualnych możliwości przy dobrej zabawie.
-
+Zagadką logiczną określamy zadanie, którego celem jest odnalezienie odpowiedzi na pytanie, logiczne dojście do rozwiązania problemu czy też czasami abstrakcyjne myślenie. Możemy wyróżnić różne rodzaje zagadek, między innymi graficzne, czego przykładem jest znany, często używany w szkołach podstawowych rebus. Główną ideą takiej rozgrywki jest rozwój swoich intelektualnych możliwości przy dobrej zabawie. \cite{zagadka_logiczna}
 \subsection{Przykłady logicznych zagadek w prawdziwym świecie}
 \subsubsection{Rebus}
-Przywołanym już przykładem zagadki może być rebus. To prosta rozgrywka, polegająca na odgadnięciu hasła na podstawie przytoczonego obrazka. Często treści w rebusach mogą być niejednoznaczne, co sprawia, iż nie są one trywialne i wymagają wielu kombinacji haseł, związanych z danym obrazkiem. 
+Przywołanym już przykładem zagadki może być rebus. To prosta rozgrywka, polegająca na odgadnięciu hasła na podstawie przytoczonego obrazka. Często treści w rebusach mogą być niejednoznaczne, co sprawia, iż nie są one trywialne i wymagają wielu kombinacji haseł, związanych z danym obrazkiem. \cite{rebus}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=8cm]{images/tyrek/rebus.png}
@@ -164,11 +166,11 @@ Jedną z najpopularniejszych zagadek logicznych, z którą styczność miał zap
  
 Słowo puzzle pochodzi z XVI wieku, które oznaczało "stan zagubienia". Sama gra ma swoje początki w wieku XVIII, gdy John Spilsbury, grawer i kartograf umieścił mapę na drewnie, następnie przepiłował ją wokół konturów każdego kraju znajdującego się na mapanie. To co powstało postanowił użyć do nauki geografii - ułożenie logicznej mapy uczyło jak wygląda mapa danego regionu. Taka pomoc dydaktyczna zdobyła szybko popularność, wszak była to nauka przez zabawę, używano ją dość często, nawet jeszcze w wieku XIX.  
 
-Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeżeli chodzi o kształt, puzzle często mają specyficzny kształt, przez co nie każdy element pasuje do innego, co pozwala nam odrzucić możliwości połączenia różnych par. Ilość elementów zwiększa ilość możliwych oraz logicznych kombinacji danych elementów, przez co zwiększa się czas realizacji zadania. Największa układanka została wykonana przez firmę Educa, posiadała ona aż 42 000 elementów i przedstawia dość bajeczny krajobraz, na któRym znajdują się najpopularniejsze budynki z całego świata - Big Ben, Wieża Eiffela czy Krzywą Wieżę w Pizie. Ułożenie tej układanki możemy liczyć w setkach godzin.
+Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeżeli chodzi o kształt, puzzle często mają specyficzny kształt, przez co nie każdy element pasuje do innego, co pozwala nam odrzucić możliwości połączenia różnych par. Ilość elementów zwiększa ilość możliwych oraz logicznych kombinacji danych elementów, przez co zwiększa się czas realizacji zadania. Największa układanka została wykonana przez firmę Educa, posiadała ona aż 42 000 elementów i przedstawia dość bajeczny krajobraz, na którym znajdują się najpopularniejsze budynki z całego świata - Big Ben, Wieża Eiffela czy Krzywą Wieżę w Pizie. Ułożenie tej układanki możemy liczyć w setkach godzin. \cite{puzzle}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=5cm]{images/tyrek/przesuwane-puzzle.jpg}
+	\includegraphics[width=5cm]{images/tyrek/puzzle.jpg}
 	\caption{Źródło: Pixnio, Przykład puzzli - Public Domain}
 \end{figure}
 
@@ -176,7 +178,7 @@ Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeże
 ---- TODO - osobne sceny, dlaczego taki zamysł
 \section{Przesuwane puzzle}
 \subsection{Omówienie zagadnienia i ogólne założenia}
-Przesuwane puzzle to układanka, złożona zazwyczaj z kwadratowej liczby elementów, najczęściej jest to szesnaście pól. Pola są jednakowych rozmiarów i oznaczone są liczbami od 1 do (n-1), gdzie n to liczba dostępnych pól w układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzli względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w odpowiedniej kolejności, według rosnącego porządku liczb lub powstania odpowiedniego obrazka. Trudno określić kto odpowiada za stworzenie zagadaki. Wiadomym jest, że w 1878 roku pochodzący ze Stanów Zjednoczonych Samuel Loyd wypromował układankę, jednak prawdopodobnie nie jest to jego pomysł. Dość popularną nazwą na rozgrywkę jest "piętnastka", określającą ilość dostępnych pól w najpopularniejszym ułożeniu - 4x4.  
+Przesuwane puzzle to układanka, złożona zazwyczaj z kwadratowej liczby elementów, najczęściej jest to szesnaście pól. Pola są jednakowych rozmiarów i oznaczone są liczbami od 1 do (n-1), gdzie n to liczba dostępnych pól w układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzli względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w odpowiedniej kolejności, według rosnącego porządku liczb lub powstania odpowiedniego obrazka. Trudno określić kto odpowiada za stworzenie zagadaki. Wiadomym jest, że w 1878 roku pochodzący ze Stanów Zjednoczonych Samuel Loyd wypromował układankę, jednak prawdopodobnie nie jest to jego pomysł. Dość popularną nazwą na rozgrywkę jest "piętnastka", określającą ilość dostępnych pól w najpopularniejszym ułożeniu - 4x4.  \cite{sliding_puzzle}
 
 W grze The Lore gracze staną przez rozwiązaniem zagadki gdzie do dyspozycji mamy dziewięć pól. Podczas projektowania układanki w grze uznano, iż zagadka może być dość trudna, a korzyści płynące z rozwiązania jej będą nieadekwatne do poświęconego czasu, stąd ilość pól jest mniejsza niż w najpopularniejszej wersji rozgrywki.
 \subsection{Algorytmika}
@@ -248,5 +250,25 @@ Gdzie isOnBoard[pos] jest tablicą, która weryfikuje, czy dane pole nie jest ju
 \subsection{Skakanie} 
 \subsection{Otoczenie wpływające na fizykę postaci}
 \subsection{Umiejętności związane z poruszaniem się}
+
+\begin{thebibliography}{9}
+
+\bibitem{zagadka_logiczna} 
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
+https://pl.wikipedia.org/wiki/Zagadka
+
+\bibitem{rebus} 
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
+https://pl.wikipedia.org/wiki/Rebus
+
+\bibitem{przesuwane_puzzle}
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
+https://en.wikipedia.org/wiki/15\_puzzle
+
+\bibitem{puzzle}
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
+https://pl.wikipedia.org/wiki/Puzzle
+
+\end{thebibliography}
 
 \end{document}
