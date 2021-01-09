@@ -175,7 +175,29 @@ Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeże
 \end{figure}
 
 \subsection{Wdrożenie zagadek do gry opartej na silniku Unity}
----- TODO - osobne sceny, dlaczego taki zamysł
+\subsubsection{Scena w Unity}
+W Unity możemy podzielić naszą grę na sceny. Scena to obiekt zawierający nasze menu, czy dane środowisko gry (na przykład poziom gry). Dobrą praktyką jest, aby każdy level gry był osobą sceną, co skróci czas jego ładowania. W scenie możemy umieścić swoje obiekty, skrypty czy grafiki. \cite{scena}
+\subsection{Obiekt - GameObject}
+Obiekt, zwany w Unity GameObject, to klasa podstawowa dla wszystkich podmiotów w scenach Unity. Do każdego obiektu możemy przypinać kolejne obiekty, tworząc hierarchiczność, która może się przydać w odpowiedniej realizacji projektu. \cite{gameobject}
+\begin{figure} % TODO - obrazek w złym miejscu
+	\centering
+	\includegraphics[width=4cm]{images/tyrek/hierarchia.png}
+	\caption{Hierarchia obiektów. Przykład z projektu The Lore}
+\end{figure}
+\subsection{Sposoby dodawania mini-gier}
+W toku pracy nad projektem The Lore rozpatrywano dwa sposoby dodawania mini-gier do gry:
+\begin{itemize}
+	\item{Każda minigra jest w osobnej scenie}
+	\begin{itemize}
+		\item W przypadku rozbudowanych poziomów nie powiela szerokiej listy obiektów sceny
+		\item Pozwala na mniejsze pobieranie zasobów w danej jednostce czasu - połączenie działającego poziomu z algorytymką mini-gry może bywać uciążliwe na słabszych komputerach.
+	\end{itemize}
+	\item{Każda minigra zawiera się w scenie poziomu gry}
+		\begin{itemize}
+		\item Unikamy dłuższego ładowania się poziomu gry. Po zakończeniu mini-gry w przypadku osobnej sceny, cały poziom musi załadować się od nowa.
+	\end{itemize}
+\end{itemize}
+Po wewnętrznej dyskusji wybrano opcję wydzielenia do osobnej sceny. W toku testowania tego rozwiązania uznano, iż nie jest ono bardzo uciążliwe pod kątem czasu ładowania poziomu, zaś pozwala na zachowanie porządku w projekcie. Jak się okazało już w przypadku projektowania poziomu 1. gry, ta decyzja była właściwa. Z racji sporego rozbudowania tego obiektu i dużej liczby obiektów, dodanie mini-gier do tej sceny mogłoby spowodować chaos organizacyjny.
 \section{Przesuwane puzzle}
 \subsection{Omówienie zagadnienia i ogólne założenia}
 Przesuwane puzzle to układanka, złożona zazwyczaj z kwadratowej liczby elementów, najczęściej jest to szesnaście pól. Pola są jednakowych rozmiarów i oznaczone są liczbami od 1 do (n-1), gdzie n to liczba dostępnych pól w układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzli względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w odpowiedniej kolejności, według rosnącego porządku liczb lub powstania odpowiedniego obrazka. Trudno określić kto odpowiada za stworzenie zagadaki. Wiadomym jest, że w 1878 roku pochodzący ze Stanów Zjednoczonych Samuel Loyd wypromował układankę, jednak prawdopodobnie nie jest to jego pomysł. Dość popularną nazwą na rozgrywkę jest "piętnastka", określającą ilość dostępnych pól w najpopularniejszym ułożeniu - 4x4.  \cite{sliding_puzzle}
@@ -193,7 +215,6 @@ Każdy pojedynczy element puzzla jest zainicjalizowany jako obiekt, który okre�
 \end{figure}
 
 Tak jak na załączonym przykładzie, wartość x rośnie w prawą stronę, zaś Y w górę, gdzie x dotyczy położenia w poziomie, a y w pionie. W założeniach przedstawiona została logika, która mówiła, iż element może zostać przemieszczony wtedy i tylko wtedy, gdy pole obok niego jest wolne, czyli nie posiada żadnego PuzzleBlock - elementu z liczbą lub obrazkiem. Dla lepszego efektu wizualnego, w grze The Lore element porusza się stopniowo, aby sprawiał wrażenie, iż porusza się realistycznie. Z racji, iż w Unity każda akcja wykonuje się podczas pokazywania kolejnej klatki, element porusza się w minimalnym stopniu przez sekundę. 
-(TODO: tu można jakoś opisać, o ile jest sens - nie wpływa to na algorytmikę)
 
 \subsubsection{Plansza - Puzzle. Losowanie kolejności puzzli}
 Plansza rozgrywki posiada 8 elementów PuzzleBlock oraz jedno puste pole.  Algorytm powinien wylosować dla 8 pól ich położenie na planszy - tak jak w wyżej przedstawionym przykładzie. W tym celu na początku losujemy dla każdego bloku wartość od 0 do 8. W C\# możemy to zrobić przy użyciu funkcji  System.Random().Next(a, b). Przykładowo:
@@ -216,7 +237,7 @@ private int randomPosition()
 \end{lstlisting}
 
 Gdzie isOnBoard[pos] jest tablicą, która weryfikuje, czy dane pole nie jest już zajęte. Jeśli jest, ponownie losujemy wartość dla PuzzleBlock. Oczywiście to nie koniec - z tej wartości musimy stworzyć położenie w postaci (x, y), gdzie x to położenie w poziomie, a y w pionie. W tym celu jedna z tych wartości będzie resztą dzielenia wylosowanej pozycji przez trzy (ilość pól w linii), a druga ilorazem całkowitym pozycji i liczby trzy. 
-
+Kolejną ważną rzeczą będzie weryfikacja, czy obecne ułożenie puzzli jest wykonalne.
 \subsection{Przedstawienie przykładu w grze The Lore}
 
 \section{Zagadka z rurami}
@@ -269,6 +290,13 @@ https://en.wikipedia.org/wiki/15\_puzzle
 Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
 https://pl.wikipedia.org/wiki/Puzzle
 
+\bibitem{scena}
+Unity Documentation, dostęp 09.01.2020r.
+https://docs.unity3d.com/Manual/CreatingScenes.html
+
+\bibitem{gameobject}
+Unity Documentation, dostęp 09.01.2020r.
+https://docs.unity3d.com/ScriptReference/GameObject.html
 \end{thebibliography}
 
 \end{document}
