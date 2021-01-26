@@ -238,7 +238,124 @@ private int randomPosition()
 
 Gdzie isOnBoard[pos] jest tablicą, która weryfikuje, czy dane pole nie jest już zajęte. Jeśli jest, ponownie losujemy wartość dla PuzzleBlock. Oczywiście to nie koniec - z tej wartości musimy stworzyć położenie w postaci (x, y), gdzie x to położenie w poziomie, a y w pionie. W tym celu jedna z tych wartości będzie resztą dzielenia wylosowanej pozycji przez trzy (ilość pól w linii), a druga ilorazem całkowitym pozycji i liczby trzy. 
 Kolejną ważną rzeczą będzie weryfikacja, czy obecne ułożenie puzzli jest wykonalne.
+
+\subsubsection{Plansza - Puzzle. Weryfikacja kolejności puzzli}
+Jak się okazuje niektóre ułożenia puzzli powodują, iż nie ma żadnego rozwiązania tego problemu. Z przypadkiem takiej sytuacji spotykaliśmy podczas pierwszych testów mini-gry puzzle. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=5cm]{images/tyrek/puzzle_1.png}
+	\caption{Puzzle bez rozwiązania. Przykład z gry The Lore}
+\end{figure}
+
+Jak się okazuje, występuje tutaj dość prosta zasada. Łamigłówka przesuwanych puzzli z 8 elementami jest rozwiązywalna wtedy i tylko wtedy, gdy liczba inwersji stanu początkowego jest parzysta. Czym jest zaś w tym przypadku liczba inwersji?
+
+Inwersją nazwiemy parę liczb, której wartości są w odwrotnej kolejności, niż w zakładanym stanie końcowym. \cite{solvablePuzzle} Przyjmijmy taką sytuację:
+
+\begin{center}
+\begin{tabular}{ | m{5em} | m{1cm}| m{1cm} | } 
+\hline
+ 1 & 2 & 3 \\ 
+\hline
+ 6 & 4 & 5 \\
+\hline  
+ 7 & 8 &     \\
+\hline
+\end{tabular}
+\end{center}
+
+W tym przypadku liczba inwersji wynosi dwa. Elementami zbioru inwersji są pary (6,4) oraz (6,5) - jak wiadomo, liczba 6 jest w kolejności po cyfrach 4 oraz 5. W tym przypadku rozwiążemy puzzle.
+
+\begin{center}
+\begin{tabular}{ | m{5em} | m{1cm}| m{1cm} | } 
+\hline
+ 1 & 2 & 3 \\ 
+\hline
+ 6 & 5 & 4 \\  
+\hline
+ 7 & 8 &     \\
+\hline
+\end{tabular}
+\end{center}
+
+W tym przypadku liczba inwersji wynosi już trzy. Elementami zbioru są pary (6,5), (6,4) oraz (5,4). Takich puzzli nie da się rozwiązać. 
+W projekcie platformowej gry w Unity zastosowaliśmy prostą weryfikacje tej sytuacji. 
+
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{Puzzle.cs}}
+]
+        int inversions = 0;
+        for (int i = 0; i < numbersOrdered.Length - 1; i++) {
+            for (int j1 = i + 1; j1 < numbersOrdered.Length - 1; j1++) {
+                if (numbersOrdered[j1] > numbersOrdered[i]) {
+                    inversions++;
+                }
+            }
+            
+        }
+\end{lstlisting}
+Gdzie \textbf{inversions}, to liczba znalezionych inwersji, a \textbf{numberOrdered} to lista kolejności puzzli w stanie wejściowym. Jeżeli wartość \textbf{x} znajduje się w liście \textbf{numberOrdered} przed wartością \textbf{y} i jest od niej większa, to wtedy zwiększamy licznik inwersji o jeden.
+Oczywiście pozostaje nam prosta weryfikacja, czy liczba inwersji jest nieparzysta - w takim wypadku puzzle będą nierozwiązywalne..
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{Puzzle.cs}}
+]
+        if (inversions % 2 == 1)
+        {
+            pab.restartPuzzleButton();
+        }
+\end{lstlisting}
+
+Gdzie \textbf{pab} jest obiektem odwołującym się do akcji \textbf{PuzzleActionsButton}, zawierającym przycisk restartButton - ten sam, który dostępny jest w grze w celu zrestrartowania obecnego ułożenia puzzli.
 \subsection{Przedstawienie przykładu w grze The Lore}
+W grze The Lore zagadka przesuwanych puzzli pełni rolę opcjonalnej rozgrywki, za której rozwiązanie gracz otrzymuje punkty doświadczenia. Mini-grę możemy rozpocząć znajdując się w pobliżu charakterystycznej płytki, wyróżniającej się podświetleniem.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=6cm]{images/tyrek/the_lore_puzzle_lvl1.png}
+	\caption{Miejsce rozpoczęcia puzzli. Przykład z projektu The Lore}
+\end{figure}
+
+W momencie naciśnięcia przycisku akcji kamera zbliża się do obiektu, czyli podświetlonej płytki. Następnie widzimy animację otwierającej się płytki sprawiającej wrażenie, iż ścianka jest przesuwana przez gracza.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{images/tyrek/otwieraniePuzzli.png}
+	\caption{Animacja rozpoczęcia puzzli. Przykład z projektu The Lore}
+\end{figure}
+
+Po skończonej animacji rozpoczynamy mini-grę. Oprócz bloczków z kolejnością, na ekranie widzimy również dwa przyciski i cyfrę zero. Przyklad:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{images/tyrek/puzzlebuttons.png}
+	\caption{Cały interfejs mini-gry puzzle. Przykład z gry The Lore}
+\end{figure}
+Gdzie \textbf{Exit} kończy rozgrywkę, przenosząc nas z powrotem w miejsce, w którym rozpoczynaliśmy zagadkę, \textbf{Restart Puzzle} powoduje ponowne rozlosowanie puzzli, odwołując się do akcji w klasie \textbf{PuzzleActionsButtons}, czyli tej samej, która uruchamiana jest w przypadku, gdy puzzle nie mają rozwiązania. Dodatkowo po prawej stronie widnieje informacja ile ruchów do tej pory wykonaliśmy rozwiązując zagadkę. Jest to dość istotna informacja dla gracza, gdyż to od ilości ruchów zależy ile punktów doświadczenia zdobędzie za rozwiązanie tej zagadki. Zastosowany wzór dla gry The Lore wygląda następująco:
+
+$$
+y = \left\{ \begin{array}{ll}
+5 & \textrm{gdy $x>=250$}\\
+100 - (x / 25) * 10 & \textrm{gdy $x<250$}\\
+\end{array} \right.
+$$
+Gdzie \textbf{x} jest liczbą wykonanych ruchów.
+Po zakończeniu mini-gry jesteśmy informowani o ilości zdobytego doświadczenia. Ponownie widzimy animację przesuwającej się płytki, tym razem zamykającej się.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{images/tyrek/puzzle_end.png}
+	\caption{Wygrana rozgrywka puzzle. Przykład z gry The Lore}
+\end{figure}
+
+Każdą mini-grę puzzle można wykonać w grze tylko jeden raz. Ponowne próby są niemożliwe, a o tym, iż zagadka została zakończona, jesteśmy informowani przez fakt, iż płytka symbolizująca mini-grę nie jest podświetlona.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=5cm]{images/tyrek/puzzleWin.png}
+	\caption{Wygaszona płytka. Przykład z gry The Lore}
+\end{figure}
+
+\subsection{Przedstawienie przykładu w innych grach}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis commodo odio, vel pulvinar risus. Quisque ac lacus urna. Aliquam ullamcorper leo non nisl fringilla.
 
 \section{Zagadka z rurami}
 \subsection{Omówienie zagadnienia}
@@ -297,6 +414,12 @@ https://docs.unity3d.com/Manual/CreatingScenes.html
 \bibitem{gameobject}
 Unity Documentation, dostęp 09.01.2020r.
 https://docs.unity3d.com/ScriptReference/GameObject.html
+
+\bibitem{solvablePuzzle}
+Geeks for geeks. Check instance 8 puzzle solvable, dostęp 26.01.2020r.
+https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
+
 \end{thebibliography}
+
 
 \end{document}
