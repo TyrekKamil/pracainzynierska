@@ -128,14 +128,74 @@ W przeszłości można było tworzyć aplikacje w trzech językach:
 Jednak wraz z piątą wersją silnika (wydaną w roku 2015) możliwość pisania w języku Boo została usunięta, pozostała tylko wsteczna kompatybilność w postaci możliwości kompilacji skryptów przez środowisko MonoDevelop. Podobny los dotknął UnityScript, którego wsparcie zakończyło się na wersji 2018.2 (najnowsza wersja stabilna to 2019.3.4). Z tych względów nasz wybór musiał paść na język C\#, w którym zostały napisane wszystkie nasze skrypty. Jako jedyny jest wciąż wspierany przez autorów, co zaowocowało drastycznym wzrostem popularności wśród użytkowników.
 
 \chapter{Zarządzanie projektem gry komputerowej z wykorzystaniem Agile}
-\section{Zarządzanie projektem informatycznym}
-\subsection{Wstęp do idei zarządzania projektem}
+\section{Czym jest projekt?}
 Aby odpowiednio przyswoić temat zarządzenia projektem, należy zacząć od zrozumienia paru terminów  które są nieodłączną jego częścią. 
-\subsubsection {Projekt}
 Projekt jest to termin z pozoru banalny, w końcu spotykamy się z nim wielokrotnie, jednak wytłumaczenie go może sprawiać problemy. Jedną z najlepszych oraz najbardziej wyczerpujących definicji na jaką można trafić jest ta stworzona przez Roberta K. Wysockiego oraz Rudd’a McGary'ego. Są to Amerykańscy specjaliści w temacie zarządzania projektami. W ich książce pod tytułem „Efektywne zarządzanie projektami” definiują projekt jako: „sekwencję niepowtarzalnych, złożonych i związanych ze sobą zadań, mających wspólny cel, przeznaczonych do wykonania w określonym terminie bez przekraczania ustalonego budżetu, zgodnie z założonymi wymaganiami”. \cite{projekt}
 
 Pomimo faktu iż powyższa definicja jest najprawdopodobniej znacznie bardziej złożona od takiej którą słyszymy na co dzień to jest ona bardzo cenna, ponieważ przedstawia najważniejsze cechy każdego projektu.
-\subsubsection {Zarządzanie projektem}
+
+Składa się z czterech podstawowych elementów, którymi menedżer projektu musi zarządzać symultanicznie. Trzeba pamiętać, że są one ze sobą powiązane. Do wspomnianych elementów należą: 
+\begin{itemize}
+	\item Zakres
+	\item Zasoby
+	\item Czas
+	\item Pieniądze
+\end{itemize}
+
+\subsection {Zakres}
+Zdecydowanie najważniejszy z całej czwórki. Jest on definicją co tak naprawdę projekt ma osiągnąć i co ma w nim zostać zrealizowane. Obrazuje rozmiar projektu, jego cele a także wymagania. Zakres jest nie tylko najważniejszym, ale również najbardziej złożonym. Jakakolwiek zmiana musi zostać odwzorowana w pozostałych trzech elementach. Jest to jeden z powodów dla którego się mówi o współzależności między tą czwórką. Aby to lepiej zrozumieć, można sobie wyobrazić aplikacje, która ma posiadać cztery główne funkcjonalności, zbudowana przez dwa zespoły z budżetem 40 tysięcy złotych. Jeśli zakres projektu się zmieni do przykładowo sześciu funkcjonalności, zadaniem menedżera projektu jest dostosowanie zasobów ludzkich, czasu oraz budżetu w taki sposób aby cel ten został zrealizowany.
+
+\subsection {Zasoby}
+Zasoby dzielą się na trzy kategorie:
+\begin{itemize}
+	\item Zasoby ludzkie
+	\item Wyposażenie
+	\item Materiały
+\end{itemize}
+\subsubsection {Zasoby ludzkie}
+
+Menadżer projektu musi upewnić się że pracownicy posiadają odpowiednie umiejętności i narzędzia aby ukończyć dane im zadanie. Musi w pełni monitorować czy ma wystarczającą ilość zasobów ludzkich do konkretnego projektu tak aby go ukończyli w ustalonym czasie. Jego zadaniem jest również dopilnowanie aby każda osoba przypisana do zadania doskonale wiedziała i rozumiała co ma zrobić oraz znała wyznaczone terminy. W większych firmach wygląda to inaczej. Pracownicy są podzieleni na grupy którymi zarządza team leader, jest on odpowiedzialny za większość obowiązków które zostały wymienione powyżej. Wynika to z faktu iż menedżer projektu nie jest w stanie zarządzać tak dużym zbiorowiskiem ludzi. Dużym atutem jest również to że team leader najlepiej zna swój zespół, ich umiejętności, możliwości, a także czas którym dysponują. Jest to również duże ułatwienie dla menedżera projektów ponieważ nie musi komunikować się ani nadzorować wszystkich, wystarczy kontakt z team leaderem konkretnych zespołów. 
+
+\subsubsection {Wyposażenie i materiały}
+Czasami dochodzi do sytuacji, w której project manager jest odpowiedzialny za pozyskiwanie materiałów i wyposażenie którymi musi zarządzać w taki sposób aby zespół wykonywał swoją prace w najefektywniejszy sposób. Nie jest to często spotykane zjawisko, w szczególności w dużych firmach w których podzial obowiązków jest mocniej rozdzielony po wielu pracownikach.
+
+\subsection {Czas}
+Podobnie jak w przypadku zasobów, czas jest dzielony na trzy grupy
+\begin{itemize}
+	\item Podział na zadania
+	\item Harmonogram
+	\item Ścieżka krytyczna (ang. Critical path)
+\end{itemize}
+
+\subsubsection {Podział na zadania}
+Podział na zadania jest pierwszym z trzech kroków do pomyślnego zarządzania czasem. Zadania muszą być tworzone w przemyślany sposób, dobrze przeanalizowane, a także odpowiednio wytłumaczone, tak aby pracownik, który się go podejmie, wszystko zrozumiał za pierwszym razem. Niespełnienie przynajmniej jednego z wyżej wymienionych warunków tworzenia zadań negatywnie wpływa na ich wykonanie. W wielu przypadkach łączy się to z opóźnieniami w realizacji projektu.
+
+\subsubsection {Harmonogram}
+Po pomyślnym stworzeniu zadań przechodzi się do zaplanowania harmonogramu. Tworzy się go poprzez listowanie w odpowiedniej kolejności wszystkich zadań, które muszą zostać wykonane. Niektóre z nich można wykonywać sekwencyjnie, inne z nich mogą nakładać się na siebie, a jeszcze inne mogą zostać wykonane jednocześnie. Kluczem do sukcesu jest ich zrozumienie i poprawne grupowanie. Następnym ważnym czynnikiem jest zrozumienie zależności między nimi, ponieważ niektóre z zadań muszą zostać wykonane w pierwszej kolejności. Ostatnim krokiem tworzenia harmonogramy jest estymacja czasu potrzebnego do ich wykonania, a także przypisanie im odpowiednich zasobów. 
+
+\subsubsection {Ścieżka krytyczna (ang. Critical path)}
+Niektóre zadania mają elastyczny termin rozpoczęcia oraz ich zakończenia. Jednak istnieją również takie które tej elastyczności nie mają. Linia przechodząca przez zbiór takich zadań nazywana jest ścieżką krytyczną i wykorzystywana jest do monitorowania w jakim tempie zostają wykonywane zadania w projekcie. W zależności od podziału zadań, istnieje możliwość występowania wielu ścieżek krytycznych. Wszystkie zadania które znajdują się na ich drodze muszą zostać wykonane w terminie, w przeciwnym razie występuje bardzo wysokie prawdopodobieństwo że projekt nie zostanie ukończony na czas.
+
+\subsection {Pieniądze}
+Dla najefektywniejszego zarządzania kosztami projektu uwzględnia się jego:
+
+\begin{itemize}
+	\item Koszty
+	\item Wydatki związane z losowymi zdarzeniami
+	\item Zyski
+\end{itemize}
+
+\subsubsection {Koszty}
+Każde zadanie ma określony koszt potrzebny do jego do wykonania, najczęściej bazuje na wydatkach związanych z potrzebnymi zasobami. Każdy z tych wydatków jest estymowany i uwzględniany podczas przygotowania budżetu dla projektu.
+
+\subsubsection {Wydatki związane z losowymi zdarzeniami}
+Podobnie jak w estymacji czasu potrzebnego do wykonania konkretnych zadań, tak samo przy przygotowywaniu budżetu należy uwzględnić pewien bufor. Zostanie on wykorzystany na wypadek losowych zdarzeń, które mogą się w nieoczekiwanym momencie wydarzyć. Najprostszym przykładem w firmie informatycznej może być problem techniczny związany ze sprzętem np. zepsuty komputer.
+
+\subsubsection {Zyski}
+Zyski są to pieniądze, które firma planuje zarobić na wykonanym projekcie, bądź po każdym zakończonym zadaniu. Oczywiście aby projekt został uznany za opłacalny dla biznesu, budżet, który zawiera odpowiednio oszacowane koszty nie może przekraczać pewnego procentu planowanych zysków. Zadaniem menedżera projektu jest oczywiście zminimalizowanie jak najbardziej kosztów produkcji i jak największe zmaksymalizowanie zysku, które firma zarobi po wykonanym projekcie.
+
+
+\section {Czym jest zarządzanie projektem}
 Po dokładnym zaznajomieniu się czym jest projekt, zrozumienie na czym polega zarządzanie projektem staje się trywialne. Jest to proces, którego celem jest ukończenie projektu zgodnie z określonymi wymaganiami (najczęściej czasowymi i budżetowymi), do jego realizacji stosuje się wiedzę, narzędzia, umiejętności, oraz odpowiednie techniki. 
 \begin{figure}[h]
 	\centering
