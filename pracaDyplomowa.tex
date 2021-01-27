@@ -254,14 +254,14 @@ Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeże
 \subsection{Wdrożenie zagadek do gry opartej na silniku Unity}
 \subsubsection{Scena w Unity}
 W Unity możemy podzielić naszą grę na sceny. Scena to obiekt zawierający nasze menu, czy dane środowisko gry (na przykład poziom gry). Dobrą praktyką jest, aby każdy level gry był osobą sceną, co skróci czas jego ładowania. W scenie możemy umieścić swoje obiekty, skrypty czy grafiki. \cite{scena}
-\subsection{Obiekt - GameObject}
+\subsubsection{Obiekt - GameObject}
 Obiekt, zwany w Unity GameObject, to klasa podstawowa dla wszystkich podmiotów w scenach Unity. Do każdego obiektu możemy przypinać kolejne obiekty, tworząc hierarchiczność, która może się przydać w odpowiedniej realizacji projektu. \cite{gameobject}
 \begin{figure} % TODO - obrazek w złym miejscu
 	\centering
 	\includegraphics[width=4cm]{images/tyrek/hierarchia.png}
 	\caption{Hierarchia obiektów. Przykład z projektu The Lore}
 \end{figure}
-\subsection{Sposoby dodawania mini-gier}
+\subsubsection{Sposoby dodawania mini-gier}
 W toku pracy nad projektem The Lore rozpatrywano dwa sposoby dodawania mini-gier do gry:
 \begin{itemize}
 	\item{Każda minigra jest w osobnej scenie}
@@ -432,20 +432,63 @@ Każdą mini-grę puzzle można wykonać w grze tylko jeden raz. Ponowne próby 
 \end{figure}
 
 \subsection{Przedstawienie przykładu w innych grach}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis commodo odio, vel pulvinar risus. Quisque ac lacus urna. Aliquam ullamcorper leo non nisl fringilla.
+TODO
 
 \section{Zagadka z rurami}
 \subsection{Omówienie zagadnienia}
+Zagadka z rurami jest rozgrywką, której celem jest ułożenie ściezki z dostępnych kształtów rur. Rodzaj rur jest tutaj ważny, ponieważ oprócz kształtów pionowych czy poziomych, dostępne są inne rodzaje - skońne, skrętne, półokrągłe.
+Ścieżka powinna wyznaczać drogę wody począwszy od źródła, zazwyczaj zaznaczonego niebieskim kolorem, do końcowej rury. Rozgrywka kończy się, gdy woda dotrze do ostatniej rury w ścieżce, jeżeli będzie miejsce, w którym powinna kończyć się droga, gracz wygrywa. W innym wypadku ponosi porażkę.
+Poziom naładowania wody pełni rolę wyznacznika czasu w którym użytkownik musi ułożyć odpowiednią ścieżkę. Zazwyczaj w tego typu rozgrywkach, woda przenosi się z rury źródłowej do kolejnej po pewnym czasie, aby dać graczowi pewien zapas czasowy na podjęcie odpowiednich decyzji. W niektórych grach gracz ma wybór rur, które dostępne są przez cała rozgrywkę - tak jest przykładowo w grze The Lore. Jednak są też cięższe przypadki, gdy mamy kolejkę kilku rur - wtedy musimy podejmować decyzję znacznie szybciej.
 \subsection{Algorytmika}
+TODO 
 \subsection{Przedstawienie przykładu w grze The Lore}
-\subsection{Przedstawienie przykładu w innych grach}
+Jest to kolejna mini-gra zawarta w grze The Lore, która jest elementem obowiązkowym do ukończenia poziomu "0", pełniącego rolę samouczka. Gracz zbliżając się do miejsca, w którym może rozpocząć rozgrywkę jest informowany poprzez komunikat o możliwości jej aktywacji.
 
-\section{Zagadka z otwieraniem skrzyni}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=7cm]{images/tyrek/ruryLvl0.png}
+	\caption{Poziom 0 - Zagadka z rurami. Przykład z projektu The Lore}
+\end{figure}
+
+Jak widzimy po prawej stronie znajduje się doł, w którym widzimy dwa totemy oraz płytki strumień wody. W przypadku, gdyby gracz postanowił wskoczyć do dziury zostanie przeniesiony z powrotem w okolice przełącznika (widocznego na fotografii po lewej stronie). Gdy aktywujemy przełącznik przyciskiem akcji, kamera zmierza w dół, aby pokazać nam układ rur.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{images/tyrek/pipes.png}
+	\caption{Zagadka z rurami. Przykład z projektu The Lore}
+\end{figure}
+
+W lewym górnym rogu mamy źródło strumienia, zaś w prawym dolnym rogu zakończenie (szara rura). Użytkownik sterując myszką może przekładać rury o wybranym kształcie, tworzyć połączenia, celem stworzenia ścieżki, która jest konieczna do ukończenia mini-gry. Rozrywka zawsze generuje tą samą liczbę poszczególnych typów rur. Co warto podkreślić, liczba ta jest ważna - jeżeli mamy zbyt mało elementów danego typu, to po prostu ułożenie ścieżki może być niemożliwe. Zbyt duża liczba elementów zaś pozwoliłaby na trywialne rozwiązanie, na przykład w kształcie litery L. W grze The Lore jest możliwość szybkiego zakończenia rozgrywki poprzez wybranie opcji \textbf{Speed Up}. Powoduje ona szybkie przeniesienie strumienia wody do końcowej rury ułożonej przez nas ścieżki. Jeżeli odpowiednia droga została ułożona, mini-gra zostanie zakończona sukcesem, w przeciwnym przypadku porażkę. Z tej racji przycisk spełnia rolę nie tylko szybkiego pominięcia rozgrywki, gdy jesteśmy już pewni zwycięstwa i nie chcemy tracić czasu, ale też zrestartowania rur. 
+\subsection{Przedstawienie przykładu w innych grach}
+\subsubsection{Pipe Mania}
+\cite{pipemania}
+\section{Zagadka z otwieraniem zamku}
 \subsection{Omówienie zagadnienia}
+Jest to bardzo powszechna mini-gra, która dodawana jest do wielu gier, które posiadają funkcjonalność posiadania ekwipunku. Jej celem jest otworzenie skrzynii, które polega na wykonaniu różnych operacji. Zazwyczaj jest od odkrycie odpowiedniej sekwencji poruszania wytrychem, otworzyć zapadki poprzez poruszanie myszką, czy wciśnięcie odpowiedniego guzika, gdy postęp otwierania zamku jest na odpowiednim etapie. Otworzenie zamku pozwala otworzyć skrzynię, zawierającą elementy wyposażenia lub otworzyć drzwi, które zaprowadzą nas do ważnych dla gry pomieszczeń. Z racji na charakter rozgrywki element ten bywa raczej opcjonalną metodą przejścia gry. Z tego względu w niektórych grach, posiadających system umiejętności, otworzenie niektórych zamków jest niemożliwe lub bardzo trudne, jeżeli nie rozwiniemy odpowiednich umiejętności.
 \subsection{Algorytmika}
 \subsection{Przedstawienie przykładu w grze The Lore}
-\subsection{Przedstawienie przykładu w innych grach}
+W grze The Lore otwieranie zamków dotyczy skrzyń, które położone są w różnych częściach mapy. Podczas poziomu samouczka jesteśmy informowani o możliwości rozpoczęcia mini-gry. Rozpoczęcie mini-gry wymaga posiadania wytrychów, które wyróżnione są na mapie białym podświetleniem.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{images/tyrek/skrzynia.png}
+	\caption{Wytrychy i skrzynia. Przykład z projektu The Lore}
+\end{figure}
+
+Jeżeli chcemy otworzyć skrzynie nieposiadająć w ekwipunku żadnego wytrychu, jesteśmy informowani o tym fakcie poprzez komunikat na ekranie. Gdy wciśniemy odpowiedni przycisk akcji, kamera zbliża się do skrzyni, po pewnym czasie rozpoczyna się mini-gra.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=12cm]{images/tyrek/minigraskrzynia.png}
+	\caption{Mini-gra otwieranie skrzyń. Przykład z projektu The Lore}
+\end{figure}
+
+Na wstępie jesteśmy informowani poprzez komunikat o sterowaniu w rozgrywce. Klawisze "Left/RightButton" są zależne od ustawień sterowania i dotyczą przycisków poruszania się graczem w lewo i prawo. Jeżeli naciśniemy któryś z tych przycisków, wytrych przesunie się zgodnie z naszym poleceniem. Po każdym ruchu jesteśmy informowani, czy był on odpowiedni. Zadaniem gracza jest zgadnąć losowy ciąg elementów lewo/prawo o długości 5. Każdy zły ruch powoduje konieczność powtórzenia sekwencji. Nagrodą za rozwiązanie problemu są eliksiry życia, które przydają się w czasie rozgrywki. Z racji, iż jest to rozgrywka nieobowiązkowa, gracz w każdej chwili może ją opuścić wybierając opcję \textbf{Exit}.
+\subsection{Przedstawienie przykładu w innych grach}
+Mafia 2
+Assassin's Creed Unity
+Gothic 2
 \section{Labirynt}
 \subsection{Omówienie zagadnienia}
 \subsection{Algorytmika}
@@ -466,9 +509,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis commodo odio
 \subsection{Otoczenie wpływające na fizykę postaci}
 \subsection{Umiejętności związane z poruszaniem się}
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \bibitem{projekt}
-Robert K. Wysocki, Rudd McGary: Efektywne zarz¹dzanieprojektami. Wydanie III, ISBN: 83-7361-861-9, dostęp w internecie 26.01.2020r.
+Robert K. Wysocki, Rudd McGary: Efektywne zarządzanie projektami. Wydanie III, ISBN: 83-7361-861-9, dostęp w internecie 26.01.2020r.
 http://pdf.onepress.pl/efzapr/efzapr-1.pdf
 
 \bibitem{zagadka_logiczna} 
@@ -499,7 +542,11 @@ https://docs.unity3d.com/ScriptReference/GameObject.html
 Geeks for geeks. Check instance 8 puzzle solvable, dostęp 26.01.2020r.
 https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
 
-\end{thebibliography}
+\bibitem{pipemania}
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 27.01.2020r.
+https://en.wikipedia.org/wiki/Pipe\_Mania
 
+
+\end{thebibliography}
 
 \end{document}
