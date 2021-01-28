@@ -7,6 +7,7 @@
 % Zdefiniuj kodowanie pliku źródłowego (domyślnie utf8)
 \usepackage[utf8]{inputenc}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage{hyperref}
 
 % ======================================================== %
 % Dane autora i pracy                                      %
@@ -255,12 +256,16 @@ Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeże
 \subsubsection{Scena w Unity}
 W Unity możemy podzielić naszą grę na sceny. Scena to obiekt zawierający nasze menu, czy dane środowisko gry (na przykład poziom gry). Dobrą praktyką jest, aby każdy level gry był osobą sceną, co skróci czas jego ładowania. W scenie możemy umieścić swoje obiekty, skrypty czy grafiki. \cite{scena}
 \subsubsection{Obiekt - GameObject}
+\label{sec:gameobject}
 Obiekt, zwany w Unity GameObject, to klasa podstawowa dla wszystkich podmiotów w scenach Unity. Do każdego obiektu możemy przypinać kolejne obiekty, tworząc hierarchiczność, która może się przydać w odpowiedniej realizacji projektu. \cite{gameobject}
-\begin{figure} % TODO - obrazek w złym miejscu
+\begin{figure}
 	\centering
 	\includegraphics[width=4cm]{images/tyrek/hierarchia.png}
 	\caption{Hierarchia obiektów. Przykład z projektu The Lore}
 \end{figure}
+\subsubsection{Komponent}
+\label{sec:komponent}
+Komponent jest klasą podstawową dla GameObject. Jest to klasa, przykładowo w języku C\#, która dołączana jest do obiektu Unity, celem wykonania na nim jakiś operacji. \cite{komponent}
 \subsubsection{Sposoby dodawania mini-gier}
 W toku pracy nad projektem The Lore rozpatrywano dwa sposoby dodawania mini-gier do gry:
 \begin{itemize}
@@ -462,10 +467,52 @@ W lewym górnym rogu mamy źródło strumienia, zaś w prawym dolnym rogu zakoń
 \subsection{Przedstawienie przykładu w innych grach}
 \subsubsection{Pipe Mania}
 \cite{pipemania}
+
+
 \section{Zagadka z otwieraniem zamku}
 \subsection{Omówienie zagadnienia}
 Jest to bardzo powszechna mini-gra, która dodawana jest do wielu gier, które posiadają funkcjonalność posiadania ekwipunku. Jej celem jest otworzenie skrzynii, które polega na wykonaniu różnych operacji. Zazwyczaj jest od odkrycie odpowiedniej sekwencji poruszania wytrychem, otworzyć zapadki poprzez poruszanie myszką, czy wciśnięcie odpowiedniego guzika, gdy postęp otwierania zamku jest na odpowiednim etapie. Otworzenie zamku pozwala otworzyć skrzynię, zawierającą elementy wyposażenia lub otworzyć drzwi, które zaprowadzą nas do ważnych dla gry pomieszczeń. Z racji na charakter rozgrywki element ten bywa raczej opcjonalną metodą przejścia gry. Z tego względu w niektórych grach, posiadających system umiejętności, otworzenie niektórych zamków jest niemożliwe lub bardzo trudne, jeżeli nie rozwiniemy odpowiednich umiejętności.
 \subsection{Algorytmika}
+Pierwszym i najważniejszym dla całej mini-gry elementem jest wylosowanie przez grę sekwencji ruchów, która potrzebna jest do ukończenia rozgrywki. Odbywa się to w skrypcie \textbf{PickLockGenerateSequence}. Podczas projektowania generatora napotkano się na problem związany z ciągłym losowaniem tych samych liczb. Powodem jest tutaj oczywiście synchronizacja, która przy ładowaniu scen potrafi sprawiać deweloperom problemy. Z tego powodu powstał ten skrypt, który wyróźnia się weryfikacją unikalności wylosowanej liczby.
+Wszystko rozpoczyna się od losowania liczby z zakresu <1,100).
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment skryptu \texttt{PickLockGenerateSequence.cs}}
+]
+    private int randomSide()
+    {
+        int random = 0;
+        do
+        {
+            random = new System.Random().Next(1, 100);
+        } while (wasRandomed[random - 1]);
+        wasRandomed[random - 1] = true;
+        return random % 2;
+    }
+\end{lstlisting}
+Tablica \textbf{wasRandomed} to element, który inicjalizowany jest z samych wartości \textbf{false}. Ilośc elementów jest równa \textbf{n}, czyli ilości możliwych wylosowanych liczb. Jeżeli liczba zostanie wylosowana ponownie, skrypt próbuje wylosować kolejną. Tak jak wspominano gracz ma dwie możliwości ruchów, dlatego aby wszystko działało poprawnie funkcja zwraca \textbf{mod 2} z wylosowanego elementu. Wynikiem funkcji jest więc 0, co oznacza ruch w lewo oraz 1, co oznacza ruch w prawo. Losowanych jest pięć elementów, co tworzy nam tablicę ruchów które musi wykonać gracz.
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment skryptu \texttt{PickLockGenerateSequence.cs}}
+]
+        for (int i = 0; i < numberOfMoves; i++)
+        {
+            moves[i] = randomSide();
+        }
+\end{lstlisting}
+Po wszystkim aktywowany jest \hyperref[sec:komponent]{\emph{komponent}} \textbf{Picklock}. Komponent ten odpowiada za wykrywanie jakich wyborów dokonał gracz. Jeżeli gracz wykonał dobry ruch, zostanie poinformowany o tym poprzez komunikat oraz zwiększy się licznik kontrolny \textbf{step} ilości dobrych ruchów. W przeciwnym razie licznik się wyzeruje. Dla efektu wizualnego, gracz widzi w którą stronę poruszył się jego wytrych - pozwala to łatwiej zapamiętać wybór. Odbywa się to poprzez zmianę pozycji elementu transform.
+
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment skryptu \texttt{Picklock.cs}}
+]
+picklockTransform.position += new Vector3(10 * direction, 0, 0) * 0.1f;
+\end{lstlisting}
+
+Gdzie picklockTransform to \hyperref[sec:komponent]{\emph{komponent}} typu transform, zawierający tablicę pozycji, rotacji oraz skalowania (odpowiednio parametry position, rotation i scale) \hyperref[sec:gameobject]{\emph{obiektu}}. W tym przypadku interesuje nas tylko \textbf{position}. 
 \subsection{Przedstawienie przykładu w grze The Lore}
 W grze The Lore otwieranie zamków dotyczy skrzyń, które położone są w różnych częściach mapy. Podczas poziomu samouczka jesteśmy informowani o możliwości rozpoczęcia mini-gry. Rozpoczęcie mini-gry wymaga posiadania wytrychów, które wyróżnione są na mapie białym podświetleniem.
 
@@ -486,12 +533,26 @@ Jeżeli chcemy otworzyć skrzynie nieposiadająć w ekwipunku żadnego wytrychu,
 
 Na wstępie jesteśmy informowani poprzez komunikat o sterowaniu w rozgrywce. Klawisze "Left/RightButton" są zależne od ustawień sterowania i dotyczą przycisków poruszania się graczem w lewo i prawo. Jeżeli naciśniemy któryś z tych przycisków, wytrych przesunie się zgodnie z naszym poleceniem. Po każdym ruchu jesteśmy informowani, czy był on odpowiedni. Zadaniem gracza jest zgadnąć losowy ciąg elementów lewo/prawo o długości 5. Każdy zły ruch powoduje konieczność powtórzenia sekwencji. Nagrodą za rozwiązanie problemu są eliksiry życia, które przydają się w czasie rozgrywki. Z racji, iż jest to rozgrywka nieobowiązkowa, gracz w każdej chwili może ją opuścić wybierając opcję \textbf{Exit}.
 \subsection{Przedstawienie przykładu w innych grach}
-Mafia 2
-Assassin's Creed Unity
-Gothic 2
+\subsubsection{Mafia 2}
+Gra Mafia II osadzona jest w amerykańskim mieście rządzonym przez mafie. Głównym bohaterem jest Vito Scaletta, syn włoskich imigrantów. Los sprawia, iż bohater zmuszony jest do szybkiego zarobku, przez co wplata się w mafijne porachunki. Realizując zadania dla swoich pracodawców, nieraz włamywał się do różnych pomieszczeń. Gracz może również w czasie gry włamywać się do zamkniętych pokoi lub budynków celem szybszego przejścia poziomu, obejścia wrogów czy zdobycia pieniędzy. Dodatkowo mini-gra pozwala na odblokowanie zamkniętych pojazdów. W mini-grze gracz używa myszki. Widoczny jest zamek z trzema zapadkami, po prawej stronie widzimy wytrych przy pierwszej zapadce. Użytkownik sterując myszką wertykalnie musi ustawić zapadkę w takiej pozycji, aż będzie ona podświetlona na kolor zielony. Jeżeli gracz zrobi to w złym momencie, zostanie cofnięty do poprzedniej zapadki. \cite{Mafia2}
+\begin{figure}
+	\centering
+	\includegraphics[width=5cm]{images/tyrek/Mafia2.png}
+	\caption{Otwieranie zamków. Przykład z gry Mafia 2}
+\end{figure}
+\subsubsection{Assassin's Creed Unity}
+W grze Assassni's Creed Unity wcielamy się w Arno Doriana, członka tajnego bractwa Assasynów, którzy toczą odwieczną walkę z organizacją zwaną Templatiuszami. Gra osadzona jest w czasach rewolucji francuskiej w Paryżu. Bohater będąc w centrum najważniejszych wydarzeń osiemnastowiecznego Paryża nieraz potrzebuje włamać się do jakiegoś budynku, aby wykonać misję. W grze otwieranie zamków dotyczy pomieszczeń, które dają podobnie jak w poprzednie grze, możliwość obejścia wrogów, czy też zdobycie ekwipunku oraz włamywania się do skrzyń - podobnie jak w grze The Lore. Rozpoczynając mini-grę widzimy ilość zapadek, błękitny pasek poruszający się wertykalnie oraz błękitny prostokąt. Zadaniem gracza jest wcisnąć przycisk akcji w momencie, gdy poruszający się znacznik znajdzie się w błękitnym polu. W przypadku, gdy gracz zrobi to w złym momencie, traci z ekwipunku wytrych. Warto też podkreślić, iż w grze istnieje system umiejętności, gdzie dwie umiejętności dotyczą poziomu otwierania zamków. Podczas gry spotkamy trzy poziomy trudności, które charakteryzują się większą ilością zapadek czy też szybszym poruszaniem się błękitnego paska. \cite{acu}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=6cm]{images/tyrek/acu.png}
+	\caption{Otwieranie zamków. Przykład z gry Assassin Creed Unity}
+\end{figure}
+\subsubsection{Gothic 2}
 \section{Labirynt}
 \subsection{Omówienie zagadnienia}
 \subsection{Algorytmika}
+Do stworzenia labiryntu możemy użyć algorytmu z nawrotami. Początkowo powinniśmy stworzyć graf, gdzie każdy węzeł ma co najmniej jedno połączenie, to będzie nasz labirynt. Pomiędzy węzłami, które nie są połączone będzie znajdować się ściana, której użytkownik nie może przejść. Aby wygenerować taki graf, początkowo  generujemy graf bez ścieżek - możemy wyobrazić sobie, iż jest to po prostu prostokąc, podzielony na kilka kwadratów stworzonych przez ściany. Algorytm rozpoczyna się w pierwszym węźle, dodając go do stosu. Następnie wybiera pierwszego nieodwiedzonego sąsiada, tworząc w ten sposób pierwsze połączenie węzłów - z punktu widzenia gracza, usuwając pomiędzy nimi ścianę. Proces powtarzany jest aż do momentu, gdy trafimy do węzła, które nie ma żadnego nieodwiedzonego sąsiada. Gdy już dotrze do takiego miejsca, cofa się, jednoczesnie usuwając elementy ze stosu, aż do momentu, gdy trafi na węzeł, który posiada nieodwiedzonego sąsiada. Algorytm skończy się, gdy w naszym stosie nie będzie elementów.
+--- kod/zalozenia ---
 \subsection{Przedstawienie przykładu w innych grach}
 
 \chapter{Fizyka postaci}
@@ -511,40 +572,53 @@ Gothic 2
 
 \begin{thebibliography}{10}
 \bibitem{projekt}
-Robert K. Wysocki, Rudd McGary: Efektywne zarządzanie projektami. Wydanie III, ISBN: 83-7361-861-9, dostęp w internecie 26.01.2020r.
+Robert K. Wysocki, Rudd McGary: Efektywne zarządzanie projektami. Wydanie III, ISBN: 83-7361-861-9, dostęp w internecie 26.01.2021r.
 http://pdf.onepress.pl/efzapr/efzapr-1.pdf
 
 \bibitem{zagadka_logiczna} 
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
 https://pl.wikipedia.org/wiki/Zagadka
 
 \bibitem{rebus} 
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
 https://pl.wikipedia.org/wiki/Rebus
 
 \bibitem{przesuwane_puzzle}
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
 https://en.wikipedia.org/wiki/15\_puzzle
 
 \bibitem{puzzle}
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2020r.
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
 https://pl.wikipedia.org/wiki/Puzzle
 
 \bibitem{scena}
-Unity Documentation, dostęp 09.01.2020r.
+Unity Documentation, dostęp 09.01.2021r.
 https://docs.unity3d.com/Manual/CreatingScenes.html
 
 \bibitem{gameobject}
-Unity Documentation, dostęp 09.01.2020r.
+Unity Documentation, dostęp 09.01.2021r.
 https://docs.unity3d.com/ScriptReference/GameObject.html
 
+\bibitem{komponent}
+Unity Documentation, dostęp 28.01.2021r.
+https://docs.unity3d.com/ScriptReference/Component.html
+
 \bibitem{solvablePuzzle}
-Geeks for geeks. Check instance 8 puzzle solvable, dostęp 26.01.2020r.
+Geeks for geeks. Check instance 8 puzzle solvable, dostęp 26.01.2021r.
 https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/
 
 \bibitem{pipemania}
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 27.01.2020r.
+Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 27.01.2021r.
 https://en.wikipedia.org/wiki/Pipe\_Mania
+
+\bibitem{Mafia2}
+Mafia Wiki, Fandom, dostęp 28.01.2021r.
+https://mafiagame.fandom.com/wiki/Lock\_Picking
+
+\bibitem{acu}
+IGN, Assassin's Creed Unity Wiki Guide, dostęp 28.01.2021 r.
+https://www.ign.com/wikis/assassins-creed-5-unity/Lockpick
+
 
 
 \end{thebibliography}
