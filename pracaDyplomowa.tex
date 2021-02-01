@@ -405,6 +405,9 @@ caption={Fragment klasy \texttt{Puzzle.cs}}
 \end{lstlisting}
 
 Gdzie \textbf{pab} jest obiektem odwołującym się do akcji \textbf{PuzzleActionsButton}, zawierającym przycisk restartButton - ten sam, który dostępny jest w grze w celu zrestrartowania obecnego ułożenia puzzli.
+
+Każdy obiekt (puzzle) ma przypisane do siebie dwie akcje: \textbf{OnBlockPressed} i \textbf{OnFinishedMoving}. Pierwsza akcja dotyczy tego, co ma się dziać w momencie wybrania przez gracza danego elementu. W tym przypadku dany element dodawany jest do kolejki, której zadaniem jest kontrola poruszania się puzzli. Pozwala to uniknąć sytuacji, gdy użytkownik zdołałby w bardzo szybkim czasie wybrać dwa elementy - wtedy moglibyśmy być świadkami nachodzących się puzzli lub nawet wejścia dwóch elementów na jedno miejsce. Gdy element będzie pierwszy w kolejce, rozpocznie się ruch naszego elementu - wtedy też przypisane będą mu nowe koordynaty. Wtedy przychodzi czas na drugą akcję, \textbf{OnFinishedMoving}. Początkowo funkcja zwiększa naszą ilość ruchów o jeden. Następnie sprawdza, czy obecne ułożenie puzzli odpowiada oczekiwanemu wynikowi końcowemu. Jeśli tak, jesteśmy informowani o ilości zdobytego doświadczenia. Ponownie widzimy animację przesuwającej się płytki, tym razem zamykającej się. Jeśli nie, algorytm sprawdza, czy istnieją elementy w kolejce, w tym przypadku powtarza się część procedury wykonywanej w \textbf{OnBlockPressed} - element porusza się na swoje miejsce, zmieniając koordynaty, następnie znów wykonując akcję \textbf{OnFinishedMoving}.
+
 \subsection{Przedstawienie przykładu w grze The Lore}
 W grze The Lore zagadka przesuwanych puzzli pełni rolę opcjonalnej rozgrywki, za której rozwiązanie gracz otrzymuje punkty doświadczenia. Mini-grę możemy rozpocząć znajdując się w pobliżu charakterystycznej płytki, wyróżniającej się podświetleniem.
 \begin{figure}[h]
@@ -450,6 +453,7 @@ Każdą mini-grę puzzle można wykonać w grze tylko jeden raz. Ponowne próby 
 	\caption{Wygaszona płytka. Przykład z gry The Lore}
 \end{figure}
 
+
 \subsection{Przedstawienie przykładu w innych grach}
 TODO
 
@@ -457,9 +461,52 @@ TODO
 \subsection{Omówienie zagadnienia}
 Zagadka z rurami jest rozgrywką, której celem jest ułożenie ściezki z dostępnych kształtów rur. Rodzaj rur jest tutaj ważny, ponieważ oprócz kształtów pionowych czy poziomych, dostępne są inne rodzaje - skońne, skrętne, półokrągłe.
 Ścieżka powinna wyznaczać drogę wody począwszy od źródła, zazwyczaj zaznaczonego niebieskim kolorem, do końcowej rury. Rozgrywka kończy się, gdy woda dotrze do ostatniej rury w ścieżce, jeżeli będzie miejsce, w którym powinna kończyć się droga, gracz wygrywa. W innym wypadku ponosi porażkę.
-Poziom naładowania wody pełni rolę wyznacznika czasu w którym użytkownik musi ułożyć odpowiednią ścieżkę. Zazwyczaj w tego typu rozgrywkach, woda przenosi się z rury źródłowej do kolejnej po pewnym czasie, aby dać graczowi pewien zapas czasowy na podjęcie odpowiednich decyzji. W niektórych grach gracz ma wybór rur, które dostępne są przez cała rozgrywkę - tak jest przykładowo w grze The Lore. Jednak są też cięższe przypadki, gdy mamy kolejkę kilku rur - wtedy musimy podejmować decyzję znacznie szybciej.
+Poziom naładowania wody pełni rolę wyznacznika czasu w którym użytkownik musi ułożyć odpowiednią ścieżkę. Zazwyczaj w tego typu rozgrywkach, woda przenosi się z rury źródłowej do kolejnej po pewnym czasie, aby dać graczowi pewien zapas czasowy na podjęcie odpowiednich decyzji. W niektórych grach gracz ma wybór rur, które dostępne są przez cała rozgrywkę - tak jest przykładowo w grze The Lore. Jednak są też cięższe przypadki, gdy mamy kolejkę kilku rur - wtedy musimy podejmować decyzję w oparciu o mniejszą pulę elementów.
 \subsection{Algorytmika}
-TODO 
+Mini-gra z rurami jest dość złożoną rozgrywką, dlatego zanim przedstawiony zostanie cały algorytm, warto na początku przytoczyć wszystkie obiekty, które pojawią się w czasie przedstawienia procedury.
+\subsubsection{Pipe}
+Jest to obiekt związany z rurą. To w tym miejscu określany jest typ rury, nadawana jest mu grafika oraz nazwa - ostatni element związany jest wyłącznie z częścią deweloperską, nie jest dostępne dla wszystkich użytkowników. W grze The Lore mamy dostępne kilka typów rur:
+\begin{itemize}
+  \item Rury pionowe - 9 elementów
+  \item Rury poziome - 4 elementy
+  \item Rury skrętne lewo-góra - 1 element
+  \item Rury skrętne prawo-dół - 2 elementy
+  \item Rury dół-lewo -  1 element
+  \item Rury dół-prawo - 2 elementy
+\end{itemize}
+Jak wcześniej wspomniano, liczba elementów poszczególnych typów rur odgrywa ważną rolę. Nie jest możliwe ułożenie bez możliwośći zejścia na dół (czyli między innymi rur skrętnych). 
+\subsubsection{PipeSlot}
+Jest miejscem, w którym może znaleźć się obiekt typu \textbf{Pipe}. Plansza, na której możemy kłaść elementy, jest rozmiarów 8x5, czyli tworzonych jest czterdzieści instancji obiektu \textbf{PipeSlot}. Jeżeli na danym miejscu znajduje się obiekt Pipe, wtedy możemy wykonywać na nim akcje - określa to zmienna \textbf{canDrag}. Do każdego obiektu przypisane są akcje \textbf{OnBeginDragEvent}, \textbf{OnEndDragEvent}, \textbf{OnDragEvent} oraz \textbf{OnDropEvent}. Związane są one ze systemem Drag\&Drop, którego działania zostanie przedstawione w dalszej części przedstawienia algorytmiki.
+\subsubsection{Działanie algorytmu - UI}
+Klasa \textbf{UI} odpowiada za interakcje z widocznym interfejsem i interakcje z obiektami. Na samym początku, do każdego elementu \textbf{PipeSlot} przypisywane są jego akcje. Gdy to już się stanie, czyszczona jest lista \textbf{pipes} w której trzymane będą wszystkie obiekty \textbf{Pipe}. Ma to na celu zabezpieczenie algorytmu przed wczytaniem elementów z poprzedniej instancji rozgrywki. Następnie wszystkie obiekty \textbf{PipeSlot} jako obiekt \textbf{Pipe} nadany mają \emph{null} – również z powodu zabezpieczenia przed niepożądanymi sytuacjami. Teraz czas na zainicjalizowanie dwóch najważniejszych \textbf{PipeSlot}, chodzi konkretnie o pierwszy i ostatni element. Dla tych miejsc przypisywana jest rura horyzontalna. Dodatkowo oba miejsca, pomimo iż znajduje się na nich rura, nie mogą być przeniesione – parametr \textbf{canDrag} ustawiony jest na \emph{false}. Oczywiście chodzi to o nieingerowanie w początek i koniec algorytmu. Gdy to już się stanie, algorytm dodaje rury wszystkich typów do odpowiedniej tablicy - \textbf{pipes}. Dopiero wtedy następuje losowanie im miejsc. W tym miejscu następuje przypisanie do elementu \textbf{PipeSlot} obiektów \textbf{Pipe}. Oczywiście, w momencie losowania miejsc, procedura weryfikuje, czy na danym miejscu znajduje się już jakaś rura, dzieje się to w dość trywialny sposób.
+
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{UI.cs}}
+]
+if (pipeSlots[x].Pipe == null)
+\end{lstlisting}
+Jeżeli warunek nie jest spełniony, ponownie losowane miejsc miejsce dla obiekty \textbf{Pipe}. Gdy to już się stanie, rozgrywka rozpoczyna się. W tym momencie zaczyna mijać czas, którego limit wyznacza zmienna \textbf{targetTime} – ustawiona na pięć sekund. Czas ten dotyczy przepływu wody przez jedną rurę. Co warto podkreślić, co każdą pełną sekundę zmienia się grafika danego obiektu \textbf{Pipe} – nadając efekt płynięcia wody.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{images/tyrek/rury-5.png}
+	\caption{Grafiki rury skrętnej. Przykład z projektu The Lore}
+\end{figure}
+W danym momencie procedura weryfikuje też, czy istnieje połączenie. Dzieje się to poprzez warunki:
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{UI.cs}}
+]
+if (recentPipe.right && (i + 1) % 8 != 7 && pipeSlots[i + 1].Pipe.left 
+&& !cameFrom.Equals("right"))
+\end{lstlisting}
+Gdzie \textbf{recentPipe.right} to sprawdzanie czy obecna rura może skręcić w prawo, \textbf{((i + 1) \% 8 != 7)} jest weryfikacją, czy znajdujemy się przy najbardziej wysuniętym na prawo \textbf{PipeSlot}. Następnie weryfikujemy, czy sąsiedni slot może być skrętny w lewo. Niestety, warunki nie są zbyt proste. Podobnie sprawdzamy to dla wszystkich stron, z odpowiednimi wartościami dla danych przypadków. Jeżeli minie czas, a dany \textbf{PipeSlot} nie będzie miał odpowiedniego połączenia, jesteśmy informowani o porażce. Jeżeli zaś algorytm wykryje, iż takie połączenie istnieje, a naszym obecnym indeksem na planszy jest 39 (liczba pól – 1), to algorytm przenosi nas do poziomu gry, z którego zaczynaliśmy rozgrywkę.
+
+\subsubsection{GameManager}
+Ostatnim ważnym obiektem w kontekście tej mini-gry jest GameManager. Odpowiada on za wszystkie akcje przypisane do \textbf{PipeSlot}. \textbf{BeginDrag}, \textbf{EndDrag} oraz \textbf{Drag} odpowiadają za przenoszenie danej rury - w tym momencje pozycja obiektu jest ściśle związana z kursorem na ekranie. W momencie, gdy puścimy lewy przycisk myszy, wykonuje się akcja \textbf{Drop}. Tutaj weryfikujemy, czy \textbf{Pipe} został przeniesiony na \textbf{PipeSlot}, który nie posiada żadnej rury. Jeśli tak, do danego miejsca przypisana jest nowa rura. W innym wypadku rura wraca na swoje poprzednie miejsce. 
 \subsection{Przedstawienie przykładu w grze The Lore}
 Jest to kolejna mini-gra zawarta w grze The Lore, która jest elementem obowiązkowym do ukończenia poziomu "0", pełniącego rolę samouczka. Gracz zbliżając się do miejsca, w którym może rozpocząć rozgrywkę jest informowany poprzez komunikat o możliwości jej aktywacji.
 
