@@ -223,14 +223,295 @@ Menedżer projektu zwany również kierownikiem projektu czy PM’em od angielsk
 W niektórych przypadkach zajmuje się również komunikacją z klientem, aby następnie przedstawić oraz wdrożyć wszelkie jego wymagania do życia projektu. Poza najważniejszymi obowiązkami, dobry kierownik projektu powinien również zadbać o dobrą organizację pracy oraz podkreślać jak ważna jest komunikacja pomiędzy członkami zespołów. Musi rozumieć, że należy skupić się na szukaniu rozwiązań problemów zamiast winnych, a także pozostać opanowanym nawet w najbardziej stresujących sytuacjach.
 
 \section{Cykl życia projektu informatycznego}
-\subsection{Metody pomocne w zarządzaniu projektami informatycznymi}
-\subsection{Ryzyko oraz powody niepowodzeń  projektów informatycznych}
+Cykl życia projektu to podział na fazy przez które przechodzi nasz projekt od początku do końca. Zawiera on wszystkie operacje, zadania oraz kroki które konkretny projekt musi doświadczyć. Zaletami korzystania z podziału na fazy cyklu życia projektu jest jego efektywna organizacja oraz możliwość ustandaryzowania procesu systematyzacji i implementacji projektu. Pozwala na radzenie sobie ze złożonością projektów informatycznych poprzez tworzenie i weryfikowanie modeli dziedziny aplikacyjnej i samego systemu informatycznego.\cite{IO- Helion} Cykl życia projektu informatycznego nie zawsze wygląda tak samo, może się różnić od siebie ilością faz, ich nazewnictwem. Najczęściej spotykanym podziałem jest zestawienie na 4-5 fazy. Są to: \\
+\begin{itemize}
+	\item Faza planowania
+	\item Faza analizy
+	\item Faza projektowania
+	\item Faza implementacji
+	\item Faza testowania \\
+\end{itemize}
+\subsection {Faza planowania}
+Faza planowania nazywamy pierwszą fazą procesu tworzenia oprogramowania. Jest ona kluczowa, ponieważ należy się w niej dowiedzieć w jakim celu oprogramowanie ma powstać oraz co ważniejsze, jak ma powstać. Już na tym etapie powinny być znane wyniki analizy biznesowej oraz znajomość decyzji czy oprogramowanie może powstać. Ustala się w niej jakie wartości dla biznesu ma projekt oraz czy w ogóle jest wart podjęcia się tworzenia. Analizuje się czy zgromadzone zasoby ludzkie są w stanie go wykonać oraz, co często może wydawać się oczywiste chociaż w istocie takiej nie jest, czy końcowy produkt będzie możliwy do wdrożenia. \\
+Na tym etapie są również zbierane informacje oraz wymagania od klienta aby programiści byli w stanie zdefiniować przeznaczenie systemu. Dochodzi do procesu tworzenia opisu systemu w kategoriach aktorów i przypadków użycia. Aktorzy są to byty zewnętrzne których zadaniem jest interakcja z systemem, natomiast przypadkami użycia nazywamy ogólne sekwencje zdarzeń odzwierciedlające możliwe sytuacje pomiędzy aktorami a systemem, bazując na aspekcie jego funkcjonalności.
 
-\section{Zarządzanie projektem gry komputerowej - The Lore}
-\subsection{Proces planowania projektu}
-\subsection{Wykorzystane systemy i metody projektowe}
-\subsection{Rola i wpływ kierownika projektu} 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm]{images/hyps/use-case.png}
+	\caption{Źródło:  Inżynieria oprogramowania w ujęciu obiektowym. UML, wzorce projektowe i Java, Bernd Bruegge, Allen H. Dutoit}
+\end{figure}
+
+\subsection {Faza analizy}
+
+Kolejną fazą jest faza analizy, w której przede wszystkim ustala się kto będzie używał tworzonego systemu, co dany system ma robić oraz kiedy i gdzie będzie używany. Na tym etapie powstaje model który jest wynikiem zgromadzenia wymagań klienta jak i również wyciągniętych wniosków z przeprowadzonych przypadków użycia ( z ang. Use Cases) Po zakończeniu tej fazy otrzymanym rezultatem jest model systemu wzbogacony o atrybuty operacji i skojarzenia, który jest spójny i wolny od niejednoznaczności. Ewentualne jego przejawy bądź niespójności modelu są omawiane podczas negocjacji z klientem.\\
+
+\subsection {Faza projektowania}
+
+W porównaniu do dwóch poprzednich etapów, w którym główny nacisk był nakładany na ideę stojącą za stworzeniem konkretnego projektu, tak w tym pojawia się po raz pierwszy kreowanie w jaki sposób ma to być zrealizowane. Tutaj powstają wstępne koncepcję wewnętrznej logiki działania projektu. Dochodzi do projektowania interfejsów między innymi interfejsu użytkownika, także dyskutowana jest architektura systemu. Zdarza się, że dochodzi do podziału na dwie mniejsze fazy: faza projektowania systemu oraz projektowanie obiektów.\\
+\begin{itemize}
+	\item  wybór platformy sprzętowej oraz systemu operacyjnego środowiska docelowego 
+	\item selekcja technologii użytych i sposobu przechowywania danych tworzonego oprogramowania 
+	\item podejmowane są również decyzję w sprawie globalnej kontroli przepływu sterowania oraz reguł polityki dostępu \\
+\end{itemize}
+Podobnie jak w poprzedniej fazie czyli fazie analizy rezultatem otrzymanym na koniec jest klarowny opis i reprezentacja budowanego systemu w postaci na przykład diagramu. Główną różnicą jest fakt, że otrzymane modele systemu nie są zrozumiałe dla klienta tak jak to było w fazie analizy. Są one bowiem stworzone za pomocą raczej zaawansowanych i ulepszonych technik, które przekraczają możliwości zrozumienia i zainteresowania przeciętnego klienta.\\
+Wspomniana wcześniej faza projektowania obiektów ma na celu zasklepienie luk pomiędzy modelem zbudowanym podczas etapu analizy, a platformą sprzętową i programową zdefiniowaną na etapie projektowania systemu. Podczas tej fazy zostaje uszczegółowione oraz sprecyzowane opisanie poszczególnych obiektów i podsystemów w celu osiągnięcia rozszerzalności, zrozumienia oraz poprawy wydajności tworzonego systemu. Rezultatem tego etapu jest szczegółowy model obiektowy który posiada szeroko rozwinięte spektrum wyjaśniające wszystkie elementy.\\
+
+\subsection {Faza implementacji}
+Faza implementacji to w rzeczywistości wprowadzenie w życie wszystkich planów które zostały dotychczas stworzone. W żargonie programistycznym można powiedzieć, że jest to tłumaczenie modeli na kod źródłowy aplikacji. Oznacza to programowanie każdego obiektu zaprojektowanego w poprzednich etapach, a następnie zintegrowanie ich w jeden działający pojedynczy system. Rezultatem tego etapu jest zasklepienie przerwy pomiędzy skomplikowanymi i uszczegółowionymi diagramami, planami oraz modelami a skończonym i kompilowanym kodem źródłowym.\\
+
+\subsection {Faza testowania}
+Ostatnią fazą jest faza testów która wykonywana jest już na stworzonym w poprzednim etapie działającym systemie. Polega na analizie założonych zachowań i funkcjonalności podczas projektowania a jego rzeczywistym odwzorowaniem w gotowym oprogramowaniu. To w niej wykonywana jest zdecydowana większość testów, jednak niektóre z nich były już obecne w poprzedniej fazie. Biorąc pod uwagę ilość różnych poziomów testów, poniższa grupa jest najpopularniejszą, jeśli chodzi o zdecydowaną większość projektów informatycznych. Testy dzielone są na:\\
+
+\begin{itemize}
+	\item Testy jednostkowe
+	\item Testy integracyjne
+	\item Testy obciążeniowe
+	\item Testy funkcjonalne
+	\item Testy akceptacyjne \\
+\end{itemize}
+
+\subsubsection {Testy jednostkowe}
+Testy jednostkowe to testy, których zadaniem jest sprawdzenie poprawności działania pojedynczego, wyizolowanego bytu. Są to najczęściej pojedyncze funkcję, jednostki bądź komponenty. Kluczową cechą tych testów jest brak integracji z API bądź bazą danych (jest to zadanie testów integracyjnych). Tego typu testy muszą działać bardzo szybko (liczone w setkach na sekundę), ponieważ odpalane są wiele razy przez programistów w fazie implementacji. Mają one nie tylko sprawdzać poprawność testowanego komponentu, ale przede wszystkim być dać deweloperom pewność siebie, że implementowane przez nich zmiany w kodzie nie doprowadzą do usterek funkcjonalnych. \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{images/hyps/unit-test-flow.png}
+	\caption{Uproszczony diagram działania testów jednostkowych}
+\end{figure}
+
+\subsubsection {Testy integracyjne}
+Testy integracyjne są często łączone z testami jednostkowymi, ponieważ są one do siebie bardzo podobne. Diametralną różnicą jest fakt, że testy jednostkowe nie sprawdzają integralności między komponentami a API czy bazą danych, natomiast testy integracyjne już tak. Wykonywane są w celu wykrycia wad i defektów w interfejsach i komponentach oraz służą do testowania poprawnej interakcji między modułami lub systemami. Są one przeprowadzane w celu oceny zgodności systemu lub komponentów z określonymi wymaganiami funkcjonalnymi. Test integracyjny traktuje system jak czarną skrzynka. Testują integralność bez zagłębiania się w szczegóły implementacji, co oznacza, że otrzymywana jest tylko informacja, jaka konkretna funkcjonalność powinna działać oraz co zostać zwrócone jako wynik. Weryfikowane jest czy otrzymany rezultat zgadza się z oczekiwanym wynikiem bazującym na danych wejściowych. Podobnie jak testy jednostkowe są tutaj sprawdzone zaimplementowane funkcje oraz poprawność interfejsów, które powinny zapewnić integralność systemu, mogą one również wskazać błędy w strukturach danych bądź problemy z dostępem do API lub bazy danych.\\
+
+\subsubsection {Testy obciążeniowe}
+Testy obciążeniowe nazywane mogą być również testami wydajnościowymi ze względu na ich główny cel. Podczas ich wykonywania testowana jest próba obciążenia serwera, bazy danych oraz samego systemu naszej aplikacji bazując na wcześniej przygotowanych scenariuszach użycia oraz w oparciu o wygenerowane wirtualnych użytkowników których zadaniem jest wykonanie wcześniej stworzonych scenariuszy. Przykładowymi scenariuszami użycia są wszelkie działania, które może wykonać klient na przykład proces rejestracji czy logowania. Testy obciążeniowe mają za zadanie wskazać krytyczne punkty systemu, które w negatywny sposób wpływają na wydajność tworzonego systemu. Sprawdzają realny ruch na serwerze, który następnie pozwala na zdobycie punktu odniesienia oraz możliwości sprawdzenia czy nasz projekt spełnia wymogi wydajnościowe, brak wiedzy z tego zakresu może doprowadzić do braku akceptacji na wdrożenia.\\
+
+\subsubsection {Testy funkcjonalne}
+Testy funkcjonalne są to testy które opierają się na analizie specyfiki funkcjonalnej tworzonego oprogramowania, systemu bądź modułu. Są one najczęściej wykonywane przez osoby które nie miały styczności z zaimplementowanym kodem. Testerzy mają za zadanie poddanie próbie stworzony system bez znajomości jego budowy. Głównym zamysłem nie jest przetestowanie konstrukcji bądź architektury lecz jego założenia funkcjonalne, to znaczy mają wykryć błędy zaimplementowanych funkcjonalności, które zostały zawarte w dokumentacji.\\
+
+\subsubsection {Testy akceptacyjne}
+Testy akceptacyjne to inny gatunek testów, ponieważ nie skupiają się one na znalezieniu błędów czy pomyłek w implementacji systemu, mają one na celu potwierdzenie wykonania oprogramowania na odpowiednim poziomie. Służą do uzyskania formalnego potwierdzenia od klienta bądź osób zewnętrznych, że wykonany projekt spełnia kryteria jakościowe. Ważnym ich aspektem jest również weryfikacja czy nie brakuje założonych w dokumentacji funkcjonalności oraz czy procesy biznesowe przechodzą w prawidłowy sposób, taki aby zbudowały zaufanie wśród odbiorców. Następnym testowanym czynnikiem jest potwierdzenie czy aplikacja jest zgodna z dokumentacją. Testy akceptacyjne są ostatnim etapem weryfikowania poprawności zrealizowania systemu informatycznego, na jego podstawie menedżerowie odpowiedzialni za rozwój projektu podejmują decyzję o wdrożeniu do użytkowania produkcyjnego. \\ \\ \\ \\ \\ \\ \\ \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{images/hyps/test-diagram.jpg}
+	\caption{Piramida procesu przeprowadzania testów}
+\end{figure}
+
+\section {Metodyki w projekcie}
+Pojęciem metodyki nazywamy zbiór metod służących do zarządzania projektem. Mówiąc prościej są to metody dzięki którym jest możliwe zakończenia projektu z powodzeniem w wyznaczonym czasie. Korzystanie z metodyki pozwala na uzyskanie maksymalnej wydajności podczas tworzenia oprogramowania. Chociaż metodyk jest sporo i wybór zależy stricte od charakterystyki projektu to w ramach uproszczenia można je podzielić na grupy.  Najogólniejszym i najpopularniejszym podziałem jest rozdzielenie na metodyki klasyczne (nazywane również tradycyjnymi) oraz zwinne. Do pierwszej grupy zaliczymy na przykład waterfall, natomiast do drugiej Agile.\\
+
+\subsection {Podejście klasyczne a zwinne}
+Aby umiejętnie wybrać odpowiednią metodykę do realizowanego projektu należy znać fundamentalne różnice między wcześniej wymienionymi grupami. \\
+
+Metodyki klasyczne charakteryzują się wysokim stopniem planowania oraz uporządkowania. Projekty są podzielone na konkretne etapy a sam harmonogram prac oraz zakres i cel tworzonego projektu jest odgórnie znany. Natomiast metodyki zwinne uznawane są za zupełny kontrast metod tradycyjnych. Nie ma w nim konkretnego planu a praca przypomina swego rodzaju improwizacje dostosowywaną do zmienności okoliczności oraz ich losowości. Na ich podstawie ukazywane są nieznane wcześniej zakres i cel projektu. Są to kluczowe różnice pomiędzy tymi metodykami, stąd często są porównywane jako uporządkowane kontra elastyczne.\\
+
+Kolejnym faktorem jest rozmiar projektu, w metodykach klasycznych tworzone są najczęściej duże i rozbudowane projekty. Wynika to z faktu że wielkie przedsięwzięcia wymagają, charakterystycznych dla podejść tradycyjnych, organizacji oraz planowania. Tak jak zostało to wcześniej wspomniane sukcesywne realizacje projektu bazującym na harmonogramie oraz celach poznanych na początku projektu. W mniejszych projektach rozmiar jak i czas przedsięwzięcia są najczęściej diametralnie mniejsze i krótsze. Nie wymagają tak ścisłych reguł działania oraz konsekwencji a co za tym idzie metodyki zwinne doskonale do nich pasują.\\
+
+Kontakt z klientem w metodyce klasycznej nie jest konieczny. Występuje on na początku w fazie zbierania informacji oraz specyfikacji wymagań do projektu. Jak również na samym końcu przy prezentacji projektu. W charakterze zwinnym podejście jest ponownie odmienne, kontakt z klientem jest ciągły, stąd też wspomniana wcześniej tendencja do zmian w trakcie projektu, bowiem klienci zgłaszają swoje opinie oraz zastrzeżenia w trakcie realizacji projektu co często doprowadza do przekształcania zakresu projektu.\\
+
+Zaangażowanie zasobów ludzkich w obu metodykach jest ponownie różne. W charakterystyce zwinnej nie ma ustalonej hierarchii pracowników, posiadają oni sporą autonomię a ich współpraca jest dostrzegalna na praktycznie wszystkich płaszczyznach. Sytuacja w metodyce tradycyjnej wprowadza hierarchię, w zespołach występuje osoba która nie wykonuje tych samych zadań co pozostali członkowie zespołu - lider.\\
+
+Poniższa tabela w skondensowany sposób przedstawia kontrast między dwoma metodykami.\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{images/hyps/zwinne-tradycyjne.png}
+	\caption{Źródło: Narudo, Zwinne i tradycyjne zarządzanie projektem}
+\end{figure}
+
+\subsection {Metoda waterfall}
+Metoda waterfall to przykład modelu kaskadowego nazywanym również klasycznym, to jeden z wielu rodzajów procesów stworzenia oprogramowania. Polega na kaskadowym przechodzeniu pomiędzy ukończonymi wcześniej fazami. Zgodnie z wizją autora tej metodyki o sukcesie projektu decydują dokładne zaplanowanie poszczególnych zadań oraz bezwzględne przestrzeganie terminów. Najważniejszym elementem tej metody jest szczegółowy plan oraz tworzona dokumentacja do każdej fazy projektu. Zakłada on sekwencyjną realizacje ustalonych etapów. Występują one kolejno po sobie i tworzą niezależne zadania. W wyniku braku możliwości przejścia do następnego etapu przed zakończeniem poprzedniego występuje wysokie ryzyko pojawienia się błędów które będą bardzo kosztowne w naprawie.\\
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{images/hyps/waterfall.png}
+	\caption{Źródło: Wikipedia, Fazy modelu kaskadowego, Maciej Jaros - Praca własna}
+\end{figure}
+
+\subsection{Metody zwinne czyli Agile}
+
+\subsubsection{Manifest Agile}
+Manifest agile wprowadzony w 2001 roku zaproponował i wprowadził nowe spojrzenie na możliwości wytwarzania oprogramowania. Przede wszystkim podkreślił wagę pracy zespołowej i interakcji międzyludzkiej nad dotychczasowej koncentracji na procesach i narzędziach. Zwrócono uwagę nad kontaktem z klientem oraz na tworzeniu roboczego oprogramowania zamiast wszechstronnej dokumentacji. Największym przeciwieństwem do dotychczasowych metod było zaakceptowanie powrotu do fazy implementacyjnej w celu zareagowania na błędy i sugestie.\\ \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{images/hyps/manifest.png}
+	\caption{Źródło: Agile247, Manifest zwinnego programowania}
+\end{figure}
+
+Generalnym założeniem stało się restrykcyjne zarządzanie procesem wytwarzania oprogramowania. Zakładana jest regularna kontrola wymagań jak i rozwiązań wraz z procesami adaptacji projektowych. Dużą wagę przywiązuje się do bezpośredniej komunikacji pomiędzy osobami z zespołu oraz codziennego kontaktu między sobą. W wyniku braku zastosowania jakiekolwiek hierarchii organizacyjnej na barkach członków zespołu spoczywa większy ciężar dbania o systematykę i organizację pracy. Odpowiedzialność ta spoczywa bezpośrednio na osobach realizujących poszczególne zadania.\\
+
+\subsubsection{Czym jest model iteracyjny w Agile?}
+Podejście zwinne jest grupą metod, które bazują na tworzeniu oprogramowania opartym na stylu iteracyjno-przerostowym. Głównym jego założeniem jest tworzenie i wdrażanie systemu etapami. Pojedyncza iteracja kończy zrealizowany cykl życia projektu etapem testów. Wówczas zrealizowana część zostanie przekazana odpowiedniej grupie odpowiedzialnej ze przeprowadzenie sprawdzenia poprawności działania. Testowana jest również praktyczność zastosowania podczas realizacji faktycznych założeń biznesowych. Zdobywanie regularnej informacji zwrotnej pozwala na cykliczne korekty błędów, wprowadzanie zmian i ulepszeń funkcjonalności oraz precyzyjne reakcje na potrzeby klienta. Stąd, jak wspomniane wcześniej tendencję do ewolucji funkcjonalności w projekcie. Pojedynczy cykl rozpoczyna się od fazy szczegółowego planowania zadań rozłożonych w konkretnym cyklu. Najczęściej przygotowywany jest przez szefów zespołów programistycznych lub kierowników projektowych. Następnym krokiem jest implementacja wcześniej przygotowanych założeń i funkcjonalności po której następuje czas na testy i wdrożenie. To tutaj docelowa grupa bada jakość przygotowanej cząstki projektowej i decyduje o możliwości wdrożenia oraz przejścia do kolejnej iteracji.\\
+
+Poniższy model obrazuje podejście iteracyjne, które jest charakterystyczne w metodyce Agile. \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{images/hyps/iterative-model.png}
+	\caption{Źródło: ScienceSoft, Iterative model}
+\end{figure}
+
+\section{Wykorzystanie Agile w tworzeniu gry}
+\subsection{Agile Game Development}
+Agile Game Development to angielska nazwa na wykorzystanie podejścia zwinnego w tworzeniu gry komputerowej. Samo podejście nie różni się niczym szczególnym od standardowego. Kluczowe jest natomiast pokazanie jak wiele możliwości wprowadza Agile do życia projektu gry. Głównym z nim jest wcześniej rozwinięty model iteracyjny. Dzięki niemu cząstki gry, posiadające nowe funkcjonalności, znacznie częściej trafiają na testy do grupy docelowej. Takie podejście pozwoliło naprawić wiele błędów, których nie udało się wykryć w fazie implementacyjnej oraz poprawić działanie wielu funkcjonalności. Podczas realizacji zadań i rozwijania gry, programista może wpaść w pułapkę subiektywnej opinii dotyczącej zaimplementowanych rozwiązań. Jak to zwykle się zdarza bywają one błędne i posiadanie możliwości weryfikacji tego na tak wstępnym etapie wprowadza ogromną wartość w projekcie. Pomimo przypisaniu takich elementów jak model iteracyjny czy częsty kontakt z klientem do podejścia zwinnego to w rzeczywistości są to nadrzędne składowe metod, z których składa się metodyka Agile (przypominając metodyka to zbiór wcześniej założonych metod). W projekcie „The Lore” została wykorzystana fuzja trzech najpopularniejszych, ponieważ jest to najbardziej znana i wykorzystywana strategia w projektach komercyjnych. Do tej grupy należą:\\
+
+\begin{itemize}
+	\item SCRUM
+	\item Kanban
+	\item XP - Programowanie Ekstremalne \\
+\end{itemize}
+
+\subsubsection{SCRUM}
+
+Scrum to zdecydowanie kluczowa i prawdopodobnie najważniejsza część Agile. To ona jest odpowiedzialna za zarządzanie procesem iteracyjnym w projekcie. Jednak w tym przypadku pojedyncze iteracje nazywane są sprintami. Czyli wcześniej zdefiniowanymi partiami pracy, posiadającymi przypisane do nich zadania do wykonania oraz z wydzielonym terminem. Sprinty trwają najczęściej od dwóch do czterech tygodni w zależności od zarządzeń czy planów biznesowych. W przypadku „The Lore” sprinty w początkowej fazie prac, czyli około trzech miesięcy trwały dwa tygodnie, a następnie zostało to zredukowane do jednego tygodnia. Wynikało to z wzrostu jakości otrzymywanego produktu, ponieważ był on częściej oddawany w ręce testerów, a także sam proces programistyczny mógł być lepiej rozplanowany. Dawało to możliwość przypisania sprintów do wykonania konkretnych funkcjonalności zamiast tworzenia przeładowanego sprintu z różnymi funkcjonalnościami. Tym samym wzrosła wydajność pracy, ponieważ grupa docelowa oczekiwała już gotowego uaktualnienia produktu. Kolejnym doskonałym elementem scrum’u jest wprowadzenie ról poszczególnych członków zespołu. Jak wcześniej było wspomniane w podejściu zwinnym brakuje hierarchizacji w zespole co może doprowadzić do katastrofy organizacyjnej. Dlatego też Scrum wprowadza trzy funkcje:
+
+\begin{itemize}
+	\item Scrum Master
+	\item Właściciel produktu
+	\item Zespół deweloperski \\
+\end{itemize}
+
+Scrum master to przede wszystkim osoba odpowiedzialna za pilnowanie przestrzegania zasad Scrumowych. Diametralnie wpłynął na wydajność i produktywność zespołu, ponieważ wielokrotnie podczas sprintów pilnował postępów prac oraz jakości ich wykonania. Zajmował się również komunikacją z źródłami zewnętrznymi po to aby pozostałe osoby z zespołu nie musiały tracić na to czasu i odrywać się od pracy. Do jego obowiązków należało również planowanie szczególnych spotkań, tak zwanych retrospektyw oraz przeglądów sprintów. \\
+
+Retrospektywą nazywamy spotkaniem odbywającym się cyklicznie co 2-3 tygodnie w celu ustalenia organizacji pracy, dyskusji o odczuciach każdego członka zespołu na poszczególne tematy. Czasami bywały to rozmowy stricte związane z kodem, jednak bywały też takie, które dotyczyły jakości pracy bądź kontaktami interpersonalnymi. W dużym uproszczeniu jest to czas dla zespołu aby mógł przedyskutować to co się podoba, nie podoba i jakie można podjąć akcję aby to zmienić. \\
+
+Przegląd sprintu jest również cyklicznym spotkaniem, jednak odbywał się częściej – po każdym zakończonym sprincie. Jego głównym zadaniem jest dyskusja członków zespołu o stworzonych przez nich funkcjonalnościach. Dzielona jest wiedza w jaki sposób konkretny deweloper podszedł do wykonania zadania oraz w jaki sposób go zrealizował. Dzięki temu w sytuacji gdy inna osoba z zespołu otrzymała zadanie rozwoju tej funkcjonalności, w kolejnym sprincie, miała ona już bazę wiedzy wystarczającą do jego realizacji. Pozwala to na zaoszczędzenie czasu potrzebnego do zrozumienia działania kodu napisanego przez inne osoby. Podczas przeglądu sprintów tworzony jest również następny sprint, w którego skład wchodzą zadania bazujące na tworzeniu funkcjonalności zgodnie z harmonogramem. Po wypełnieniu nowego sprintu konkretnymi zadaniami, dochodziło do rozmowy o przydziale ich do konkretnej osoby. Głównymi czynnikami doboru zadań do członków zespołu było ich doświadczenie pracy z zadaniami łączonymi bądź zależnymi, które były wykonane w wcześniejszych sprintach. \\
+
+Właścicielem produktu jest najczęściej osoba, poza zespołem, zlecająca wykonanie projektu, jednak w przypadku gry „The Lore”, ten tytuł spoczywał na barkach członka zespołu. Jego zadaniem było zadbanie o klarowną wizję projektu i pilnowanie czy tworzony projekt jest zgodnie z nią realizowany. Odpowiadał również za rozwój jak i maksymalizacje wartości produktu. Robił to przy użyciu decydowania o kolejności wykonywania prac i wprowadzanych funkcjonalności. Zarządzał również ich priorytetem i decydował o treści tworzonych zadań. Wykonywał to wraz z Scrum Masterem, jednak to jego decyzja była najważniejsza. Projekt był tworzony i rozpisany zgodnie z jego wizją produktu finalnego.\\
+
+Ostatnią grupą jest zespół deweloperski. Charakterystyką tej roli jest odpowiedzialność za dostarczenie, przygotowanej przez nich, gotowej do wydania aktualizacji projektu. Realizują backlog sprintu, przygotowanego wcześniej podczas przeglądu sprintów.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{images/hyps/scrum.png}
+	\caption{Źródło: ScienceSoft, SCRUM}
+\end{figure}
+
+Na powyższym zdjęciu prezentowany jest cykl realizacji sprintów oraz poglądowa wizaulizacja modelu pracy w Scrum'ie. \\ 
+
+\subsubsection{Kanban}
+Kanban to kolejna metoda w metodyce Agile. Jej głównym założeniem jest wizualizacja procesu realizacji zadań. Przy użyciu tak zwanej tablicy kanbanowej było obrazowane w którym etapie znajduje się poszczególne zadanie. W projekcie „The Lore” tablica została podzielona na najprostszy układ tj. podział na czynności „do zrobienia”, „w trakcie realizacji” i  „zrobione”. Jej celem było doprowadzanie do sytuacji w której organizacja pracy poszczególnych osób z zespołu jest widoczna dla wszystkich. Dzięki temu proces realizacji zadań od siebie zależnych przechodził w procesie bezproblemowym i jawnym. Jednocześnie dawało to wizualne potwierdzenie na jakim etapie pracy jest każdy członek zespołu. Przy niezadowalającym tempie pracy interweniował Scrum master lub właściciel produktu.\\
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{images/hyps/jira.png}
+	\caption{Tablica kanbanowa w programie Jira. Przykład z projektu The Lore}
+\end{figure}
+
+„Jira to platforma do organizowania pracy i uruchamiania oraz monitoringu procesów w organizacjach.”  \cite{jira} Pozwala na utworzenie i zarządznie tablicą kanbanową w projektach.
+
+\subsubsection{Programowanie ekstremalne}
+
+Programowanie ekstremalne to już ostatnia metoda użyta w realizacji projektu „The Lore”, skupia się ona na adaptacji do częstych zmian wynikających z cyklicznych aktualizacji projektu. Głównym jego założeniem, który został wykorzystany jest „Pair programming” czyli programowanie w parze lub nawet większej grupie ludzi. Dzięki wspólnemu planowaniu, dyskutowaniu o potencjalnym rozwiązaniu, a następnie zaimplementowaniu go, maleje czas wykonania zadania które normalnie byłoby tworzone przez pojedynczego dewelopera. Szczególnie użyteczne gdy zbliża się termin zakończenia sprintu a zadanie jest w wczesnej fazie robienia lub gdy deweloper natrafił na „ślepy zaułek” i potrzebuje świeżego spojrzenia na zadanie. \\
+
 \subsection{Cykl życia projektu The Lore}
+
+\subsubsection{Faza zbierania informacji i analizy}
+
+Podczas pierwszych faz realizacji projektu „The Lore” była tworzona szeroka dokumentacja, której zadaniem było zebranie jak najwięcej informacji potrzebnych do obrania odpowiedniego kierunku prac. Dzięki niej właściciel produktu wraz z scrum masterem mieli potencjalną wizję na tworzony harmonogram wraz z przygotowaniem backlogu z zadaniami na najbliższe sprinty. Dokumentacja wraz z później przygotowanymi na jej podstawie user stories była w tej fazie kluczowa. W skład dokumentacji wchodziła wizja projektu, VPC oraz BMC.\\
+
+Dokument wizji projektu - jego głównym założeniem jest przedstawienie przeznaczenia tworzonego oprogramowania oraz jego głównych cech i przyjętych założeń. Dokument dzieli się na sekcje wprowadzenia, celu projektu, badania rynku, użytkowników docelowych, szczegółowego opisu produktu wraz z zakresem i ograniczeniami. \\
+
+Value Proposition Canvas (VPC) to angielska nazwa na przedstawienie unikalnej propozycji wartości modelu biznesowego. Jego celem jest łatwiejsza analiza i zaprojektowanie  produktu wraz z jak najtrafniejszym skonfigurowaniem rozwiązań pod potrzeby klientów.\\ \\ \\ \\ \\ \\ \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{images/hyps/VPC.png}
+	\caption{Źródło: Product Vision, Value Proposition Canvas}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=11cm]{images/hyps/VPC-The Lore.png}
+	\caption{Value Proposition Canvas dla projektu The Lore. Przykład z The Lore}
+\end{figure}
+
+Powyżej przedstawiony jest przykład unikalnej propozycji wartości modelu biznesowego oraz już oficjalny model z projektu gry "The Lore".\\ \\ \\ \\ \\ \\ \\ \\ \\ 
+
+Business Model Canvas (BMC) to podobnie jak VPC angielska nazwa na szablon modelu biznesowego. Jego zadaniem jest w wizualny sposób przedstawienie w jaki sposób planowany projekt ma przynieść zyski. Składa się z 9 podstawowych obszarów, które obrazują grupę docelowych użytkowników oraz w jaki sposób zostanie im dostarczony produkt. Jednocześnie pokazuje wszelkie korelacje z wydatkami jak i potencjalnymi zarobkami planowanego projektu.\\
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{images/hyps/BMC.png}
+	\caption{Źródło: Product Vision, Business Model Canvas}
+\end{figure}
+
+Powyżej przedstawiony jest przykładowy szablon modelu biznesowego. Natomiast poniżej już oficjalny model z projektu gry "The Lore".\\ \\ \\ \\ \\ \\ \\ \\ \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{images/hyps/BMC - The Lore.png}
+	\caption{Business Model Canvas dla projektu The Lore. Przykład z The Lore}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=11cm]{images/hyps/backlog.png}
+	\caption{Backlog z zadaniami w programie Jira. Przykład z The Lore}
+\end{figure}
+
+Utworzone user stories zostały wykorzystane do stworzenia pierwych zadań w backlogu projektu.\\ 
+
+\subsubsection{Faza projektowania}
+
+Po zakończeniu dwóch poprzednich faz w których rozwijany był zamysł stworzenia gry komputerowej „The Lore” przyszedł czas na skupienie się na tym w jaki sposób zostanie ona stworzona. Pierwszą rozterką było wybranie odpowiedniego środowiska. Pośród wielu możliwości na rynku, wybór padł na UNITY [wstawić załącznik do tego czym jest unity w technologiach]. Miał on opinię najbardziej przyjaznego dla początkujących twórców gier komputerowych. Posiadał on również najlepiej rozwiniętą dokumentację techniczną i największą bazę użytkowników udzielających się na specjalistycznych forach. Unity posiada również autorski sklep z materiałami, które są nieocenione przy tworzeniu gry w ograniczonym czasie. Po wybraniu środowiska trzeba było podjąć decyzję w sprawie używanego języka programowania. Tutaj jednak nie było to trudne, ponieważ z grupy Boo, UnityScript oraz C\# tylko ten ostatni był nadal wspierany przez Unity oraz cieszył się największą popularnością wśród twórców. Również był to najlepiej znany język w grupie deweloperskiej. Następnym etapem był wybór docelowej technologii oraz systemów na jakie ma trafić wdrożony projekt. Estymowany był tutaj dostępny czas oraz wymagania jakie kryją się za tworzeniem gry jednocześnie na urządzenia mobilne, stacjonarne jak i konsole. Niezależnie od możliwości jakie posiada Unity dla budowania projektu na różne platformy, sama implementacja funkcjonalności stwarzała komplikacje. Wynikały one z unikalnych cech każdej platformy. Stąd decyzja o wykonaniu gry na pojedynczą platformę – stacjonarną, ale z kompatybilnością na trzy najpopularniejsze systemy operacyjne – Windows, Linux, MacOS. Kolejnym etapem projektowania technicznego było dobranie odpowiedniej platformy wdrożeniowej. Na rynku jest ich dość sporo. Często różnice są marginalne i zależą od różnych twórców oraz cen za wdrożenie autorskiego projektu. Dylematem było wykorzystanie drogiego lecz jednocześnie najpopularniejszego miejsca na dystrybucję gry bądź wykorzystanie mało znanych platform, które udostępniają możliwość wdrożenia produktu za darmo. W związku z mocno ograniczonym budżetem projektowym, wybór musiał paść na platformę mniej znaną. Następnym elementem, który musiał zostać wybrany była platforma przechowywania plików. Tworząc projekt w pojedynkę, takie miejsce służy do bezpiecznego przechowywania progresu prac. Jednak przy pracy w zespole, tego typu miejsce służy również do współdzielenia i szybkiego dostępu do plików projektu. Najpopularniejszym na rynku środowiskiem jest Github. Wymagał on jednak specjalnej konfiguracji, ponieważ pliki przekazywane przez Unity są odmienne od standardowych. Przede wszystkim sam edytor Unity tworzy setki tymczasowych plików, które nie zawsze powinny trafić na Githuba. Odpowiednia konfiguracja pliku gitignore, którego celem jest nie przesyłanie wpisanych tam rozszerzeń, typów plików czy folderów była kluczowa. Kolejnym problemem z którym trzeba było sobie poradzić były błędne referencje do specjalistycznych obiektów w Unity. Tego typu informację wysyłane były na Githuba w specjalnych plikach z rozszerzeniem .meta, które rozwiązały wszelkie problemy z znikającymi obiektami stworzonymi przez programistów. Ostatnim i raczej największym problemem była konfliktowość wynikająca z edycji tych samych plików binarnych przez wielu programistów. Rozwiązanie ich podczas prób mergu branchy było niemożliwe. Stąd kluczowa była komunikacja wewnątrz zespołowa wraz z odpowiednią organizacją pracy i umiejętnym podziałem zadań. W fazie projektowania zostały tworzone również pierwsze szkice interfejsów graficznych. Wiele z nich zostało zmodyfikowanych lub zupełnie zmienionych.\\
+Poniżej przedstawione są zdjęcia prototypów interfejsów graficznych głównego menu oraz menu sterowania.\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{images/hyps/proto.png}
+	\caption{Prototyp interfejsu menu głównego. Przykład z The Lore}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{images/hyps/proto2.jpg}
+	\caption{Prototyp interfejsu menu sterowania. Przykład z The Lore}
+\end{figure}
+
+Poniżej przedstawione są zdjęcia wdrożonych interfejsów graficznych głównego menu oraz menu sterowania.\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{images/hyps/of1.png}
+	\caption{Wdrożony interfejs menu głównego. Przykład z The Lore}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{images/hyps/of2.png}
+	\caption{Wdrożony interfejs menu sterowania. Przykład z The Lore}
+\end{figure}
+
+\subsubsection{Faza implementacji i testów}
+
+Faza implementacji wraz z testami była powtarzana wielokrotnie w wyniku metodyki Agile. Poprzez model iteracyjny każdy sprint wykorzystywany był do zaimplementowania wcześniej zaprojektowanych funkcjonalności oraz przedstawienia ich grupie testerów. Dzięki nim w projekcie gry „The Lore” zespół deweloperski był w stanie na bieżąco wprowadzać wszelkie poprawki wraz z sugestiami otrzymywanymi podczas testów. Przykładową funkcjonalnością jest element poziomu samouczka – poruszające się platformy. Zgodnie z powtarzającą się opinią o trudności w przechodzeniu tego elementu, zostały wprowadzone poprawki wraz z dodatkowymi ułatwieniami. Przykładowym rozwiązaniem było dodanie specjalistycznej fizyki, która miała na celu przyciąganie gracza w kierunku nadchodzącej platformy. Innym, bardziej wizualnym ułatwieniem było dodanie tras po których poruszają się platformy. Ostatnim ułatwieniem było zmniejszenie prędkości poruszania się platform oraz powiększenie ich powierzchni. \\ \\ 
+Poniżej przedstawiono zdjęcie z pierwszej iteracji tworzonej funkcjonalności\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm]{images/hyps/platfBef.png}
+	\caption{Pierwsza iteracja ruchomych platform. Przykład z The Lore}
+\end{figure}
+
+Poniżej pokazana jest już ostania iteracja, która posiada wszelkie uwagi otrzymane z fazy testów \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=14cm]{images/hyps/platfAfter.png}
+	\caption{Ostatnia iteracja ruchomych platform. Przykład z The Lore}
+\end{figure}
+
+To był jeden z wielu procesów poprawionych dzięki otrzymanej opinii podczas testów, jednak wystarczająco poważny żeby pokazać jak kluczowym było wybranie metodyki Agile w projekcie stworzenia gry komputerowej „The Lore”.\\
+
+
+
+
+
 
 \chapter{Zagadki logiczne}
 \section{Wprowadzenie do zagadek logicznych}
@@ -673,6 +954,13 @@ W ten sposób możemy łatwo określić wszystkie ściany, które otaczają nasz
 \bibitem{projekt}
 Robert K. Wysocki, Rudd McGary: Efektywne zarządzanie projektami. Wydanie III, ISBN: 83-7361-861-9, dostęp w internecie 26.01.2021r.
 http://pdf.onepress.pl/efzapr/efzapr-1.pdf
+
+\bibitem{IO- Helion}
+Bernd Bruegge, Allen H. Dutoit: Inżynieria oprogramowania w ujęciu obiektowym. UML, wzorce projektowe i Java. Helion. ISBN: 978 - 83-24 6 -2872-8, dostęp 28.01.2021r.
+
+\bibitem{jira}
+Jira: wszystko, co potrzebujesz wiedzieć, Michał Żurkowski, dostęp w internecie 31.01.2021r.
+https://blog.deviniti.com/pl/atlassian-pl/jira-wszystko-co-potrzebujesz-wiedziec/
 
 \bibitem{zagadka_logiczna} 
 Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
