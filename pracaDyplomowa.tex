@@ -273,7 +273,7 @@ W Unity możemy podzielić naszą grę na sceny. Scena to obiekt zawierający na
 \subsubsection{Obiekt - GameObject}
 \label{sec:gameobject}
 Obiekt, zwany w Unity GameObject, to klasa podstawowa dla wszystkich podmiotów w scenach Unity. Do każdego obiektu możemy przypinać kolejne obiekty, tworząc hierarchiczność, która może się przydać w odpowiedniej realizacji projektu. \cite{gameobject}
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=4cm]{images/tyrek/hierarchia.png}
 	\caption{Hierarchia obiektów. Przykład z projektu The Lore}
@@ -544,9 +544,10 @@ Jak widzimy po prawej stronie znajduje się doł, w którym widzimy dwa totemy o
 W lewym górnym rogu mamy źródło strumienia, zaś w prawym dolnym rogu zakończenie (szara rura). Użytkownik sterując myszką może przekładać rury o wybranym kształcie, tworzyć połączenia, celem stworzenia ścieżki, która jest konieczna do ukończenia mini-gry. Rozrywka zawsze generuje tą samą liczbę poszczególnych typów rur. Co warto podkreślić, liczba ta jest ważna - jeżeli mamy zbyt mało elementów danego typu, to po prostu ułożenie ścieżki może być niemożliwe. Zbyt duża liczba elementów zaś pozwoliłaby na trywialne rozwiązanie, na przykład w kształcie litery L. W grze The Lore jest możliwość szybkiego zakończenia rozgrywki poprzez wybranie opcji \textbf{Speed Up}. Powoduje ona szybkie przeniesienie strumienia wody do końcowej rury ułożonej przez nas ścieżki. Jeżeli odpowiednia droga została ułożona, mini-gra zostanie zakończona sukcesem, w przeciwnym przypadku porażkę. Z tej racji przycisk spełnia rolę nie tylko szybkiego pominięcia rozgrywki, gdy jesteśmy już pewni zwycięstwa i nie chcemy tracić czasu, ale też zrestartowania rur. 
 \subsection{Przedstawienie przykładu w innych grach}
 \subsubsection{Pipe Mania}
-\cite{pipemania}
+Gra logiczna stworzona przez The Assembly Line na platformy Amiga. Gra pojawiła się również na komputerach z systemem Windows. Rozgrywka polega na ułożeniu rurociągu z losowej puli rur. Kolejka rur, które otrzyma gracz wyświetla się po lewej stronie ekranu. Cała gra polega na ułożeniu ścieżki z dostępnych elementów, przy użyciu wszystkich rur. Liczba rur, które pozostały graczowi w kolejce wyświetlona jest w górnej części ekranu. Podobnie jak w grze The Lore, woda rozpoczyna swój bieg po pewnym czasie, gracz widzi ten czas w postaci paska po prawej stronie ekranu. \cite{pipemania}
 
-
+\subsubsection{Soda Pipes}
+Grą wzorowaną na poprzednim przykładzie jest Soda Pipes. Podobnie jak w poprzedniej grze, gracz musi ułożyć ścieżkę z rur, które losuje nam gra. W odrożnieniu do poprzedniczki, naszym celem jest zakończenie ścieżki w danym miejscu. Gra oprócz typowej rozgrywki oferuje również tryby gry, takie jak "puzzle mode" - pozwala on na układanie rur bez ograniczenia czasowego oraz trybu, w którym do pokonania jest 28 poziomów, które posiadają różne zadania. \cite{sp}
 \section{Zagadka z otwieraniem zamku}
 \subsection{Omówienie zagadnienia}
 Jest to bardzo powszechna mini-gra, która dodawana jest do wielu gier, które posiadają funkcjonalność posiadania ekwipunku. Jej celem jest otworzenie skrzynii, które polega na wykonaniu różnych operacji. Zazwyczaj jest od odkrycie odpowiedniej sekwencji poruszania wytrychem, otworzyć zapadki poprzez poruszanie myszką, czy wciśnięcie odpowiedniego guzika, gdy postęp otwierania zamku jest na odpowiednim etapie. Otworzenie zamku pozwala otworzyć skrzynię, zawierającą elementy wyposażenia lub otworzyć drzwi, które zaprowadzą nas do ważnych dla gry pomieszczeń. Z racji na charakter rozgrywki element ten bywa raczej opcjonalną metodą przejścia gry. Z tego względu w niektórych grach, posiadających system umiejętności, otworzenie niektórych zamków jest niemożliwe lub bardzo trudne, jeżeli nie rozwiniemy odpowiednich umiejętności.
@@ -630,13 +631,13 @@ Gothic 2 to gra osadzona w krainie Myrtana, w której toczy się walka pomiędzy
 Logika otwierania zamków, zarówno drzwi jak i skrzyń, jest dość podobna do zastosowanego systemu w grze The Lore. Gracz aby otworzyć daną skrzynie musi posiadać wytrychy, które może zakupić od kupców w mieście. Otwieranie skrzyń polega na odgadnięciu odpowiedniej sekwencji lewo – prawo, w przypadku pomyłki gracz może utracić wytrych. Co ciekawe, gra nie losuje kolejności sekwencji. Jest ona stała dla danej skrzyni w świecie gry, co może stanowić swego rodzaju ułatwienie - odpowiednie sekwencje można po prostu odnaleźć w internecie.
 
 
-
 \section{Labirynt}
 W pierwotnej definicji, labirynt oznacza budowlę, która charakteryzuje się układem dużej ilości pomieszczeń, które połączone są krętymi ciągami korytarzy. Oczywiście miało to na celu utrudnić dostęp do pewnego pomieszczenia osobom niepowołanym. Z podobnych powodów w niektórych grach mamy do czynienia z labiryntem, zmuszając w ten sposób gracza do szukania wskazówek, czy też zapamiętywaniu ścieżek, celem wyjścia z labiryntu. 
 \subsection{Omówienie zagadnienia}
 \subsection{Algorytmika}
+\subsubsection{Założenia: algorytm z nawrotami}
 Do stworzenia labiryntu możemy użyć algorytmu z nawrotami. Początkowo powinniśmy stworzyć graf, gdzie każdy węzeł ma co najmniej jedno połączenie, to będzie nasz labirynt. Pomiędzy węzłami, które nie są połączone będzie znajdować się ściana, której użytkownik nie może przejść. Aby wygenerować taki graf, początkowo  generujemy graf bez ścieżek - możemy wyobrazić sobie, iż jest to po prostu prostokąc, podzielony na kilka kwadratów stworzonych przez ściany. Algorytm rozpoczyna się w pierwszym węźle, dodając go do stosu. Następnie wybiera pierwszego nieodwiedzonego sąsiada, tworząc w ten sposób pierwsze połączenie węzłów - z punktu widzenia gracza, usuwając pomiędzy nimi ścianę. Proces powtarzany jest aż do momentu, gdy trafimy do węzła, które nie ma żadnego nieodwiedzonego sąsiada. Gdy już dotrze do takiego miejsca, cofa się, jednoczesnie usuwając elementy ze stosu, aż do momentu, gdy trafi na węzeł, który posiada nieodwiedzonego sąsiada. Algorytm skończy się, gdy w naszym stosie nie będzie elementów. \cite{maze}
-
+\subsubsection{Implementacja: algorytm z nawrotami}
 Przejdźmy teraz do zaprojektowania takiej sytuacji. Na sam początek zdefiniujmy stany, które może posiadać każdy węzeł w naszym grafie (labiryncie). Jak wiemy, może mieć ściany ściany z czterech stron. 
 \begin{lstlisting}[
 language={[Sharp]C},
@@ -649,11 +650,63 @@ public enum NodeState
     RIGHT = 2,
     UP = 4,
     DOWN = 8,
+    VISITED = 128
 }
 \end{lstlisting}
-W ten sposób możemy łatwo określić wszystkie ściany, które otaczają nasz węzeł. Przykładowo, gdybyśmy chcieli przedstawić, iż nasz węzeł otacza ściana lewa i górna, stworzylibyśmy stan \textbf{NodeState nodeState = NodeState.LEFT | NodeState.UP}. Jak wspomnieliśmy, chcemy, aby na początku wszystkie ściany tworzyły swego rodzaju siatkę, która odgradza każdy węzeł od innych. Generowanie jest w tym przypadku bardzo proste, wystarczy w odpowiedniej pętli wykonać odpowiednią liczbę iteracji \textbf{nodeWall[i] = NodeState.LEFT | NodeState.RIGHT | NodeState.UP | NodeState.DOWN}. Oczywiście w ramach większego porządku w kodzie warto określić \textbf{nodeWall} jako tablicę dwuwymiarową, wyznaczając położenie w osi poziomej i pionowej. Pomoże nam to rozpoznać w jakim miejscu na labiryncie znajduje się dany węzeł. 
-\subsection{Przedstawienie przykładu w innych grach}
+W ten sposób możemy łatwo określić wszystkie ściany, które otaczają nasz węzeł. Przykładowo, gdybyśmy chcieli przedstawić, iż nasz węzeł otacza ściana lewa i górna, stworzylibyśmy stan \textbf{NodeState nodeState = NodeState.LEFT | NodeState.UP}. Jak wspomnieliśmy, chcemy, aby na początku wszystkie ściany tworzyły swego rodzaju siatkę, która odgradza każdy węzeł od innych. Generowanie jest w tym przypadku bardzo proste, wystarczy w odpowiedniej pętli wykonać odpowiednią liczbę iteracji \textbf{nodeWall[i] = NodeState.LEFT | NodeState.RIGHT | NodeState.UP | NodeState.DOWN}. Możemy również uznawać wartości za liczby binarne, \textbf{LEFT} jako 0001, \textbf{UP} 0010 i tak dalej. Oznaczmy też stan odwiedzonego pola jako 128 - reprezentacja bitowa 1000 0000. W przypadku, gdy chcemy dodać do naszego obiektu nowy stan, wystarczy wykonać operację dodania alternatywy do obecnego stanu. \textbf{node[x,y] |= WallState.VISITED} Oczywiście w ramach większego porządku w kodzie warto określić \textbf{nodeWall} jako tablicę dwuwymiarową, wyznaczając położenie w osi poziomej i pionowej. Pomoże nam to rozpoznać w jakim miejscu na labiryncie znajduje się dany węzeł. Jest to szczególnie przydatne, ponieważ będziemy tworzyć strukturę pod pozycję każdego obiektu. Pozycje, tak jak wyżej wspomniano, przedstawiamy w geometrii dwuosiowej, co oczywiście pomoże nam śledzić gdzie znajduje się dany obiekt. 
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Pozycja obiektu - skrypt C\#}
+]
+public enum NodePosition
+{
+	public int x;
+	public int y;
+}
+\end{lstlisting}
+Warto też stworzyć strukturę do przechoywania informacji o sąsiadach naszego węzła. Wystarczą wyżej przedstawione parametry \textbf{NodeState} i \textbf{NodePosition}. Dodatkowo w ramach kontroli powinniśmy stworzyć listę takich obiektów, które nie zostały jeszcze odwiedzone przez algorytm. Mając już takie struktury, kolejnym krokiem byłoby stworzenie metody, która zwraca nam stan danego sąsiada. Tak jak wspominano na początku, sąsiad będzie wybierany losowo, dlatego warto już na wstępie stworzyć obiekt \textbf{System.Random()}. Dzięki stworzonej wcześniej metodzie pobierania sąsiadów możemy go wybrać na przykład ze względu na kolejność na danej liście. Tworzymy też najważniejszy dla algorytmu z nawrotami stos. Każdy odwiedzony węzeł powinien być oznaczony wartością \textbf{NodeState.VISITED} i dodany do tego stosu. Wystarczy, aby były to obiekty \textbf{NodePosition}, jednak nic nie zaszkodzi, aby były to całe obiekty \textbf{WallState}. Teraz dzięki pętli while, powinniśmy sprawdzać kolejne węzły, dopóki nasz stos nie będzie pusty. Jeżeli ostatnio dodany do stosu obiekt posiada co najmniej jednego sąsiada, to pobieramy ich listę, przy użyciu funkcji losującej i wybieramy dany element z posiadanej listy. Dodajemy do stosu wylosowany obiekt.
+Następnie powinniśmy usunąć każdą odwiedzą ścianę. 
 
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Usunięcie ściany - skrypt C\#}
+]
+node[x ,y] &= ~neighbour.SharedWall;
+\end{lstlisting}
+
+Gdzie \textbf{SharedWall} mówi nam o tym, czy pomiędzy dwoma obiektami znajduje się ściana. Oczywiście, informacja o ścianie powinna zostać zaktualizowana również u sąsiada. W tej sytuacji są dwa wyjścia. Pierwszy z nich, z lekka naiwny i niezbyt przyjazny dla oka dewelopera to stworzenie czterech warunków, które definiują dla danego przypadku jak pobrać pozycję przeciwną, dla sąsiada po lewej stronie - prawo, dla sąsiada na dole - góra i tak dalej. W ten sposób możemy zdobyć węzęł i zmienić jego stan, a następnie dodać nowy element do stosu. Drugim, rozsądniejszym pomysłem jest zadeklarowanie metody, która mogłaby od razu zwrócić nam \textbf{WallState} naszego sąsiada, który od razu mógłby być szybko poprawiony. Z pomocą przychodzi tutaj prosta instrukcja switch(), która pozwala nam na zarządzanie czterema przypadkami, z którymi będziemy mieli do czynienia.
+
+\begin{lstlisting}[
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Zwracanie stanu sąsiada - skrypt C\#}
+]
+switch(nodeState)
+{
+	case NodeState.RIGHT =  return  NodeState.LEFT;
+	case NodeState.LEFT = return  NodeState.RIGHT;
+	case NodeState.UP =  return NodeState.DOWN;
+	case NodeState.DOWN = return NodeState.UP;
+}
+\end{lstlisting}
+
+Algorytm gotowy. W tym momencie mamy stworzony generator labiryntu, który powinien zostać jeszcze stworzyć algorytm odpowiedzialny za wygenerowanie w naszej grze labiryntu. Dzięki otrzymanym informacją nie sprawia to większych problemów. Mając informację o wszystkich węzłach, możemy stworzyć pętle, która tworzy obiekty ścian ze względu na ściany istniejące dla danego węzła. Z pomocą przychodzi tu obiekt \textbf{Instantiate}. Służy on do klonowania przekazanego obiektu (dla nas ściany). Dodatkowa metoda ta pozwala nam na określenie dokładnej pozycji oraz rotacji naszego elementu, co pozwoli nam na ułożenie ściany w wyznaczonym miejscu i pozwoli na obrócenie obiektu - ze względu czy jest ścianą pionową czy poziomą. Dokładny obiekt który jest nam potrzebny to \textbf{Instantiate(Object original, Vector3 position, Quaternion rotation)}. \cite{Instantiate}
+ Teraz używając czterech warunków, dla każdej strony, weryfikujemy, czy nasz węzeł sąsiaduje z daną ścianą. Dla każdej ściany (jeśli istnieje) tworzymy jej obiekt. Następnie powinniśmy określić pozycję - tutaj przychodzi z pomocą obiekt Vector3. Jest to trójelementowa struktura, która przydaje się w określaniu między innymi pozycji w trzech osiach - \textbf{Vector3(x, y, z)}. \cite{Vector3}. Pozycja jest tutaj zależna od naszych wymagań - powinnismy dopasować ją do wielkości naszego obiektu. Z pomocą przychodzi Unity, które w sekcji Inspector pozwala łatwo zarządzać wielkością naszego obiektu. Rotacja potrzebuje zaś już czteroelementowego obiektu - Quaternion. Ze względu na posiadany przez nas obiekt ściany musimy sami określić która oś powinna zostać zmieniona. W ten sposób powinniśmy mieć już widoczny wygenerowany labirynt.
+
+\subsection{Przedstawienie przykładu w innych grach}
+\subsubsection{Wriggler}
+Wriggler jest grą wydaną w 1985 roku. W grze sterujemy robakiem, którego zadaniem jest uciec z labiryntu składającego się z 256 poziomów, w ramach wyścigu w którym bierze udział. Każdy poziom (labirynt) jest stały - nie są one generowane w czasie gry. Gra została stworzona przez brazi Kempthorne oraz David'a Vivian'a. \cite{Wriggler}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=8cm]{images/tyrek/wriggler.png}
+	\caption{Labirynt. Przykład z gry Wriggler}
+\end{figure}
+
+\subsubsection{Dandy}
+Kolejną grą opartą na labiryntach jest Dandy. Gra powstała w 1983 roku na platformy Atari, przez Johna Howarda Palevicha, w ramach pracy licencjackiej na MIT. Gracz steruje postacią, poruszając się po lochach z wieloma poziomami, które połączone są ze sobą schoami. Niektóre fragmenty labiryntu zamknięte są przez drzwi, do których otwarcia potrzebne są klucze, rozsiane po planszy. Oprócz pokonywania kolejnych poziomów, gracz może pokonywać wrogów przy użyciu łuku. \cite{Dandy}
 \chapter{Fizyka postaci}
 \section{Tworzenie postaci}
 \subsection{Omówienie zagadnienia procesu tworzenia postaci}
@@ -715,17 +768,36 @@ Mafia Wiki, Fandom, dostęp 28.01.2021r.
 https://mafiagame.fandom.com/wiki/Lock\_Picking
 
 \bibitem{acu}
-IGN, Assassin's Creed Unity Wiki Guide, dostęp 28.01.2021 r.
+IGN, Assassin's Creed Unity Wiki Guide, dostęp 28.01.2021r.
 https://www.ign.com/wikis/assassins-creed-5-unity/Lockpick
 
 \bibitem{maze}
 Qaz Wiki: Algorytm generowania labiryntu - Maze generation algorithm, dostęp 02.02.2021r.
 https://pl.qaz.wiki/wiki/Maze\_generation\_algorithm
 
-\bibitem{md}
+\bibitem{nd}
 Fandom Wiki, The Haunting of Castle Malloy, dostęp 03.02.2021r.
 https://nancydrew.fandom.com/wiki/The\_Haunting\_of\_Castle\_Malloy
 
+\bibitem{Instantiate}
+Unity Documentation, dostęp 04.02.2021r.
+https://docs.unity3d.com/ScriptReference/Object.Instantiate.html
+
+\bibitem{Vector3}
+Unity Documentation, dostęp 04.02.2021r.
+https://docs.unity3d.com/ScriptReference/Vector3.html
+
+\bibitem{Wriggler}
+Personal Computer News, Issue 107, dostęp 04.02.2021r.
+http://www.personalcomputernews.co.uk/pcnb/html/107/personal\_computer\_news\_107\_gameplay\_spectrum\_the\_wriggler.html
+
+\bibitem{Dandy}
+ "A History of Dandy Dungeon", Jack Palevich. Wersja archiwizowana z 04.11.2013r. Dostęp 04.02.2021 r.
+https://web.archive.org/web/20131104190048/http://jacks-hacks.appspot.com/dandy/history.html
+
+\bibitem{sp}
+"Soda Pipes", Mobby Games. Dostęp 04.02.2021r.
+https://www.mobygames.com/game/windows/soda-pipes
 \end{thebibliography}
 
 \end{document}
