@@ -48,7 +48,7 @@
 % --- Promotor (w dopełniaczu)
 \supervisor{dr Bartłomieja Przybylskiego}
 % --- Data złożenia pracy (Miasto, miesiąc rok)
-\date{Poznań, styczeń 2021}
+\date{Poznań, luty 2021}
 
 % --- Płeć autora (M/K)
 \stsex{M}
@@ -73,11 +73,17 @@
 
 % Strona tytułowa
 \maketitle
-% Oświadczenie
-\makestatement
+% Streszczenie
+\begin{streszczenie}
+Przedmiotem pracy jest przedstawienie projektowania gry platformowej „The Lore: story of the fallen warrior” w oparciu o silnik Unity. Gra posiada elementy zręcznościowe oraz zagadki logiczne, przez co przechodzenie kolejnych etapów gry wymaga szybkiego podejmowania logicznych decyzji. \par
+Na początku - nazwij jak chcesz, pamiętaj, że rozdzial 1 to wstep… Mateusz Hypś. \par
+W następnym rozdziale będziemy mogli dowiedzieć się czym jest zagadka logiczna oraz poznać kilka przykładów. Opisany zostanie sposób obsadzenia mini-gier w grze opartej na silniku Unity. W kontekście projektu „The Lore”, przedstawione są algorytmy stojące za logiką zaimplementowanych mini-gier – przesuwanych puzzli, otwierania skrzyń, mini-gry z ułożeniem rur. Dodatkowo przedstawiono metodę projektowania mini-gry nie zawartej w projekcie - algorytmu generującego labirynt. \par
+W ostatnim rozdziale… Jakub Kozubal
+
+\end{streszczenie}
 % Spis treści
 \tableofcontents
-\addcontentsline{toc}{chapter}{Bibliography}
+
 
 
 % ======================================================== %
@@ -523,7 +529,7 @@ Przywołanym już przykładem zagadki może być rebus. To prosta rozgrywka, pol
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=8cm]{images/tyrek/rebus.png}
-	\caption{Źródło: Zespół autorski Politechniki Łódzkiej, licencja: CC BY 3.0}
+	\caption{Rebus. Źródło: Zespół autorski Politechniki Łódzkiej, licencja: CC BY 3.0}
 \end{figure}
 
 \subsubsection{Piętnastka - przesuwane puzzle}
@@ -531,15 +537,15 @@ Kolejnym przykładem może być też piętnastka, która w grze The Lore został
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=5cm]{images/tyrek/przesuwane-puzzle.jpg}
-	\caption{Źródło: Wikipedia, Sliding Puzzle, Micha L. Rieser - Public Domain}
+	\caption{Piętnastka. Źródło: Wikipedia, Sliding Puzzle, Micha L. Rieser - Public Domain}
 \end{figure}
 
 \subsubsection{Puzzle}
-Jedną z najpopularniejszych zagadek logicznych, z którą styczność miał zapewne każdy z nas, są puzzle. Jest to gra, w czasie której rozwiązajemy problem polegający na ułożeniu z dostępnych elementów logicznego obrazka, który zazwyczaj jest dołączony do gry - w postaci fotografii czy też po prostu znajduje na pudełku.   
+Jedną z najpopularniejszych zagadek logicznych, z którą styczność miał zapewne każdy z nas, są puzzle. Jest to gra, w czasie której rozwiązujemy problem polegający na ułożeniu z dostępnych elementów logicznego obrazka, który zazwyczaj jest dołączony do gry - w postaci fotografii dołączonej do zestawu lub na pudełku.
  
-Słowo puzzle pochodzi z XVI wieku, które oznaczało "stan zagubienia". Sama gra ma swoje początki w wieku XVIII, gdy John Spilsbury, grawer i kartograf umieścił mapę na drewnie, następnie przepiłował ją wokół konturów każdego kraju znajdującego się na mapanie. To co powstało postanowił użyć do nauki geografii - ułożenie logicznej mapy uczyło jak wygląda mapa danego regionu. Taka pomoc dydaktyczna zdobyła szybko popularność, wszak była to nauka przez zabawę, używano ją dość często, nawet jeszcze w wieku XIX.  
+Słowo puzzle pochodzi z XVI wieku, które oznaczało "stan zagubienia". Sama gra ma swoje początki w wieku XVIII, gdy John Spilsbury, grawer i kartograf umieścił mapę na drewnie, następnie przepiłował ją wokół konturów każdego kraju znajdującego się na mapie. To co powstało postanowił użyć do nauki geografii - ułożenie logicznej mapy uczyło jak wygląda mapa danego regionu. Taka pomoc dydaktyczna zdobyła szybko popularność, wszak była to nauka przez zabawę, używano ją dość często, nawet jeszcze w wieku XIX.  
 
-Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeżeli chodzi o kształt, puzzle często mają specyficzny kształt, przez co nie każdy element pasuje do innego, co pozwala nam odrzucić możliwości połączenia różnych par. Ilość elementów zwiększa ilość możliwych oraz logicznych kombinacji danych elementów, przez co zwiększa się czas realizacji zadania. Największa układanka została wykonana przez firmę Educa, posiadała ona aż 42 000 elementów i przedstawia dość bajeczny krajobraz, na którym znajdują się najpopularniejsze budynki z całego świata - Big Ben, Wieża Eiffela czy Krzywą Wieżę w Pizie. Ułożenie tej układanki możemy liczyć w setkach godzin. \cite{puzzle}
+Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeżeli chodzi o kształt, puzzle często mają specyficzny kształt, przez co nie każdy element pasuje do innego, co pozwala nam odrzucić możliwość połączenia niektórych par. Ilość elementów zwiększa ilość możliwych oraz logicznych kombinacji danych puzzli, przez co zwiększa się czas realizacji zadania. Największa układanka została wykonana przez firmę Educa, posiadała ona aż 42 000 elementów i przedstawia dość bajeczny krajobraz, na którym znajdują się najpopularniejsze budynki z całego świata - Big Ben, Wieża Eiffela czy Krzywą Wieżę w Pizie. Ułożenie tej układanki możemy liczyć w setkach godzin. \cite{puzzle}
 
 \begin{figure}[h]
 	\centering
@@ -548,9 +554,9 @@ Trudność puzzli zależy zazwyczaj od kształtu elementów i ich ilości. Jeże
 \end{figure}
 
 \subsection{Wdrożenie zagadek do gry opartej na silniku Unity}
-Zanim przedstawione zostaną dwa sposoby wdrażania zagedek ze względu na sposób umieszczenia mini-gry w odpowiedniej hierarchii projektowej, warto poznać podstawowe pojęcia, które dotyczą projektu Unity.
+Zanim przedstawione zostaną dwa sposoby wdrażania zagadek ze względu na sposób umieszczenia mini-gry w odpowiedniej hierarchii projektowej, warto poznać podstawowe pojęcia, które dotyczą projektu Unity.
 \subsubsection{Scena w Unity}
-W Unity możemy podzielić naszą grę na sceny. Scena to obiekt zawierający nasze menu, czy dane środowisko gry (na przykład poziom gry). Dobrą praktyką jest, aby każdy level gry był osobą sceną, co skróci czas jego ładowania. W scenie możemy umieścić swoje obiekty, skrypty czy grafiki. \cite{scena}
+W Unity możemy podzielić naszą grę na sceny. Scena to obiekt zawierający nasze menu, czy dane środowisko gry (na przykład poziom gry). Dobrą praktyką jest, aby każdy level gry był osobną sceną, co skróci czas jego ładowania. W scenie możemy umieścić swoje obiekty, skrypty czy grafiki. \cite{scena}
 \subsubsection{Obiekt - GameObject}
 \label{sec:gameobject}
 Obiekt, zwany w Unity GameObject, to klasa podstawowa dla wszystkich podmiotów w scenach Unity. Do każdego obiektu możemy przypinać kolejne obiekty, tworząc hierarchiczność, która może się przydać w odpowiedniej realizacji projektu. \cite{gameobject}
@@ -568,19 +574,20 @@ W toku pracy nad projektem The Lore rozpatrywano dwa sposoby dodawania mini-gier
 	\item{Każda minigra jest w osobnej scenie}
 	\begin{itemize}
 		\item W przypadku rozbudowanych poziomów nie powiela szerokiej listy obiektów sceny
-		\item Pozwala na mniejsze pobieranie zasobów w danej jednostce czasu - połączenie działającego poziomu z algorytymką mini-gry może bywać uciążliwe na słabszych komputerach.
+		\item Pozwala na mniejsze pobieranie zasobów w danej jednostce czasu - połączenie działającego poziomu z algorytmiką mini-gry może bywać uciążliwe na słabszych komputerach.
 	\end{itemize}
 	\item{Każda minigra zawiera się w scenie poziomu gry}
 		\begin{itemize}
-		\item Unikamy dłuższego ładowania się poziomu gry. Po zakończeniu mini-gry w przypadku osobnej sceny, cały poziom musi załadować się od nowa.
+		\item Unikamy dłuższego ładowania się poziomu gry po zakończeniu mini-gry
 	\end{itemize}
 \end{itemize}
-Po wewnętrznej dyskusji wybrano opcję wydzielenia do osobnej sceny. W toku testowania tego rozwiązania uznano, iż nie jest ono bardzo uciążliwe pod kątem czasu ładowania poziomu, zaś pozwala na zachowanie porządku w projekcie. Jak się okazało już w przypadku tworzenia poziomu 1. gry, ta decyzja była właściwa. Z racji sporego rozbudowania tej sceny i dużej liczby obiektów na niej zawartych, dodanie mini-gier do tej sceny mogłoby spowodować chaos organizacyjny. Dodatkowo mogłoby wydłużyć czas ładowania poziomu i spowodować pobieranie większych zasobów w czasie gry.
+Po wewnętrznej dyskusji wybrano opcję wydzielenia do osobnej sceny. W toku testowania tego rozwiązania uznano, iż nie jest ono bardzo uciążliwe pod kątem czasu ładowania poziomu, zaś pozwala na zachowanie porządku w projekcie. Jak się okazało już w przypadku tworzenia poziomu pierwszego gry, ta decyzja była właściwa. Z racji sporego rozbudowania tej sceny i dużej liczby obiektów na niej zawartych, dodanie mini-gier do tej sceny mogłoby spowodować chaos organizacyjny. Dodatkowo mogłoby wydłużyć czas ładowania poziomu i spowodować pobieranie większych zasobów w czasie gry.
+
 \section{Przesuwane puzzle}
 \subsection{Omówienie zagadnienia i ogólne założenia}
-Przesuwane puzzle to układanka, złożona zazwyczaj z kwadratowej liczby elementów, najczęściej jest to szesnaście pól. Pola są jednakowych rozmiarów i oznaczone są liczbami od 1 do (n-1), gdzie n to liczba dostępnych pól w układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzli względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w odpowiedniej kolejności, według rosnącego porządku liczb lub powstania odpowiedniego obrazka. Trudno określić kto odpowiada za stworzenie zagadaki. Wiadomym jest, że w 1878 roku pochodzący ze Stanów Zjednoczonych Samuel Loyd wypromował układankę, jednak prawdopodobnie nie jest to jego pomysł. Dość popularną nazwą na rozgrywkę jest "piętnastka", określającą ilość dostępnych pól w najpopularniejszym ułożeniu - 4x4.  \cite{sliding_puzzle}
+Przesuwane puzzle to układanka, złożona zazwyczaj z kwadratowej liczby elementów, najczęściej jest to szesnaście pól. Pola są jednakowych rozmiarów i oznaczone są liczbami od 1 do (n-1), gdzie n to liczba dostępnych pól w układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzli względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w odpowiedniej kolejności, według rosnącego porządku liczb lub powstania odpowiedniego obrazka. Trudno określić kto odpowiada za stworzenie zagadki. Wiadomym jest, że w 1878 roku pochodzący ze Stanów Zjednoczonych Samuel Loyd wypromował układankę, jednak prawdopodobnie nie jest to jego pomysł. Dość popularną nazwą na rozgrywkę jest "piętnastka", określającą ilość dostępnych pól w najpopularniejszym ułożeniu - 4x4.  \cite{przesuwane_puzzle}
 
-W grze The Lore gracze staną przez rozwiązaniem zagadki gdzie do dyspozycji mamy dziewięć pól. Podczas projektowania układanki w grze uznano, iż zagadka może być dość trudna, a korzyści płynące z rozwiązania jej będą nieadekwatne do poświęconego czasu, stąd ilość pól jest mniejsza niż w najpopularniejszej wersji rozgrywki.
+W grze The Lore gracze staną przez rozwiązaniem zagadki gdzie do dyspozycji mamy dziewięć pól. Podczas projektowania układanki w grze uznano, iż zagadka z piętnastoma elementami może być dość trudna, a korzyści płynące z rozwiązania jej będą nieadekwatne do poświęconego czasu, stąd ilość pól jest mniejsza niż w najpopularniejszej wersji rozgrywki.
 \subsection{Algorytmika}
 \subsubsection{Pojedynczy element puzzle - PuzzleBlock}
 
@@ -595,7 +602,7 @@ Każdy pojedynczy element puzzla jest zainicjalizowany jako obiekt, który okre�
 Tak jak na załączonym przykładzie, wartość x rośnie w prawą stronę, zaś Y w górę, gdzie x dotyczy położenia w poziomie, a y w pionie. W założeniach przedstawiona została logika, która mówiła, iż element może zostać przemieszczony wtedy i tylko wtedy, gdy pole obok niego jest wolne, czyli nie posiada żadnego PuzzleBlock - elementu z liczbą lub obrazkiem. Dla lepszego efektu wizualnego, w grze The Lore element porusza się stopniowo, aby sprawiał wrażenie, iż porusza się realistycznie. Z racji, iż w Unity każda akcja wykonuje się podczas pokazywania kolejnej klatki, element porusza się w minimalnym stopniu przez sekundę. 
 
 \subsubsection{Plansza - Puzzle. Losowanie kolejności puzzli}
-Plansza rozgrywki posiada 8 elementów PuzzleBlock oraz jedno puste pole.  Algorytm powinien wylosować dla 8 pól ich położenie na planszy - tak jak w wyżej przedstawionym przykładzie. W tym celu na początku losujemy dla każdego bloku wartość od 0 do 8. W C\# możemy to zrobić przy użyciu funkcji  System.Random().Next(a, b). Przykładowo:
+	Plansza rozgrywki posiada 8 elementów PuzzleBlock oraz jedno puste pole.  Algorytm powinien wylosować dla 8 pól ich położenie na planszy - tak jak w wyżej przedstawionym przykładzie. W tym celu na początku losujemy dla każdego bloku wartość od 0 do 8. W C\# możemy to zrobić przy użyciu funkcji  \emph{System.Random().Next(a, b)}, który losuje wartości z zakresu \emph{<a, b)}. Przykładowo:
 \begin{lstlisting}[
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -674,7 +681,7 @@ for (int i = 0; i < numbersOrdered.Length - 1; i++) {
 
 \end{lstlisting}
 Gdzie \textbf{inversions}, to liczba znalezionych inwersji, a \textbf{numberOrdered} to lista kolejności puzzli w stanie wejściowym. Jeżeli wartość \textbf{x} znajduje się w liście \textbf{numberOrdered} przed wartością \textbf{y} i jest od niej większa, to wtedy zwiększamy licznik inwersji o jeden.
-Oczywiście pozostaje nam prosta weryfikacja, czy liczba inwersji jest nieparzysta - w takim wypadku puzzle będą nierozwiązywalne..
+Oczywiście pozostaje nam prosta weryfikacja, czy liczba inwersji jest nieparzysta - w takim wypadku puzzle będą nierozwiązywalne.
 \begin{lstlisting}[
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -705,12 +712,13 @@ W momencie naciśnięcia przycisku akcji kamera zbliża się do obiektu, czyli p
 	\caption{Animacja rozpoczęcia puzzli. Przykład z projektu The Lore}
 \end{figure}
 
-Po skończonej animacji rozpoczynamy mini-grę. Oprócz bloczków z kolejnością, na ekranie widzimy również dwa przyciski i cyfrę zero. Przyklad:
+Po skończonej animacji rozpoczynamy mini-grę. Oprócz bloczków z kolejnością, na ekranie widzimy również dwa przyciski i cyfrę zero.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=7cm]{images/tyrek/puzzlebuttons.png}
 	\caption{Cały interfejs mini-gry puzzle. Przykład z gry The Lore}
 \end{figure}
+
 Gdzie \textbf{Exit} kończy rozgrywkę, przenosząc nas z powrotem w miejsce, w którym rozpoczynaliśmy zagadkę, \textbf{Restart Puzzle} powoduje ponowne rozlosowanie puzzli, odwołując się do akcji w klasie \textbf{PuzzleActionsButtons}, czyli tej samej, która uruchamiana jest w przypadku, gdy puzzle nie mają rozwiązania. Dodatkowo po prawej stronie widnieje informacja ile ruchów do tej pory wykonaliśmy rozwiązując zagadkę. Jest to dość istotna informacja dla gracza, gdyż to od ilości ruchów zależy ile punktów doświadczenia zdobędzie za rozwiązanie tej zagadki. Zastosowany wzór dla gry The Lore wygląda następująco:
 
 $$
@@ -738,17 +746,20 @@ Każdą mini-grę puzzle można wykonać w grze tylko jeden raz. Ponowne próby 
 
 \subsection{Przedstawienie przykładu w innych grach}
 \subsubsection{Nancy Drew: Hauting of Castle Malloy}
-The Haunting of Castle Malloy to gra dwuwymiarowa przygodowa osadzona w Irlandii. Postać wybiera się do tego kraju, aby zostać drużbą na ślubie swojego przyjaciela. Jadąc autem na uroczystość zostaje zaatakowany przez upiorną postać, przez co wpada do rowu. Jak się później okazuje, zaginął Pan Młody. Główny bohater, Nancy Drew chce odkryć tajemnicę, przechodząc przez świat pełny zagadek. Właśnie podczas poszukiwania swojego Pana Młodego, gracz natyka się na przesuwane puzzle. W czasie przechodzenia kolejnych etapów, użytkownik ma możliwość przyglądania się obiektom, które mija. To właśnie w tym momencie może natrafić na omawianą rozgrywkę. Przed mini-grą gracz widzi jaki jest stan wyjściowy puzzli. Co warto podkreślić, w przeciwieństwie do gry The Lore, na poszczególnych elementach puzzli nie widzimy cyfr oznaczających poprawną kolejność puzzli. Aby zakończyć zagadkę należy również posiadać ostatni element, który po ułożeniu obrazka umieszczamy w brakującym miejscu. \cite{nd}
-\begin{figure}
+The Haunting of Castle Malloy to gra dwuwymiarowa przygodowa osadzona w Irlandii. Postać wybiera się do tego kraju, aby zostać drużbą na ślubie swojego przyjaciela. Jadąc autem na uroczystość zostaje zaatakowany przez upiorną postać, przez co wpada do rowu. Jak się później okazuje, zaginął Pan Młody. Główny bohater, Nancy Drew chce odkryć tajemnicę, przechodząc przez świat pełny zagadek. Właśnie podczas poszukiwania swojego Pana Młodego, gracz natyka się na przesuwane puzzle. 
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=5cm]{images/tyrek/nd.png}
+	\includegraphics[width=6cm]{images/tyrek/nd.png}
 	\caption{Przesuwane puzzle. Przykład z gry Nancy Drew: Hauting of Castle Malloy}
 \end{figure}
+
+W czasie przechodzenia kolejnych etapów, użytkownik ma możliwość przyglądania się obiektom, które mija. To właśnie w tym momencie może natrafić na omawianą rozgrywkę. Przed mini-grą gracz widzi jaki jest stan wyjściowy puzzli. Co warto podkreślić, w przeciwieństwie do gry The Lore, na poszczególnych elementach puzzli nie widzimy cyfr oznaczających poprawną kolejność puzzli. Aby zakończyć zagadkę należy również posiadać ostatni element, który po ułożeniu obrazka umieszczamy w brakującym miejscu. \cite{nd}
+
 
 \subsubsection{Resident Evil 4}
 Resident Evil 4 jest grą typu survival horror. Toczy się ona w fikcyjnym mieście Raccoon City, gdzie po sześciu latach kończy się śledztwo dotyczące nielegalnych badań i eksperymentów medycznych nad wirusem, prowadzone przez organizację Umbrella. Działania firmy spowodowały destabilizację tego miasta. Główny bohater, Leon S. Kennedy zostaje wyznaczony jako agent, który ma odnaleźć porwaną przez podejrzaną organizację, córkę prezydenta USA. Bohater przemierzając kolejne miasta odkrywa kolejne tajemnice związane z porwaniem. W toku gry zdarza się, iż gracz pokieruje Ashley Graham, czyli porwaną córką prezydenta USA. To właśnie w czasie kontrolowania tej postaci możemy natrafić na mini-grę związaną z przesuwanym puzzlami. Bohaterka może natrafić na totem, gdzie widać osiem elementów. Dialogi bohaterki podpowiadają graczowi, iż elementy mogą ułożyć się w logiczną całość. W przeciwieństwie do poprzedniego przykładu, nie mamy tutaj pokazanego efektu końcowego rozgrywki. Ostatni element, tak jak w Nancy Drew: Hauting of Castle Malloy musimy odnaleźć, aby zagadka została ukończona.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=5cm]{images/tyrek/re4.png}
 	\caption{Przesuwane puzzle. Przykład z gry Resident Evil 4}
@@ -757,7 +768,7 @@ Resident Evil 4 jest grą typu survival horror. Toczy się ona w fikcyjnym mieś
 
 \section{Zagadka z rurami}
 \subsection{Omówienie zagadnienia}
-Zagadka z rurami jest rozgrywką, której celem jest ułożenie ściezki z dostępnych kształtów rur. Rodzaj rur jest tutaj ważny, ponieważ oprócz kształtów pionowych czy poziomych, dostępne są inne rodzaje - skońne, skrętne, półokrągłe.
+Zagadka z rurami jest rozgrywką, której celem jest ułożenie ścieżki z dostępnych kształtów rur. Rodzaj rur jest tutaj ważny, ponieważ oprócz kształtów pionowych czy poziomych, dostępne są inne rodzaje - skośne, skrętne, półokrągłe.
 Ścieżka powinna wyznaczać drogę wody począwszy od źródła, zazwyczaj zaznaczonego niebieskim kolorem, do końcowej rury. Rozgrywka kończy się, gdy woda dotrze do ostatniej rury w ścieżce, jeżeli będzie miejsce, w którym powinna kończyć się droga, gracz wygrywa. W innym wypadku ponosi porażkę.
 Poziom naładowania wody pełni rolę wyznacznika czasu w którym użytkownik musi ułożyć odpowiednią ścieżkę. Zazwyczaj w tego typu rozgrywkach, woda przenosi się z rury źródłowej do kolejnej po pewnym czasie, aby dać graczowi pewien zapas czasowy na podjęcie odpowiednich decyzji. W niektórych grach gracz ma wybór rur, które dostępne są przez cała rozgrywkę - tak jest przykładowo w grze The Lore. Jednak są też cięższe przypadki, gdy mamy kolejkę kilku rur - wtedy musimy podejmować decyzję w oparciu o mniejszą pulę elementów.
 \subsection{Algorytmika}
@@ -772,7 +783,7 @@ Jest to obiekt związany z rurą. To w tym miejscu określany jest typ rury, nad
   \item Rury dół-lewo -  1 element
   \item Rury dół-prawo - 2 elementy
 \end{itemize}
-Jak wcześniej wspomniano, liczba elementów poszczególnych typów rur odgrywa ważną rolę. Nie jest możliwe ułożenie bez możliwośći zejścia na dół (czyli między innymi rur skrętnych). 
+Jak wcześniej wspomniano, liczba elementów poszczególnych typów rur odgrywa ważną rolę. Nie jest możliwe ułożenie bez możliwości zejścia na dół (czyli między innymi bez rur skrętnych). 
 \subsubsection{PipeSlot}
 Jest miejscem, w którym może znaleźć się obiekt typu \textbf{Pipe}. Plansza, na której możemy kłaść elementy, jest rozmiarów 8x5, czyli tworzonych jest czterdzieści instancji obiektu \textbf{PipeSlot}. Jeżeli na danym miejscu znajduje się obiekt Pipe, wtedy możemy wykonywać na nim akcje - określa to zmienna \textbf{canDrag}. Do każdego obiektu przypisane są akcje \textbf{OnBeginDragEvent}, \textbf{OnEndDragEvent}, \textbf{OnDragEvent} oraz \textbf{OnDropEvent}. Związane są one ze systemem Drag\&Drop, którego działania zostanie przedstawione w dalszej części przedstawienia algorytmiki.
 \subsubsection{Działanie algorytmu - UI}
@@ -833,7 +844,7 @@ Grą wzorowaną na poprzednim przykładzie jest Soda Pipes. Podobnie jak w poprz
 \subsection{Omówienie zagadnienia}
 Jest to bardzo powszechna mini-gra, która dodawana jest do wielu gier, które posiadają funkcjonalność posiadania ekwipunku. Jej celem jest otworzenie skrzynii, które polega na wykonaniu różnych operacji. Zazwyczaj jest od odkrycie odpowiedniej sekwencji poruszania wytrychem, otworzyć zapadki poprzez poruszanie myszką, czy wciśnięcie odpowiedniego guzika, gdy postęp otwierania zamku jest na odpowiednim etapie. Otworzenie zamku pozwala otworzyć skrzynię, zawierającą elementy wyposażenia lub otworzyć drzwi, które zaprowadzą nas do ważnych dla gry pomieszczeń. Z racji na charakter rozgrywki element ten bywa raczej opcjonalną metodą przejścia gry. Z tego względu w niektórych grach, posiadających system umiejętności, otworzenie niektórych zamków jest niemożliwe lub bardzo trudne, jeżeli nie rozwiniemy odpowiednich umiejętności.
 \subsection{Algorytmika}
-Pierwszym i najważniejszym dla całej mini-gry elementem jest wylosowanie przez grę sekwencji ruchów, która potrzebna jest do ukończenia rozgrywki. Odbywa się to w skrypcie \textbf{PickLockGenerateSequence}. Podczas projektowania generatora napotkano się na problem związany z ciągłym losowaniem tych samych liczb. Powodem jest tutaj oczywiście synchronizacja, która przy ładowaniu scen potrafi sprawiać deweloperom problemy. Z tego powodu powstał ten skrypt, który wyróźnia się weryfikacją unikalności wylosowanej liczby.
+Pierwszym i najważniejszym dla całej mini-gry elementem jest wylosowanie przez grę sekwencji ruchów, która potrzebna jest do ukończenia rozgrywki. Odbywa się to w skrypcie \textbf{PickLockGenerateSequence}. Podczas projektowania generatora napotkano się na problem związany z ciągłym losowaniem tych samych liczb. Powodem jest tutaj oczywiście synchronizacja, która przy ładowaniu scen potrafi sprawiać deweloperom problemy. Z tego powodu powstał ten skrypt, który wyróżnia się weryfikacją unikalności wylosowanej liczby.
 Wszystko rozpoczyna się od losowania liczby z zakresu <1,100).
 \begin{lstlisting}[
 language={[Sharp]C},
@@ -851,7 +862,7 @@ caption={Fragment skryptu \texttt{PickLockGenerateSequence.cs}}
         return random % 2;
     }
 \end{lstlisting}
-Tablica \textbf{wasRandomed} to element, który inicjalizowany jest z samych wartości \textbf{false}. Ilośc elementów jest równa \textbf{n}, czyli ilości możliwych wylosowanych liczb. Jeżeli liczba zostanie wylosowana ponownie, skrypt próbuje wylosować kolejną. Tak jak wspominano gracz ma dwie możliwości ruchów, dlatego aby wszystko działało poprawnie funkcja zwraca \textbf{mod 2} z wylosowanego elementu. Wynikiem funkcji jest więc 0, co oznacza ruch w lewo oraz 1, co oznacza ruch w prawo. Losowanych jest pięć elementów, co tworzy nam tablicę ruchów które musi wykonać gracz.
+Tablica \textbf{wasRandomed} to element, który inicjalizowany jest z samych wartości \textbf{false}. Ilość elementów jest równa \textbf{n}, czyli ilości możliwych wylosowanych liczb. Jeżeli liczba zostanie wylosowana ponownie, skrypt próbuje wylosować kolejną. Tak jak wspominano gracz ma dwie możliwości ruchów, dlatego aby wszystko działało poprawnie funkcja zwraca \textbf{mod 2} z wylosowanego elementu. Wynikiem funkcji jest więc 0, co oznacza ruch w lewo oraz 1, co oznacza ruch w prawo. Losowanych jest pięć elementów, co tworzy nam tablicę ruchów które musi wykonać gracz.
 \begin{lstlisting}[
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -882,26 +893,26 @@ W grze The Lore otwieranie zamków dotyczy skrzyń, które położone są w ró�
 	\caption{Wytrychy i skrzynia. Przykład z projektu The Lore}
 \end{figure}
 
-Jeżeli chcemy otworzyć skrzynie nieposiadająć w ekwipunku żadnego wytrychu, jesteśmy informowani o tym fakcie poprzez komunikat na ekranie. Gdy wciśniemy odpowiedni przycisk akcji, kamera zbliża się do skrzyni, po pewnym czasie rozpoczyna się mini-gra.
+Jeżeli chcemy otworzyć skrzynie nieposiadając w ekwipunku żadnego wytrychu, jesteśmy informowani o tym fakcie poprzez komunikat na ekranie. Gdy wciśniemy odpowiedni przycisk akcji, kamera zbliża się do skrzyni, po pewnym czasie rozpoczyna się mini-gra.
+Na wstępie jesteśmy informowani poprzez komunikat o sterowaniu w rozgrywce. Klawisze "Left/RightButton" są zależne od ustawień sterowania i dotyczą przycisków poruszania się graczem w lewo i prawo. Jeżeli naciśniemy któryś z tych przycisków, wytrych przesunie się zgodnie z naszym poleceniem. Po każdym ruchu jesteśmy informowani, czy był on odpowiedni.
 
-
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=12cm]{images/tyrek/minigraskrzynia.png}
 	\caption{Mini-gra otwieranie skrzyń. Przykład z projektu The Lore}
 \end{figure}
 
-Na wstępie jesteśmy informowani poprzez komunikat o sterowaniu w rozgrywce. Klawisze "Left/RightButton" są zależne od ustawień sterowania i dotyczą przycisków poruszania się graczem w lewo i prawo. Jeżeli naciśniemy któryś z tych przycisków, wytrych przesunie się zgodnie z naszym poleceniem. Po każdym ruchu jesteśmy informowani, czy był on odpowiedni. Zadaniem gracza jest zgadnąć losowy ciąg elementów lewo/prawo o długości 5. Każdy zły ruch powoduje konieczność powtórzenia sekwencji. Nagrodą za rozwiązanie problemu są eliksiry życia, które przydają się w czasie rozgrywki. Z racji, iż jest to rozgrywka nieobowiązkowa, gracz w każdej chwili może ją opuścić wybierając opcję \textbf{Exit}.
+Zadaniem gracza jest zgadnąć losowy ciąg elementów lewo/prawo o długości 5. Każdy zły ruch powoduje konieczność powtórzenia sekwencji. Nagrodą za rozwiązanie problemu są eliksiry przywracające punkty życia, które przydają się w czasie rozgrywki. Z racji, iż jest to rozgrywka nieobowiązkowa, gracz w każdej chwili może ją opuścić wybierając opcję \textbf{Exit}.
 \subsection{Przedstawienie przykładu w innych grach}
 \subsubsection{Mafia 2}
 Gra Mafia II osadzona jest w amerykańskim mieście rządzonym przez mafie. Głównym bohaterem jest Vito Scaletta, syn włoskich imigrantów. Los sprawia, iż bohater zmuszony jest do szybkiego zarobku, przez co wplata się w mafijne porachunki. Realizując zadania dla swoich pracodawców, nieraz włamywał się do różnych pomieszczeń. Gracz może również w czasie gry włamywać się do zamkniętych pokoi lub budynków celem szybszego przejścia poziomu, obejścia wrogów czy zdobycia pieniędzy. Dodatkowo mini-gra pozwala na odblokowanie zamkniętych pojazdów. W mini-grze gracz używa myszki. Widoczny jest zamek z trzema zapadkami, po prawej stronie widzimy wytrych przy pierwszej zapadce. Użytkownik sterując myszką wertykalnie musi ustawić zapadkę w takiej pozycji, aż będzie ona podświetlona na kolor zielony. Jeżeli gracz zrobi to w złym momencie, zostanie cofnięty do poprzedniej zapadki. \cite{Mafia2}
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=5cm]{images/tyrek/Mafia2.png}
 	\caption{Otwieranie zamków. Przykład z gry Mafia 2}
 \end{figure}
 \subsubsection{Assassin's Creed Unity}
-W grze Assassni's Creed Unity wcielamy się w Arno Doriana, członka tajnego bractwa Assasynów, którzy toczą odwieczną walkę z organizacją zwaną Templatiuszami. Gra osadzona jest w czasach rewolucji francuskiej w Paryżu. Bohater będąc w centrum najważniejszych wydarzeń osiemnastowiecznego Paryża nieraz potrzebuje włamać się do jakiegoś budynku, aby wykonać misję. W grze otwieranie zamków dotyczy pomieszczeń, które dają podobnie jak w poprzednie grze, możliwość obejścia wrogów, czy też zdobycie ekwipunku oraz włamywania się do skrzyń - podobnie jak w grze The Lore. Rozpoczynając mini-grę widzimy ilość zapadek, błękitny pasek poruszający się wertykalnie oraz błękitny prostokąt. Zadaniem gracza jest wcisnąć przycisk akcji w momencie, gdy poruszający się znacznik znajdzie się w błękitnym polu. W przypadku, gdy gracz zrobi to w złym momencie, traci z ekwipunku wytrych. Warto też podkreślić, iż w grze istnieje system umiejętności, gdzie dwie umiejętności dotyczą poziomu otwierania zamków. Podczas gry spotkamy trzy poziomy trudności, które charakteryzują się większą ilością zapadek czy też szybszym poruszaniem się błękitnego paska. \cite{acu}
+W grze Assassni's Creed Unity wcielamy się w Arno Doriana, członka tajnego bractwa Assasynów, którzy toczą odwieczną walkę z organizacją zwaną Templariusze. Gra osadzona jest w czasach rewolucji francuskiej w Paryżu. Bohater będąc w centrum najważniejszych wydarzeń osiemnastowiecznego Paryża nieraz potrzebuje włamać się do jakiegoś budynku, aby wykonać misję. W grze otwieranie zamków dotyczy pomieszczeń, które dają podobnie jak w poprzednie grze, możliwość obejścia wrogów, czy też zdobycie ekwipunku oraz włamywania się do skrzyń - podobnie jak w grze The Lore. Rozpoczynając mini-grę widzimy ilość zapadek, błękitny pasek poruszający się wertykalnie oraz błękitny prostokąt. Zadaniem gracza jest wcisnąć przycisk akcji w momencie, gdy poruszający się znacznik znajdzie się w błękitnym polu. W przypadku, gdy gracz zrobi to w złym momencie, traci z ekwipunku wytrych. Warto też podkreślić, iż w grze istnieje system umiejętności, gdzie dwie umiejętności dotyczą poziomu otwierania zamków. Podczas gry spotkamy trzy poziomy trudności, które charakteryzują się większą ilością zapadek czy też szybszym poruszaniem się błękitnego paska. \cite{acu}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=6cm]{images/tyrek/acu.png}
@@ -917,7 +928,7 @@ W pierwotnej definicji, labirynt oznacza budowlę, która charakteryzuje się uk
 \subsection{Omówienie zagadnienia}
 \subsection{Algorytmika}
 \subsubsection{Założenia: algorytm z nawrotami}
-Do stworzenia labiryntu możemy użyć algorytmu z nawrotami. Początkowo powinniśmy stworzyć graf, gdzie każdy węzeł ma co najmniej jedno połączenie, to będzie nasz labirynt. Pomiędzy węzłami, które nie są połączone będzie znajdować się ściana, której użytkownik nie może przejść. Aby wygenerować taki graf, początkowo  generujemy graf bez ścieżek - możemy wyobrazić sobie, iż jest to po prostu prostokąc, podzielony na kilka kwadratów stworzonych przez ściany. Algorytm rozpoczyna się w pierwszym węźle, dodając go do stosu. Następnie wybiera pierwszego nieodwiedzonego sąsiada, tworząc w ten sposób pierwsze połączenie węzłów - z punktu widzenia gracza, usuwając pomiędzy nimi ścianę. Proces powtarzany jest aż do momentu, gdy trafimy do węzła, które nie ma żadnego nieodwiedzonego sąsiada. Gdy już dotrze do takiego miejsca, cofa się, jednoczesnie usuwając elementy ze stosu, aż do momentu, gdy trafi na węzeł, który posiada nieodwiedzonego sąsiada. Algorytm skończy się, gdy w naszym stosie nie będzie elementów. \cite{maze}
+Do stworzenia labiryntu możemy użyć algorytmu z nawrotami. Początkowo powinniśmy stworzyć graf, gdzie każdy węzeł ma co najmniej jedno połączenie, to będzie nasz labirynt. Pomiędzy węzłami, które nie są połączone będzie znajdować się ściana, której użytkownik nie może przejść. Aby wygenerować taki graf, początkowo  generujemy graf bez ścieżek - możemy wyobrazić sobie, iż jest to po prostu prostokąt, podzielony na kilka kwadratów stworzonych przez ściany. Algorytm rozpoczyna się w pierwszym węźle, dodając go do stosu. Następnie wybiera pierwszego nieodwiedzonego sąsiada, tworząc w ten sposób pierwsze połączenie węzłów - z punktu widzenia gracza, usuwając pomiędzy nimi ścianę. Proces powtarzany jest aż do momentu, gdy trafimy do węzła, które nie ma żadnego nieodwiedzonego sąsiada. Gdy już dotrze do takiego miejsca, cofa się, jednocześnie usuwając elementy ze stosu, aż do momentu, gdy trafi na węzeł, który posiada nieodwiedzonego sąsiada. Algorytm skończy się, gdy w naszym stosie nie będzie elementów. \cite{maze}
 \subsubsection{Implementacja: algorytm z nawrotami}
 Przejdźmy teraz do zaprojektowania takiej sytuacji. Na sam początek zdefiniujmy stany, które może posiadać każdy węzeł w naszym grafie (labiryncie). Jak wiemy, może mieć ściany ściany z czterech stron. 
 \begin{lstlisting}[
@@ -946,7 +957,7 @@ public enum NodePosition
 	public int y;
 }
 \end{lstlisting}
-Warto też stworzyć strukturę do przechoywania informacji o sąsiadach naszego węzła. Wystarczą wyżej przedstawione parametry \textbf{NodeState} i \textbf{NodePosition}. Dodatkowo w ramach kontroli powinniśmy stworzyć listę takich obiektów, które nie zostały jeszcze odwiedzone przez algorytm. Mając już takie struktury, kolejnym krokiem byłoby stworzenie metody, która zwraca nam stan danego sąsiada. Tak jak wspominano na początku, sąsiad będzie wybierany losowo, dlatego warto już na wstępie stworzyć obiekt \textbf{System.Random()}. Dzięki stworzonej wcześniej metodzie pobierania sąsiadów możemy go wybrać na przykład ze względu na kolejność na danej liście. Tworzymy też najważniejszy dla algorytmu z nawrotami stos. Każdy odwiedzony węzeł powinien być oznaczony wartością \textbf{NodeState.VISITED} i dodany do tego stosu. Wystarczy, aby były to obiekty \textbf{NodePosition}, jednak nic nie zaszkodzi, aby były to całe obiekty \textbf{WallState}. Teraz dzięki pętli while, powinniśmy sprawdzać kolejne węzły, dopóki nasz stos nie będzie pusty. Jeżeli ostatnio dodany do stosu obiekt posiada co najmniej jednego sąsiada, to pobieramy ich listę, przy użyciu funkcji losującej i wybieramy dany element z posiadanej listy. Dodajemy do stosu wylosowany obiekt.
+Warto też stworzyć strukturę do przechowywania informacji o sąsiadach naszego węzła. Wystarczą wyżej przedstawione parametry \textbf{NodeState} i \textbf{NodePosition}. Dodatkowo w ramach kontroli powinniśmy stworzyć listę takich obiektów, które nie zostały jeszcze odwiedzone przez algorytm. Mając już takie struktury, kolejnym krokiem byłoby stworzenie metody, która zwraca nam stan danego sąsiada. Tak jak wspominano na początku, sąsiad będzie wybierany losowo, dlatego warto już na wstępie stworzyć obiekt \textbf{System.Random()}. Dzięki stworzonej wcześniej metodzie pobierania sąsiadów możemy go wybrać na przykład ze względu na kolejność na danej liście. Tworzymy też najważniejszy dla algorytmu z nawrotami stos. Każdy odwiedzony węzeł powinien być oznaczony wartością \textbf{NodeState.VISITED} i dodany do tego stosu. Wystarczy, aby były to obiekty \textbf{NodePosition}, jednak nic nie zaszkodzi, aby były to całe obiekty \textbf{WallState}. Teraz dzięki pętli while, powinniśmy sprawdzać kolejne węzły, dopóki nasz stos nie będzie pusty. Jeżeli ostatnio dodany do stosu obiekt posiada co najmniej jednego sąsiada, to pobieramy ich listę, przy użyciu funkcji losującej i wybieramy dany element z posiadanej listy. Dodajemy do stosu wylosowany obiekt.
 Następnie powinniśmy usunąć każdą odwiedzą ścianę. 
 
 \begin{lstlisting}[
@@ -957,7 +968,7 @@ caption={Usunięcie ściany - skrypt C\#}
 node[x ,y] &= ~neighbour.SharedWall;
 \end{lstlisting}
 
-Gdzie \textbf{SharedWall} mówi nam o tym, czy pomiędzy dwoma obiektami znajduje się ściana. Oczywiście, informacja o ścianie powinna zostać zaktualizowana również u sąsiada. W tej sytuacji są dwa wyjścia. Pierwszy z nich, z lekka naiwny i niezbyt przyjazny dla oka dewelopera to stworzenie czterech warunków, które definiują dla danego przypadku jak pobrać pozycję przeciwną, dla sąsiada po lewej stronie - prawo, dla sąsiada na dole - góra i tak dalej. W ten sposób możemy zdobyć węzęł i zmienić jego stan, a następnie dodać nowy element do stosu. Drugim, rozsądniejszym pomysłem jest zadeklarowanie metody, która mogłaby od razu zwrócić nam \textbf{WallState} naszego sąsiada, który od razu mógłby być szybko poprawiony. Z pomocą przychodzi tutaj prosta instrukcja switch(), która pozwala nam na zarządzanie czterema przypadkami, z którymi będziemy mieli do czynienia.
+Gdzie \textbf{SharedWall} mówi nam o tym, czy pomiędzy dwoma obiektami znajduje się ściana. Oczywiście, informacja o ścianie powinna zostać zaktualizowana również u sąsiada. W tej sytuacji są dwa wyjścia. Pierwszy z nich, z lekka naiwny i niezbyt przyjazny dla oka dewelopera to stworzenie czterech warunków, które definiują dla danego przypadku jak pobrać pozycję przeciwną, dla sąsiada po lewej stronie - prawo, dla sąsiada na dole - góra i tak dalej. W ten sposób możemy zdobyć węzeł i zmienić jego stan, a następnie dodać nowy element do stosu. Drugim, rozsądniejszym pomysłem jest zadeklarowanie metody, która mogłaby od razu zwrócić nam \textbf{WallState} naszego sąsiada, który od razu mógłby być szybko poprawiony. Z pomocą przychodzi tutaj prosta instrukcja switch(), która pozwala nam na zarządzanie czterema przypadkami, z którymi będziemy mieli do czynienia.
 
 \begin{lstlisting}[
 language={[Sharp]C},
@@ -974,11 +985,12 @@ switch(nodeState)
 \end{lstlisting}
 
 Algorytm gotowy. W tym momencie mamy stworzony generator labiryntu, który powinien zostać jeszcze stworzyć algorytm odpowiedzialny za wygenerowanie w naszej grze labiryntu. Dzięki otrzymanym informacją nie sprawia to większych problemów. Mając informację o wszystkich węzłach, możemy stworzyć pętle, która tworzy obiekty ścian ze względu na ściany istniejące dla danego węzła. Z pomocą przychodzi tu obiekt \textbf{Instantiate}. Służy on do klonowania przekazanego obiektu (dla nas ściany). Dodatkowa metoda ta pozwala nam na określenie dokładnej pozycji oraz rotacji naszego elementu, co pozwoli nam na ułożenie ściany w wyznaczonym miejscu i pozwoli na obrócenie obiektu - ze względu czy jest ścianą pionową czy poziomą. Dokładny obiekt który jest nam potrzebny to \textbf{Instantiate(Object original, Vector3 position, Quaternion rotation)}. \cite{Instantiate}
- Teraz używając czterech warunków, dla każdej strony, weryfikujemy, czy nasz węzeł sąsiaduje z daną ścianą. Dla każdej ściany (jeśli istnieje) tworzymy jej obiekt. Następnie powinniśmy określić pozycję - tutaj przychodzi z pomocą obiekt Vector3. Jest to trójelementowa struktura, która przydaje się w określaniu między innymi pozycji w trzech osiach - \textbf{Vector3(x, y, z)}. \cite{Vector3}. Pozycja jest tutaj zależna od naszych wymagań - powinnismy dopasować ją do wielkości naszego obiektu. Z pomocą przychodzi Unity, które w sekcji Inspector pozwala łatwo zarządzać wielkością naszego obiektu. Rotacja potrzebuje zaś już czteroelementowego obiektu - Quaternion. Ze względu na posiadany przez nas obiekt ściany musimy sami określić która oś powinna zostać zmieniona. W ten sposób powinniśmy mieć już widoczny wygenerowany labirynt.
+Teraz używając czterech warunków, dla każdej strony, weryfikujemy, czy nasz węzeł sąsiaduje z daną ścianą. Dla każdej ściany (jeśli istnieje) tworzymy jej obiekt. Następnie powinniśmy określić pozycję - tutaj przychodzi z pomocą obiekt Vector3. Jest to trójelementowa struktura, która przydaje się w określaniu między innymi pozycji w trzech osiach - \textbf{Vector3(x, y, z)}. \cite{Vector3}. Pozycja jest tutaj zależna od naszych wymagań - powinniśmy dopasować ją do wielkości naszego obiektu. Z pomocą przychodzi Unity, które w sekcji Inspector pozwala łatwo zarządzać wielkością naszego obiektu. Rotacja potrzebuje zaś już czteroelementowego obiektu - Quaternion. Ze względu na posiadany przez nas obiekt ściany musimy sami określić która oś powinna zostać zmieniona. W ten sposób powinniśmy mieć już widoczny wygenerowany labirynt.
+
 
 \subsection{Przedstawienie przykładu w innych grach}
 \subsubsection{Wriggler}
-Wriggler jest grą wydaną w 1985 roku. W grze sterujemy robakiem, którego zadaniem jest uciec z labiryntu składającego się z 256 poziomów, w ramach wyścigu w którym bierze udział. Każdy poziom (labirynt) jest stały - nie są one generowane w czasie gry. Gra została stworzona przez brazi Kempthorne oraz David'a Vivian'a. \cite{Wriggler}
+Wriggler jest grą wydaną w 1985 roku. W grze sterujemy robakiem, którego zadaniem jest uciec z labiryntu składającego się z 256 poziomów, w ramach wyścigu w którym bierze udział. Każdy poziom (labirynt) jest stały - nie są one generowane w czasie gry. Gra została stworzona przez braci Kempthorne oraz David'a Vivian'a. \cite{Wriggler}
 
 \begin{figure}
 	\centering
@@ -987,7 +999,9 @@ Wriggler jest grą wydaną w 1985 roku. W grze sterujemy robakiem, którego zada
 \end{figure}
 
 \subsubsection{Dandy}
-Kolejną grą opartą na labiryntach jest Dandy. Gra powstała w 1983 roku na platformy Atari, przez Johna Howarda Palevicha, w ramach pracy licencjackiej na MIT. Gracz steruje postacią, poruszając się po lochach z wieloma poziomami, które połączone są ze sobą schoami. Niektóre fragmenty labiryntu zamknięte są przez drzwi, do których otwarcia potrzebne są klucze, rozsiane po planszy. Oprócz pokonywania kolejnych poziomów, gracz może pokonywać wrogów przy użyciu łuku. \cite{Dandy}
+Kolejną grą opartą na labiryntach jest Dandy. Gra powstała w 1983 roku na platformy Atari, przez Johna Howarda Palevicha, w ramach pracy licencjackiej na MIT. Gracz steruje postacią, poruszając się po lochach z wieloma poziomami, które połączone są ze sobą schodami. Niektóre fragmenty labiryntu zamknięte są przez drzwi, do których otwarcia potrzebne są klucze, rozsiane po planszy. Oprócz pokonywania kolejnych poziomów, gracz może pokonywać wrogów przy użyciu łuku. \cite{Dandy}
+\section{Podsumowanie}
+Jak widać, projektowanie zagadek logicznych jako mini-gry może nie być aż tak trudne. Dużo zależy od podejścia autora i kreatywności w przewidywaniu szczególnych sytuacji - czego przykładem jest kwestia nierozwiązywalnych przesuwanych puzzli. Pomocne jest tu też narzędzie Unity i zawarte w nim funkcjonalności. Dzięki odpowiednim dopasowaniom komponentów do obiektów, możemy łatwo podczas podglądu gry, testować produkt pod kątem potencjalnych błędów. Na pewno wielkim plusem jest tu też szeroka dokumetnacja Unity, która pozwala nam łatwo znaleźć funkcje, czy obiekty, które mogą się przydać w toku tworzenia własnej rozgrywki.
 \chapter{Fizyka postaci}
 \section{Tworzenie postaci}
 \subsection{Omówienie zagadnienia procesu tworzenia postaci}
