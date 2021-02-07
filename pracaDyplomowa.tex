@@ -76,7 +76,7 @@
 % Streszczenie
 \begin{streszczenie}
 Przedmiotem pracy jest przedstawienie projektowania gry platformowej „The Lore: story of the fallen warrior” w oparciu o silnik Unity. Gra posiada elementy zręcznościowe oraz zagadki logiczne, przez co przechodzenie kolejnych etapów gry wymaga szybkiego podejmowania logicznych decyzji. \par
-Na początku - nazwij jak chcesz, pamiętaj, że rozdzial 1 to wstep… Mateusz Hypś. \par
+Na początku zostanie przedstawiony zamysł projektu i w jaki sposób można nim zarządzać. Zaprezentowany fundamentalizm pracy nad projektem, co jest ważne, czego należy przestrzegać i na czym się skupić. W jaki sposób zostaje podzielony projekt informatyczny oraz z czym wiążą się poszczególne etapy pracy. Następnie przedstawione zostaną metodyki, które od lat służą za zbiór drogowskazów w procesie realizacji projektu. Po przyswojeniu i zrozumieniu wszystkich tych informacji, przedstawione zostanie wykorzystanie tego w projekcie gry komputerowej "The Lore". \par
 W następnym rozdziale będziemy mogli dowiedzieć się czym jest zagadka logiczna oraz poznać kilka przykładów. Opisany zostanie sposób obsadzenia mini-gier w grze opartej na silniku Unity. W kontekście projektu „The Lore”, przedstawione są algorytmy stojące za logiką zaimplementowanych mini-gier – przesuwanych puzzli, otwierania skrzyń, mini-gry z ułożeniem rur. Dodatkowo przedstawiono metodę projektowania mini-gry nie zawartej w projekcie - algorytmu generującego labirynt. \par
 W ostatnim rozdziale… Jakub Kozubal
 
@@ -150,7 +150,7 @@ Składa się z czterech podstawowych elementów, którymi menedżer projektu mus
 \end{itemize}
 
 \subsection {Zakres}
-Zdecydowanie najważniejszy z całej czwórki. Jest on definicją co tak naprawdę projekt ma osiągnąć i co ma w nim zostać zrealizowane. Obrazuje rozmiar projektu, jego cele a także wymagania. Zakres jest nie tylko najważniejszym, ale również najbardziej złożonym. Jakakolwiek zmiana musi zostać odwzorowana w pozostałych trzech elementach. Jest to jeden z powodów dla którego się mówi o współzależności między tą czwórką. Aby to lepiej zrozumieć, można sobie wyobrazić aplikacje, która ma posiadać cztery główne funkcjonalności, zbudowana przez dwa zespoły z budżetem 40 tysięcy złotych. Jeśli zakres projektu się zmieni do przykładowo sześciu funkcjonalności, zadaniem menedżera projektu jest dostosowanie zasobów ludzkich, czasu oraz budżetu w taki sposób aby cel ten został zrealizowany.
+Zdecydowanie najważniejszy z całej czwórki. Jest on definicją co tak naprawdę projekt ma osiągnąć i co ma w nim zostać zrealizowane. Obrazuje rozmiar projektu, jego cele a także wymagania. Zakres jest nie tylko najważniejszym, ale również najbardziej złożonym. Jakakolwiek zmiana musi zostać odwzorowana w pozostałych trzech elementach. Jest to jeden z powodów dla którego się mówi o współzależności między tą czwórką. Aby to lepiej zrozumieć, można sobie wyobrazić aplikacje, która ma posiadać cztery główne funkcjonalności, zbudowana przez dwa zespoły z budżetem 40 tysięcy złotych. Jeśli zakres projektu się zmieni do przykładowo sześciu funkcjonalności, zadaniem menedżera projektu jest dostosowanie zasobów ludzkich, czasu oraz budżetu w taki sposób aby cel ten został zrealizowany. \cite{zarzadzanie8}
 
 \subsection {Zasoby}
 Zasoby dzielą się na trzy kategorie:
@@ -203,8 +203,8 @@ Zyski są to pieniądze, które firma planuje zarobić na wykonanym projekcie, b
 
 
 \section {Czym jest zarządzanie projektem?}
-Wiedząc już dokładnie czym jest projekt, zrozumienie na czym polega zarządzanie nim staje się trywialne. W dużym uproszczeniu jest to proces,  który za pomocą sprecyzowanego planu pozwala na osiągnięcie wyznaczonego przez ciebie lub twoją firmę celu. Stworzenie odpowiedniego planu, podzielonego na szereg kroków, jest tutaj znaczący, ponieważ do osiągnięcia wyznaczonego celu wymagane jest ukończenie wszystkich zadań po drodze. Bardzo często zarządzanie projektem jest porównywane do wchodzenia po schodach bądź wspinania się po drabinie. Aby osiągnąć wyznaczony cel i dojść na samą górę, trzeba krok po kroku zaliczać każdy poziom. Podobnym trafnym porównaniem jest podróż z jednego miejsca do drugiego. Należy rozpatrzeć różną trasę w celu zrozumienia, która jest z nich będzie najlepsza. Następnie wyestymować czas, potrzebny na podróż, przemyśleć sposoby w jaki się tam dostaniesz czy to pieszo czy za pomocą pojazdu. Przygotować potrzebny budżet oraz przeanalizować potencjalne zagrożenia. jak widać zarządzanie projektem nie występuje tylko w biznesie, jest to szeroko pojęte zdarzenie, które doświadczamy każdego dnia. Jednak nawet na tak prostym przykładzie, można zrozumieć jak ważny jest to aspekt naszego życia, a także jak kluczowe ma efekty w biznesie.\\
-
+Wiedząc już dokładnie czym jest projekt, zrozumienie na czym polega zarządzanie nim staje się trywialne. W dużym uproszczeniu jest to proces,  który za pomocą sprecyzowanego planu pozwala na osiągnięcie wyznaczonego przez ciebie lub twoją firmę celu. Stworzenie odpowiedniego planu, podzielonego na szereg kroków, jest tutaj znaczący, ponieważ do osiągnięcia wyznaczonego celu wymagane jest ukończenie wszystkich zadań po drodze. Bardzo często zarządzanie projektem jest porównywane do wchodzenia po schodach bądź wspinania się po drabinie. Aby osiągnąć wyznaczony cel i dojść na samą górę, trzeba krok po kroku zaliczać każdy poziom. Podobnym trafnym porównaniem jest podróż z jednego miejsca do drugiego. Należy rozpatrzeć różną trasę w celu zrozumienia, która jest z nich będzie najlepsza. Następnie wyestymować czas, potrzebny na podróż, przemyśleć sposoby w jaki się tam dostaniesz czy to pieszo czy za pomocą pojazdu. Przygotować potrzebny budżet oraz przeanalizować potencjalne zagrożenia. jak widać zarządzanie projektem nie występuje tylko w biznesie, jest to szeroko pojęte zdarzenie, które doświadczamy każdego dnia. Jednak nawet na tak prostym przykładzie, można zrozumieć jak ważny jest to aspekt naszego życia, a także jak kluczowe ma efekty w biznesie.\cite{zarzadzanie7}\\
+ 
 Zarządzanie projektem nie składa się tylko z planowania i pilnowania czy wszystko idzie zgodnie z założeniami. Jest to również dziedzina która ma na celu budowanie motywacji zespołu projektowego, zadbanie o właściwą komunikację między jego stronami, a także zrozumieniu ich potrzeb. W zależności od rozmiaru firmy proces taki potrafi być bardzo trudny.\\
 
 Innym czynnikiem wchodzącym w skład zarządzania projektem jest analiza zagrożeń oraz praktyczna wiedza pozbywania się ich. Jest to tak zwana eliminacja ryzyka występująca podczas całego cyklu życia projektu. Ryzyko w projektach pochodzi głównie z niemożliwości wyeliminowania niechcianych incydentów oraz niepewności związanej z przyszłością. Do tego typu zdarzeń dochodzi na każdym kroku projektu, wynika to z dynamiki procesu, potencjalnych konfliktów między pracownikami, niespodziewanymi komplikacjami związanymi z zasobami, zmiennej wydajności pracy czy zwyczajnie błędnego planowania. Aby jak najbardziej ograniczyć ryzyko przy jednoczesnej maksymalizacji optymalizacji użycia zasobów zatrudnia się odpowiednią na to miejsce osobę, zwaną menadżerem projektu lub kierownikiem projektu. \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\
@@ -277,7 +277,7 @@ Ostatnią fazą jest faza testów która wykonywana jest już na stworzonym w po
 \end{itemize}
 
 \subsubsection {Testy jednostkowe}
-Testy jednostkowe to testy, których zadaniem jest sprawdzenie poprawności działania pojedynczego, wyizolowanego bytu. Są to najczęściej pojedyncze funkcję, jednostki bądź komponenty. Kluczową cechą tych testów jest brak integracji z API bądź bazą danych (jest to zadanie testów integracyjnych). Tego typu testy muszą działać bardzo szybko (liczone w setkach na sekundę), ponieważ odpalane są wiele razy przez programistów w fazie implementacji. Mają one nie tylko sprawdzać poprawność testowanego komponentu, ale przede wszystkim być dać deweloperom pewność siebie, że implementowane przez nich zmiany w kodzie nie doprowadzą do usterek funkcjonalnych. \\
+Testy jednostkowe to testy, których zadaniem jest sprawdzenie poprawności działania pojedynczego, wyizolowanego bytu. Są to najczęściej pojedyncze funkcję, jednostki bądź komponenty. Kluczową cechą tych testów jest brak integracji z API bądź bazą danych (jest to zadanie testów integracyjnych). Tego typu testy muszą działać bardzo szybko (liczone w setkach na sekundę), ponieważ odpalane są wiele razy przez programistów w fazie implementacji. Mają one nie tylko sprawdzać poprawność testowanego komponentu, ale przede wszystkim być dać deweloperom pewność siebie, że implementowane przez nich zmiany w kodzie nie doprowadzą do usterek funkcjonalnych.\cite{testJ}\\
 
 \begin{figure}[h]
 	\centering
@@ -286,16 +286,16 @@ Testy jednostkowe to testy, których zadaniem jest sprawdzenie poprawności dzia
 \end{figure}
 
 \subsubsection {Testy integracyjne}
-Testy integracyjne są często łączone z testami jednostkowymi, ponieważ są one do siebie bardzo podobne. Diametralną różnicą jest fakt, że testy jednostkowe nie sprawdzają integralności między komponentami a API czy bazą danych, natomiast testy integracyjne już tak. Wykonywane są w celu wykrycia wad i defektów w interfejsach i komponentach oraz służą do testowania poprawnej interakcji między modułami lub systemami. Są one przeprowadzane w celu oceny zgodności systemu lub komponentów z określonymi wymaganiami funkcjonalnymi. Test integracyjny traktuje system jak czarną skrzynka. Testują integralność bez zagłębiania się w szczegóły implementacji, co oznacza, że otrzymywana jest tylko informacja, jaka konkretna funkcjonalność powinna działać oraz co zostać zwrócone jako wynik. Weryfikowane jest czy otrzymany rezultat zgadza się z oczekiwanym wynikiem bazującym na danych wejściowych. Podobnie jak testy jednostkowe są tutaj sprawdzone zaimplementowane funkcje oraz poprawność interfejsów, które powinny zapewnić integralność systemu, mogą one również wskazać błędy w strukturach danych bądź problemy z dostępem do API lub bazy danych.\\
+Testy integracyjne są często łączone z testami jednostkowymi, ponieważ są one do siebie bardzo podobne. Diametralną różnicą jest fakt, że testy jednostkowe nie sprawdzają integralności między komponentami a API czy bazą danych, natomiast testy integracyjne już tak. Wykonywane są w celu wykrycia wad i defektów w interfejsach i komponentach oraz służą do testowania poprawnej interakcji między modułami lub systemami. Są one przeprowadzane w celu oceny zgodności systemu lub komponentów z określonymi wymaganiami funkcjonalnymi. Test integracyjny traktuje system jak czarną skrzynka. Testują integralność bez zagłębiania się w szczegóły implementacji, co oznacza, że otrzymywana jest tylko informacja, jaka konkretna funkcjonalność powinna działać oraz co zostać zwrócone jako wynik. Weryfikowane jest czy otrzymany rezultat zgadza się z oczekiwanym wynikiem bazującym na danych wejściowych. Podobnie jak testy jednostkowe są tutaj sprawdzone zaimplementowane funkcje oraz poprawność interfejsów, które powinny zapewnić integralność systemu, mogą one również wskazać błędy w strukturach danych bądź problemy z dostępem do API lub bazy danych.\cite{testI}\\
 
 \subsubsection {Testy obciążeniowe}
-Testy obciążeniowe nazywane mogą być również testami wydajnościowymi ze względu na ich główny cel. Podczas ich wykonywania testowana jest próba obciążenia serwera, bazy danych oraz samego systemu naszej aplikacji bazując na wcześniej przygotowanych scenariuszach użycia oraz w oparciu o wygenerowane wirtualnych użytkowników których zadaniem jest wykonanie wcześniej stworzonych scenariuszy. Przykładowymi scenariuszami użycia są wszelkie działania, które może wykonać klient na przykład proces rejestracji czy logowania. Testy obciążeniowe mają za zadanie wskazać krytyczne punkty systemu, które w negatywny sposób wpływają na wydajność tworzonego systemu. Sprawdzają realny ruch na serwerze, który następnie pozwala na zdobycie punktu odniesienia oraz możliwości sprawdzenia czy nasz projekt spełnia wymogi wydajnościowe, brak wiedzy z tego zakresu może doprowadzić do braku akceptacji na wdrożenia.\\
+Testy obciążeniowe nazywane mogą być również testami wydajnościowymi ze względu na ich główny cel. Podczas ich wykonywania testowana jest próba obciążenia serwera, bazy danych oraz samego systemu naszej aplikacji bazując na wcześniej przygotowanych scenariuszach użycia oraz w oparciu o wygenerowane wirtualnych użytkowników których zadaniem jest wykonanie wcześniej stworzonych scenariuszy. Przykładowymi scenariuszami użycia są wszelkie działania, które może wykonać klient na przykład proces rejestracji czy logowania. Testy obciążeniowe mają za zadanie wskazać krytyczne punkty systemu, które w negatywny sposób wpływają na wydajność tworzonego systemu. Sprawdzają realny ruch na serwerze, który następnie pozwala na zdobycie punktu odniesienia oraz możliwości sprawdzenia czy nasz projekt spełnia wymogi wydajnościowe, brak wiedzy z tego zakresu może doprowadzić do braku akceptacji na wdrożenia.\cite{testO}\\
 
 \subsubsection {Testy funkcjonalne}
-Testy funkcjonalne są to testy które opierają się na analizie specyfiki funkcjonalnej tworzonego oprogramowania, systemu bądź modułu. Są one najczęściej wykonywane przez osoby które nie miały styczności z zaimplementowanym kodem. Testerzy mają za zadanie poddanie próbie stworzony system bez znajomości jego budowy. Głównym zamysłem nie jest przetestowanie konstrukcji bądź architektury lecz jego założenia funkcjonalne, to znaczy mają wykryć błędy zaimplementowanych funkcjonalności, które zostały zawarte w dokumentacji.\\
+Testy funkcjonalne są to testy które opierają się na analizie specyfiki funkcjonalnej tworzonego oprogramowania, systemu bądź modułu. Są one najczęściej wykonywane przez osoby które nie miały styczności z zaimplementowanym kodem. Testerzy mają za zadanie poddanie próbie stworzony system bez znajomości jego budowy. Głównym zamysłem nie jest przetestowanie konstrukcji bądź architektury lecz jego założenia funkcjonalne, to znaczy mają wykryć błędy zaimplementowanych funkcjonalności, które zostały zawarte w dokumentacji.\cite{testF}\\
 
 \subsubsection {Testy akceptacyjne}
-Testy akceptacyjne to inny gatunek testów, ponieważ nie skupiają się one na znalezieniu błędów czy pomyłek w implementacji systemu, mają one na celu potwierdzenie wykonania oprogramowania na odpowiednim poziomie. Służą do uzyskania formalnego potwierdzenia od klienta bądź osób zewnętrznych, że wykonany projekt spełnia kryteria jakościowe. Ważnym ich aspektem jest również weryfikacja czy nie brakuje założonych w dokumentacji funkcjonalności oraz czy procesy biznesowe przechodzą w prawidłowy sposób, taki aby zbudowały zaufanie wśród odbiorców. Następnym testowanym czynnikiem jest potwierdzenie czy aplikacja jest zgodna z dokumentacją. Testy akceptacyjne są ostatnim etapem weryfikowania poprawności zrealizowania systemu informatycznego, na jego podstawie menedżerowie odpowiedzialni za rozwój projektu podejmują decyzję o wdrożeniu do użytkowania produkcyjnego. \\ \\ \\ \\ \\ \\ \\ \\
+Testy akceptacyjne to inny gatunek testów, ponieważ nie skupiają się one na znalezieniu błędów czy pomyłek w implementacji systemu, mają one na celu potwierdzenie wykonania oprogramowania na odpowiednim poziomie. Służą do uzyskania formalnego potwierdzenia od klienta bądź osób zewnętrznych, że wykonany projekt spełnia kryteria jakościowe. Ważnym ich aspektem jest również weryfikacja czy nie brakuje założonych w dokumentacji funkcjonalności oraz czy procesy biznesowe przechodzą w prawidłowy sposób, taki aby zbudowały zaufanie wśród odbiorców. Następnym testowanym czynnikiem jest potwierdzenie czy aplikacja jest zgodna z dokumentacją. Testy akceptacyjne są ostatnim etapem weryfikowania poprawności zrealizowania systemu informatycznego, na jego podstawie menedżerowie odpowiedzialni za rozwój projektu podejmują decyzję o wdrożeniu do użytkowania produkcyjnego.\cite{testA} \\ \\ \\ \\ \\ \\ \\ \\
 
 \begin{figure}[h]
 	\centering
@@ -315,7 +315,7 @@ Kolejnym faktorem jest rozmiar projektu, w metodykach klasycznych tworzone są n
 
 Kontakt z klientem w metodyce klasycznej nie jest konieczny. Występuje on na początku w fazie zbierania informacji oraz specyfikacji wymagań do projektu. Jak również na samym końcu przy prezentacji projektu. W charakterze zwinnym podejście jest ponownie odmienne, kontakt z klientem jest ciągły, stąd też wspomniana wcześniej tendencja do zmian w trakcie projektu, bowiem klienci zgłaszają swoje opinie oraz zastrzeżenia w trakcie realizacji projektu co często doprowadza do przekształcania zakresu projektu.\\
 
-Zaangażowanie zasobów ludzkich w obu metodykach jest ponownie różne. W charakterystyce zwinnej nie ma ustalonej hierarchii pracowników, posiadają oni sporą autonomię a ich współpraca jest dostrzegalna na praktycznie wszystkich płaszczyznach. Sytuacja w metodyce tradycyjnej wprowadza hierarchię, w zespołach występuje osoba która nie wykonuje tych samych zadań co pozostali członkowie zespołu - lider.\\
+Zaangażowanie zasobów ludzkich w obu metodykach jest ponownie różne. W charakterystyce zwinnej nie ma ustalonej hierarchii pracowników, posiadają oni sporą autonomię a ich współpraca jest dostrzegalna na praktycznie wszystkich płaszczyznach. Sytuacja w metodyce tradycyjnej wprowadza hierarchię, w zespołach występuje osoba która nie wykonuje tych samych zadań co pozostali członkowie zespołu - lider. \cite{modele}\cite{agileVwaterfall}\\
 
 Poniższa tabela w skondensowany sposób przedstawia kontrast między dwoma metodykami.\\
 
@@ -326,7 +326,7 @@ Poniższa tabela w skondensowany sposób przedstawia kontrast między dwoma meto
 \end{figure}
 
 \subsection {Metoda waterfall}
-Metoda waterfall to przykład modelu kaskadowego nazywanym również klasycznym, to jeden z wielu rodzajów procesów stworzenia oprogramowania. Polega na kaskadowym przechodzeniu pomiędzy ukończonymi wcześniej fazami. Zgodnie z wizją autora tej metodyki o sukcesie projektu decydują dokładne zaplanowanie poszczególnych zadań oraz bezwzględne przestrzeganie terminów. Najważniejszym elementem tej metody jest szczegółowy plan oraz tworzona dokumentacja do każdej fazy projektu. Zakłada on sekwencyjną realizacje ustalonych etapów. Występują one kolejno po sobie i tworzą niezależne zadania. W wyniku braku możliwości przejścia do następnego etapu przed zakończeniem poprzedniego występuje wysokie ryzyko pojawienia się błędów które będą bardzo kosztowne w naprawie.\\
+Metoda waterfall to przykład modelu kaskadowego nazywanym również klasycznym, to jeden z wielu rodzajów procesów stworzenia oprogramowania. Polega na kaskadowym przechodzeniu pomiędzy ukończonymi wcześniej fazami. Zgodnie z wizją autora tej metodyki o sukcesie projektu decydują dokładne zaplanowanie poszczególnych zadań oraz bezwzględne przestrzeganie terminów. Najważniejszym elementem tej metody jest szczegółowy plan oraz tworzona dokumentacja do każdej fazy projektu. Zakłada on sekwencyjną realizacje ustalonych etapów. Występują one kolejno po sobie i tworzą niezależne zadania. W wyniku braku możliwości przejścia do następnego etapu przed zakończeniem poprzedniego występuje wysokie ryzyko pojawienia się błędów które będą bardzo kosztowne w naprawie.\cite{waterfall}\\
 
 
 \begin{figure}[h]
@@ -338,7 +338,7 @@ Metoda waterfall to przykład modelu kaskadowego nazywanym również klasycznym,
 \subsection{Metody zwinne czyli Agile}
 
 \subsubsection{Manifest Agile}
-Manifest agile wprowadzony w 2001 roku zaproponował i wprowadził nowe spojrzenie na możliwości wytwarzania oprogramowania. Przede wszystkim podkreślił wagę pracy zespołowej i interakcji międzyludzkiej nad dotychczasowej koncentracji na procesach i narzędziach. Zwrócono uwagę nad kontaktem z klientem oraz na tworzeniu roboczego oprogramowania zamiast wszechstronnej dokumentacji. Największym przeciwieństwem do dotychczasowych metod było zaakceptowanie powrotu do fazy implementacyjnej w celu zareagowania na błędy i sugestie.\\ \\
+Manifest agile wprowadzony w 2001 roku zaproponował i wprowadził nowe spojrzenie na możliwości wytwarzania oprogramowania. Przede wszystkim podkreślił wagę pracy zespołowej i interakcji międzyludzkiej nad dotychczasowej koncentracji na procesach i narzędziach. Zwrócono uwagę nad kontaktem z klientem oraz na tworzeniu roboczego oprogramowania zamiast wszechstronnej dokumentacji. Największym przeciwieństwem do dotychczasowych metod było zaakceptowanie powrotu do fazy implementacyjnej w celu zareagowania na błędy i sugestie.\cite{agile}\\ \\
 
 \begin{figure}[h]
 	\centering
@@ -361,7 +361,7 @@ Poniższy model obrazuje podejście iteracyjne, które jest charakterystyczne w 
 
 \section{Wykorzystanie Agile w tworzeniu gry}
 \subsection{Agile Game Development}
-Agile Game Development to angielska nazwa na wykorzystanie podejścia zwinnego w tworzeniu gry komputerowej. Samo podejście nie różni się niczym szczególnym od standardowego. Kluczowe jest natomiast pokazanie jak wiele możliwości wprowadza Agile do życia projektu gry. Głównym z nim jest wcześniej rozwinięty model iteracyjny. Dzięki niemu cząstki gry, posiadające nowe funkcjonalności, znacznie częściej trafiają na testy do grupy docelowej. Takie podejście pozwoliło naprawić wiele błędów, których nie udało się wykryć w fazie implementacyjnej oraz poprawić działanie wielu funkcjonalności. Podczas realizacji zadań i rozwijania gry, programista może wpaść w pułapkę subiektywnej opinii dotyczącej zaimplementowanych rozwiązań. Jak to zwykle się zdarza bywają one błędne i posiadanie możliwości weryfikacji tego na tak wstępnym etapie wprowadza ogromną wartość w projekcie. Pomimo przypisaniu takich elementów jak model iteracyjny czy częsty kontakt z klientem do podejścia zwinnego to w rzeczywistości są to nadrzędne składowe metod, z których składa się metodyka Agile (przypominając metodyka to zbiór wcześniej założonych metod). W projekcie „The Lore” została wykorzystana fuzja trzech najpopularniejszych, ponieważ jest to najbardziej znana i wykorzystywana strategia w projektach komercyjnych. Do tej grupy należą:\\
+Agile Game Development to angielska nazwa na wykorzystanie podejścia zwinnego w tworzeniu gry komputerowej. Samo podejście nie różni się niczym szczególnym od standardowego. Kluczowe jest natomiast pokazanie jak wiele możliwości wprowadza Agile do życia projektu gry. Głównym z nim jest wcześniej rozwinięty model iteracyjny. Dzięki niemu cząstki gry, posiadające nowe funkcjonalności, znacznie częściej trafiają na testy do grupy docelowej. Takie podejście pozwoliło naprawić wiele błędów, których nie udało się wykryć w fazie implementacyjnej oraz poprawić działanie wielu funkcjonalności. Podczas realizacji zadań i rozwijania gry, programista może wpaść w pułapkę subiektywnej opinii dotyczącej zaimplementowanych rozwiązań. Jak to zwykle się zdarza bywają one błędne i posiadanie możliwości weryfikacji tego na tak wstępnym etapie wprowadza ogromną wartość w projekcie. Pomimo przypisaniu takich elementów jak model iteracyjny czy częsty kontakt z klientem do podejścia zwinnego to w rzeczywistości są to nadrzędne składowe metod, z których składa się metodyka Agile (przypominając metodyka to zbiór wcześniej założonych metod). W projekcie „The Lore” została wykorzystana fuzja trzech najpopularniejszych, ponieważ jest to najbardziej znana i wykorzystywana strategia w projektach komercyjnych.\cite{Agile game} Do tej grupy należą:\\
 
 \begin{itemize}
 	\item SCRUM
@@ -371,7 +371,7 @@ Agile Game Development to angielska nazwa na wykorzystanie podejścia zwinnego w
 
 \subsubsection{SCRUM}
 
-Scrum to zdecydowanie kluczowa i prawdopodobnie najważniejsza część Agile. To ona jest odpowiedzialna za zarządzanie procesem iteracyjnym w projekcie. Jednak w tym przypadku pojedyncze iteracje nazywane są sprintami. Czyli wcześniej zdefiniowanymi partiami pracy, posiadającymi przypisane do nich zadania do wykonania oraz z wydzielonym terminem. Sprinty trwają najczęściej od dwóch do czterech tygodni w zależności od zarządzeń czy planów biznesowych. W przypadku „The Lore” sprinty w początkowej fazie prac, czyli około trzech miesięcy trwały dwa tygodnie, a następnie zostało to zredukowane do jednego tygodnia. Wynikało to z wzrostu jakości otrzymywanego produktu, ponieważ był on częściej oddawany w ręce testerów, a także sam proces programistyczny mógł być lepiej rozplanowany. Dawało to możliwość przypisania sprintów do wykonania konkretnych funkcjonalności zamiast tworzenia przeładowanego sprintu z różnymi funkcjonalnościami. Tym samym wzrosła wydajność pracy, ponieważ grupa docelowa oczekiwała już gotowego uaktualnienia produktu. Kolejnym doskonałym elementem scrum’u jest wprowadzenie ról poszczególnych członków zespołu. Jak wcześniej było wspomniane w podejściu zwinnym brakuje hierarchizacji w zespole co może doprowadzić do katastrofy organizacyjnej. Dlatego też Scrum wprowadza trzy funkcje:
+Scrum to zdecydowanie kluczowa i prawdopodobnie najważniejsza część Agile. To ona jest odpowiedzialna za zarządzanie procesem iteracyjnym w projekcie. Jednak w tym przypadku pojedyncze iteracje nazywane są sprintami. Czyli wcześniej zdefiniowanymi partiami pracy, posiadającymi przypisane do nich zadania do wykonania oraz z wydzielonym terminem. Sprinty trwają najczęściej od dwóch do czterech tygodni w zależności od zarządzeń czy planów biznesowych. W przypadku „The Lore” sprinty w początkowej fazie prac, czyli około trzech miesięcy trwały dwa tygodnie, a następnie zostało to zredukowane do jednego tygodnia. Wynikało to z wzrostu jakości otrzymywanego produktu, ponieważ był on częściej oddawany w ręce testerów, a także sam proces programistyczny mógł być lepiej rozplanowany. Dawało to możliwość przypisania sprintów do wykonania konkretnych funkcjonalności zamiast tworzenia przeładowanego sprintu z różnymi funkcjonalnościami. Tym samym wzrosła wydajność pracy, ponieważ grupa docelowa oczekiwała już gotowego uaktualnienia produktu. Kolejnym doskonałym elementem scrum’u jest wprowadzenie ról poszczególnych członków zespołu. Jak wcześniej było wspomniane w podejściu zwinnym brakuje hierarchizacji w zespole co może doprowadzić do katastrofy organizacyjnej.\cite{agileHunt} Dlatego też Scrum wprowadza trzy funkcje:
 
 \begin{itemize}
 	\item Scrum Master
@@ -398,7 +398,7 @@ Ostatnią grupą jest zespół deweloperski. Charakterystyką tej roli jest odpo
 Na powyższym zdjęciu prezentowany jest cykl realizacji sprintów oraz poglądowa wizaulizacja modelu pracy w Scrum'ie. \\ 
 
 \subsubsection{Kanban}
-Kanban to kolejna metoda w metodyce Agile. Jej głównym założeniem jest wizualizacja procesu realizacji zadań. Przy użyciu tak zwanej tablicy kanbanowej było obrazowane w którym etapie znajduje się poszczególne zadanie. W projekcie „The Lore” tablica została podzielona na najprostszy układ tj. podział na czynności „do zrobienia”, „w trakcie realizacji” i  „zrobione”. Jej celem było doprowadzanie do sytuacji w której organizacja pracy poszczególnych osób z zespołu jest widoczna dla wszystkich. Dzięki temu proces realizacji zadań od siebie zależnych przechodził w procesie bezproblemowym i jawnym. Jednocześnie dawało to wizualne potwierdzenie na jakim etapie pracy jest każdy członek zespołu. Przy niezadowalającym tempie pracy interweniował Scrum master lub właściciel produktu.\\
+Kanban to kolejna metoda w metodyce Agile. Jej głównym założeniem jest wizualizacja procesu realizacji zadań. Przy użyciu tak zwanej tablicy kanbanowej było obrazowane w którym etapie znajduje się poszczególne zadanie. W projekcie „The Lore” tablica została podzielona na najprostszy układ tj. podział na czynności „do zrobienia”, „w trakcie realizacji” i  „zrobione”. Jej celem było doprowadzanie do sytuacji w której organizacja pracy poszczególnych osób z zespołu jest widoczna dla wszystkich. Dzięki temu proces realizacji zadań od siebie zależnych przechodził w procesie bezproblemowym i jawnym. Jednocześnie dawało to wizualne potwierdzenie na jakim etapie pracy jest każdy członek zespołu. Przy niezadowalającym tempie pracy interweniował Scrum master lub właściciel produktu.\cite{kanban}\\
 
 
 \begin{figure}[h]
@@ -421,7 +421,7 @@ Podczas pierwszych faz realizacji projektu „The Lore” była tworzona szeroka
 
 Dokument wizji projektu - jego głównym założeniem jest przedstawienie przeznaczenia tworzonego oprogramowania oraz jego głównych cech i przyjętych założeń. Dokument dzieli się na sekcje wprowadzenia, celu projektu, badania rynku, użytkowników docelowych, szczegółowego opisu produktu wraz z zakresem i ograniczeniami. \\
 
-Value Proposition Canvas (VPC) to angielska nazwa na przedstawienie unikalnej propozycji wartości modelu biznesowego. Jego celem jest łatwiejsza analiza i zaprojektowanie  produktu wraz z jak najtrafniejszym skonfigurowaniem rozwiązań pod potrzeby klientów.\\ \\ \\ \\ \\ \\ \\
+Value Proposition Canvas (VPC) to angielska nazwa na przedstawienie unikalnej propozycji wartości modelu biznesowego. Jego celem jest łatwiejsza analiza i zaprojektowanie  produktu wraz z jak najtrafniejszym skonfigurowaniem rozwiązań pod potrzeby klientów.\cite{VPC}\\ \\ \\ \\ \\ \\ \\
 
 \begin{figure}[h]
 	\centering
@@ -437,7 +437,7 @@ Value Proposition Canvas (VPC) to angielska nazwa na przedstawienie unikalnej pr
 
 Powyżej przedstawiony jest przykład unikalnej propozycji wartości modelu biznesowego oraz już oficjalny model z projektu gry "The Lore".\\ \\ \\ \\ \\ \\ \\ \\ \\ 
 
-Business Model Canvas (BMC) to podobnie jak VPC angielska nazwa na szablon modelu biznesowego. Jego zadaniem jest w wizualny sposób przedstawienie w jaki sposób planowany projekt ma przynieść zyski. Składa się z 9 podstawowych obszarów, które obrazują grupę docelowych użytkowników oraz w jaki sposób zostanie im dostarczony produkt. Jednocześnie pokazuje wszelkie korelacje z wydatkami jak i potencjalnymi zarobkami planowanego projektu.\\
+Business Model Canvas (BMC) to podobnie jak VPC angielska nazwa na szablon modelu biznesowego. Jego zadaniem jest w wizualny sposób przedstawienie w jaki sposób planowany projekt ma przynieść zyski. Składa się z 9 podstawowych obszarów, które obrazują grupę docelowych użytkowników oraz w jaki sposób zostanie im dostarczony produkt. Jednocześnie pokazuje wszelkie korelacje z wydatkami jak i potencjalnymi zarobkami planowanego projektu.\cite{BMC}\\
 
 
 \begin{figure}[h]
@@ -469,13 +469,13 @@ Poniżej przedstawione są zdjęcia prototypów interfejsów graficznych główn
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12cm]{images/hyps/proto.png}
+	\includegraphics[width=10cm]{images/hyps/proto.png}
 	\caption{Prototyp interfejsu menu głównego. Przykład z The Lore}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12cm]{images/hyps/proto2.jpg}
+	\includegraphics[width=10cm]{images/hyps/proto2.jpg}
 	\caption{Prototyp interfejsu menu sterowania. Przykład z The Lore}
 \end{figure}
 
@@ -483,39 +483,37 @@ Poniżej przedstawione są zdjęcia wdrożonych interfejsów graficznych główn
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12cm]{images/hyps/of1.png}
+	\includegraphics[width=10cm]{images/hyps/of1.png}
 	\caption{Wdrożony interfejs menu głównego. Przykład z The Lore}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12cm]{images/hyps/of2.png}
+	\includegraphics[width=10cm]{images/hyps/of2.png}
 	\caption{Wdrożony interfejs menu sterowania. Przykład z The Lore}
 \end{figure}
 
 \subsubsection{Faza implementacji i testów}
 
 Faza implementacji wraz z testami była powtarzana wielokrotnie w wyniku metodyki Agile. Poprzez model iteracyjny każdy sprint wykorzystywany był do zaimplementowania wcześniej zaprojektowanych funkcjonalności oraz przedstawienia ich grupie testerów. Dzięki nim w projekcie gry „The Lore” zespół deweloperski był w stanie na bieżąco wprowadzać wszelkie poprawki wraz z sugestiami otrzymywanymi podczas testów. Przykładową funkcjonalnością jest element poziomu samouczka – poruszające się platformy. Zgodnie z powtarzającą się opinią o trudności w przechodzeniu tego elementu, zostały wprowadzone poprawki wraz z dodatkowymi ułatwieniami. Przykładowym rozwiązaniem było dodanie specjalistycznej fizyki, która miała na celu przyciąganie gracza w kierunku nadchodzącej platformy. Innym, bardziej wizualnym ułatwieniem było dodanie tras po których poruszają się platformy. Ostatnim ułatwieniem było zmniejszenie prędkości poruszania się platform oraz powiększenie ich powierzchni. \\ \\ 
-Poniżej przedstawiono zdjęcie z pierwszej iteracji tworzonej funkcjonalności\\
+Poniżej przedstawiono zdjęcia z pierwszej i ostatniej iteracji tworzonej funkcjonalności, która odzwierciedla zmiany po otrzymanych uwagach z fazy testów\\
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=14cm]{images/hyps/platfBef.png}
+	\includegraphics[width=12cm]{images/hyps/platfBef.png}
 	\caption{Pierwsza iteracja ruchomych platform. Przykład z The Lore}
 \end{figure}
 
-Poniżej pokazana jest już ostania iteracja, która posiada wszelkie uwagi otrzymane z fazy testów \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\
-
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=14cm]{images/hyps/platfAfter.png}
+	\includegraphics[width=12cm]{images/hyps/platfAfter.png}
 	\caption{Ostatnia iteracja ruchomych platform. Przykład z The Lore}
 \end{figure}
 
 To był jeden z wielu procesów poprawionych dzięki otrzymanej opinii podczas testów, jednak wystarczająco poważny żeby pokazać jak kluczowym było wybranie metodyki Agile w projekcie stworzenia gry komputerowej „The Lore”.\\
 
-
-
+\section{Podsumowanie}
+Podsumowując, w niniejszym rozdziale pracy zostały przedstawione fundamentalne pojęcia oraz procesy realizacji projektu informatycznego. Poprzez zdefiniowanie i zobrazowanie podstawowego podziału cyklu życia projektu oraz wskazanie jednych z najważniejszych i najpopularniejszych zagadnień poszczególnych elementów przybliżono czytelnikowi życie projektu. Dzięki temu długiemu wprowadzeniu, możliwe było przedstawienie owego procesu na przykładzie gry "The Lore". Podkreślając wagę każdego członu projektu można zauważyć jak niezbędną rolę ma cały proces, który pozwala z wyższym prawdopodobieństwem ukończyć projekt z sukcesem. 
 
 
 
@@ -1023,12 +1021,123 @@ Jak widać, projektowanie zagadek logicznych jako mini-gry może nie być aż ta
 Robert K. Wysocki, Rudd McGary: Efektywne zarządzanie projektami. Wydanie III, ISBN: 83-7361-861-9, dostęp w internecie 26.01.2021r.
 http://pdf.onepress.pl/efzapr/efzapr-1.pdf
 
+\bibitem{projekt2}
+CorazLepszyPortalBiznesowy. Co to jest projekt?, dostęp w internecie 25.01.2021r.
+https://www.corazlepszyportalbiznesowy.pl/art/co-to-jest-projekt
+
+\bibitem{projekt3}
+NaRUDO. Co to jest projekt i dlaczego się nim zarządza?, dostęp w internecie 25.01.2021r.
+https://narudo.pl/co-to-jest-projekt/
+
+\bibitem{zarzadzanie}
+Encyklopedia Zarządzania. Proces zarządzania projektem, dostęp w internecie 26.01.2021r.
+
+\bibitem{zarzadzanie2}
+Projekt gamma.Zarządzanie projektem - czym jest?, dostęp w internecie 26.01.2021r.
+https://www.projektgamma.pl/strefa-wiedzy/artykuly/zarzadzanie-projektem-czym-jest
+
+\bibitem{zarzadzanie3}
+STARTUPLAB. Na czym polega zarządzanie projektami?, dostęp w internecie 26.01.2021r.
+https://startuplab.pl/2019/01/na-czym-polega-zarzadzanie-projektami/
+
+\bibitem{zarzadzanie4}
+Zarządzanie projektami IT. Definicja, cechy i rodzaje projektów, dostęp w internecie 27.01.2021r.
+http://zarzadzanieprojektami.it/12.html
+
+\bibitem{zarzadzanie5}
+Indeed. 5 Phases of the Project Management Life Cycle, dostęp w internecie 27.01.2021r.
+https://www.indeed.com/career-advice/career-development/\\phases-of-project-management-life-cycle\#3C
+
+\bibitem{zarzadzanie6}
+taskbeat. Czym jest zarządzanie projektem?, dostęp w internecie 27.01.2021r.
+https://www.taskbeat.pl/2013/01/czym-jest-zarzadzanie-projektem/
+
+\bibitem{zarzadzanie7}
+Frączkowski K.: Zarządzanie projektem informatycznym: 
+Projekty w środowisku wirtualnym Czynniki sukcesu i niepowodzeń projektów[online]
+Oficyna Wydawnicza Politechniki Wrocławskiej, Wrocław 2003.
+ISBN 83-7085-731-0, dostęp w internecie 27.01.2021r
+https://www.dbc.wroc.pl/Content/998/fraczkowski\_zarzadzanie\_projektem.pdf
+
+\bibitem{zarzadzanie8}
+The balance careers. Basic Project Management 101, dostęp w internecie 27.01.2021r.
+https://www.thebalancecareers.com/project-management-101-2275338
+
+\bibitem{testJ}
+Devpark. Testowanie aplikacji – testy integracyjne, jednostkowe i smoke test, dostęp w internecie 28.01.2021r.
+https://devpark.pl/pl/testowanie-aplikacji-testy-integracyjne-jednostkowe-i-smoke-testy/
+
+\bibitem {testI}
+Wikipedia, Wolna Encyklopedia.Testy integracyjne, dostęp w internecie 28.01.2021r.
+https://pl.wikipedia.org/wiki/Testy\_integracyjne
+
+\bibitem {testF}
+TESTERKA.Testy funkcjonalne, dostęp w internecie 28.01.2021r.
+http://testerka.pl/testy-funkcjonalne/
+
+\bibitem {testA}
+ForProgress.Testy Akceptracyjne, dostęp w internecie 28.01.2021r.
+https://forprogress.com.pl/testy-akceptacyjne/
+
+\bibitem {testO}
+Kaliop.Testy obciążeniowe, dostęp w internecie 28.01.2021r.
+https://www.kaliop.pl/Blog/Artykuly/Testy-obciazeniowe-czyli-jak-weryfikujemy\\-stabilne-dzialanie-aplikacji-internetowych
+
 \bibitem{IO- Helion}
-Bernd Bruegge, Allen H. Dutoit: Inżynieria oprogramowania w ujęciu obiektowym. UML, wzorce projektowe i Java. Helion. ISBN: 978 - 83-24 6 -2872-8, dostęp 28.01.2021r.
+Bernd Bruegge, Allen H. Dutoit: Inżynieria oprogramowania w ujęciu obiektowym. UML, wzorce projektowe i Java. Helion.
+ISBN: 978 - 83-24 6 -2872-8, dostęp 29.01.2021r.
+
+\bibitem{wykresy}
+ScienceSoft. 8 Software Development Models: Sliced, Diced and Organized in Charts.  dostęp w internecie 29.01.2021r.
+https://www.scnsoft.com/blog/software-development-models
+
+\bibitem{modele}
+NaRUDO. Zwinne i tradycyjne zarządzanie projektami. dostęp w internecie 29.01.2021r.
+https://narudo.pl/zwinne-i-tradycyjne-zarzadzanie-projektam/
+
+\bibitem{waterfall}
+Wikipedia, Wolna Encyklopedia. Model kaskadowy, dostęp w internecie 29.01.2021r.
+https://pl.wikipedia.org/wiki/Model\_kaskadowy
+
+\bibitem{agile}
+Agile247. Czym jest agile? dostęp w internecie 29.01.2021r.
+https://agile247.pl/agile/
+
+\bibitem{agile2}
+Harvard Business Review. Embracing Agile, dostęp w internecie 29.01.2021r.
+https://hbr.org/2016/05/embracing-agile
+
+\bibitem{agileVwaterfall}
+global4net. Waterfall czy Agile – którą metodykę wybrać? dostęp w internecie 30.01.2021r.
+https://global4net.com/ecommerce/waterfall-czy-agile-ktora-metodyke-wybrac/
+
+\bibitem{agilePract}
+starloop. Best Agile Practices in Game Development, dostęp w internecie 30.01.2021r.
+https://starloopstudios.com/best-agile-practices-in-game-development/
+
+\bibitem{agileHunt}
+Agile Hunters. Role w Scrum, dostęp w internecie 30.01.2021r.
+https://agilehunters.com/role-w-scrum/
+
+\bibitem{kanban}
+LUQAM. Kanban – czym jest, cele i efekty, dostęp w internecie 30.01.2021r.
+https://www.luqam.com/kanban-czym-jest-cele-i-zastosowanie/
 
 \bibitem{jira}
 Jira: wszystko, co potrzebujesz wiedzieć, Michał Żurkowski, dostęp w internecie 31.01.2021r.
 https://blog.deviniti.com/pl/atlassian-pl/jira-wszystko-co-potrzebujesz-wiedziec/
+
+\bibitem{VPC}
+PRODUCTVISION, Value Proposition Canvas – unikalna propozycja wartości modelu biznesowego, dostęp w internecie 01.02.2021r.
+https://productvision.pl/2014/value-proposition-canvas-unikalna-propozycja\\-wartosci-modelu-biznesowego/
+
+\bibitem{BMC}
+PRODUCTVISION, Business Model Canvas – szablon modelu biznesowego, dostęp w internecie 01.02.2021r.
+https://productvision.pl/2014/business-model-canvas-szablon-modelu-biznesowego/
+
+\bibitem{Agile game}
+Marionette. Agile Game Development – A Quick Overview. dostęp w internecie 01.02.2021r.
+https://marionettestudio.com/agile-game-development-quick-overview/
 
 \bibitem{zagadka_logiczna} 
 Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
