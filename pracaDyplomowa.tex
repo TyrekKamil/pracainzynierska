@@ -1067,7 +1067,7 @@ Animacja biegania w naszym projekcie posiada tylko 4 stany, z czego ostatni stan
 
 \section{Poruszanie się}
 \subsection{Omówienie zagadnienia}
-Zagadnienie poruszania się dotyczy całego procesu skryptowego postaci. Elementy potrzebne do przygotowania postaci do środowiska deweloperskiego jak i wszelkie aspekty wprowadzenia postaci w ruch oraz jej responsywność. Przedstawione zostaną problemy związane z tworzeniem poszczególnych funkcjonalności oraz sposoby ich rozwiązania. Zostanie również przedstawiony szczegółowy proces implementacji poszczególnych funkcjonalności jak i sposoby ich wdrożenia. W tym rozdziale również zostanie przedstawiona fizyka postaci oraz poszczególne rzeczy, które pokrywają się z fizyką świata rzeczywistego, a które od takiej fizyki odbiegają.
+Zagadnienie poruszania się dotyczy całego procesu skryptowego postaci. Elementy potrzebne do przygotowania postaci do środowiska deweloperskiego jak i wszelkie aspekty wprowadzenia postaci w ruch oraz jej reakcje na wejście wprowadzane przez użytkownika. Przedstawione zostaną problemy związane z tworzeniem poszczególnych funkcjonalności oraz sposoby ich rozwiązania. Zostanie również przedstawiony szczegółowy proces implementacji poszczególnych funkcjonalności jak i sposoby ich wdrożenia. W tym rozdziale również zostanie przedstawiona fizyka postaci oraz poszczególne rzeczy, które pokrywają się z fizyką świata rzeczywistego, a które od takiej fizyki odbiegają.
 \subsection{Fizyka w grach 2D, a w prawdziwym świecie}
  Pojęcie fizyki w grach składa się na dwa główne komponenty, jednym z nich jest silnik fizyki, natomiast drugim silnik kolizji. Pomimo, że silnik fizyki jest zależny od silnika kolizji nie zajmują się one tym samym.
 Silnik kolizji dzieli się na dwie części: detekcja kolizji oraz jej responsywność, która jest częścią silnika fizyki, z tego faktu oba te silniki przeważnie występują w jednej bibliotece. Wykrywanie kolizji występuje w dwóch formach: ciągłej i oddzielnej. Ogólnie używanie ciągłej detekcji jest bardzo kosztowne w zasoby oraz może skutkować dużymi spadkami wydajnościowymi, dlatego w grach staramy się używać jej tylko wtedy kiedy naprawdę jest potrzebna. W większości wypadków sprowadza się to do tego, że zamiast zatrzymywać użytkownika przed wbiegnięciem w ścianę, jego pozycja jest zmieniana już kiedy w te ścianę częściowo wbiegnie, podobnie jest z podłożem. W prawdziwym świecie naturalnie nie istnieje możliwość wbiegnięcia w ścianę i ponownej teleportacji we wcześniejsze miejsce i nie jesteśmy ograniczani sposobami wydajnościowymi. Jeśli chodzi o wykrywanie kolizji z wykorzystaniem ruchomych obiektów, początków łamigłówek, kolizji z podłożem w celu możliwości skoku czy kontaktu z przeciwnikiem, używamy do tego pustego obiektu usytuowanego w postaci w celu sprawdzania kolizji od tego obiektu. Często wysunięty jest on w konkretnym kierunku, w którym w danym momencie musimy sprawdzać konkretne kolizje. Sprawdzanie kolizji to nic innego jak stworzenie otoczenia wokół naszego obiektu w postaci człowieka (wielkość takiego koła często zależy od konkretnej sytuacji do której chcemy go użyć), a następnie sprawdzenie czy kolizja tego obiektu nie nachodzi na żaden inny obiekt z otoczenia. 
@@ -1239,7 +1239,13 @@ void Grab()
 \end{lstlisting}
 
 Problem trzymania się liny został rozwiązany przy użyciu połączenia stałego między postacią, a jednym z obiektów lin, ponieważ lina sama w sobie składa się z kilkunastu fragmentów połączonych, aby uniknąć błędów przy połączeniu brana jest pod uwagę tylko jedna z wykrytych przez skrypt kolizji. Warto zaznaczyć też, że bujanie liną jest możliwe ze względu na możliwość ruchu postaci w powietrzu, gdyby nie to trzeba by było zmodyfikować klasę dotyczącą poruszania się tak, aby ruch był możliwy również w trakcie kontaktu z liną. Połączenie stałe między postacią a liną zostaje zerwane w momencie puszczenia przycisku akcji, po czym użytkownikowi przysługuje jeszcze jeden skok.
-\subsection{Umiejętności związane z poruszaniem się}
+\section{Umiejętności postaci}
+\subsection{Omówienie zagadnienia umiejętności}
+Umiejętności postaci to nowe mechaniki wprowadzone do gry w celu zarówno zwiększenia dynamiki rozgrywki jak i ulepszenia doznań użytkownika. Sekcja ta poświęcona będzie zarówno projekcie i mechanikach wewnątrz całego drzewka całego drzewka umiejętności jak i całemu projektowaniu i problemach związanych z poszczególnymi umiejętnościami. Przedstawione zostanie całe przygotowanie graficzne drzewka jak i różne sposoby na implementację tych samych umiejętności.
+\subsection{Drzewko umiejętności}
+\subsection{Umiejętności siły}
+\subsection{Umiejętności poruszania się}
+\subsection{Umiejętności przetrwania}
 
 \begin{thebibliography}{7}
 
