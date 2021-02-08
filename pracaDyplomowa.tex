@@ -1213,7 +1213,6 @@ Jednymi z głównych kolizji odpowiedzialnych za sam etap poruszania się są ko
 \subsection{Skakanie} 
 Skok jest kluczowym elementem w grach, niezależnie od tego czy mowa o grach platformowych czy nawet MMO-RPG skakanie jest nie tylko jedynym lub jednym z głównych sposobów dostania się na wyższe poziomy ale również główną mechaniką dotyczącą przemieszczania się. Niektórzy użytkownicy preferują ciągły skok jako alternatywę dla biegania tylko dlatego, że wydaje się ona szybsza. Większość gier obala jednak tezę, że skok jest szybszy niż bieg ale są też takie gry, które specjalnie implementują taką mechanikę, jednym z takich przykładów jest Counter Strike: Global Offensive, gdzie poprzez umiejętne wykorzystanie skoku można się poruszać kilkukrotnie szybciej niż biegnąc. Skakanie jest preferowaną metodą poruszania się też ze względu na większą ilość możliwości ruchu w trakcie skoku.
 Czym tak naprawdę jest skok w grach 2D i jak dużo wspólnego ma z rzeczywistą fizyką? Bardzo dużo gier symuluje skok jak najbardziej zbliżony do rzeczywistej fizyki, istnieją jednak gry, które stawiają na nieco inne rozwiązanie. Dobrym przykładem jest znany tytuł gry platformowej Mario ale również takie gry jak Limbo, Cuphead, speedrunners gdzie podczas skoku stawia się na nieco inne rozwiązanie. 
-\newpage
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=13cm]{images/kozubal/mario.jpg}
@@ -1221,7 +1220,7 @@ Czym tak naprawdę jest skok w grach 2D i jak dużo wspólnego ma z rzeczywistą
 \end{figure}
 
 Jak można zauważyć na obrazku, skok nie jest parabolą, tak jak byłoby to w przypadku realistycznej sytuacji. W niektórych grach 2D tworzy się symulację skoku polegającą na tym, że im dłużej trzyma się przycisk skoku tym dłużej jest się w powietrzu. W rzeczywistości polega to na ustawieniu czasu, w którym siła może działać na postać i ograniczenia jej górnego limitu. W praktyce wygląda to tak, że kiedy tylko przestaniemy trzymać przycisk skoku postać automatycznie zacznie lecieć w dół, a jeśli go przytrzymamy postać na chwilę zawiśnie w powietrzu. Stało się to na tyle powszechne, że taka symulacja skoku wydaje się bardziej naturalna niż dodanie do niego wertykalnej siły jednorazowo, czyli zgodnie z prawami fizyki.  W naszym projekcie postawiliśmy jednak na rzeczywistą symulację fizyki. Stworzenie skoku w taki sposób pozwala na większą przewidywalność miejsca lądowania, natomiast na mniejszą kontrolę samego skoku.Sama implementacja skoku w projekcie The Lore prezentuje się następująco:
-
+\newpage
 \begin{lstlisting}[breaklines=true,
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -1242,11 +1241,11 @@ if (!m_Grounded && jump && extraJumps > 0 && !Statics.isOnRope)
 	extraJumps--;
 }
 \end{lstlisting}
-\newpage
+
 Obsługa skoku w naszym projekcie polega zatem na jednorazowym dodaniu siły do postaci w trakcie skoku. Sprawa jest nieco bardziej skomplikowana jeśli chodzi o wielokrotny skok, ze względu na jednokrotne dodanie siły, zanim spróbujemy skoczyć drugi raz aktualna prędkość wertykalna musi zostać ustawiona na 0 ze względu na to, że skok dodaje wartość siły do aktualnej wartości działającej na postać, w trakcie wielokrotnego skoku bez ustawienia tej wartości na 0 przyczyniłoby się to do spowolnienia, a nie wykonania kolejnego skoku.
 \subsection{Otoczenie wpływające na fizykę postaci}
 W grach niejednokrotnie pojawiają się obiekty oddziałujące na fizykę naszej postaci. Ich symulacja często wiąże się ze słabym odwzorowaniem rzeczywistej fizyki. W tym podrozdziale głównym narzędziem, z którego korzystamy będzie wcześniej wspomniane wykrywanie kolizji między konkretnymi obiektami. Jeśli chcemy, żeby obiekt lub nasza postać zachowywała się w konkretny sposób po kontakcie ze sobą trzeba ten kontakt i konkretny obiekt najpierw wykryć. Dobre nazewnictwo warstw i obiektów przydaje się nie tylko do symulowania samej fizyki ale również do łatwego nawigowania po animacjach, a nawet włączania samej animacji z poziomu skryptu, a nie animatora. Na samym początku warto spojrzeć na skrypt służący do przesuwania skrzyń.
-
+\newpage
 \begin{lstlisting}[breaklines=true,
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -1281,7 +1280,7 @@ if (onMovingPlatform && !m_Grounded)
 \end{lstlisting}
 Przez to, że aktualna prędkość przyjmuje wartości ujemne, gdy porusza się w lewą stronę, a dodatnie gdy porusza się w prawą implementacja tego problemu ogranicza się do kilku linijek.
 Kolejnym obiektem oddziałującym na fizykę postaci w grze The Lore są liny. Mechanika lin polega na tym, że jeśli postać znajduje się wystarczająco blisko odpowiedniego obiektu oraz przytrzyma przycisk chwytu, przestanie spadać i zawiśnie na linie, ponadto w takiej sytuacji może poruszać całą liną i bujać się w celu przeskoczenia dalej. Problem ten jest dużo bardziej złożony, samo symulowanie lin w Unity działa bardzo dobrze, aczkolwiek dużo bardziej powszechnym rozwiązaniem jest ręczna symulacja i stworzenie do tego problemu animacji poklatkowej lub ewentualna zmiana pozycji postaci w taki sposób, aby uniknąć konkretnego usytuowania gracza względem liny i tym samym niepożądanego efektu. Problem ten w projekcie The Lore został rozwiązany poprzez przesunięcie obiektu szukającego kolizji z linami na przód gracza i zmniejszenia go w taki sposób, aby pole, w którym może się złapać gracz było małe, co likwiduje potencjalne problemy z niechcianym chwytem. Rozwiązanie takie sprawia, że mechanika jest poniekąd trudniejsza do ukończenia. Po testach użytkowników okazało się jednak, że wciąż nie jest ona wystarczająco trudna, dlatego usunięty został jeden z możliwych dodatkowych skoków po zeskoczeniu z liny.
-\newpage
+
 \begin{lstlisting}[breaklines=true,
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -1374,11 +1373,52 @@ W naszym projekcie jednak skupiliśmy się na trochę prostszym modelu drzewka z
 	\includegraphics[width=9cm]{images/kozubal/ori.jpg}
 	\caption{Drzewko Umiejętności z gry Ori And The Blind Forest}
 \end{figure}
+\subsection{Umiejętności}
+W tej sekcji skupimy się głównie na umiejętnościach zaimplementowanych w projekcie, problemach(jeśli owe istniały) i innym sposobie rozwiązania tych samych problemów w trakcie tworzenia umiejętności.
+\subsubsection{Umiejętności siły}
+Zwiększenie mocy – odpowiedzialne za zwiększenie siły ataku podstawowego do 130\% - 250\% przez 2 sekundy. Wartość z tego przedziału jest losowana z każdym użyciem umiejętności.
+Eksplozja – Postać ładuje obszar dookoła siebie o określonym promieniu i zadaje obrażenia każdemu wrogowi znajdującemu się w tym obszarze, dodany do tego został system cząstek dla lepszej wizualizacji efektu.
+Strzał z kuli – Postać wystrzeliwuje horyzontalnie kulkę lecącą ze stałą prędkością w kierunku, w którym aktualnie patrzy się postać, umiejętność ta jest zrobiona ciągłym aktualizowaniem pozycji kulki o daną, stałą wartość i zadawanie obrażeń każdemu przeciwnikowi, którego napotka na swojej ścieżce. Kolejnym sposobem rozwiązania tego problemu jest stworzenie kuli jako bryły sztywnej oraz symulowanie trajektorii lotu kuli. Na potrzeby projektu oraz w danym kontekście oczekiwanym rezultatem był jednak lot po prostej, poziomej drodze, dlatego zdecydowaliśmy się na pierwsze rozwiązanie.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{images/kozubal/sila.png}
+	\caption{Ikony umiejętności siły z projektu The Lore}
+\end{figure}
+\subsubsection{Umiejętności poruszania się}
+Umiejętności poruszania się służą głównie do łatwiejszego/płynniejszego przemieszczania się po planszy jak i większej opcjonalności przy unikaniu ataków przeciwników, 3 umiejętności dotyczące poruszania się w naszym projekcie to:
+Sprint – Polega na zwiększeniu prędkości gracza w trakcie trzymania klawisza, mechanikę tę możemy kojarzyć między innymi z takich gier jak Super Mario Bros.
+Potrójny skok – Polega na możliwości wykonania dodatkowego skoku w trakcie lotu, domyślna wartość to dwa. Umiejętność ta pozwala na doskoczenie we wcześniej niedostępne miejsca, a także na większą swobodę w locie
+Pęd – Trzecia i ostatnia umiejętność z gałęzi poruszania się polega na bardzo szybkim przemieszczeniu się horyzontalnym gracza. Jest to często wykorzystywana mechanika w grach platformowych takich jak np. Ori And The Blind Forest. Istnieje kilka sposobów rozwiązania tego problemu, najłatwiejszym z nich jest zamiana pozycji postaci, gdy tylko jest to możliwe, generuje to jednak dużo problemów związanych z ewentualnymi przeszkodami, które możemy spotkać na swojej drodze jak i z płynnością takiego przejścia. Kolejnym rozwiązaniem, które zostało użyte w naszym projekcie jest przez określoną ilość czasu aktualizowanie konkretnej pozycji gracza, ponownie pojawia się tu problem wchodzenia w ściany, natomiast jest on w tym wypadku dużo łatwiejszy do rozwiązania. Przez to, że pozycja nie jest zmieniana jednokrotnie, a małymi krokami przez pewien odstęp czasu jesteśmy w stanie sprawdzać czy istnieje przed postacią jakaś przeszkoda w trakcie wykonywania się skryptu i ewentualne przestanie wykonywania umiejętności w trakcie kiedy ta przeszkoda jest przed postacią.
 
-\subsection{Umiejętności siły}
-\subsection{Umiejętności poruszania się}
-\subsection{Umiejętności przetrwania}
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{PlayerSkills.cs}}
+]    
+if (dashValue < dashForce && dash && !touchingWall)
+{
+   Dash();
+}
+\end{lstlisting}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{images/kozubal/movement.png}
+	\caption{Ikony umiejętności poruszania się z projektu The Lore}
+\end{figure}
+\subsubsection{Umiejętności przetrwania}
+Umiejętności przetrwania przydają się wtedy, kiedy bardzo dużo giniemy od przeciwników. Pozwalają one na dużo większą beztroskę w trakcie walki z przeciwnikami jak i na uzupełnianie swojego życia poza nią. W naszym projekcie wyróżniamy takie umiejętności jak:
+Zwiększenie życia – Jest to umiejętność pasywna zwiększająca na stałe poziom zdrowia gracza ze 100 do 125, co przyczynia się do tego, że jesteśmy w stanie przetrwać więcej ciosów od przeciwników tym samym gra bardziej wybacza nasze błędy.
+Odnowienie życia – Jest to umiejętność aktywna, w trakcie naciśnięcia przycisku do użycia umiejętności jesteśmy w stanie raz na 30 sekund odnowić swoje życie o 25, przyczynia się to do spowolnienia rozgrywki jednocześnie dając możliwość odnowienia sobie życia przed lub w trakcie walki z mocniejszymi przeciwnikami.
+Nieśmiertelność – Jest to umiejętność aktywna pozwalająca nam przez 2 sekundy być odpornymi na każdy atak przeciwnika. Zastosowań tej umiejętności jest mnóstwo. Może ona posłużyć nam do ucieczki przed przeciwnikiem w kryzysowej sytuacji jak i pomóc nam w zadaniu mu dodatkowych ciosów nie tracąc przy tym punktów zdrowia. 
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{images/kozubal/patience.png}
+	\caption{Ikony umiejętności przetrwania z projektu The Lore}
+\end{figure}
+\newpage
+\section{Podsumowanie}
+Podsumowując w rozdziale tym został przedstawiony proces tworzenia postaci, przeniesienia jej do środowiska pracy oraz samą pracę na niej jeśli chodzi o poruszanie się i główne aspekty z tym związane. Warto pamiętać, że nie wszystkie gry odwzorowują fizykę w taki sposób jak wygląda ona rzeczywiście dlatego dobrze jest znać zagrania, którymi kierują się developerzy przy projektowaniu odpowiednich mechanik, a w grach 2D istnieje dużo ukrytych sposobów rozwiązywania problemów i innego przedstawienia fizyki do którego większość użytkowników jest przyzwyczajona przez co dokładna symulacja fizyki dla przeciętnego gracza wydaje się mniej poprawna niż użycie tych sztuczek.
 \begin{thebibliography}{7}
 
 \bibitem{projekt}
@@ -1574,7 +1614,27 @@ https://web.archive.org/web/20131104190048/http://jacks-hacks.appspot.com/dandy/
 \bibitem{sp}
 "Soda Pipes", Mobby Games. Dostęp 04.02.2021r.
 https://www.mobygames.com/game/windows/soda-pipes
-
+\bibitem{animation1}
+"Animation of 2d character in Unity", gamedevacademy. Dostęp 29.01.2021r.
+https://gamedevacademy.org/how-to-animate-a-2d-character-in-unity/
+\bibitem{animation2}
+"Animation for beginners", tutsplus. Dostęp 01.02.2021r.
+https://design.tutsplus.com/tutorials/animation-for-beginners-how-to-animate-a-character-running--cms-25730
+\bibitem{physics1}
+"How does a collision engine work", Stack Exchange. Dostęp 04.02.2021r.
+https://gamedev.stackexchange.com/questions/26501/how-does-a-collision-engine-work/26506\#26506
+\bibitem{physics2}
+"SmoothDamp Documentation", Unity3d. Dostęp 05.02.2021r.
+https://docs.unity3d.com/ScriptReference/Vector2.SmoothDamp.html
+\bibitem{jumping1}
+"Jumping in games", DaveTech. Dostęp 07.02.2021r.
+http://www.davetech.co.uk/gamedevplatformer
+\bibitem{jumping2}
+"Begy Jumping", Jason Begy. Dostęp 08.02.2021r.
+https://www.jasonbegy.com/uploads/5/0/7/7/50772065/begy\_jumping.pdf
+\bibitem{jumping3}
+"Lets go physics", Wired. Dostęp 08.02.2021r.
+https://www.wired.com/2016/12/lets-go-physics-jumping-super-mario-run/
 \end{thebibliography}
 
 \end{document}
