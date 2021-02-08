@@ -1003,16 +1003,242 @@ Jak widać, projektowanie zagadek logicznych jako mini-gry może nie być aż ta
 \chapter{Fizyka postaci}
 \section{Tworzenie postaci}
 \subsection{Omówienie zagadnienia procesu tworzenia postaci}
+Zagadnienie procesu tworzenia postaci polega na przygotowaniu grafik w odpowiedni sposób tak, żeby można było swobodnie wprowadzić i pracować na projekcie postaci w Unity, a także stworzenie odpowiednich komponentów przygotowanych bezpośrednio pod animowanie odpowiednich kończyn jak i późniejszej pracy na kolizjach. Chodzi więc o wszystkie aspekty przygotowania graficznego postaci jak i późniejszego wprowadzenia jej do projektu w taki sposób, żeby można było tworzyć na niej odpowiednie kolizje, animacje i skrypty odpowiadające za poruszanie się.
 \subsection{Proces graficzny tworzenia postaci}
+Tworzenie postaci zawsze zaczyna się od projektu graficznego, który jest kluczowym punktem do późniejszego animowania postaci. W tym miejscu warto zastanowić się nad ograniczeniami i korzyściami jakie daje nam stworzenie projektu w odpowiedni sposób. Istnieją 2 najbardziej popularne sposoby tworzenia graficznego postaci, które pozwalają nam na animowanie jej:
+Statyczny bohater, będący bazą do tworzenia animacji poklatkowych, które później używane są bezpośrednio w projekcie. Główną zaletą takiego rozwiązania są bardzo dobrze wyglądające animacje, wynikające z braku ograniczeń ilości zmian w postaci w trakcie animowania.
+Proces ten wymaga jednak bardzo dużo czasu poświęconego na modelowanie postaci w konkretnych pozach, symulowanie konkretnych ruchów oraz tworzenie zmian w postaci takich jak np. poruszające się włosy przy skoku.
+
+Alternatywą dla tego rozwiązania jest użycie kinematyki odwrotnej, która bazuje na systemie kości w ciele postaci, połączeń i ograniczeń ich ruchów. Sposób ten jest dużo bardziej wydajny czasowo, nie wymaga dużych umiejętności w animowaniu i pozwala na wprowadzanie nowych animacji wynikających z rozwoju projektu wewnątrz środowiska Unity. Animacja stworzona przez użycie kinematyki odwrotnej jest wykonywana w czasie rzeczywistym, przez co nie musimy tworzyć odpowiedniej ilości klatek, żeby wyglądała płynnie (ma tyle klatek ile gra w konkretnym momencie wykonywania animacji).
+W praktyce przekłada się to na konieczność tworzenia grafiki w odpowiedni sposób. Musimy podzielić postać na osobne warstwy poszczególnie odpowiadające za ilość kończyn, które powinny się ruszać w końcowym projekcie.\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=6cm]{images/kozubal/separatedCharacter.jpg}
+	\caption{Projekt graficzny postaci w edytorze Gimp}
+\end{figure}
+
+Postać w naszym projekcie jest podzielona odpowiednio na głowę, tors, ręce i nogi. Ilość możliwych komponentów nie jest ograniczona. Tak przygotowany projekt graficzny w formacie PSB jest gotowy do importu w środowisku Unity, a poszczególne warstwy są widoczne jako oddzielne komponenty. Tym samym projekt jest gotowy do dalszej pracy.
 \subsection{Wdrożenie postaci do projektu w Unity}
+W celu zaimportowania postaci w Unity z projektu graficznego potrzebujemy biblioteki o nazwie \textbf{\textit{PSDImporter}}, która pozwala na bezproblemowe wdrożenie projektu w tym formacie jako gotowy do pracy \textbf{\textit{*sprite}}. W kolejnym etapie musimy nadać postaci kości odpowiadające konkretnym kończynom oraz geometrię postaci.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=6cm]{images/kozubal/bones.jpg}
+	\caption{Widok postaci w środowisku Unity - kości}
+\end{figure}
+
+Geometria postaci to siatka, która definiuje to, w jaki sposób postać może się zgiąć w trakcie animowania, a kości powodują ograniczenie ruchów w taki sposób, aby były one naturalne jednocześnie łącząc ze sobą wcześniej powstałe warstwy. W celu uniknięcia przesuwania się torsu w trakcie poruszania rękami lub nogami należy wykluczyć zależność tych kości między sobą. W praktyce poruszając ręką nie ruszamy przy tym całym kręgosłupem.
+Następnym i ostatnim krokiem wdrożeniowym jest zapisanie zmian i przeniesienie wygenerowanej postaci do sceny oraz dodanie do każdej kończyny postaci kinematyki odwrotnej. Tak spreparowana postać jest gotowa do pracy w animatorze Unity.
+
+
 \subsection{Sposoby animowania postaci}
+Głównym aspektem animacji jest stworzenie iluzji. Najlepiej postrzegane animacje to te, które w dobry sposób odwzorowują żywą postać.\\
+\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}\\
+\\
+\textbf{\textit{*Sprite}} - Dwuwymiarowy obrazek używany w systemach grafiki komputerowej \newpage
+Dlatego więc głównym zadaniem animatora jest przestrzeganie zasad animacji w taki sposób, aby finalnie ruch postaci był jak najbardziej zbliżony do naturalnego ruchu człowieka.
+ Zadanie to niejednokrotnie jest utrudnione, ponieważ mówimy jednak o wykreowanym świecie i narysowanych w programie postaciach, jednak zważając na wcześniej przygotowany system kości jesteśmy w stanie przynajmniej podobnie odwzorować sam ruch postaci. 
+Proces animowania rozpoczynamy od stworzenia animatora, czyli obiektu odpowiedzialnego za obsługę i włączanie konkretnych animacji w danym momencie niejednokrotnie po spełnieniu warunków przejścia do konkretnej animacji. W naszym projekcie taki animator prezentuje się następująco:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{images/kozubal/animator.jpg}
+	\caption{Widok animatora projektu The Lore}
+\end{figure}
+
+Po lewej stronie widoczne są warunki, które podpięte są do konkretnych stanów przejścia między animacjami, np. wartość zmiennej \textbf{\textit{IsJumping}} służy do określenia, kiedy możemy przejść do animacji skoku. Animacje dodajemy do animatora poprzez stworzenie nowego pliku animacji, cały proces przebiega już na tym pliku. W oknie pojawia nam się oś czasu na której możemy zdefiniować kolejne etapy animacji.\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm]{images/kozubal/walkingAnimation.jpg}
+	\caption{Animacja chodzenia - przykład ze strony design.tutsplus.com}
+\end{figure}
+
+\newpage W tym momencie korzystamy ze wcześniejszego przygotowania postaci. Animacja poklatkowa polega na przedstawieniu ruchu klatka po klatce, w praktyce dzięki animatorowi możemy zrobić przejścia tylko między bardziej istotnymi etapami animacji. Osobno animowany jest ruch ciała, głowy, kończyn, a wszystko zamiast kilkuset zdjęć sprowadza się do kilku stanów, które automatycznie przechodzą między sobą w naturalny sposób.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{images/kozubal/runningAnimation.jpg}
+	\caption{Animacja biegania - widok z projektu The Lore}
+\end{figure}
+
+Animacja biegania w naszym projekcie posiada tylko 4 stany, z czego ostatni stan jest taki sam jak pierwszy w celu zapętlenia animacji. W praktyce więc animowanie w Unity to próba przedstawienia w jak najbardziej rzeczywisty sposób czynności, które występują w świecie codziennym w taki sposób, żeby stworzyć iluzję realizmu. Jeśli jednak czynność nie występuje w realnym świecie jak np. umiejętności animacja jest robiona w taki sposób, żeby wyglądała jak najbardziej naturalnie w swojej abstrakcji.
 
 \section{Poruszanie się}
 \subsection{Omówienie zagadnienia}
+Zagadnienie poruszania się dotyczy całego procesu skryptowego postaci. Elementy potrzebne do przygotowania postaci do środowiska deweloperskiego jak i wszelkie aspekty wprowadzenia postaci w ruch oraz jej responsywność. Przedstawione zostaną problemy związane z tworzeniem poszczególnych funkcjonalności oraz sposoby ich rozwiązania. Zostanie również przedstawiony szczegółowy proces implementacji poszczególnych funkcjonalności jak i sposoby ich wdrożenia. W tym rozdziale również zostanie przedstawiona fizyka postaci oraz poszczególne rzeczy, które pokrywają się z fizyką świata rzeczywistego, a które od takiej fizyki odbiegają.
 \subsection{Fizyka w grach 2D, a w prawdziwym świecie}
+ Pojęcie fizyki w grach składa się na dwa główne komponenty, jednym z nich jest silnik fizyki, natomiast drugim silnik kolizji. Pomimo, że silnik fizyki jest zależny od silnika kolizji nie zajmują się one tym samym.
+Silnik kolizji dzieli się na dwie części: detekcja kolizji oraz jej responsywność, która jest częścią silnika fizyki, z tego faktu oba te silniki przeważnie występują w jednej bibliotece. Wykrywanie kolizji występuje w dwóch formach: ciągłej i oddzielnej. Ogólnie używanie ciągłej detekcji jest bardzo kosztowne w zasoby oraz może skutkować dużymi spadkami wydajnościowymi, dlatego w grach staramy się używać jej tylko wtedy kiedy naprawdę jest potrzebna. W większości wypadków sprowadza się to do tego, że zamiast zatrzymywać użytkownika przed wbiegnięciem w ścianę, jego pozycja jest zmieniana już kiedy w te ścianę częściowo wbiegnie, podobnie jest z podłożem. W prawdziwym świecie naturalnie nie istnieje możliwość wbiegnięcia w ścianę i ponownej teleportacji we wcześniejsze miejsce i nie jesteśmy ograniczani sposobami wydajnościowymi. Jeśli chodzi o wykrywanie kolizji z wykorzystaniem ruchomych obiektów, początków łamigłówek, kolizji z podłożem w celu możliwości skoku czy kontaktu z przeciwnikiem, używamy do tego pustego obiektu usytuowanego w postaci w celu sprawdzania kolizji od tego obiektu. Często wysunięty jest on w konkretnym kierunku, w którym w danym momencie musimy sprawdzać konkretne kolizje. Sprawdzanie kolizji to nic innego jak stworzenie otoczenia wokół naszego obiektu w postaci człowieka (wielkość takiego koła często zależy od konkretnej sytuacji do której chcemy go użyć), a następnie sprawdzenie czy kolizja tego obiektu nie nachodzi na żaden inny obiekt z otoczenia. 
+
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{CharacterController.cs}}
+]
+for (int i = 0; i < colliders.Length; i++)
+{
+	if (colliders[i].gameObject.name.Contains("Moving Platform")) {
+		onMovingPlatform = true;
+		currentPlatform = 
+		= colliders[i].gameObject.GetComponent<MovingPlatform>();
+	}
+
+	if (colliders[i].gameObject != gameObject)
+	{
+		m_Grounded = true;
+	}
+
+	if (!wasGrounded)
+	{
+		animator.SetBool("IsJumping", false);
+	}
+
+}
+\end{lstlisting}
+
+W skrypcie jest sprawdzana konkretna warstwa lub konkretny obiekt, z którym oczekujemy konkretnego działania po kolizji.
+Ta część kodu odpowiada za sprawdzenie, czy postać dotyka ziemi w celu ustawienia zmiennej na odpowiadającą jej wartość, a także za sprawdzenie czy postać jest na poruszających się platformach w celu późniejszej zmiany jej rodzica.
+W tym momencie, kiedy kontakt został odkryty jesteśmy w stanie stwierdzić dokładnie kiedy występuje kolizja między dwoma konkretnymi obiektami i pracować na nich lub ograniczać je zależnie od tego.
 \subsection{Poruszanie się oraz kolizje postaci}
+Za poruszanie się w projekcie The Lore odpowiedzialne są dwie klasy: CharacterController.cs i PlayerMovement.cs. Ta pierwsza odpowiedzialna jest za sam ruch, skok i wyświetlanie postaci w dobrym kierunku, natomiast druga zajmuje się całą resztą od przesuwania przedmiotów po używanie umiejętności. Ze względu na to, że w projekcie użyty jest model bryły sztywnej Unity otwiera nam wiele ścieżek pracy nad postacią. Aby wprowadzić postać w ruch musimy znać kierunek w jakim chcemy, żeby się poruszyła oraz docelową prędkość.
+
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{CharacterController.cs}}
+]
+Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+
+m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity,
+ ref m_Velocity, m_MovementSmoothing);
+\end{lstlisting}
+
+Zmienna \textbf{\textit{targetVelocity}} odpowiedzialna jest za określenie konkretnego ruchu, który chcemy, żeby wykonała postać. Warto zauważyć jednak, że końcowy wynik jest jeszcze wygładzany przy pomocy wbudowanej do wektora metody \textbf{\textit{SmoothDamp}}, co oznacza, że ruch nie jest sztywny i ma swoje ograniczenia czasowe w trakcie jego wykonywania. W praktyce przenosi się to na bardziej intuicyjny sposób poruszania się jak i poprawę wizualną samego ruchu.
+Kolejną wcześniej wspomnianą funkcjonalnością, którą zajmuje się ta klasa jest zmienianie kierunku grafiki w zależności od kierunku w którym się poruszamy.
+
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{CharacterController.cs}}
+]
+private void Flip()
+{
+	m_FacingRight = !m_FacingRight;
+	Vector3 theScale = transform.localScale;
+	theScale.x *= -1;
+	transform.localScale = theScale;
+}
+if (move > 0  &&  !m_FacingRight  &&  !Statics.isOnRope)
+{
+	Flip();
+}
+else if (move < 0  &&  m_FacingRight  &&  !Statics.isOnRope)
+{ 
+	Flip();
+}
+\end{lstlisting}
+
+Metoda \textbf{\textit{Flip()}} odpowiedzialna jest za zmianę skali lokalnej postaci poprzez pomnożenie jej wartości przez -1 i wykonywana jest po sprawdzeniu wstępnych założeń.
+
+Kolejnym sposobem implementacji ruchu jest odejście od używania wbudowanego modelu bryły sztywnej oraz wartości prędkości do niej przypisanej, zamiast tego używanie przejścia poprzez aktualizację wartości pozycji postaci. Problemy jakie generuje to rozwiązanie jednak to konieczność przeliczania praw tarcia i ruchu oraz przypisywania ich w kodzie i analogicznej zmiany pozycji pokrywającej te prawa. Przez rozbudowany system fizyki w Unity takie rozwiązanie nie ma większego sensu i powoduje konieczność włożenia dodatkowej pracy. Niemniej jednak istnieją sytuacje w których takie rozwiązanie sprawdza się lepiej jak np. symulacja bujania się na linach czy nawet sam skok.
+Jednymi z głównych kolizji odpowiedzialnych za sam etap poruszania się są kolizje z podłożem oraz ze ścianami (ze względu na wymiar gry kolizja z sufitem nie jest brana pod uwagę). Podobnie jak zostało wspomniane wcześniej kolizje te definiują kiedy możemy przejść dalej oraz kiedy postać posiada możliwość skoku, która odnawia się za każdym razem, kiedy postać ponownie dotknie podłoża. Warto pamiętać, żeby oddzielić warstwy podłoża od warstw innych obiektów posiadających kolizje, gdyż może to przynieść niechciane efekty w postaci zwiększonej ilości skoków w obszarze obiektu posiadającego kolizję.
+
 \subsection{Skakanie} 
+Skok jest kluczowym elementem w grach, niezależnie od tego czy mowa o grach platformowych czy nawet MMO-RPG skakanie jest nie tylko jedynym lub jednym z głównych sposobów dostania się na wyższe poziomy ale również główną mechaniką dotyczącą przemieszczania się. Niektórzy użytkownicy preferują ciągły skok jako alternatywę dla biegania tylko dlatego, że wydaje się ona szybsza. Większość gier obala jednak tezę, że skok jest szybszy niż bieg ale są też takie gry, które specjalnie implementują taką mechanikę, jednym z takich przykładów jest Counter Strike: Global Offensive, gdzie poprzez umiejętne wykorzystanie skoku można się poruszać kilkukrotnie szybciej niż biegnąc. Skakanie jest preferowaną metodą poruszania się też ze względu na większą ilość możliwości ruchu w trakcie skoku.
+Czym tak naprawdę jest skok w grach 2D i jak dużo wspólnego ma z rzeczywistą fizyką? Bardzo dużo gier symuluje skok jak najbardziej zbliżony do rzeczywistej fizyki, istnieją jednak gry, które stawiają na nieco inne rozwiązanie. Dobrym przykładem jest znany tytuł gry platformowej Mario ale również takie gry jak Limbo, Cuphead, speedrunners gdzie podczas skoku stawia się na nieco inne rozwiązanie. 
+\newpage
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{images/kozubal/mario.jpg}
+	\caption{Przykład skoku z gry Super Mario Maker 2}
+\end{figure}
+
+Jak można zauważyć na obrazku, skok nie jest parabolą, tak jak byłoby to w przypadku realistycznej sytuacji. W niektórych grach 2D tworzy się symulację skoku polegającą na tym, że im dłużej trzyma się przycisk skoku tym dłużej jest się w powietrzu. W rzeczywistości polega to na ustawieniu czasu, w którym siła może działać na postać i ograniczenia jej górnego limitu. W praktyce wygląda to tak, że kiedy tylko przestaniemy trzymać przycisk skoku postać automatycznie zacznie lecieć w dół, a jeśli go przytrzymamy postać na chwilę zawiśnie w powietrzu. Stało się to na tyle powszechne, że taka symulacja skoku wydaje się bardziej naturalna niż dodanie do niego wertykalnej siły jednorazowo, czyli zgodnie z prawami fizyki.  W naszym projekcie postawiliśmy jednak na rzeczywistą symulację fizyki. Stworzenie skoku w taki sposób pozwala na większą przewidywalność miejsca lądowania, natomiast na mniejszą kontrolę samego skoku.Sama implementacja skoku w projekcie The Lore prezentuje się następująco:
+
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{CharacterController.cs}}
+]
+if (m_Grounded && jump){
+	m_Grounded = false;
+	m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+	jump = false;
+	onMovingPlatform = false;
+}
+if (!m_Grounded && jump && extraJumps > 0 && !Statics.isOnRope)
+{
+	m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
+	animator.SetBool("doubleJump", true);
+	m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * extraJumpDifficulty));
+	jump = false;
+	extraJumps--;
+}
+\end{lstlisting}
+\newpage
+Obsługa skoku w naszym projekcie polega zatem na jednorazowym dodaniu siły do postaci w trakcie skoku. Sprawa jest nieco bardziej skomplikowana jeśli chodzi o wielokrotny skok, ze względu na jednokrotne dodanie siły, zanim spróbujemy skoczyć drugi raz aktualna prędkość wertykalna musi zostać ustawiona na 0 ze względu na to, że skok dodaje wartość siły do aktualnej wartości działającej na postać, w trakcie wielokrotnego skoku bez ustawienia tej wartości na 0 przyczyniłoby się to do spowolnienia, a nie wykonania kolejnego skoku.
 \subsection{Otoczenie wpływające na fizykę postaci}
+W grach niejednokrotnie pojawiają się obiekty oddziałujące na fizykę naszej postaci. Ich symulacja często wiąże się ze słabym odwzorowaniem rzeczywistej fizyki. W tym podrozdziale głównym narzędziem, z którego korzystamy będzie wcześniej wspomniane wykrywanie kolizji między konkretnymi obiektami. Jeśli chcemy, żeby obiekt lub nasza postać zachowywała się w konkretny sposób po kontakcie ze sobą trzeba ten kontakt i konkretny obiekt najpierw wykryć. Dobre nazewnictwo warstw i obiektów przydaje się nie tylko do symulowania samej fizyki ale również do łatwego nawigowania po animacjach, a nawet włączania samej animacji z poziomu skryptu, a nie animatora. Na samym początku warto spojrzeć na skrypt służący do przesuwania skrzyń.
+
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{PlayerMovement.cs}}
+]
+void MoveObject()
+{
+	 if (Physics2D.OverlapCircleAll(actionPoint.position, boxMoveRange, 
+	 boxLayer).Length > 0 && !animator.GetBool("IsJumping"))
+	{
+           	 Physics2D.OverlapCircleAll(actionPoint.position, boxMoveRange,
+		 boxLayer)[0] .GetComponent<BoxMoving>()
+		 .MoveBox(direction);
+           	 animator.SetTrigger("PushObject");
+      	 }
+}
+\end{lstlisting}
+
+Jest to bardzo prosty skrypt, w którym jedyne siły dochodzące do dotychczas oddziałujących to waga skrzyń, które chcemy przesunąć. To właśnie ciężar skrzyń sprawia, że postać po zbliżeniu się do skrzyni i próbie jej przesunięcia znacznie spowalnia i skutkuje to ruchem skrzyni, której fizyka jest symulowana poprzez model bryły sztywnej dodany bezpośrednio do skrzyni.
+W naszym projekcie są jeszcze 2 obiekty oddziałujące na fizykę postaci, pierwszym z nich są ruchome platformy. Mimo, że symulacja samego stania na platformie jest uproszczona ze względu na grywalność i jest ona niczym innym jak dodaniem platformy jako rodzica naszej postaci, co skutkuje tym, że platforma nie porusza się w kontekście postaci (ruch na platformie jest taki sam jak na ziemi) to dodana została siła poruszającej się platformy przy samym wyskoku. Jeśli obiekt, na którym się znajduje się postać jest w ruchu, to po wyskoku do góry postać nasza powinna poruszać się w tym samym kierunku i z taką samą prędkością co platforma w trakcie wyskoku. Dlatego skok w którąkolwiek stronę będzie wypadkową siły skoku oraz prędkości poruszającej się aktualnie platformy.
+
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{PlayerMovement.cs}}
+]
+if (onMovingPlatform && !m_Grounded)
+{
+	move += currentPlatform.velocityX;
+	onMovingPlatform = false;
+}
+\end{lstlisting}
+Przez to, że aktualna prędkość przyjmuje wartości ujemne, gdy porusza się w lewą stronę, a dodatnie gdy porusza się w prawą implementacja tego problemu ogranicza się do kilku linijek.
+Kolejnym obiektem oddziałującym na fizykę postaci w grze The Lore są liny. Mechanika lin polega na tym, że jeśli postać znajduje się wystarczająco blisko odpowiedniego obiektu oraz przytrzyma przycisk chwytu, przestanie spadać i zawiśnie na linie, ponadto w takiej sytuacji może poruszać całą liną i bujać się w celu przeskoczenia dalej. Problem ten jest dużo bardziej złożony, samo symulowanie lin w Unity działa bardzo dobrze, aczkolwiek dużo bardziej powszechnym rozwiązaniem jest ręczna symulacja i stworzenie do tego problemu animacji poklatkowej lub ewentualna zmiana pozycji postaci w taki sposób, aby uniknąć konkretnego usytuowania gracza względem liny i tym samym niepożądanego efektu. Problem ten w projekcie The Lore został rozwiązany poprzez przesunięcie obiektu szukającego kolizji z linami na przód gracza i zmniejszenia go w taki sposób, aby pole, w którym może się złapać gracz było małe, co likwiduje potencjalne problemy z niechcianym chwytem. Rozwiązanie takie sprawia, że mechanika jest poniekąd trudniejsza do ukończenia. Po testach użytkowników okazało się jednak, że wciąż nie jest ona wystarczająco trudna, dlatego usunięty został jeden z możliwych dodatkowych skoków po zeskoczeniu z liny.
+\newpage
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{PlayerMovement.cs}}
+]    
+void Grab()
+{
+   Collider2D[] colliders = Physics2D.OverlapCircleAll(actionPoint.position,
+   attackRange, ropeLayer);
+   if (colliders.Length > 0 && !Statics.isOnRope)
+   {
+      recentCollider = colliders[0];
+      FixedJoint2D joint = colliders[0].gameObject.AddComponent<FixedJoint2D>();
+      joint.connectedBody = gameObject.GetComponent<Rigidbody2D>();
+      isOnRope = true;
+      Statics.isOnRope = true;
+      controller.extraJumps = 1;
+   }
+}
+\end{lstlisting}
+
+Problem trzymania się liny został rozwiązany przy użyciu połączenia stałego między postacią, a jednym z obiektów lin, ponieważ lina sama w sobie składa się z kilkunastu fragmentów połączonych, aby uniknąć błędów przy połączeniu brana jest pod uwagę tylko jedna z wykrytych przez skrypt kolizji. Warto zaznaczyć też, że bujanie liną jest możliwe ze względu na możliwość ruchu postaci w powietrzu, gdyby nie to trzeba by było zmodyfikować klasę dotyczącą poruszania się tak, aby ruch był możliwy również w trakcie kontaktu z liną. Połączenie stałe między postacią a liną zostaje zerwane w momencie puszczenia przycisku akcji, po czym użytkownikowi przysługuje jeszcze jeden skok.
 \subsection{Umiejętności związane z poruszaniem się}
 
 \begin{thebibliography}{7}
