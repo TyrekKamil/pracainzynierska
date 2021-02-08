@@ -143,7 +143,7 @@ Jednocześnie przyjmuję do wiadomości, że przypisanie sobie, w pracy dyplomow
 Przedmiotem pracy jest przedstawienie projektowania gry platformowej „The Lore: story of the fallen warrior” w oparciu o silnik Unity. Gra posiada elementy zręcznościowe oraz zagadki logiczne, przez co przechodzenie kolejnych etapów gry wymaga szybkiego podejmowania logicznych decyzji. \par
 Na początku zostanie przedstawiony zamysł projektu i w jaki sposób można nim zarządzać. Zaprezentowany fundamentalizm pracy nad projektem, co jest ważne, czego należy przestrzegać i na czym się skupić. W jaki sposób zostaje podzielony projekt informatyczny oraz z czym wiążą się poszczególne etapy pracy. Następnie przedstawione zostaną metodyki, które od lat służą za zbiór drogowskazów w procesie realizacji projektu. Po przyswojeniu i zrozumieniu wszystkich tych informacji, przedstawione zostanie wykorzystanie tego w projekcie gry komputerowej "The Lore". \par
 W następnym rozdziale będziemy mogli dowiedzieć się czym jest zagadka logiczna oraz poznać kilka przykładów. Opisany zostanie sposób obsadzenia mini-gier w grze opartej na silniku Unity. W kontekście projektu „The Lore”, przedstawione są algorytmy stojące za logiką zaimplementowanych mini-gier – przesuwanych puzzli, otwierania skrzyń, mini-gry z ułożeniem rur. Dodatkowo przedstawiono metodę projektowania mini-gry nie zawartej w projekcie - algorytmu generującego labirynt. \par
-W ostatnim rozdziale… Jakub Kozubal
+W ostatnim rozdziale przedstawiony zostanie opis procesu projektowania i tworzenia postaci oraz mechanik z nią związanych. Od projektowania graficznego po tworzenie dodatkowych funkcjonalności takich jak drzewko umiejętności. Przedstawione zostaną również różnice między silnikiem fizyki w grze,a  fizyką w prawdziwym świecie, problemy i rozwiązania fizyki oddziałującej na postać zarówno jeśli chodzi o sam ruch jak i o obiekty w terenie, które na zachowanie tej postaci wpływają. Na sam koniec przedstawione zostanie drzewko umiejętności razem z poszczególnymi gałęziami tego drzewka.
 
 \end{streszczenie}
 % Spis treści
@@ -1308,6 +1308,73 @@ Problem trzymania się liny został rozwiązany przy użyciu połączenia stałe
 \subsection{Omówienie zagadnienia umiejętności}
 Umiejętności postaci to nowe mechaniki wprowadzone do gry w celu zarówno zwiększenia dynamiki rozgrywki jak i ulepszenia doznań użytkownika. Sekcja ta poświęcona będzie zarówno projekcie i mechanikach wewnątrz całego drzewka całego drzewka umiejętności jak i całemu projektowaniu i problemach związanych z poszczególnymi umiejętnościami. Przedstawione zostanie całe przygotowanie graficzne drzewka jak i różne sposoby na implementację tych samych umiejętności.
 \subsection{Drzewko umiejętności}
+Drzewko umiejętności to dodatkowa mechanika w grze pozwalająca użytkownikowi na rozwijanie poszczególnych gałęzi według własnych upodobań. To w tym miejscu gracz jest w stanie samemu określić w jaki sposób projektować będzie rozwój postaci oraz w jaki sposób przebiegać będzie jego rozgrywka. W celu zwiększenia dynamiki rozgrywki można postawić głównie na umiejętności związane z poruszaniem się, jeśli jednak użytkownik jest bardziej zapobiegawczym typem gracza bardziej prawdopodobnie będzie celował w przetrwanie i siłę. 
+\subsubsection{Wstępny prototyp drzewka, a widok końcowy}
+Drzewko umiejętności w projekcie The Lore w fazie prototypowania prezentowało się następująco:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{images/kozubal/drzewkoPrototyp.jpg}
+	\caption{Prototyp drzewka w projekcie The Lore}
+\end{figure}
+
+Jak się jednak okazało w kolejnych fazach pracy i testach użytkowników taka ilość umiejętności jest nieproporcjonalna do ilości treści i możliwości zdobytych poziomów w grze, dlatego w końcowej iteracji drzewo zostało ograniczone do 3 umiejętności na jedną gałąź. Widok końcowy bazujący na prototypie wygląda następująco:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{images/kozubal/drzewkoTheLore.jpg}
+	\caption{Aktualne drzewko umiejętności w projekcie The Lore}
+\end{figure}
+\newpage
+Górny licznik wyświetla, ile umiejętności jesteśmy w stanie w danym momencie rozwinąć tzn. ile dostępnych punktów umiejętności jest aktualnie odblokowanych. Liczba ta jest przeliczana w następujący sposób:
+
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{UI\_SkillTree.cs}}
+]    
+text = (GLOBAL_DATA.Instance.Level - 1 - unlockedSkills)
+\end{lstlisting}
+
+W praktyce bez odblokowanej żadnej umiejętności mamy zawsze o jeden mniej punkt umiejętności niż aktualny poziom postaci. Przez to wystarczy odjąć od tego jeszcze długość listy obiektów typu  \textbf{SkillButton} i końcowy wynik pokazuje aktualną ilość punktów. Podobne sprawdzenie używane jest w klasie \textbf{PlayerSkills.cs}, w celu weryfikacji czy użytkownik może daną umiejętność rozwinąć. Kolejnym ważnym punktem jeśli chodzi o sprawdzanie poszczególnych umiejętności jest ich hierarchia, czyli odblokowywanie umiejętności z danej gałęzi w odpowiedniej kolejności. Tym zadaniem zajmuje się następujący fragment kodu:
+\newpage
+\begin{lstlisting}[breaklines=true,
+language={[Sharp]C},
+rulecolor=\color{blue!80!black},
+caption={Fragment klasy \texttt{PlayerSkills.cs}}
+]    
+    public SkillType GetSkillRequirement(SkillType skillType) {
+        switch (skillType) {
+            //Blue Skills Requirements
+            case SkillType.TripleJump: return SkillType.Sprint;
+            case SkillType.Dash: return SkillType.TripleJump;
+            //Red Skills Requirements
+            case SkillType.Bullet: return SkillType.IncreaseDMG;
+            case SkillType.Explode: return SkillType.Bullet;
+            //Green Skills Requirements
+            case SkillType.RegenerationHP: return SkillType.ExtraHP;
+            case SkillType.Immortality: return SkillType.RegenerationHP;
+        }
+        return SkillType.None;
+    }
+\end{lstlisting}
+
+Zwracana wcześniejsza umiejętność przy próbie odblokowania pozwala nam określić, która umiejętność jest warunkiem do odblokowania danej umiejętności, co znacznie ułatwia sprawdzanie, wystarczy przeszukać listę odblokowanych umiejętności i sprawdzić, czy wcześniejsza w hierarchii istnieje w danym kontekście.
+\subsubsection{Przykłady z innych gier}
+Jest wiele gier, które wykorzystują drzewka umiejętności w wielu celach, niejednokrotnie jest to tylko po to, żeby ułatwić użytkownikowi rozgrywkę. Istnieją jednak takie gry, których podejście do drzewek umiejętności jest inne, są implementowane po to, żeby gracz poradził sobie na wyższych poziomach trudności lub nawet są mechaniką bez której samej gry nie jesteśmy w stanie przejść. Dobrym przykładem takiej gry jest Path of Exile w której liczba ścieżek w drzewku, które możemy wybrać jest naprawdę wielka, a samo drzewko prezentuje się następująco:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=11cm]{images/kozubal/poe.png}
+	\caption{Drzewko Umiejętności z gry Path of Exile}
+\end{figure}
+\newpage
+W naszym projekcie jednak skupiliśmy się na trochę prostszym modelu drzewka ze względu na ograniczoną liczbę poziomów oraz możliwości ich zdobycia, dobrym przykładem podobnego drzewka umiejętności jest gra Ori And The Blind Forest, w której drzewko to wygląda następująco:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=9cm]{images/kozubal/ori.jpg}
+	\caption{Drzewko Umiejętności z gry Ori And The Blind Forest}
+\end{figure}
+
 \subsection{Umiejętności siły}
 \subsection{Umiejętności poruszania się}
 \subsection{Umiejętności przetrwania}
