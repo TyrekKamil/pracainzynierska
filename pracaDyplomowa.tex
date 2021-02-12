@@ -1048,7 +1048,8 @@ Głównym aspektem animacji jest stworzenie iluzji. Najlepiej postrzegane animac
 \textbf{\textit{*Sprite}} - Dwuwymiarowy obrazek używany w systemach grafiki komputerowej \newpage
 Dlatego więc głównym zadaniem animatora jest przestrzeganie zasad animacji w taki sposób, aby finalnie ruch postaci był jak najbardziej zbliżony do naturalnego ruchu człowieka.
  Zadanie to niejednokrotnie jest utrudnione, ponieważ mówimy jednak o wykreowanym świecie i narysowanych w programie postaciach, jednak zważając na wcześniej przygotowany system kości jesteśmy w stanie przynajmniej podobnie odwzorować sam ruch postaci. 
-Proces animowania rozpoczynamy od stworzenia animatora, czyli obiektu odpowiedzialnego za obsługę i włączanie konkretnych animacji w danym momencie niejednokrotnie po spełnieniu warunków przejścia do konkretnej animacji. W naszym projekcie taki animator prezentuje się następująco:
+Proces animowania rozpoczynamy od stworzenia animatora, czyli obiektu odpowiedzialnego za obsługę i włączanie konkretnych animacji w danym momencie niejednokrotnie po spełnieniu warunków przejścia do konkretnej animacji. \cite{animation1} \\
+W naszym projekcie taki animator prezentuje się następująco:
 
 \begin{figure}[h]
 	\centering
@@ -1061,7 +1062,7 @@ Po lewej stronie widoczne są warunki, które podpięte są do konkretnych stan�
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=10cm]{images/kozubal/walkingAnimation.jpg}
-	\caption{Animacja chodzenia - przykład ze strony design.tutsplus.com}
+	\caption{Animacja chodzenia - przykład ze strony design.tutsplus.com \cite{animation2}}
 \end{figure}
 
 \newpage W tym momencie korzystamy ze wcześniejszego przygotowania postaci. Animacja poklatkowa polega na przedstawieniu ruchu klatka po klatce, w praktyce dzięki animatorowi możemy zrobić przejścia tylko między bardziej istotnymi etapami animacji. Osobno animowany jest ruch ciała, głowy, kończyn, a wszystko zamiast kilkuset zdjęć sprowadza się do kilku stanów, które automatycznie przechodzą między sobą w naturalny sposób.
@@ -1079,7 +1080,7 @@ Animacja biegania w naszym projekcie posiada tylko 4 stany, z czego ostatni stan
 Zagadnienie poruszania się dotyczy całego procesu skryptowego postaci. Elementy potrzebne do przygotowania postaci do środowiska deweloperskiego jak i wszelkie aspekty wprowadzenia postaci w ruch oraz jej reakcje na wejście wprowadzane przez użytkownika. Przedstawione zostaną problemy związane z tworzeniem poszczególnych funkcjonalności oraz sposoby ich rozwiązania. Zostanie również przedstawiony szczegółowy proces implementacji poszczególnych funkcjonalności jak i sposoby ich wdrożenia. W tym rozdziale również zostanie przedstawiona fizyka postaci oraz poszczególne rzeczy, które pokrywają się z fizyką świata rzeczywistego, a które od takiej fizyki odbiegają.
 \subsection{Fizyka w grach 2D, a w prawdziwym świecie}
  Pojęcie fizyki w grach składa się na dwa główne komponenty, jednym z nich jest silnik fizyki, natomiast drugim silnik kolizji. Pomimo, że silnik fizyki jest zależny od silnika kolizji nie zajmują się one tym samym.
-Silnik kolizji dzieli się na dwie części: detekcja kolizji oraz jej responsywność, która jest częścią silnika fizyki, z tego faktu oba te silniki przeważnie występują w jednej bibliotece. Wykrywanie kolizji występuje w dwóch formach: ciągłej i oddzielnej. Ogólnie używanie ciągłej detekcji jest bardzo kosztowne w zasoby oraz może skutkować dużymi spadkami wydajnościowymi, dlatego w grach staramy się używać jej tylko wtedy kiedy naprawdę jest potrzebna. W większości wypadków sprowadza się to do tego, że zamiast zatrzymywać użytkownika przed wbiegnięciem w ścianę, jego pozycja jest zmieniana już kiedy w te ścianę częściowo wbiegnie, podobnie jest z podłożem. W prawdziwym świecie naturalnie nie istnieje możliwość wbiegnięcia w ścianę i ponownej teleportacji we wcześniejsze miejsce i nie jesteśmy ograniczani sposobami wydajnościowymi. Jeśli chodzi o wykrywanie kolizji z wykorzystaniem ruchomych obiektów, początków łamigłówek, kolizji z podłożem w celu możliwości skoku czy kontaktu z przeciwnikiem, używamy do tego pustego obiektu usytuowanego w postaci w celu sprawdzania kolizji od tego obiektu. Często wysunięty jest on w konkretnym kierunku, w którym w danym momencie musimy sprawdzać konkretne kolizje. Sprawdzanie kolizji to nic innego jak stworzenie otoczenia wokół naszego obiektu w postaci człowieka (wielkość takiego koła często zależy od konkretnej sytuacji do której chcemy go użyć), a następnie sprawdzenie czy kolizja tego obiektu nie nachodzi na żaden inny obiekt z otoczenia. 
+Silnik kolizji dzieli się na dwie części: detekcja kolizji oraz jej responsywność, która jest częścią silnika fizyki, z tego faktu oba te silniki przeważnie występują w jednej bibliotece. Wykrywanie kolizji występuje w dwóch formach: ciągłej i oddzielnej. Ogólnie używanie ciągłej detekcji jest bardzo kosztowne w zasoby oraz może skutkować dużymi spadkami wydajnościowymi, dlatego w grach staramy się używać jej tylko wtedy kiedy naprawdę jest potrzebna. W większości wypadków sprowadza się to do tego, że zamiast zatrzymywać użytkownika przed wbiegnięciem w ścianę, jego pozycja jest zmieniana już kiedy w te ścianę częściowo wbiegnie, podobnie jest z podłożem. W prawdziwym świecie naturalnie nie istnieje możliwość wbiegnięcia w ścianę i ponownej teleportacji we wcześniejsze miejsce i nie jesteśmy ograniczani sposobami wydajnościowymi. Jeśli chodzi o wykrywanie kolizji z wykorzystaniem ruchomych obiektów, początków łamigłówek, kolizji z podłożem w celu możliwości skoku czy kontaktu z przeciwnikiem, używamy do tego pustego obiektu usytuowanego w postaci w celu sprawdzania kolizji od tego obiektu. Często wysunięty jest on w konkretnym kierunku, w którym w danym momencie musimy sprawdzać konkretne kolizje. Sprawdzanie kolizji to nic innego jak stworzenie otoczenia wokół naszego obiektu w postaci człowieka (wielkość takiego koła często zależy od konkretnej sytuacji do której chcemy go użyć), a następnie sprawdzenie czy kolizja tego obiektu nie nachodzi na żaden inny obiekt z otoczenia. \cite{physics1}
 
 \begin{lstlisting}[breaklines=true,
 language={[Sharp]C},
@@ -1124,7 +1125,7 @@ m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVeloci
  ref m_Velocity, m_MovementSmoothing);
 \end{lstlisting}
 
-Zmienna \textbf{\textit{targetVelocity}} odpowiedzialna jest za określenie konkretnego ruchu, który chcemy, żeby wykonała postać. Warto zauważyć jednak, że końcowy wynik jest jeszcze wygładzany przy pomocy wbudowanej do wektora metody \textbf{\textit{SmoothDamp}}, co oznacza, że ruch nie jest sztywny i ma swoje ograniczenia czasowe w trakcie jego wykonywania. W praktyce przenosi się to na bardziej intuicyjny sposób poruszania się jak i poprawę wizualną samego ruchu.
+Zmienna \textbf{\textit{targetVelocity}} odpowiedzialna jest za określenie konkretnego ruchu, który chcemy, żeby wykonała postać. Warto zauważyć jednak, że końcowy wynik jest jeszcze wygładzany przy pomocy wbudowanej do wektora metody \textbf{\textit{SmoothDamp}} \cite{physics2}, co oznacza, że ruch nie jest sztywny i ma swoje ograniczenia czasowe w trakcie jego wykonywania. W praktyce przenosi się to na bardziej intuicyjny sposób poruszania się jak i poprawę wizualną samego ruchu.
 Kolejną wcześniej wspomnianą funkcjonalnością, którą zajmuje się ta klasa jest zmienianie kierunku grafiki w zależności od kierunku w którym się poruszamy.
 
 \begin{lstlisting}[breaklines=true,
@@ -1156,14 +1157,19 @@ Jednymi z głównych kolizji odpowiedzialnych za sam etap poruszania się są ko
 
 \subsection{Skakanie} 
 Skok jest kluczowym elementem w grach, niezależnie od tego czy mowa o grach platformowych czy nawet MMO-RPG skakanie jest nie tylko jedynym lub jednym z głównych sposobów dostania się na wyższe poziomy ale również główną mechaniką dotyczącą przemieszczania się. Niektórzy użytkownicy preferują ciągły skok jako alternatywę dla biegania tylko dlatego, że wydaje się ona szybsza. Większość gier obala jednak tezę, że skok jest szybszy niż bieg ale są też takie gry, które specjalnie implementują taką mechanikę, jednym z takich przykładów jest Counter Strike: Global Offensive, gdzie poprzez umiejętne wykorzystanie skoku można się poruszać kilkukrotnie szybciej niż biegnąc. Skakanie jest preferowaną metodą poruszania się też ze względu na większą ilość możliwości ruchu w trakcie skoku.
-Czym tak naprawdę jest skok w grach 2D i jak dużo wspólnego ma z rzeczywistą fizyką? Bardzo dużo gier symuluje skok jak najbardziej zbliżony do rzeczywistej fizyki, istnieją jednak gry, które stawiają na nieco inne rozwiązanie. Dobrym przykładem jest znany tytuł gry platformowej Mario ale również takie gry jak Limbo, Cuphead, speedrunners gdzie podczas skoku stawia się na nieco inne rozwiązanie. 
+Czym tak naprawdę jest skok w grach 2D i jak dużo wspólnego ma z rzeczywistą fizyką? Bardzo dużo gier symuluje skok jak najbardziej zbliżony do rzeczywistej fizyki, istnieją jednak gry, które stawiają na nieco inne rozwiązanie. Dobrym przykładem jest znany tytuł gry platformowej Mario ale również takie gry jak Limbo, Cuphead, speedrunners gdzie podczas skoku stawia się na nieco inne rozwiązanie. \cite{jumping1} 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=13cm]{images/kozubal/mario.jpg}
-	\caption{Przykład skoku z gry Super Mario Maker 2}
+	\caption{Przykład skoku z gry Super Mario Maker 2 \cite{jumping3}}
 \end{figure}
+<<<<<<< Updated upstream
 
 Jak można zauważyć na obrazku, skok nie jest parabolą, tak jak byłoby to w przypadku realistycznej sytuacji. W niektórych grach 2D tworzy się symulację skoku polegającą na tym, że im dłużej trzyma się przycisk skoku tym dłużej jest się w powietrzu. W rzeczywistości polega to na ustawieniu czasu, w którym siła może działać na postać i ograniczenia jej górnego limitu. W praktyce wygląda to tak, że kiedy tylko przestaniemy trzymać przycisk skoku postać automatycznie zacznie lecieć w dół, a jeśli go przytrzymamy postać na chwilę zawiśnie w powietrzu. Stało się to na tyle powszechne, że taka symulacja skoku wydaje się bardziej naturalna niż dodanie do niego wertykalnej siły jednorazowo, czyli zgodnie z prawami fizyki.  W naszym projekcie postawiliśmy jednak na rzeczywistą symulację fizyki. Stworzenie skoku w taki sposób pozwala na większą przewidywalność miejsca lądowania, natomiast na mniejszą kontrolę samego skoku.Sama implementacja skoku w projekcie ,,The Lore'' prezentuje się następująco:
+=======
+\newpage
+Jak można zauważyć na obrazku, skok nie jest parabolą, tak jak byłoby to w przypadku realistycznej sytuacji. W niektórych grach 2D tworzy się symulację skoku polegającą na tym, że im dłużej trzyma się przycisk skoku tym dłużej jest się w powietrzu. W rzeczywistości polega to na ustawieniu czasu, w którym siła może działać na postać i ograniczenia jej górnego limitu. W praktyce wygląda to tak, że kiedy tylko przestaniemy trzymać przycisk skoku postać automatycznie zacznie lecieć w dół, a jeśli go przytrzymamy postać na chwilę zawiśnie w powietrzu. Stało się to na tyle powszechne, że taka symulacja skoku wydaje się bardziej naturalna niż dodanie do niego wertykalnej siły jednorazowo, czyli zgodnie z prawami fizyki. \cite{jumping2} \\ W naszym projekcie postawiliśmy jednak na rzeczywistą symulację fizyki. Stworzenie skoku w taki sposób pozwala na większą przewidywalność miejsca lądowania, natomiast na mniejszą kontrolę samego skoku. Sama implementacja skoku w projekcie The Lore prezentuje się następująco:
+>>>>>>> Stashed changes
 
 \begin{lstlisting}[breaklines=true,
 language={[Sharp]C},
@@ -1308,7 +1314,7 @@ Jest wiele gier, które wykorzystują drzewka umiejętności w wielu celach, nie
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=11cm]{images/kozubal/poe.png}
-	\caption{Drzewko Umiejętności z gry Path of Exile}
+	\caption{Drzewko Umiejętności z gry Path of Exile \cite{poeskills} }
 \end{figure}
 \newpage
 W naszym projekcie jednak skupiliśmy się na trochę prostszym modelu drzewka ze względu na ograniczoną liczbę poziomów oraz możliwości ich zdobycia, dobrym przykładem podobnego drzewka umiejętności jest gra Ori And The Blind Forest, w której drzewko to wygląda następująco:
@@ -1579,6 +1585,9 @@ https://www.jasonbegy.com/uploads/5/0/7/7/50772065/begy\_jumping.pdf
 \bibitem{jumping3}
 "Lets go physics", Wired. Dostęp 08.02.2021r.
 https://www.wired.com/2016/12/lets-go-physics-jumping-super-mario-run/
+\bibitem{poeskills}
+"Path Of Exile Skill Tree", goldkk. Dostęp 08.02.2021r.
+https://www.goldkk.com/news/1294--path-of-exile-skill-tree-guide--passive-skill-tree-tips-and-tricks-for-poe-beginners
 \end{thebibliography}
 
 \end{document}
