@@ -18,7 +18,7 @@
 % --- Numer albumu
 \album{434797, 434699, 434726}
 % --- Tytuł pracy (w języku polskim i angielskim)
-\titlePL{Projekt i implementacja gry „The Lore: Story of the fallen warrior”}
+\titlePL{Projekt i implementacja gry \\ „The Lore: Story of the fallen warrior”}
 \titleEN{Project and implementation of game „The Lore: Story of the fallen warrior”}
 % --- Typ pracy (inżynierska, licencjacka, magisterska)
 \type{inżynierska}
@@ -46,7 +46,7 @@
 % --- Specjalność (w formie mianownikowej)
 % --- (ustaw puste, jeśli bez specjalności)
 % --- Promotor (w dopełniaczu)
-\supervisor{dr Bartłomieja Przybylskiego}
+\supervisor{dra Bartłomieja Przybylskiego}
 % --- Data złożenia pracy (Miasto, miesiąc rok)
 \date{Poznań, luty 2021}
 
@@ -74,12 +74,22 @@
 % Strona tytułowa
 \maketitle
 
+% Oświadczenia
+\author{Kamil Tyrek}
+\makestatement
+
+\author{Mateusz Hypś}
+\makestatement
+
+\author{Jakub Kozubal}
+\makestatement
+
 % Streszczenie
 \begin{streszczenie}
 Przedmiotem pracy jest przedstawienie projektowania gry platformowej „The Lore: story of the fallen warrior” w oparciu o silnik Unity. Gra posiada elementy zręcznościowe oraz zagadki logiczne, przez co przechodzenie kolejnych etapów gry wymaga szybkiego podejmowania logicznych decyzji. \par
-Na początku zostanie przedstawiony zamysł projektu i w jaki sposób można nim zarządzać. Zaprezentowany fundamentalizm pracy nad projektem, co jest ważne, czego należy przestrzegać i na czym się skupić. W jaki sposób zostaje podzielony projekt informatyczny oraz z czym wiążą się poszczególne etapy pracy. Następnie przedstawione zostaną metodyki, które od lat służą za zbiór drogowskazów w procesie realizacji projektu. Po przyswojeniu i zrozumieniu wszystkich tych informacji, przedstawione zostanie wykorzystanie tego w projekcie gry komputerowej "The Lore". \par
-W następnym rozdziale będziemy mogli dowiedzieć się czym jest zagadka logiczna oraz poznać kilka przykładów. Opisany zostanie sposób obsadzenia mini-gier w grze opartej na silniku Unity. W kontekście projektu „The Lore”, przedstawione są algorytmy stojące za logiką zaimplementowanych mini-gier – przesuwanych puzzli, otwierania skrzyń, mini-gry z ułożeniem rur. Dodatkowo przedstawiono metodę projektowania mini-gry nie zawartej w projekcie - algorytmu generującego labirynt. \par
-W ostatnim rozdziale przedstawiony zostanie opis procesu projektowania i tworzenia postaci oraz mechanik z nią związanych. Od projektowania graficznego po tworzenie dodatkowych funkcjonalności takich jak drzewko umiejętności. Przedstawione zostaną również różnice między silnikiem fizyki w grze,a  fizyką w prawdziwym świecie, problemy i rozwiązania fizyki oddziałującej na postać zarówno jeśli chodzi o sam ruch jak i o obiekty w terenie, które na zachowanie tej postaci wpływają. Na sam koniec przedstawione zostanie drzewko umiejętności razem z poszczególnymi gałęziami tego drzewka.
+Na początku zostanie przedstawiony zamysł projektu i w jaki sposób można nim zarządzać. Zaprezentowany będzie fundamentalizm pracy nad projektem, co jest ważne, czego należy przestrzegać i na czym się skupić. W jaki sposób zostaje podzielony projekt informatyczny oraz z czym wiążą się poszczególne etapy pracy. Następnie przedstawione zostaną metodyki, które od lat służą za zbiór drogowskazów w procesie realizacji projektu. Przedstawione zostanie również wykorzystanie tego w projekcie gry komputerowej ,,The Lore''. \par
+W trzecim rozdziale będziemy mogli dowiedzieć się czym jest zagadka logiczna oraz poznać kilka przykładów. Opisany zostanie sposób obsadzenia mini-gier w grze opartej na silniku Unity. W kontekście projektu „The Lore”, przedstawione są algorytmy stojące za logiką zaimplementowanych mini-gier. Dodatkowo przedstawiono metodę projektowania mini-gry nie zawartej w projekcie - algorytmu generującego labirynt. \par
+W ostatnim rozdziale przedstawiony zostanie opis procesu projektowania i tworzenia postaci oraz mechanik z nią związanych. Elementy te zostaną przedstawione począwszy od projektowania graficznego po tworzenie dodatkowych funkcjonalności takich jak drzewko umiejętności. Przedstawione zostaną również różnice między silnikiem fizyki w grze, a fizyką w prawdziwym świecie, problemy i rozwiązania fizyki oddziałującej na postać zarówno jeśli chodzi o sam ruch jak i o obiekty w terenie, które na zachowanie tej postaci wpływają. 
 
 \end{streszczenie}
 % Spis treści
@@ -93,7 +103,7 @@ W ostatnim rozdziale przedstawiony zostanie opis procesu projektowania i tworzen
 
 \chapter{Wstęp}
 \section{Cel i założenia projektu}
-Celem projektu jest stworzenie gry platformowej, zawierającej elementy zręcznościowe oraz łamigłówki. Głównym założeniem projektu jest gra, która zaciekawi swoją fabułą oraz trudnością. Wstępnie prosty zamysł samouczka, w większości gier jest raczej elementem wprowadzającym do rozgrywki, która powinna robić się trudniejsza w im dalszym etapie rozgrywki się znajdujemy, w przypadku naszej gry jest odwrócony. Samouczek poza wprowadzaniu poszczególnych elementów rozgrywki, którymi jest między innymi przedstawienie sterowania oraz funkcjonalności i wstępnych mechanik jest również wymagający, od gracza zależy jakie umiejętności w trakcie rozgrywki będzie rozwijać, aby przejście kolejnych poziomów było łatwiejsze (z perspektywy gracza). Dużą wagę w projekcie przywiązujemy do mini-gier, które występują w trakcie przechodzenia poszczególnych poziomów. Występują dwa rodzaje mini-gier: opcjonalne (te które przejść możemy w celu sprawdzenia siebie oraz zdobycia punktów doświadczenia) oraz wymagane, które trzeba przejść, aby znaleźć się w dalszym etapie gry. Użytkownik posiada do dyspozycji punkty doświadczenia, drzewko umiejętności oraz ekwipunek. Punkty doświadczenia możemy wydawać bezpośrednio w drzewku umiejętności, w którym zadaniem gracza jest wybranie odpowiednich umiejętności zależnie od tego jaką strategię rozgrywki chce przyjąć. Warto pamiętać jednak, że im głębiej będziemy rozwijać daną gałęź tym umiejętności będą bardziej pomocne co sprawia, że gracz musi zastanowić się dobrze nad decyzjami dotyczącymi rozwijania konkretnych umiejętności w drzewku. Ekwipunek służy do zdobywania przedmiotów potrzebnych w trakcie rozgrywki m.in. do otwierania drzwi czy rozpoczęcia opcjonalnej mini-gry. W projekcie są wykorzystane 2 style tworzenia poziomów: ortographic i perspective. Wszystkie animacje w projekcie są tworzone z użyciem technologii inverse kinematics co pozwala na stałe dodawanie nowych animacji i poprawianie już istniejących.
+Celem projektu było stworzenie gry platformowej, zawierającej elementy zręcznościowe oraz łamigłówki. Głównym założeniem projektu jest gra, która zaciekawi swoją fabułą oraz trudnością. Wstępnie prosty zamysł samouczka, w większości gier jest raczej elementem wprowadzającym do rozgrywki, która powinna robić się trudniejsza w im dalszym etapie rozgrywki się znajdujemy, w przypadku naszej gry jest odwrócony. Samouczek poza wprowadzeniem do poszczególnych elementów rozgrywki, którymi jest między innymi przedstawienie sterowania oraz funkcjonalności i wstępnych mechanik jest również wymagający. To od gracza zależy jakie umiejętności w trakcie rozgrywki będzie rozwijać, aby przejście kolejnych poziomów było łatwiejsze (z perspektywy gracza). Dużą wagę w projekcie przywiązujemy do mini-gier, które występują w trakcie przechodzenia poszczególnych poziomów. Występują dwa rodzaje mini-gier: opcjonalne, czyli te które przejść możemy w celu sprawdzenia siebie oraz zdobycia punktów doświadczenia, a także wymagane, które trzeba przejść, aby znaleźć się na dalszym etapie gry. Użytkownik posiada do dyspozycji punkty doświadczenia oraz ekwpiunek. Punkty doświadczenia możemy wydawać bezpośrednio w drzewku umiejętności, w którym gracz ma możliwość wybrania odpowiednich umiejętności zależnie od tego jaką strategię rozgrywki chce przyjąć. Warto pamiętać jednak, że im głębiej będziemy rozwijać daną gałęź tym umiejętności będą bardziej pomocne co sprawia, że gracz musi zastanowić się dobrze nad decyzjami dotyczącymi rozwijania konkretnych umiejętności w drzewku. Ekwipunek służy do zdobywania przedmiotów potrzebnych w trakcie rozgrywki m.in. do otwierania drzwi czy rozpoczęcia opcjonalnej mini-gry. W projekcie są wykorzystane 2 style tworzenia poziomów: ortographic i perspective. Wszystkie animacje w projekcie są tworzone z użyciem technologii inverse kinematics co pozwala na stałe dodawanie nowych animacji i poprawianie już istniejących.
 \section{Organizacja pracy}
 Charakter projektu sprawił, iż nie można w naszym zespole jasno podzielić typów zadań, które realizujemy w ramach projektu. Wynikiem tego jest to, iż nowe funkcjonalności są realizowane zazwyczaj przez jedną osobę od początku do końca, nie ma podziału, podobnego jak w przypadku aplikacji z frontendem i backendem.
 
