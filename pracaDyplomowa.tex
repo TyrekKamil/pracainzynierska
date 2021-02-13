@@ -683,7 +683,7 @@ W tym przypadku liczba inwersji wynosi dwa. Elementami zbioru inwersji są pary 
 
 W tym przypadku liczba inwersji wynosi już trzy. Elementami zbioru są pary (6,5), (6,4) oraz (5,4). Takich puzzli nie da się rozwiązać. 
 W projekcie platformowej gry w Unity zastosowaliśmy prostą weryfikacje tej sytuacji. 
-
+\\
 \begin{lstlisting}[
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -864,7 +864,7 @@ W lewym górnym rogu mamy źródło strumienia, zaś w prawym dolnym rogu zakoń
 \par Jest to bardzo powszechna mini-gra, która dodawana jest do wielu gier, które posiadają funkcjonalność posiadania ekwipunku. Jej celem jest otworzenie skrzynii, polega to na wykonaniu różnych operacji. Zazwyczaj zaczyna się od okrycia odpowiedniej sekwencji poruszania wytrychem, otwieranie zapadki poprzez poruszanie myszką, czy wciśnięcie odpowiedniego guzika, gdy postęp otwierania zamku jest na odpowiednim etapie. Otwarcie zamku pozwala graczom odblokować skrzynię, która zawiera elementy wyposażenia lub pozwala na otwarcie drzwi, które zaprowadzą nas do ważnych dla gry pomieszczeń. Z racji na charakter rozgrywki element ten bywa raczej opcjonalną metodą przejścia gry. Z tego względu w niektórych grach, posiadających system umiejętności, otwarcie niektórych zamków jest niemożliwe lub bardzo trudne, jeżeli nie rozwiniemy odpowiednich umiejętności.
 \subsection{Algorytmika}
 \par Pierwszym i najważniejszym dla całej mini-gry elementem jest wylosowanie przez grę sekwencji ruchów, która potrzebna jest do ukończenia rozgrywki. Odbywa się to w skrypcie \textbf{PickLockGenerateSequence}. Podczas projektowania generatora napotkano na problem związany z ciągłym losowaniem tych samych liczb. Powodem jest tutaj oczywiście synchronizacja, która przy ładowaniu scen potrafi sprawiać deweloperom problemy. Z tego powodu powstał ten skrypt, który wyróżnia się weryfikacją unikalności wylosowanej liczby.
-Wszystko rozpoczyna się od losowania liczby z zakresu <1,100).
+Wszystko rozpoczyna się od losowania liczby z zakresu <1,100). \clearpage
 \begin{lstlisting}[
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -924,12 +924,16 @@ Na wstępie jesteśmy informowani poprzez komunikat o sterowaniu w rozgrywce. Kl
 Zadaniem gracza jest zgadnąć losowy ciąg elementów lewo/prawo o długości 5. Każdy zły ruch powoduje konieczność powtórzenia sekwencji. Nagrodą za rozwiązanie problemu są eliksiry przywracające punkty życia, które przydają się w czasie rozgrywki. Z racji, iż jest to rozgrywka nieobowiązkowa, gracz w każdej chwili może ją opuścić wybierając opcję \textbf{Exit}.
 \subsection{Przedstawienie przykładu w innych grach}
 \subsubsection{Mafia 2}
-\par Gra Mafia II osadzona jest w amerykańskim mieście rządzonym przez mafie. Głównym bohaterem jest Vito Scaletta, syn włoskich imigrantów. Los sprawia, iż bohater zmuszony jest do szybkiego zarobku, przez co wplata się w mafijne porachunki. Realizując zadania dla swoich pracodawców, nieraz włamywał się do różnych pomieszczeń. Gracz, może również w czasie gry włamywać się do zamkniętych pokoi lub budynków, celem szybszego przejścia poziomu, obejścia wrogów czy zdobycia pieniędzy. Dodatkowo mini-gra pozwala na odblokowanie zamkniętych pojazdów. W mini-grze gracz używa myszki. Widoczny jest zamek z trzema zapadkami, po prawej stronie widzimy wytrych przy pierwszej zapadce. Użytkownik sterując myszką wertykalnie musi ustawić zapadkę w takiej pozycji, aż będzie ona podświetlona na kolor zielony. Jeżeli gracz zrobi to w złym momencie, zostanie cofnięty do poprzedniej zapadki. \cite{Mafia2}
-\begin{figure}[h]
+\par Gra Mafia II osadzona jest w amerykańskim mieście rządzonym przez mafie. Głównym bohaterem jest Vito Scaletta, syn włoskich imigrantów. Los sprawia, iż bohater zmuszony jest do szybkiego zarobku, przez co wplata się w mafijne porachunki. Realizując zadania dla swoich pracodawców, nieraz włamywał się do różnych pomieszczeń. 
+
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=5cm]{images/tyrek/Mafia2.png}
 	\caption{Otwieranie zamków. Przykład z gry ,,Mafia 2''}
 \end{figure}
+
+Gracz, może również w czasie gry włamywać się do zamkniętych pokoi lub budynków, celem szybszego przejścia poziomu, obejścia wrogów czy zdobycia pieniędzy. Dodatkowo mini-gra pozwala na odblokowanie zamkniętych pojazdów. W mini-grze gracz używa myszki. Widoczny jest zamek z trzema zapadkami, po prawej stronie widzimy wytrych przy pierwszej zapadce. Użytkownik sterując myszką wertykalnie musi ustawić zapadkę w takiej pozycji, aż będzie ona podświetlona na kolor zielony. Jeżeli gracz zrobi to w złym momencie, zostanie cofnięty do poprzedniej zapadki. \cite{Mafia2}
+
 \subsubsection{Assassin's Creed Unity}
 \par W grze ,,Assassni's Creed Unity'' wcielamy się w Arno Doriana, członka tajnego bractwa Assasynów, którzy toczą odwieczną walkę z organizacją zwaną Templariusze. Gra osadzona jest w czasach rewolucji francuskiej w Paryżu. Bohater będąc w centrum najważniejszych wydarzeń osiemnastowiecznego Paryża nieraz potrzebuje włamać się do jakiegoś budynku, aby wykonać misję. W grze otwieranie zamków dotyczy pomieszczeń, które dają podobnie jak w poprzedniej grze, możliwość obejścia wrogów, czy też zdobycie ekwipunku oraz włamywania się do skrzyń - podobnie jak w grze ,,The Lore''. Rozpoczynając mini-grę widzimy ilość zapadek, błękitny pasek poruszający się wertykalnie oraz błękitny prostokąt. Zadaniem gracza jest wcisnąć przycisk akcji w momencie, gdy poruszający się znacznik znajdzie się w błękitnym polu. W przypadku, gdy gracz zrobi to w złym momencie, traci z ekwipunku wytrych. Warto też podkreślić, iż w grze istnieje system umiejętności, gdzie dwie umiejętności dotyczą poziomu otwierania zamków. Podczas gry spotkamy trzy poziomy trudności, które charakteryzują się większą ilością zapadek czy też szybszym poruszaniem się błękitnego paska. \cite{acu}
 \begin{figure}[h]
@@ -943,8 +947,8 @@ Logika otwierania zamków, zarówno drzwi jak i skrzyń, jest dość podobna do 
 
 
 \section{Labirynt}
-\par W pierwotnej definicji, labirynt oznacza budowlę, która charakteryzuje się układem dużej ilości pomieszczeń, które połączone są krętymi ciągami korytarzy. Oczywiście miało to na celu utrudnić dostęp do pewnego pomieszczenia osobom niepowołanym. Z podobnych powodów w niektórych grach mamy do czynienia z labiryntem, zmuszając w ten sposób gracza do szukania wskazówek, czy też zapamiętywaniu ścieżek, celem wyjścia z labiryntu. 
 \subsection{Omówienie zagadnienia}
+\par W pierwotnej definicji, labirynt oznacza budowlę, która charakteryzuje się układem dużej ilości pomieszczeń, które połączone są krętymi ciągami korytarzy. Oczywiście miało to na celu utrudnić dostęp do pewnego pomieszczenia osobom niepowołanym. Z podobnych powodów w niektórych grach mamy do czynienia z labiryntem, zmuszając w ten sposób gracza do szukania wskazówek, czy też zapamiętywaniu ścieżek, celem wyjścia z labiryntu. 
 \subsection{Algorytmika}
 \subsubsection{Założenia: algorytm z nawrotami}
 Do stworzenia labiryntu możemy użyć algorytmu z nawrotami. Początkowo powinniśmy stworzyć graf, gdzie każdy węzeł ma co najmniej jedno połączenie, to będzie nasz labirynt. Pomiędzy węzłami, które nie są połączone będzie znajdować się ściana, której użytkownik nie może przejść. Aby stworzyć taki graf, zaczynamy od generowania grafu bez ścieżek - możemy wyobrazić sobie, iż jest to po prostu prostokąt, podzielony na kilka kwadratów stworzonych przez ściany. Algorytm rozpoczyna się w pierwszym węźle, dodając go do stosu. Następnie wybiera pierwszego nieodwiedzonego sąsiada, tworząc w ten sposób pierwsze połączenie węzłów - z punktu widzenia gracza, usuwając pomiędzy nimi ścianę. Proces powtarzany jest aż do momentu, gdy trafimy do węzła, które nie ma żadnego nieodwiedzonego sąsiada. Gdy algorytm już dotrze do takiego miejsca, cofa się, jednocześnie usuwając elementy ze stosu, aż do momentu trafienia na węzeł, który posiada nieodwiedzonego sąsiada. Algorytm skończy się, gdy w naszym stosie nie będzie elementów. \cite{maze}
@@ -964,7 +968,7 @@ public enum NodeState
     VISITED = 128
 }
 \end{lstlisting}
-W ten sposób możemy łatwo określić wszystkie ściany, które otaczają nasz węzeł. Przykładowo, gdybyśmy chcieli przedstawić, iż nasz węzeł otacza ściana lewa i górna, stworzylibyśmy stan \textbf{NodeState nodeState = NodeState.LEFT | NodeState.UP}. Jak wspomnieliśmy, chcemy, aby na początku wszystkie ściany tworzyły swego rodzaju siatkę, która odgradza każdy węzeł od innych. Generowanie jest w tym przypadku bardzo proste, wystarczy w odpowiedniej pętli wykonać odpowiednią liczbę iteracji \textbf{nodeWall[i] = NodeState.LEFT | NodeState.RIGHT | NodeState.UP | NodeState.DOWN}. Możemy również uznawać wartości za liczby binarne, \textbf{LEFT} jako 0001, \textbf{UP} 0010 i tak dalej. Oznaczmy też stan odwiedzonego pola jako 128 - reprezentacja bitowa 1000 0000. W przypadku, gdy chcemy dodać do naszego obiektu nowy stan, wystarczy wykonać operację dodania alternatywy do obecnego stanu. \textbf{node[x,y] |= WallState.VISITED} Oczywiście w ramach większego porządku w kodzie warto określić \textbf{nodeWall} jako tablicę dwuwymiarową, wyznaczając położenie w osi poziomej i pionowej. Pomoże nam to rozpoznać w jakim miejscu na labiryncie znajduje się dany węzeł. Jest to szczególnie przydatne, ponieważ będziemy tworzyć strukturę pod pozycję każdego obiektu. Pozycje, tak jak wyżej wspomniano, przedstawiamy w geometrii dwuosiowej, co oczywiście pomoże nam śledzić gdzie znajduje się dany obiekt. 
+W ten sposób możemy łatwo określić wszystkie ściany, które otaczają nasz węzeł. Przykładowo, gdybyśmy chcieli przedstawić, iż nasz węzeł otacza ściana lewa i górna, stworzylibyśmy stan \textbf{NodeState nodeState = NodeState.LEFT | NodeState.UP}. Jak wspomnieliśmy, chcemy, aby na początku wszystkie ściany tworzyły swego rodzaju siatkę, która odgradza każdy węzeł od innych. Generowanie jest w tym przypadku bardzo proste, wystarczy w odpowiedniej pętli wykonać odpowiednią liczbę iteracji \textbf{nodeWall[i] = NodeState.LEFT | NodeState.RIGHT | NodeState.UP | NodeState.DOWN}. Możemy również uznawać wartości za liczby binarne, \textbf{LEFT} jako 0001, \textbf{UP} 0010 i tak dalej. Oznaczmy też stan odwiedzonego pola jako 128 - reprezentacja bitowa 1000 0000. W przypadku, gdy chcemy dodać do naszego obiektu nowy stan, wystarczy wykonać operację dodania alternatywy do obecnego stanu. \textbf{node[x,y] |= NodeState.VISITED} Oczywiście w ramach większego porządku w kodzie warto określić \textbf{nodeWall} jako tablicę dwuwymiarową, wyznaczając położenie w osi poziomej i pionowej. Pomoże nam to rozpoznać w jakim miejscu na labiryncie znajduje się dany węzeł. Jest to szczególnie przydatne, ponieważ będziemy tworzyć strukturę pod pozycję każdego obiektu. Pozycje, tak jak wyżej wspomniano, przedstawiamy w geometrii dwuosiowej, co oczywiście pomoże nam śledzić gdzie znajduje się dany obiekt. 
 \begin{lstlisting}[
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -976,7 +980,7 @@ public enum NodePosition
 	public int y;
 }
 \end{lstlisting}
-Warto też stworzyć strukturę do przechowywania informacji o sąsiadach naszego węzła. Wystarczą wyżej przedstawione parametry \textbf{NodeState} i \textbf{NodePosition}. Dodatkowo w ramach kontroli powinniśmy stworzyć listę takich obiektów, które nie zostały jeszcze odwiedzone przez algorytm. Mając już takie struktury, kolejnym krokiem byłoby stworzenie metody, która zwraca nam stan danego sąsiada. Tak jak wspominano na początku, sąsiad będzie wybierany losowo, dlatego warto już na wstępie stworzyć obiekt \textbf{System.Random()}. Dzięki stworzonej wcześniej metodzie pobierania sąsiadów możemy go wybrać na przykład ze względu na kolejność na danej liście. Tworzymy też najważniejszy dla algorytmu z nawrotami stos. Każdy odwiedzony węzeł powinien być oznaczony wartością \textbf{NodeState.VISITED} i dodany do tego stosu. Wystarczy, aby były to obiekty \textbf{NodePosition}, jednak nic nie zaszkodzi, aby były to całe obiekty \textbf{WallState}. Teraz dzięki pętli while, powinniśmy sprawdzać kolejne węzły, dopóki nasz stos nie będzie pusty. Jeżeli ostatnio dodany do stosu obiekt posiada co najmniej jednego sąsiada, to pobieramy ich listę, przy użyciu funkcji losującej i wybieramy dany element z posiadanej listy. Dodajemy do stosu wylosowany obiekt.
+Warto też stworzyć strukturę do przechowywania informacji o sąsiadach naszego węzła. Wystarczą wyżej przedstawione parametry \textbf{NodeState} i \textbf{NodePosition}. Dodatkowo w ramach kontroli powinniśmy stworzyć listę takich obiektów, które nie zostały jeszcze odwiedzone przez algorytm. Mając już takie struktury, kolejnym krokiem byłoby stworzenie metody, która zwraca nam stan danego sąsiada. Tak jak wspominano na początku, sąsiad będzie wybierany losowo, dlatego warto już na wstępie stworzyć obiekt \textbf{System.Random()}. Dzięki stworzonej wcześniej metodzie pobierania sąsiadów możemy go wybrać na przykład ze względu na kolejność na danej liście. Tworzymy też najważniejszy dla algorytmu z nawrotami stos. Każdy odwiedzony węzeł powinien być oznaczony wartością \textbf{NodeState.VISITED} i dodany do tego stosu. Wystarczy, aby były to obiekty \textbf{NodePosition}, jednak nic nie zaszkodzi, aby były to całe obiekty \textbf{NodeState}. Teraz dzięki pętli while, powinniśmy sprawdzać kolejne węzły, dopóki nasz stos nie będzie pusty. Jeżeli ostatnio dodany do stosu obiekt posiada co najmniej jednego sąsiada, to pobieramy ich listę, przy użyciu funkcji losującej i wybieramy dany element z posiadanej listy. Dodajemy do stosu wylosowany obiekt.
 Następnie powinniśmy usunąć każdą odwiedzą ścianę. 
 
 \begin{lstlisting}[
@@ -987,7 +991,7 @@ caption={Usunięcie ściany - skrypt C\#}
 node[x ,y] &= ~neighbour.SharedWall;
 \end{lstlisting}
 
-Gdzie \textbf{SharedWall} mówi nam o tym, czy pomiędzy dwoma obiektami znajduje się ściana. Oczywiście, informacja o ścianie powinna zostać zaktualizowana również u sąsiada. W tej sytuacji są dwa wyjścia. Pierwszy z nich, z lekka naiwny i niezbyt przyjazne dla oka dewelopera to stworzenie czterech warunków, które definiują dla danego przypadku jak pobrać pozycję przeciwną, dla sąsiada po lewej stronie - prawo, dla sąsiada na dole - góra i tak dalej. W ten sposób możemy zdobyć węzeł i zmienić jego stan, a następnie dodać nowy element do stosu. Drugim, rozsądniejszym pomysłem jest zadeklarowanie metody, która mogłaby od razu zwrócić nam \textbf{WallState} naszego sąsiada, który od razu mógłby być szybko poprawiony. Z pomocą przychodzi tutaj prosta instrukcja switch(), która pozwala nam na zarządzanie czterema przypadkami, z którymi będziemy mieli do czynienia.
+Gdzie \textbf{SharedWall} mówi nam o tym, czy pomiędzy dwoma obiektami znajduje się ściana. Oczywiście, informacja o ścianie powinna zostać zaktualizowana również u sąsiada. W tej sytuacji są dwa wyjścia. Pierwszy z nich, z lekka naiwny i niezbyt przyjazne dla oka dewelopera to stworzenie czterech warunków, które definiują dla danego przypadku jak pobrać pozycję przeciwną, dla sąsiada po lewej stronie - prawo, dla sąsiada na dole - góra i tak dalej. W ten sposób możemy zdobyć węzeł i zmienić jego stan, a następnie dodać nowy element do stosu. Drugim, rozsądniejszym pomysłem jest zadeklarowanie metody, która mogłaby od razu zwrócić nam \textbf{NodeState} naszego sąsiada, który od razu mógłby być szybko poprawiony. Z pomocą przychodzi tutaj prosta instrukcja switch(), która pozwala nam na zarządzanie czterema przypadkami, z którymi będziemy mieli do czynienia.
 
 \begin{lstlisting}[
 language={[Sharp]C},
@@ -1011,14 +1015,15 @@ Teraz używając czterech warunków, dla każdej strony, weryfikujemy, czy nasz 
 \subsubsection{Wriggler}
 \par ,,Wriggler'' jest grą wydaną w 1985 roku. W grze sterujemy robakiem, którego zadaniem jest uciec z labiryntu składającego się z 256 poziomów, w ramach wyścigu w którym bierze udział. Każdy poziom (labirynt) jest stały - nie są one generowane w czasie gry. Gra została stworzona przez braci Kempthorne oraz David'a Vivian'a. \cite{Wriggler}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=8cm]{images/tyrek/wriggler.png}
+	\includegraphics[width=7cm]{images/tyrek/wriggler.png}
 	\caption{Labirynt. Przykład z gry Wriggler}
 \end{figure}
 
 \subsubsection{Dandy}
 \par Kolejną grą opartą na labiryntach jest \textbf{Dandy}. Gra powstała w 1983 roku na platformy Atari, przez Johna Howarda Palevicha, w ramach pracy licencjackiej na MIT. Gracz steruje postacią, poruszając się po lochach z wieloma poziomami, które połączone są ze sobą schodami. Niektóre fragmenty labiryntu zamknięte są przez drzwi, do których otwarcia potrzebne są klucze, rozsiane po planszy. Oprócz pokonywania kolejnych poziomów, gracz może pokonywać wrogów przy użyciu łuku. \cite{Dandy}
+\clearpage
 \section{Podsumowanie}
 \par Jak widać, projektowanie zagadek logicznych jako mini-gry może nie być aż tak trudne. Dużo zależy od podejścia autora i kreatywności w przewidywaniu szczególnych sytuacji - czego przykładem jest kwestia nierozwiązywalnych przesuwanych puzzli. Pomocne jest tu też narzędzie Unity i zawarte w nim funkcjonalności. Dzięki odpowiednim dopasowaniom komponentów do obiektów, możemy łatwo podczas podglądu gry, testować produkt pod kątem potencjalnych błędów. Na pewno wielkim plusem jest tu też szeroka dokumetnacja Unity, która pozwala nam łatwo znaleźć funkcje, czy obiekty, które mogą się przydać w toku tworzenia własnej rozgrywki.
 \chapter{Fizyka postaci}
@@ -1455,7 +1460,7 @@ NaRUDO. \emph{Zwinne i tradycyjne zarządzanie projektami}. dostęp w internecie
 
 \bibitem{agileVwaterfall}
 global4net. \emph{Waterfall czy Agile – którą metodykę wybrać?}, dostęp w internecie 30.01.2021r.\\
-\url{https://global4net.com/ecommerce/waterfall-czy-agile-ktora\\-metodyke-wybrac/}
+ \url{https://global4net.com/ecommerce/waterfall-czy-agile-ktora\\-metodyke-wybrac/}
 
 \bibitem{agile}
 Agile247. \emph{Czym jest agile?}, dostęp w internecie 31.01.2021r.\\
@@ -1494,100 +1499,100 @@ PRODUCTVISION, \emph{Business Model Canvas – szablon modelu biznesowego}, dost
 \url{https://productvision.pl/2014/business-model-canvas\\-szablon-modelu-biznesowego/}
 
 \bibitem{zagadka_logiczna} 
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
-\url{https://pl.wikipedia.org/wiki/Zagadka}
+Wikipedia, Wolna Encyklopedia.”, \emph{Zagadka} dostęp 07.01.2021r.
+\\ \url{https://pl.wikipedia.org/wiki/Zagadka}
 
 \bibitem{rebus} 
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
-\url{https://pl.wikipedia.org/wiki/Rebus}
+Wikipedia, Wolna Encyklopedia.”, \emph{Rebus}, dostęp 07.01.2021r.
+\\ \url{https://pl.wikipedia.org/wiki/Rebus}
 
 \bibitem{przesuwane_puzzle}
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
-\url{https://en.wikipedia.org/wiki/15\_puzzle}
+Wikipedia, Wolna Encyklopedia.”, \emph{15 puzzle}, dostęp 07.01.2021r.
+\\ \url{https://en.wikipedia.org/wiki/15\_puzzle}
 
 \bibitem{puzzle}
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 07.01.2021r.
-\url{https://pl.wikipedia.org/wiki/Puzzle}
+Wikipedia, Wolna Encyklopedia.”, \emph{Puzzle}, dostęp 07.01.2021r.
+\\ \url{https://pl.wikipedia.org/wiki/Puzzle}
 
 \bibitem{scena}
-Unity Documentation, dostęp 09.01.2021r.
-\url{https://docs.unity3d.com/Manual/CreatingScenes.html}
+Unity Documentation, \emph{Creating Scenes}, dostęp 09.01.2021r.
+\\ \url{https://docs.unity3d.com/Manual/CreatingScenes.html}
 
 \bibitem{gameobject}
-Unity Documentation, dostęp 09.01.2021r.
-\url{https://docs.unity3d.com/ScriptReference/GameObject.html}
+Unity Documentation, \emph{GameObject} dostęp 09.01.2021r.
+\\ \url{https://docs.unity3d.com/ScriptReference/GameObject.html}
 
 \bibitem{komponent}
-Unity Documentation, dostęp 28.01.2021r.
-\url{https://docs.unity3d.com/ScriptReference/Component.html}
+Unity Documentation, \emph{Component} dostęp 28.01.2021r.
+\\ \url{https://docs.unity3d.com/ScriptReference/Component.html}
 
 \bibitem{solvablePuzzle}
 Geeks for geeks. Check instance 8 puzzle solvable, dostęp 26.01.2021r.
-\url{https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/}
+\\ \url{https://www.geeksforgeeks.org/check-instance-8-puzzle-solvable/}
 
 \bibitem{pipemania}
-Wikipedia, Wolna Encyklopedia.” Wikimedia Foundation, Inc. July 17, 2002, dostęp 27.01.2021r.
-\url{https://en.wikipedia.org/wiki/Pipe\_Mania}
+Wikipedia, Wolna Encyklopedia.” \emph{Pipe Mania}, dostęp 27.01.2021r.
+\\ \url{https://en.wikipedia.org/wiki/Pipe\_Mania}
 
 \bibitem{Mafia2}
-Mafia Wiki, Fandom, dostęp 28.01.2021r.
-\url{https://mafiagame.fandom.com/wiki/Lock\_Picking}
+Mafia Wiki, Fandom, \emph{Lock Picking}, dostęp 28.01.2021r.
+\\ \url{https://mafiagame.fandom.com/wiki/Lock\_Picking}
 
 \bibitem{acu}
-IGN, Assassin's Creed Unity Wiki Guide, dostęp 28.01.2021r.
-\url{https://www.ign.com/wikis/assassins-creed-5-unity/Lockpick}
+IGN, Assassin's Creed Unity Wiki Guide, \emph{Lockpick}, dostęp 28.01.2021r.
+\\ \url{https://www.ign.com/wikis/assassins-creed-5-unity/Lockpick}
 
 \bibitem{maze}
-Qaz Wiki: Algorytm generowania labiryntu - Maze generation algorithm, dostęp 02.02.2021r.
-\url{https://pl.qaz.wiki/wiki/Maze\_generation\_algorithm}
+Qaz Wiki: \emph{Algorytm generowania labiryntu - Maze generation algorithm}, dostęp 02.02.2021r.
+\\ \url{https://pl.qaz.wiki/wiki/Maze\_generation\_algorithm}
 
 \bibitem{nd}
-Fandom Wiki, The Haunting of Castle Malloy, dostęp 03.02.2021r.
-\url{https://nancydrew.fandom.com/wiki/The\_Haunting\_of\_Castle\_Malloy}
+Fandom Wiki, \emph{The Haunting of Castle Malloy}, dostęp 03.02.2021r.
+\\ \url{https://nancydrew.fandom.com/wiki/The\_Haunting\_of\_Castle\_Malloy}
 
 \bibitem{Instantiate}
-Unity Documentation, dostęp 04.02.2021r.
-\url{https://docs.unity3d.com/ScriptReference/Object.Instantiate.html}
+Unity Documentation, \emph{Instantiate}, dostęp 04.02.2021r.
+\\ \url{https://docs.unity3d.com/ScriptReference/Object.Instantiate.html}
 
 \bibitem{Vector3}
-Unity Documentation, dostęp 04.02.2021r.
-\url{https://docs.unity3d.com/ScriptReference/Vector3.html}
+Unity Documentation, \emph{Vector3}, dostęp 04.02.2021r.
+\\ \url{https://docs.unity3d.com/ScriptReference/Vector3.html}
 
 \bibitem{Wriggler}
-Personal Computer News, Issue 107, dostęp 04.02.2021r.
-\url{http://www.personalcomputernews.co.uk/pcnb/html/107/personal\_computer\_news\_107\_\\gameplay\_spectrum\_the\_wriggler.html}
+Personal Computer News, \emph{Issue 107}, dostęp 04.02.2021r.
+\\ \url{http://www.personalcomputernews.co.uk/pcnb/html/107/personal\_computer\_news\_107\_\\gameplay\_spectrum\_the\_wriggler.html}
 
 \bibitem{Dandy}
  "A History of Dandy Dungeon", Jack Palevich. Wersja archiwizowana z 04.11.2013r. Dostęp 04.02.2021 r.
-\url{https://web.archive.org/web/20131104190048/http://jacks-hacks.appspot.com/dandy/\\history.html}
+\\ \url{https://web.archive.org/web/20131104190048/http://jacks-hacks.appspot.com/dandy/\\history.html}
 
 \bibitem{sp}
 "Soda Pipes", Mobby Games. Dostęp 04.02.2021r.
-\url{https://www.mobygames.com/game/windows/soda-pipes}
+\\ \url{https://www.mobygames.com/game/windows/soda-pipes}
 \bibitem{animation1}
 "Animation of 2d character in Unity", gamedevacademy. Dostęp 29.01.2021r.
-\url{https://gamedevacademy.org/how-to-animate-a-2d-character-in-unity/}
+\\ \url{https://gamedevacademy.org/how-to-animate-a-2d-character-in-unity/}
 \bibitem{animation2}
 "Animation for beginners", tutsplus. Dostęp 01.02.2021r.
-\url{https://design.tutsplus.com/tutorials/animation-for-beginners-how-to-animate-a-character-running--cms-25730}
+\\ \url{https://design.tutsplus.com/tutorials/animation-for-beginners-how-to-animate-a-character-running--cms-25730}
 \bibitem{physics1}
 "How does a collision engine work", Stack Exchange. Dostęp 04.02.2021r.
-\url{https://gamedev.stackexchange.com/questions/26501/how-does-a-collision-engine-work/26506\#26506}
+\\ \url{https://gamedev.stackexchange.com/questions/26501/how-does-a-collision-engine-work/26506\#26506}
 \bibitem{physics2}
 "SmoothDamp Documentation", Unity3d. Dostęp 05.02.2021r.
-\url{https://docs.unity3d.com/ScriptReference/Vector2.SmoothDamp.html}
+\\ \url{https://docs.unity3d.com/ScriptReference/Vector2.SmoothDamp.html}
 \bibitem{jumping1}
 "Jumping in games", DaveTech. Dostęp 07.02.2021r.
-\url{http://www.davetech.co.uk/gamedevplatformer}
+\\ \url{http://www.davetech.co.uk/gamedevplatformer}
 \bibitem{jumping2}
 "Begy Jumping", Jason Begy. Dostęp 08.02.2021r.
-\url{https://www.jasonbegy.com/uploads/5/0/7/7/50772065/begy\_jumping.pdf}
+\\ \url{https://www.jasonbegy.com/uploads/5/0/7/7/50772065/begy\_jumping.pdf}
 \bibitem{jumping3}
 "Lets go physics", Wired. Dostęp 08.02.2021r.
-\url{https://www.wired.com/2016/12/lets-go-physics-jumping-super-mario-run/}
+\\ \url{https://www.wired.com/2016/12/lets-go-physics-jumping-super-mario-run/}
 \bibitem{poeskills}
 "Path Of Exile Skill Tree", goldkk. Dostęp 08.02.2021r.
-\url{https://www.goldkk.com/news/1294--path-of-exile-skill-tree-guide--passive-skill-tree-tips-and-tricks-for-poe-beginners}
+\\ \url{https://www.goldkk.com/news/1294--path-of-exile-skill-tree-guide--passive-skill-tree-tips-and-tricks-for-poe-beginners}
 \end{thebibliography}
 
 \end{document}
