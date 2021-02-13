@@ -991,7 +991,7 @@ switch(nodeState)
 \end{lstlisting}
 
 Algorytm gotowy. W tym momencie mamy stworzony generator labiryntu, który powinien jeszcze stworzyć algorytm odpowiedzialny za wygenerowanie w naszej grze labiryntu. Dzięki otrzymanym informacją nie sprawia to większych problemów. Mając informację o wszystkich węzłach, możemy stworzyć pętle, która tworzy obiekty ścian ze względu na ściany istniejące dla danego węzła. Z pomocą przychodzi tu obiekt \textbf{Instantiate}. Służy on do klonowania przekazanego obiektu (dla nas ściany). Dodatkowo metoda ta pozwala nam na określenie dokładnej pozycji oraz rotacji naszego elementu, co pozwoli nam na ułożenie ściany w wyznaczonym miejscu i pozwoli na obrócenie obiektu - ze względu czy jest ścianą pionową czy poziomą. Dokładny obiekt który jest nam potrzebny to \textbf{Instantiate(Object original, Vector3 position, Quaternion rotation)}. \cite{Instantiate}
-Teraz używając czterech warunków, dla każdej strony, weryfikujemy, czy nasz węzeł sąsiaduje z daną ścianą. Dla każdej ściany (jeśli istnieje) tworzymy jej obiekt. Następnie powinniśmy określić pozycję - tutaj przychodzi z pomocą obiekt \texbf{Vector3}. Jest to trójelementowa struktura, która przydaje się w określaniu między innymi pozycji w trzech osiach - \textbf{Vector3(x, y, z)}. \cite{Vector3}. Pozycja jest tutaj zależna od naszych wymagań - powinniśmy dopasować ją do wielkości naszego obiektu. Z pomocą przychodzi Unity, które w sekcji Inspector pozwala łatwo zarządzać wielkością naszego obiektu. Rotacja potrzebuje zaś już czteroelementowego obiektu - \textbf{Quaternion}. Ze względu na posiadany przez nas obiekt ściany musimy sami określić, która oś powinna zostać zmieniona. W ten sposób powinniśmy mieć już widocznie wygenerowany labirynt.
+Teraz używając czterech warunków, dla każdej strony, weryfikujemy, czy nasz węzeł sąsiaduje z daną ścianą. Dla każdej ściany (jeśli istnieje) tworzymy jej obiekt. Następnie powinniśmy określić pozycję - tutaj przychodzi z pomocą obiekt \textbf{Vector3}. Jest to trójelementowa struktura, która przydaje się w określaniu między innymi pozycji w trzech osiach - \textbf{Vector3(x, y, z)}. \cite{Vector3}. Pozycja jest tutaj zależna od naszych wymagań - powinniśmy dopasować ją do wielkości naszego obiektu. Z pomocą przychodzi Unity, które w sekcji Inspector pozwala łatwo zarządzać wielkością naszego obiektu. Rotacja potrzebuje zaś już czteroelementowego obiektu - \textbf{Quaternion}. Ze względu na posiadany przez nas obiekt ściany musimy sami określić, która oś powinna zostać zmieniona. W ten sposób powinniśmy mieć już widocznie wygenerowany labirynt.
 
 
 \subsection{Przedstawienie przykładu w innych grach}
@@ -1368,7 +1368,11 @@ Nieśmiertelność – Jest to umiejętność aktywna pozwalająca nam przez 2 s
 
 \section{Podsumowanie}
 Podsumowując w rozdziale tym został przedstawiony proces tworzenia postaci, przeniesienia jej do środowiska pracy oraz samą pracę na niej jeśli chodzi o poruszanie się i główne aspekty z tym związane. Warto pamiętać, że nie wszystkie gry odwzorowują fizykę w taki sposób jak wygląda ona rzeczywiście dlatego dobrze jest znać zagrania, którymi kierują się developerzy przy projektowaniu odpowiednich mechanik, a w grach 2D istnieje dużo ukrytych sposobów rozwiązywania problemów i innego przedstawienia fizyki do którego większość użytkowników jest przyzwyczajona przez co dokładna symulacja fizyki dla przeciętnego gracza wydaje się mniej poprawna niż użycie tych sztuczek.
-\begin{thebibliography}{7}
+
+\begin{thebibliography}{100} 
+
+\addtolength{\leftmargin}{0.2in} 
+\setlength{\itemindent}{-0.2in}
 
 \bibitem{projekt}
 Robert K. Wysocki, Rudd McGary: Efektywne zarządzanie projektami. Wydanie III, ISBN: 83-7361-861-9, dostęp w internecie 26.01.2021r.
