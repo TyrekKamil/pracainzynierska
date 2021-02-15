@@ -1135,23 +1135,23 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{CharacterController.cs}}
 ]
-for (int i~= 0; i~< colliders.Length; i++)
+for (int i = 0; i < colliders.Length; i++)
 {
-	if (colliders[i].gameObject.name.Contains("Moving Platform")) {
-		onMovingPlatform = true;
-		currentPlatform = 
-		= colliders[i].gameObject.GetComponent<MovingPlatform>();
-	}
+   if (colliders[i].gameObject.name.Contains("Moving Platform")) {
+      onMovingPlatform = true;
+      currentPlatform = 
+      = colliders[i].gameObject.GetComponent<MovingPlatform>();
+   }
 
-	if (colliders[i].gameObject != gameObject)
-	{
-		m_Grounded = true;
-	}
+   if (colliders[i].gameObject != gameObject)
+   {
+      m_Grounded = true;
+   }
 
-	if (!wasGrounded)
-	{
-		animator.SetBool("IsJumping", false);
-	}
+   if (!wasGrounded)
+   {
+   animator.SetBool("IsJumping", false);
+   }
 
 }
 \end{lstlisting}
@@ -1169,10 +1169,14 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{CharacterController.cs}}
 ]
-Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+Vector3 targetVelocity =
+= new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
 
-m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity,
- ref m_Velocity, m_MovementSmoothing);
+m_Rigidbody2D.velocity = Vector3.SmoothDamp(
+              m_Rigidbody2D.velocity, 
+              targetVelocity, 
+              ref m_Velocity, 
+              m_MovementSmoothing);
 \end{lstlisting}
 
 Zmienna \textbf{\textit{targetVelocity}} odpowiedzialna jest za określenie konkretnego ruchu, który chcemy, żeby wykonała postać. Warto zauważyć jednak, że końcowy wynik jest jeszcze wygładzany przy pomocy wbudowanej do wektora metody \textbf{\textit{SmoothDamp}} \cite{physics2}, co oznacza, że ruch nie jest sztywny i ma swoje ograniczenia czasowe w trakcie jego wykonywania. W praktyce przenosi się to na bardziej intuicyjny sposób poruszania się, jak i poprawę wizualną samego ruchu.
@@ -1186,18 +1190,18 @@ caption={Fragment klasy \texttt{CharacterController.cs}}
 ]
 private void Flip()
 {
-	m_FacingRight = !m_FacingRight;
-	Vector3 theScale = transform.localScale;
-	theScale.x *= -1;
-	transform.localScale = theScale;
+   m_FacingRight = !m_FacingRight;
+   Vector3 theScale = transform.localScale;
+   theScale.x *= -1;
+   transform.localScale = theScale;
 }
 if (move > 0  &&  !m_FacingRight  &&  !Statics.isOnRope)
 {
-	Flip();
+   Flip();
 }
 else if (move < 0  &&  m_FacingRight  &&  !Statics.isOnRope)
 { 
-	Flip();
+   Flip();
 }
 \end{lstlisting}
 
@@ -1225,18 +1229,20 @@ rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{CharacterController.cs}}
 ]
 if (m_Grounded && jump){
-	m_Grounded = false;
-	m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-	jump = false;
-	onMovingPlatform = false;
+   m_Grounded = false;
+   m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+   jump = false;
+   onMovingPlatform = false;
 }
 if (!m_Grounded && jump && extraJumps > 0 && !Statics.isOnRope)
 {
-	m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
-	animator.SetBool("doubleJump", true);
-	m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * extraJumpDifficulty));
-	jump = false;
-	extraJumps--;
+   m_Rigidbody2D.velocity =
+   = new Vector2(m_Rigidbody2D.velocity.x, 0);
+   animator.SetBool("doubleJump", true);
+   m_Rigidbody2D
+   .AddForce(new Vector2(0f, m_JumpForce * extraJumpDifficulty));
+   jump = false;
+   extraJumps--;
 }
 \end{lstlisting}
 \newpage
@@ -1253,14 +1259,14 @@ caption={Fragment klasy \texttt{PlayerMovement.cs}}
 ]
 void MoveObject()
 {
-	 if (Physics2D.OverlapCircleAll(actionPoint.position, boxMoveRange, 
-	 boxLayer).Length > 0 && !animator.GetBool("IsJumping"))
-	{
-           	 Physics2D.OverlapCircleAll(actionPoint.position, boxMoveRange,
-		 boxLayer)[0] .GetComponent<BoxMoving>()
-		 .MoveBox(direction);
-           	 animator.SetTrigger("PushObject");
-      	 }
+   if (Physics2D.OverlapCircleAll(actionPoint.position, boxMoveRange, 
+   boxLayer).Length > 0 && !animator.GetBool("IsJumping"))
+   {
+      Physics2D.OverlapCircleAll(actionPoint.position, boxMoveRange,
+      boxLayer)[0] .GetComponent<BoxMoving>()
+      .MoveBox(direction);
+      animator.SetTrigger("PushObject");
+   }
 }
 \end{lstlisting}
 
@@ -1274,8 +1280,8 @@ caption={Fragment klasy \texttt{PlayerMovement.cs}}
 ]
 if (onMovingPlatform && !m_Grounded)
 {
-	move += currentPlatform.velocityX;
-	onMovingPlatform = false;
+   move += currentPlatform.velocityX;
+   onMovingPlatform = false;
 }
 \end{lstlisting}
 Przez to, że aktualna prędkość przyjmuje wartości ujemne, gdy porusza się w lewą stronę, a dodatnie, gdy porusza się w prawą, implementacja tego problemu ogranicza się do kilku linijek.
@@ -1287,20 +1293,20 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{PlayerMovement.cs}}
 ]    
-void Grab()
+Collider2D[] colliders = Physics2D.OverlapCircleAll
+(actionPoint.position, attackRange, ropeLayer);
+if (colliders.Length > 0 && !Statics.isOnRope)
 {
-   Collider2D[] colliders = Physics2D.OverlapCircleAll(actionPoint.position,
-   attackRange, ropeLayer);
-   if (colliders.Length > 0 && !Statics.isOnRope)
-   {
-      recentCollider = colliders[0];
-      FixedJoint2D joint = colliders[0].gameObject.AddComponent<FixedJoint2D>();
-      joint.connectedBody = gameObject.GetComponent<Rigidbody2D>();
-      isOnRope = true;
-      Statics.isOnRope = true;
-      controller.extraJumps = 1;
-   }
+   recentCollider = colliders[0];
+   FixedJoint2D joint = colliders[0]
+                        .gameObject
+                        .AddComponent<FixedJoint2D>();
+   joint.connectedBody = gameObject.GetComponent<Rigidbody2D>();
+   isOnRope = true;
+   Statics.isOnRope = true;
+   controller.extraJumps = 1;
 }
+
 \end{lstlisting}
 
 Problem trzymania się liny został rozwiązany przy użyciu połączenia stałego między postacią a jednym z obiektów lin, ponieważ lina sama w sobie składa się z kilkunastu fragmentów połączonych, aby uniknąć błędów przy połączeniu, brana jest pod uwagę tylko jedna z wykrytych przez skrypt kolizji. Warto zaznaczyć też, że bujanie liną jest możliwe ze względu na możliwość ruchu postaci w powietrzu, gdyby nie to trzeba by było zmodyfikować klasę dotyczącą poruszania się tak, aby ruch był możliwy również w trakcie kontaktu z liną. Połączenie stałe między postacią a liną zostaje zerwane w momencie puszczenia przycisku akcji, po czym użytkownikowi przysługuje jeszcze jeden skok.
@@ -1349,20 +1355,20 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{PlayerSkills.cs}}
 ]    
-    public SkillType GetSkillRequirement(SkillType skillType) {
-        switch (skillType) {
-            //Blue Skills Requirements
-            case SkillType.TripleJump: return SkillType.Sprint;
-            case SkillType.Dash: return SkillType.TripleJump;
-            //Red Skills Requirements
-            case SkillType.Bullet: return SkillType.IncreaseDMG;
-            case SkillType.Explode: return SkillType.Bullet;
-            //Green Skills Requirements
-            case SkillType.RegenerationHP: return SkillType.ExtraHP;
-            case SkillType.Immortality: return SkillType.RegenerationHP;
-        }
-        return SkillType.None;
-    }
+public SkillType GetSkillRequirement(SkillType skillType) {
+   switch (skillType) {
+      //Blue Skills Requirements
+      case SkillType.TripleJump: return SkillType.Sprint;
+      case SkillType.Dash: return SkillType.TripleJump;
+      //Red Skills Requirements
+      case SkillType.Bullet: return SkillType.IncreaseDMG;
+      case SkillType.Explode: return SkillType.Bullet;
+      //Green Skills Requirements
+      case SkillType.RegenerationHP: return SkillType.ExtraHP;
+      case SkillType.Immortality: return SkillType.RegenerationHP;
+   }
+return SkillType.None;
+}
 \end{lstlisting}
 
 Zwracana wcześniejsza umiejętność przy próbie odblokowania pozwala nam określić, która umiejętność jest warunkiem do odblokowania danej umiejętności, co znacznie ułatwia sprawdzanie, wystarczy przeszukać listę odblokowanych umiejętności i sprawdzić, czy wcześniejsza w hierarchii istnieje w danym kontekście.
@@ -1373,7 +1379,7 @@ Jest wiele gier, które wykorzystują drzewka umiejętności w wielu celach, nie
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=11cm]{images/kozubal/poe.png}
-	\caption{Drzewko Umiejętności z~gry Path of Exile \cite{poeskills} }
+	\caption{Drzewko Umiejętności z~gry Path of Exile }
 \end{figure}
 \newpage
 W naszym projekcie jednak skupiliśmy się na trochę prostszym modelu drzewka ze względu na ograniczoną liczbę poziomów oraz możliwości ich zdobycia, dobrym przykładem podobnego drzewka umiejętności jest gra Ori And The Blind Forest, w której drzewko to wygląda następująco:
