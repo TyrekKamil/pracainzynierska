@@ -221,6 +221,7 @@ Znajomość dokładnej definicji pojęcia projekt, znacznie pomaga w~zrozumieniu
 Zarządzanie projektem to nie tylko planowanie i~pilnowanie, by wszystko działo się zgodnie z~założeniami. Jest to również budowanie motywacji zespołu projektowego, dbanie o~właściwą komunikację między jego stronami oraz zrozumienie potrzeb członków. w~zależności od rozmiaru firmy, proces taki może być bardzo długi i~trudny do wdrożenia.
 
 Innym czynnikiem wchodzącym w~skład zarządzania projektem, jest analiza zagrożeń oraz praktyczna wiedza pozwalająca na ich wyeliminowanie. Ten krok ma swoją nazwę, jest to tzw. eliminacja ryzyka, występująca podczas całego cyklu życia projektu. Ryzyko w~projektach pochodzi głównie z~niemożliwości wyeliminowania niechcianych incydentów oraz niepewności związanej z~przyszłością. Niestety żaden z~etapów projektu nie jest pozbawiony ryzyka. Wynika to głównie z: dynamiki procesu, potencjalnych konfliktów między pracownikami, niespodziewanych komplikacji związanych z~zasobami, zmiennej wydajności pracy czy zwyczajnie błędnego planowania. Aby jak najbardziej ograniczyć ryzyko niepowodzenia, przy jednoczesnej maksymalizacji optymalizacji użycia zasobów, zatrudnia się odpowiednią na to miejsce osobę, zwaną menedżerem projektu lub kierownikiem projektu.
+\newpage
 
 \begin{figure}[h]
 	\centering
@@ -298,6 +299,7 @@ Ostatnią fazą są testy, wykonywane na stworzonym w~poprzednim etapie, działa
 
 \subsubsection {Testy jednostkowe}
 Zadaniem testów jednostkowych jest sprawdzenie poprawności działania pojedynczego, wyizolowanego bytu. Są to najczęściej pojedyncze funkcje, jednostki lub komponenty. Kluczową cechą tych testów jest brak integracji z~API bądź bazą danych (jest to zadanie testów integracyjnych). Testy jednostkowe muszą działać bardzo szybko (liczone są w~setkach na sekundę), ponieważ używane są przez programistów wielokrotnie w~fazie implementacji. Mają one nie tylko sprawdzać poprawność testowanego komponentu, ale przede wszystkim zapewnić deweloperów, że implementowane przez nich zmiany w~kodzie, nie doprowadzą do usterek funkcjonalnych. \cite{testJ}
+\newpage
 
 \begin{figure}[h]
 	\centering
@@ -317,9 +319,9 @@ Testy funkcjonalne opierają się na analizie specyfiki funkcjonalnej tworzonego
 \subsubsection {Testy akceptacyjne}
 Kolejnym, zupełnie innym rodzajem testów, są testy akceptacyjne. Nie skupiają się na znalezieniu błędów czy pomyłek w~implementacji systemu. Mają potwierdzić wykonanie oprogramowania na odpowiednim poziomie. Służą do uzyskania formalnego potwierdzenia od klienta lub osób zewnętrznych, że wykonany projekt spełnia kryteria jakościowe. Ważnym aspektem jest również weryfikacja, czy w~realizacji nie brakuje założonych w~dokumentacji funkcjonalności oraz czy procesy biznesowe przechodzą w~prawidłowy sposób, czyli budują zaufanie wśród odbiorców. Następnie należy potwierdzić, czy aplikacja jest zgodna z~dokumentacją. Testy akceptacyjne są ostatnim etapem weryfikowania poprawności realizacji systemu informatycznego. To na ich podstawie menedżerowie odpowiedzialni za rozwój projektu podejmują decyzję o~wdrożeniu do użytkowania produkcyjnego. \cite{testA}
 
-\begin{figure}[h]
+\begin{figure}[hb!]
 	\centering
-	\includegraphics[width=15cm]{images/hyps/test-diagram.jpg}
+	\includegraphics[width=10cm]{images/hyps/test-diagram.jpg}
 	\caption{Piramida procesu przeprowadzania testów}
 \end{figure}
 
@@ -356,11 +358,13 @@ Metoda waterfall to przykład modelu kaskadowego, nazywanego również klasyczny
 \subsubsection{Manifest Agile}
 \begin{center}
 \textit{Odkrywamy nowe metody programowania dzięki praktyce w~programowaniu i~wspieraniu w~nim innych. w~wyniku naszej pracy, zaczęliśmy bardziej cenić:\\}
+
 \textit{\textbf{Ludzi i~interakcje} od procesów i~narzędzi\\}
 \textit{\textbf{Działające oprogramowanie} od szczegółowej dokumentacji\\}
 \textit{\textbf{Współpracę z~klientem} od negocjacji umów\\}
-\textit{\textbf{Reagowanie na zmiany} od realizacji założonego planu.\\}
-\textit{Oznacza to, że elementy wypisane po prawej są wartościowe,ale większą wartość mają dla nas te, które wypisano po lewej.}
+\textit{\textbf{Reagowanie na zmiany} od realizacji założonego planu.\\ \\}
+\textit{Oznacza to, że elementy wypisane po prawej są wartościowe,ale większą wartość mają dla nas te, które wypisano po lewej. \\}
+Żródło: \textit{https://agilemanifesto.org/iso/pl/manifesto.html}
 \end{center}
 
 Manifest Agile wprowadzony w~2001 roku zaproponował nowe spojrzenie na możliwości wytwarzania oprogramowania. Przede wszystkim podkreślił wagę pracy zespołowej i~interakcji międzyludzkiej nad dotychczasową koncentracją na procesach i~narzędziach. Zwrócono uwagę na kontakt z~klientem oraz tworzenie roboczego oprogramowania, zamiast wszechstronnej dokumentacji. Największym przeciwieństwem, w~stosunku do dotychczasowych metod, było zaakceptowanie powrotu do fazy implementacyjnej w~celu zareagowania na błędy i~sugestie. \cite{agile} \cite{agile2}
