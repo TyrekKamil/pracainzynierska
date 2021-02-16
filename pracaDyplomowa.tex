@@ -9,6 +9,8 @@
 \usepackage[nottoc,notlot,notlof]{tocbibind}
 \usepackage{hyperref}
 \usepackage{url}
+\usepackage{amsmath}
+
 % ======================================================== %
 % Dane autora i~pracy                                      %
 % ======================================================== %
@@ -123,7 +125,7 @@ Z~racji wybranej metodyki, dokonano również przydzielenia odpowiednich ról cz
 \end{itemize}
 
 \section{Podział prac}
-\subsection{Kamil Tyrek - zagadki logiczne}
+\subsection{Kamil Tyrek - Zagadki logiczne}
 W~rozdziale ,,Zagadki logiczne'' zostaną przedstawione sposoby tworzenia elementów logicznych jako mini-gry. Część z~przedstawionych łamigłówek została użyta w~projekcie końcowym. Przykładem może być rozgrywka przesuwanych puzzli, polegająca na przesunięciu elementu, celem ułożenia poprawnego obrazka. Algorytmika stojąca za losowaniem kolejności elementów nie jest trywialna, ponieważ źle wylosowana kolejność puzzli powoduje, iż mogą być niemożliwe do ułożenia.
 
 Zostanie przedstawiona też logika mini-gry z~ustawieniem odpowiednich rur, celem połączenia dwóch końców rur ścieżką. Podobnie jak w~poprzednim przykładzie, do rozwiązania tej zagadki potrzebna jest odpowiednia liczba rur danego typu – pionowe, poziome, skrętne. 
@@ -656,7 +658,7 @@ private int randomPosition()
 }
 \end{lstlisting}
 
-Gdzie isOnBoard[pos] jest tablicą, która weryfikuje, czy dane pole nie jest już zajęte. Jeśli jest, należy ponownie wylosować wartość dla PuzzleBlock. Oczywiście to nie koniec – z~tej wartości trzeba stworzyć położenie w~postaci (x, y), gdzie x to położenie w~poziomie, a~y w~pionie. W~tym celu jedna z~tych wartości będzie resztą dzielenia wylosowanej pozycji przez trzy (ilość pól w~linii), a~druga ilorazem całkowitym pozycji i~liczby trzy. 
+Gdzie \textbf{isOnBoard[pos]} jest tablicą, która weryfikuje, czy dane pole nie jest już zajęte. Jeśli jest, należy ponownie wylosować wartość dla PuzzleBlock. Oczywiście to nie koniec – z~tej wartości trzeba stworzyć położenie w~postaci (x, y), gdzie x to położenie w~poziomie, a~y w~pionie. W~tym celu jedna z~tych wartości będzie resztą dzielenia wylosowanej pozycji przez trzy (ilość pól w~linii), a~druga ilorazem całkowitym pozycji i~liczby trzy. 
 Kolejną ważną rzeczą będzie weryfikacja, czy obecne ułożenie puzzli jest wykonalne.
 
 \subsubsection{Plansza – Puzzle. Weryfikacja kolejności puzzli}
@@ -880,7 +882,7 @@ W~lewym górnym rogu widoczne jest źródło strumienia, zaś w~prawym dolnym ro
 \par Jest to bardzo powszechna mini-gra dodawana jest do wielu gier, które posiadają funkcjonalność posiadania ekwipunku. Jej celem jest otworzenie skrzyni, polega to na wykonaniu różnych operacji. Zazwyczaj zaczyna się od okrycia odpowiedniej sekwencji poruszania wytrychem, otwieranie zapadki poprzez poruszanie myszką, czy wciśnięcie odpowiedniego guzika, gdy postęp otwierania zamku jest na odpowiednim etapie. Otwarcie zamku pozwala graczom odblokować skrzynię, która zawiera elementy wyposażenia lub pozwala na otwarcie drzwi, które zaprowadzą nas do ważnych dla gry pomieszczeń. Z~racji na charakter rozgrywki element ten bywa raczej opcjonalną metodą przejścia gry. Z~tego względu w~niektórych grach, posiadających system umiejętności, otwarcie niektórych zamków jest niemożliwe lub bardzo trudne, jeżeli nie rozwiniemy odpowiednich umiejętności.
 \subsection{Algorytmika}
 \par Pierwszym i~najważniejszym dla całej mini-gry elementem jest wylosowanie przez grę sekwencji ruchów, która potrzebna jest do ukończenia rozgrywki. Odbywa się to w~skrypcie \textbf{PickLockGenerateSequence}. Podczas projektowania generatora napotkano problem związany z~ciągłym losowaniem tych samych liczb. Powodem jest tutaj oczywiście synchronizacja, która przy ładowaniu scen potrafi sprawiać deweloperom problemy. Z~tego powodu powstał ten skrypt, który wyróżnia się weryfikacją unikalności wylosowanej liczby.
-Wszystko rozpoczyna się od losowania liczby z~zakresu <1,100). \clearpage
+Wszystko rozpoczyna się od losowania liczby z~zakresu <1,100).
 \begin{lstlisting}[
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -916,7 +918,8 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment skryptu \texttt{Picklock.cs}}
 ]
-picklockTransform.position += new Vector3(10 * direction, 0, 0) * 0.1f;
+picklockTransform.position += 
+new Vector3(10 * direction, 0, 0) * 0.1f;
 \end{lstlisting}
 
 Gdzie \textbf{picklockTransform} to \hyperref[sec:komponent]{\emph{komponent}} typu \emph{transform}, zawierający tablicę pozycji, rotacji oraz skalowania (odpowiednio parametry \emph{position}, \emph{rotation} i~\emph{scale}) \hyperref[sec:gameobject]{\emph{obiektu}}. W~tym przypadku ważny jest tylko \textbf{position}. 
