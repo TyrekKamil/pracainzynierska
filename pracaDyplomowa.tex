@@ -1059,14 +1059,14 @@ Teraz używając czterech warunków, dla każdej strony, można zweryfikować, c
 \chapter{Fizyka postaci}
 \section{Tworzenie postaci}
 \subsection{Omówienie zagadnienia procesu tworzenia postaci}
-Zagadnienie procesu tworzenia postaci polega na przygotowaniu grafik tak, żeby można było swobodnie wprowadzić i pracować na projekcie postaci w Unity. Proces ten obejmuje również stworzenie odpowiednich komponentów przygotowanych bezpośrednio w celu animowania odpowiednich kończyn, jak i późniejszej pracy na kolizjach. Przedstawione są więc aspekty przygotowania graficznego postaci, jak i późniejszego wprowadzenia jej do projektu w taki sposób, żeby można było tworzyć na niej odpowiednie kolizje, animacje i skrypty odpowiadające za poruszanie się.
+Zagadnienie procesu tworzenia postaci polega na przygotowaniu grafik tak, żeby można było swobodnie wprowadzić i pracować na projekcie postaci w~Unity. Proces ten obejmuje również stworzenie odpowiednich komponentów przygotowanych bezpośrednio w celu animowania odpowiednich kończyn, jak i~późniejszej pracy na kolizjach. Przedstawione są więc aspekty przygotowania graficznego postaci, jak i późniejszego wprowadzenia jej do projektu w taki sposób, żeby można było tworzyć na niej odpowiednie kolizje, animacje i skrypty odpowiadające za poruszanie się.
 \subsection{Proces graficzny tworzenia postaci}
 Tworzenie postaci zaczyna się od projektu graficznego, który jest kluczowym punktem do późniejszego animowania postaci. Należy wziąć pod uwagę wszystkie ograniczenia i korzyścii, jakie daje nam stworzenie projektu w odpowiedni sposób. Istnieją 2 najbardziej popularne sposoby tworzenia graficznego postaci, które pozwalają na animowanie jej.
 
 Pierwsza możliwość to statyczny bohater, będący bazą do tworzenia animacji poklatkowych, które później używane są bezpośrednio w projekcie. Główną zaletą takiego rozwiązania są bardzo dobrze wyglądające animacje, wynikające z braku ograniczeń ilości zmian w postaci w trakcie animowania.
-Proces ten wymaga jednak dużego nakładu czasu poświęconego na modelowanie postaci w konkretnych pozach, symulowanie konkretnych ruchów oraz tworzenie zmian w postaci takich jak np. poruszające się włosy przy skoku.
+Proces ten wymaga jednak dużego nakładu czasu poświęconego na modelowanie postaci w~konkretnych pozach, symulowanie konkretnych ruchów oraz tworzenie zmian w postaci takich jak np. poruszające się włosy przy skoku.
 
-Alternatywą dla tego rozwiązania jest użycie kinematyki odwrotnej, która bazuje na systemie kości w ciele postaci, połączeń i ograniczeń ich ruchów. Rozwiązanie to jest dużo bardziej wydajne czasowo, nie wymaga dużych umiejętności w animowaniu i pozwala na wprowadzanie nowych animacji wynikających z rozwoju projektu wewnątrz środowiska Unity. Animacja stworzona przez użycie kinematyki odwrotnej jest wykonywana w czasie rzeczywistym, przez co nie ma potrzeby tworzenia odpowiedniej ilości klatek, żeby wyglądała płynnie (ma tyle samo klatek co gra w konkretnym momencie wykonywania animacji).
+Alternatywą dla tego rozwiązania jest użycie kinematyki odwrotnej, która bazuje na systemie kości w ciele postaci, połączeń i ograniczeń ich ruchów. Rozwiązanie to jest dużo bardziej wydajne czasowo, nie wymaga dużych umiejętności w animowaniu i pozwala na wprowadzanie nowych animacji wynikających z rozwoju projektu wewnątrz środowiska Unity. Animacja stworzona z użyciem kinematyki odwrotnej jest wykonywana w czasie rzeczywistym, przez co nie ma potrzeby tworzenia odpowiedniej ilości klatek, żeby wyglądała płynnie (ma tyle samo klatek co gra w konkretnym momencie wykonywania animacji).
 W praktyce przekłada się to na konieczność tworzenia grafiki w odpowiedni sposób. Należy podzielić postać na osobne warstwy odpowiadające za ilość kończyn, które powinny się ruszać w końcowym projekcie.\\
 
 \begin{figure}[h]
@@ -1075,10 +1075,10 @@ W praktyce przekłada się to na konieczność tworzenia grafiki w odpowiedni sp
 	\caption{Projekt graficzny postaci w~edytorze Gimp}
 \end{figure}
 
-Postać w rozważanym projekcie jest podzielona odpowiednio na głowę, tors, ręce i nogi. Ilość możliwych komponentów nie jest ograniczona. Tak przygotowany projekt graficzny w formacie PSB jest gotowy do importu w środowisku Unity, a poszczególne warstwy są widoczne jako oddzielne komponenty. Tym samym projekt jest gotowy do dalszej pracy.
+Postać w rozważanym projekcie jest podzielona odpowiednio na głowę, tors, ręce i nogi. Liczba możliwych komponentów nie jest ograniczona. Tak przygotowany projekt graficzny w formacie PSB jest gotowy do importu w środowisku Unity, a poszczególne warstwy są widoczne jako oddzielne komponenty. Tym samym projekt jest gotowy do dalszej pracy.
 
 \subsection{Wdrożenie postaci do projektu w~Unity}
-W celu zaimportowania postaci w Unity z projektu graficznego niezbędna jest biblioteka o nazwie \textbf{\textit{PSDImporter}}, która pozwala na bezproblemowe wdrożenie projektu w tym formacie jako gotowy do pracy \textbf{\textit{*sprite}}. W kolejnym etapie należy nadać postaci kości odpowiadające konkretnym kończynom oraz geometrię postaci.
+W celu zaimportowania postaci w Unity z projektu graficznego niezbędna jest biblioteka o nazwie \textbf{\textit{PSDImporter}}, która pozwala na bezproblemowe wdrożenie projektu w tym formacie jako gotowy do pracy \textbf{\textit{sprite}} \footnote{\textbf{\textit{Sprite}} – Dwuwymiarowy obrazek używany w~systemach grafiki komputerowej}. W kolejnym etapie należy nadać postaci kości odpowiadające konkretnym kończynom oraz geometrię postaci.
 
 \begin{figure}[h]
 	\centering
@@ -1092,10 +1092,9 @@ Następnym i ostatnim krokiem wdrożeniowym jest zapisanie zmian i przeniesienie
 
 
 \subsection{Sposoby animowania postaci}
-Głównym aspektem animacji jest stworzenie iluzji. Najlepiej postrzegane animacje to te, które w dobry sposób odwzorowują żywą postać.\\
-\noindent\makebox[\linewidth]{\rule{15cm}{0.4pt}}\\
-\\
-\textbf{\textit{*Sprite}} – Dwuwymiarowy obrazek używany w~systemach grafiki komputerowej \newpage
+Głównym aspektem animacji jest stworzenie iluzji. Najlepiej postrzegane animacje to te, które w dobry sposób odwzorowują żywą postać.
+
+ \newpage
 Dlatego więc głównym zadaniem animatora jest przestrzeganie zasad animacji w taki sposób, aby finalnie ruch postaci był jak najbardziej zbliżony do naturalnego ruchu człowieka.
 Zadanie to niejednokrotnie jest utrudnione, ponieważ mówimy jednak o wykreowanym świecie i narysowanych w programie postaciach, jednak zważając na wcześniej przygotowany system kości, jesteśmy w stanie przynajmniej podobnie odwzorować sam ruch postaci. 
 Proces animowania rozpoczynamy od stworzenia animatora, czyli obiektu odpowiedzialnego za obsługę i włączanie konkretnych animacji w danym momencie niejednokrotnie po spełnieniu warunków przejścia do konkretnej animacji. \cite{animation1} \\
@@ -1115,7 +1114,7 @@ Po lewej stronie widoczne są warunki, które podpięte są do konkretnych stan�
 	\caption{Animacja chodzenia – przykład ze strony design.tutsplus.com \cite{animation2}}
 \end{figure}
 
-\newpage W tym momencie korzystamy ze wcześniejszego przygotowania postaci. Animacja po klatkowa polega na przedstawieniu ruchu klatka po klatce, w praktyce dzięki animatorowi możemy zrobić przejścia tylko między bardziej istotnymi etapami animacji. Osobno animowany jest ruch ciała, głowy, kończyn, a wszystko zamiast kilkuset zdjęć sprowadza się do kilku stanów, które automatycznie przechodzą między sobą w naturalny sposób.
+\newpage W tym momencie korzystamy ze wcześniejszego przygotowania postaci. Animacja po klatkowa polega na przedstawieniu ruchu klatka po klatce, w~praktyce dzięki animatorowi możemy zrobić przejścia tylko między bardziej istotnymi etapami animacji. Osobno animowany jest ruch ciała, głowy, kończyn, a wszystko zamiast kilkuset zdjęć sprowadza się do kilku stanów, które automatycznie przechodzą między sobą w naturalny sposób.
 
 \begin{figure}[h]
 	\centering
