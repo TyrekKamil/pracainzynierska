@@ -603,7 +603,7 @@ Trudność puzzli zależy zazwyczaj od kształtu elementów i~ich ilości. Puzzl
 \label{sec:komponent}
 \par Komponent jest klasą podstawową dla GameObject. Jest to klasa, przykładowo w~języku C\#, która dołączana jest do obiektu Unity, celem wykonania na nim jakichś operacji. \cite{komponent}
 \subsubsection{Sposoby dodawania mini-gier}
-\par W toku pracy nad projektem ,,The Lore'' rozpatrywano dwa sposoby dodawania mini-gier do gry:
+\par W~toku pracy nad projektem ,,The Lore'' rozpatrywano dwa sposoby dodawania mini-gier do gry:
 \begin{itemize}
 \item{Każda mini-gra jest w~osobnej scenie:}
 \begin{itemize}
@@ -1059,15 +1059,15 @@ Teraz używając czterech warunków, dla każdej strony, można zweryfikować, c
 \chapter{Fizyka postaci}
 \section{Tworzenie postaci}
 \subsection{Omówienie zagadnienia procesu tworzenia postaci}
-Zagadnienie procesu tworzenia postaci polega na przygotowaniu grafik tak, żeby można było swobodnie wprowadzić i pracować na projekcie postaci w~Unity. Proces ten obejmuje również stworzenie odpowiednich komponentów przygotowanych bezpośrednio w celu animowania odpowiednich kończyn, jak i~późniejszej pracy na kolizjach. Przedstawione są więc aspekty przygotowania graficznego postaci, jak i późniejszego wprowadzenia jej do projektu w taki sposób, żeby można było tworzyć na niej odpowiednie kolizje, animacje i skrypty odpowiadające za poruszanie się.
+Zagadnienie procesu tworzenia postaci polega na przygotowaniu grafik tak, żeby można było swobodnie wprowadzić i~pracować na projekcie postaci w~Unity. Proces ten obejmuje również stworzenie odpowiednich komponentów przygotowanych bezpośrednio w~celu animowania odpowiednich kończyn, jak i~późniejszej pracy na kolizjach. Przedstawione są więc aspekty przygotowania graficznego postaci, jak i~późniejszego wprowadzenia jej do projektu w~taki sposób, żeby można było tworzyć na niej odpowiednie kolizje, animacje i~skrypty odpowiadające za poruszanie się.
 \subsection{Proces graficzny tworzenia postaci}
-Tworzenie postaci zaczyna się od projektu graficznego, który jest kluczowym punktem do późniejszego animowania postaci. Należy wziąć pod uwagę wszystkie ograniczenia i korzyścii, jakie daje nam stworzenie projektu w odpowiedni sposób. Istnieją 2 najbardziej popularne sposoby tworzenia graficznego postaci, które pozwalają na animowanie jej.
+Tworzenie postaci zaczyna się od projektu graficznego, który jest kluczowym punktem do późniejszego animowania postaci. Należy wziąć pod uwagę wszystkie ograniczenia i~korzyścii, jakie daje nam stworzenie projektu w~odpowiedni sposób. Istnieją 2 najbardziej popularne sposoby tworzenia graficznego postaci, które pozwalają na animowanie jej.
 
-Pierwsza możliwość to statyczny bohater, będący bazą do tworzenia animacji poklatkowych, które później używane są bezpośrednio w projekcie. Główną zaletą takiego rozwiązania są bardzo dobrze wyglądające animacje, wynikające z braku ograniczeń ilości zmian w postaci w trakcie animowania.
-Proces ten wymaga jednak dużego nakładu czasu poświęconego na modelowanie postaci w~konkretnych pozach, symulowanie konkretnych ruchów oraz tworzenie zmian w postaci takich jak np. poruszające się włosy przy skoku.
+Pierwsza możliwość to statyczny bohater, będący bazą do tworzenia animacji poklatkowych, które później używane są bezpośrednio w~projekcie. Główną zaletą takiego rozwiązania są bardzo dobrze wyglądające animacje, wynikające z~braku ograniczeń ilości zmian w~postaci w~trakcie animowania.
+Proces ten wymaga jednak dużego nakładu czasu poświęconego na modelowanie postaci w~konkretnych pozach, symulowanie konkretnych ruchów oraz tworzenie zmian w~postaci takich jak np. poruszające się włosy przy skoku.
 
-Alternatywą dla tego rozwiązania jest użycie kinematyki odwrotnej, która bazuje na systemie kości w ciele postaci, połączeń i ograniczeń ich ruchów. Rozwiązanie to jest dużo bardziej wydajne czasowo, nie wymaga dużych umiejętności w animowaniu i pozwala na wprowadzanie nowych animacji wynikających z rozwoju projektu wewnątrz środowiska Unity. Animacja stworzona z użyciem kinematyki odwrotnej jest wykonywana w czasie rzeczywistym, przez co nie ma potrzeby tworzenia odpowiedniej ilości klatek, żeby wyglądała płynnie (ma tyle samo klatek co gra w konkretnym momencie wykonywania animacji).
-W praktyce przekłada się to na konieczność tworzenia grafiki w odpowiedni sposób. Należy podzielić postać na osobne warstwy odpowiadające za ilość kończyn, które powinny się ruszać w końcowym projekcie.\\
+Alternatywą dla tego rozwiązania jest użycie kinematyki odwrotnej, która bazuje na systemie kości w~ciele postaci, połączeń i~ograniczeń ich ruchów. Rozwiązanie to jest dużo bardziej wydajne czasowo, nie wymaga dużych umiejętności w~animowaniu i~pozwala na wprowadzanie nowych animacji wynikających z~rozwoju projektu wewnątrz środowiska Unity. Animacja stworzona z~użyciem kinematyki odwrotnej jest wykonywana w~czasie rzeczywistym, przez co nie ma potrzeby tworzenia odpowiedniej ilości klatek, żeby wyglądała płynnie (ma tyle samo klatek co gra w~konkretnym momencie wykonywania animacji).
+W praktyce przekłada się to na konieczność tworzenia grafiki w~odpowiedni sposób. Należy podzielić postać na osobne warstwy odpowiadające za ilość kończyn, które powinny się ruszać w~końcowym projekcie.\\
 
 \begin{figure}[h]
 	\centering
@@ -1075,10 +1075,10 @@ W praktyce przekłada się to na konieczność tworzenia grafiki w odpowiedni sp
 	\caption{Projekt graficzny postaci w~edytorze Gimp}
 \end{figure}
 
-Postać w rozważanym projekcie jest podzielona odpowiednio na głowę, tors, ręce i nogi. Liczba możliwych komponentów nie jest ograniczona. Tak przygotowany projekt graficzny w formacie PSB jest gotowy do importu w środowisku Unity, a poszczególne warstwy są widoczne jako oddzielne komponenty. Tym samym projekt jest gotowy do dalszej pracy.
+Postać w~rozważanym projekcie jest podzielona odpowiednio na głowę, tors, ręce i~nogi. Liczba możliwych komponentów nie jest ograniczona. Tak przygotowany projekt graficzny w~formacie PSB jest gotowy do importu w~środowisku Unity, a~poszczególne warstwy są widoczne jako oddzielne komponenty. Tym samym projekt jest gotowy do dalszej pracy.
 
 \subsection{Wdrożenie postaci do projektu w~Unity}
-W celu zaimportowania postaci w Unity z projektu graficznego niezbędna jest biblioteka o nazwie \textbf{\textit{PSDImporter}}, która pozwala na bezproblemowe wdrożenie projektu w tym formacie jako gotowy do pracy \textbf{\textit{sprite}} \footnote{\textbf{\textit{Sprite}} – Dwuwymiarowy obrazek używany w~systemach grafiki komputerowej}. W kolejnym etapie należy nadać postaci kości odpowiadające konkretnym kończynom oraz geometrię postaci.
+W celu zaimportowania postaci w~Unity z~projektu graficznego niezbędna jest biblioteka o~nazwie \textbf{\textit{PSDImporter}}, która pozwala na bezproblemowe wdrożenie projektu w~tym formacie jako gotowy do pracy \textbf{\textit{sprite}} \footnote{\textbf{\textit{Sprite}} – Dwuwymiarowy obrazek używany w~systemach grafiki komputerowej}. W~kolejnym etapie należy nadać postaci kości odpowiadające konkretnym kończynom oraz geometrię postaci.
 
 \begin{figure}[h]
 	\centering
@@ -1086,18 +1086,18 @@ W celu zaimportowania postaci w Unity z projektu graficznego niezbędna jest bib
 	\caption{Widok postaci w~środowisku Unity – kości}
 \end{figure}
 
-Geometria postaci to siatka, która definiuje, w jaki sposób postać może się zgiąć w trakcie animowania, a kości powodują ograniczenie ruchów w taki sposób, aby były one naturalne, jednocześnie łącząc ze sobą wcześniej powstałe warstwy. W celu uniknięcia przesuwania się torsu w trakcie poruszania rękami lub nogami należy wykluczyć zależność tych kości między sobą. W praktyce podczas ruchu ręką nie jest zaangażowany cały kręgosłup.
-Następnym i ostatnim krokiem wdrożeniowym jest zapisanie zmian i przeniesienie wygenerowanej postaci do sceny oraz dodanie do każdej kończyny kinematyki odwrotnej. Tak spreparowana postać jest gotowa do pracy w animatorze Unity.
+Geometria postaci to siatka, która definiuje, w~jaki sposób postać może się zgiąć w~trakcie animowania, a~kości powodują ograniczenie ruchów w~taki sposób, aby były one naturalne, jednocześnie łącząc ze sobą wcześniej powstałe warstwy. W~celu uniknięcia przesuwania się torsu w~trakcie poruszania rękami lub nogami należy wykluczyć zależność tych kości między sobą. W~praktyce podczas ruchu ręką nie jest zaangażowany cały kręgosłup.
+Następnym i~ostatnim krokiem wdrożeniowym jest zapisanie zmian i~przeniesienie wygenerowanej postaci do sceny oraz dodanie do każdej kończyny kinematyki odwrotnej. Tak spreparowana postać jest gotowa do pracy w~animatorze Unity.
 
 
 
 \subsection{Sposoby animowania postaci}
-Głównym celem animacji jest stworzenie iluzji. Najlepiej postrzegane animacje to te, które w realistyczny sposób odwzorowują żywą postać.
+Głównym celem animacji jest stworzenie iluzji. Najlepiej postrzegane animacje to te, które w~realistyczny sposób odwzorowują żywą postać.
 
  \newpage
-Głównym zadaniem animatora jest przestrzeganie zasad animacji w taki sposób, aby finalnie ruch postaci był jak najbardziej zbliżony do naturalnego ruchu człowieka.
-Zadanie to niejednokrotnie jest utrudnione, ponieważ dotyczy wykreowanego świata i narysowanych w programie postaci, jednak zważając na wcześniej przygotowany system kości, jesteśmy w stanie przynajmniej podobnie odwzorować sam ruch postaci. 
-Proces animowania rozpoczynamy od stworzenia animatora, czyli obiektu odpowiedzialnego za obsługę i włączanie konkretnych animacji w danym momencie niejednokrotnie po spełnieniu warunków przejścia do konkretnej animacji. \cite{animation1} \\
+Głównym zadaniem animatora jest przestrzeganie zasad animacji w~taki sposób, aby finalnie ruch postaci był jak najbardziej zbliżony do naturalnego ruchu człowieka.
+Zadanie to niejednokrotnie jest utrudnione, ponieważ dotyczy wykreowanego świata i~narysowanych w~programie postaci, jednak zważając na wcześniej przygotowany system kości, jesteśmy w~stanie przynajmniej podobnie odwzorować sam ruch postaci. 
+Proces animowania rozpoczynamy od stworzenia animatora, czyli obiektu odpowiedzialnego za obsługę i~włączanie konkretnych animacji w~danym momencie niejednokrotnie po spełnieniu warunków przejścia do konkretnej animacji. \cite{animation1} \\
 W naszym projekcie taki animator prezentuje się następująco:
 
 \begin{figure}[h]
@@ -1106,7 +1106,7 @@ W naszym projekcie taki animator prezentuje się następująco:
 	\caption{Widok animatora projektu ,,The Lore''}
 \end{figure}
 
-Po lewej stronie widoczne są warunki, które podpięte są do konkretnych stanów przejścia między animacjami, np. wartość zmiennej \textbf{\textit{IsJumping}} służy do określenia, kiedy możemy przejść do animacji skoku. Animacje dodajemy do animatora poprzez stworzenie nowego pliku animacji, cały proces przebiega już na tym pliku. W oknie pojawia się oś czasu na której możemy zdefiniować kolejne etapy animacji.\\
+Po lewej stronie widoczne są warunki, które podpięte są do konkretnych stanów przejścia między animacjami, np. wartość zmiennej \textbf{\textit{IsJumping}} służy do określenia, kiedy możemy przejść do animacji skoku. Animacje dodajemy do animatora poprzez stworzenie nowego pliku animacji, cały proces przebiega już na tym pliku. W~oknie pojawia się oś czasu na której możemy zdefiniować kolejne etapy animacji.\\
 
 \begin{figure}[h]
 	\centering
@@ -1114,7 +1114,7 @@ Po lewej stronie widoczne są warunki, które podpięte są do konkretnych stan�
 	\caption{Animacja chodzenia – przykład ze strony design.tutsplus.com \cite{animation2}}
 \end{figure}
 
-\newpage W tym momencie korzystamy ze wcześniejszego przygotowania postaci. Animacja poklatkowa polega na przedstawieniu ruchu klatka po klatce, w~praktyce dzięki animatorowi możemy stworzyć przejścia tylko między bardziej istotnymi etapami animacji. Osobno animowany jest ruch ciała, głowy, kończyn, a całość zamiast kilkuset zdjęć sprowadza się do kilku stanów, które automatycznie przechodzą między sobą w naturalny sposób.
+\newpage W~tym momencie korzystamy ze wcześniejszego przygotowania postaci. Animacja poklatkowa polega na przedstawieniu ruchu klatka po klatce, w~praktyce dzięki animatorowi możemy stworzyć przejścia tylko między bardziej istotnymi etapami animacji. Osobno animowany jest ruch ciała, głowy, kończyn, a~całość zamiast kilkuset zdjęć sprowadza się do kilku stanów, które automatycznie przechodzą między sobą w~naturalny sposób.
 
 \begin{figure}[h]
 	\centering
@@ -1122,14 +1122,14 @@ Po lewej stronie widoczne są warunki, które podpięte są do konkretnych stan�
 	\caption{Animacja biegania – widok z~projektu ,,The Lore''}
 \end{figure}
 
-Animacja biegu w projekcie posiada tylko 4 stany, z których ostatni jest taki sam jak pierwszy w celu zapętlenia animacji. W praktyce więc animowanie w Unity to próba przedstawienia w jak najbardziej rzeczywisty sposób czynności życia codziennego w taki sposób, aby stworzyć iluzję realizmu. Jeśli jednak czynność nie występuje w realnym świecie jak np. umiejętności, animacja jest stworzona w taki sposób, aby wyglądać jak najbardziej naturalnie w swojej abstrakcji.
+Animacja biegu w~projekcie posiada tylko 4 stany, z~których ostatni jest taki sam jak pierwszy w~celu zapętlenia animacji. W~praktyce więc animowanie w~Unity to próba przedstawienia w~jak najbardziej rzeczywisty sposób czynności życia codziennego w~taki sposób, aby stworzyć iluzję realizmu. Jeśli jednak czynność nie występuje w~realnym świecie jak np. umiejętności, animacja jest stworzona w~taki sposób, aby wyglądać jak najbardziej naturalnie w~swojej abstrakcji.
 
 \section{Poruszanie się}
 \subsection{Omówienie zagadnienia}
-Zagadnienie poruszania się dotyczy całego procesu skryptowego postaci. Elementy potrzebne do przygotowania postaci do środowiska deweloperskiego, jak i wszelkie aspekty wprowadzenia postaci w ruch oraz jej reakcje na wejście wprowadzane przez użytkownika. W tej części pracy przedstawione zostaną problemy związane z tworzeniem poszczególnych funkcjonalności oraz sposoby ich rozwiązania. Zostanie również przedstawiony szczegółowy proces implementacji poszczególnych funkcjonalności, jak i sposoby ich wdrożenia. W tym rozdziale również zostanie przedstawiona fizyka postaci oraz poszczególne elementy, które pokrywają się z fizyką świata rzeczywistego, a które od takiej fizyki odbiegają.
+Zagadnienie poruszania się dotyczy całego procesu skryptowego postaci. Elementy potrzebne do przygotowania postaci do środowiska deweloperskiego, jak i~wszelkie aspekty wprowadzenia postaci w~ruch oraz jej reakcje na wejście wprowadzane przez użytkownika. W~tej części pracy przedstawione zostaną problemy związane z~tworzeniem poszczególnych funkcjonalności oraz sposoby ich rozwiązania. Zostanie również przedstawiony szczegółowy proces implementacji poszczególnych funkcjonalności, jak i~sposoby ich wdrożenia. W~tym rozdziale również zostanie przedstawiona fizyka postaci oraz poszczególne elementy, które pokrywają się z~fizyką świata rzeczywistego, a~które od takiej fizyki odbiegają.
 \subsection{Fizyka w~grach 2D, a~w~prawdziwym świecie}
-Na pojęcie fizyki w grach składają się dwa główne komponenty, jednym z nich jest silnik fizyki, natomiast drugim silnik kolizji. Pomimo że silnik fizyki jest zależny od silnika kolizji, nie zajmują się one tym samym.
-Silnik kolizji dzieli się na dwie części: detekcja kolizji oraz jej responsywność, która jest częścią silnika fizyki, z tego faktu oba te silniki przeważnie występują w jednej bibliotece. Wykrywanie kolizji występuje w dwóch formach: ciągłej i oddzielnej. Używanie ciągłej detekcji jest bardzo kosztowne w zasoby oraz może skutkować dużymi spadkami wydajnościowymi, dlatego w grach używa się jej tylko wtedy, kiedy naprawdę jest potrzebna. W większości wypadków sprowadza się to do tego, że zamiast zatrzymywać użytkownika przed wbiegnięciem w ścianę, jego pozycja jest zmieniana już, kiedy w tę ścianę częściowo wbiegnie, podobnie jest z podłożem. W prawdziwym świecie naturalnie nie istnieje możliwość wbiegnięcia w ścianę i ponownej teleportacji we wcześniejsze miejsce i nie jesteśmy ograniczeni sposobami wydajnościowymi. Jeśli chodzi o wykrywanie kolizji z wykorzystaniem ruchomych obiektów, początków łamigłówek, kolizji z podłożem w celu możliwości skoku czy kontaktu z przeciwnikiem, używamy do tego pustego obiektu usytuowanego w postaci w celu sprawdzania kolizji od tego obiektu. Często wysunięty jest on w konkretnym kierunku, w którym w danym momencie musimy sprawdzać konkretne kolizje. Sprawdzanie kolizji sprowadza się do stworzenia otoczenia wokół naszego obiektu w postaci człowieka (wielkość takiego koła często zależy od konkretnej sytuacji, do której chcemy go użyć), a następnie sprawdzenie, czy kolizja tego obiektu nie nachodzi na żaden inny obiekt z otoczenia. \cite{physics1}
+Na pojęcie fizyki w~grach składają się dwa główne komponenty, jednym z~nich jest silnik fizyki, natomiast drugim silnik kolizji. Pomimo że silnik fizyki jest zależny od silnika kolizji, nie zajmują się one tym samym.
+Silnik kolizji dzieli się na dwie części: detekcja kolizji oraz jej responsywność, która jest częścią silnika fizyki, z~tego faktu oba te silniki przeważnie występują w~jednej bibliotece. Wykrywanie kolizji występuje w~dwóch formach: ciągłej i~oddzielnej. Używanie ciągłej detekcji jest bardzo kosztowne w~zasoby oraz może skutkować dużymi spadkami wydajnościowymi, dlatego w~grach używa się jej tylko wtedy, kiedy naprawdę jest potrzebna. W~większości wypadków sprowadza się to do tego, że zamiast zatrzymywać użytkownika przed wbiegnięciem w~ścianę, jego pozycja jest zmieniana już, kiedy w~tę ścianę częściowo wbiegnie, podobnie jest z~podłożem. W~prawdziwym świecie naturalnie nie istnieje możliwość wbiegnięcia w~ścianę i~ponownej teleportacji we wcześniejsze miejsce i~nie jesteśmy ograniczeni sposobami wydajnościowymi. Jeśli chodzi o~wykrywanie kolizji z~wykorzystaniem ruchomych obiektów, początków łamigłówek, kolizji z~podłożem w~celu możliwości skoku czy kontaktu z~przeciwnikiem, używamy do tego pustego obiektu usytuowanego w~postaci w~celu sprawdzania kolizji od tego obiektu. Często wysunięty jest on w~konkretnym kierunku, w~którym w~danym momencie musimy sprawdzać konkretne kolizje. Sprawdzanie kolizji sprowadza się do stworzenia otoczenia wokół naszego obiektu w~postaci człowieka (wielkość takiego koła często zależy od konkretnej sytuacji, do której chcemy go użyć), a~następnie sprawdzenie, czy kolizja tego obiektu nie nachodzi na żaden inny obiekt z~otoczenia. \cite{physics1}
 
 
 \begin{lstlisting}[breaklines=true,
@@ -1137,7 +1137,7 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{CharacterController.cs}}
 ]
-for (int i = 0; i < colliders.Length; i++)
+for (int i~= 0; i < colliders.Length; i++)
 {
    if (colliders[i]
                   .gameObject
@@ -1162,11 +1162,11 @@ for (int i = 0; i < colliders.Length; i++)
 \end{lstlisting}
 
 W skrypcie jest sprawdzana konkretna warstwa lub konkretny obiekt, z~którym oczekujemy konkretnego działania po kolizji.
-Ta część kodu odpowiada za sprawdzenie, czy postać dotyka ziemi w celu ustawienia zmiennej na odpowiadającą jej wartość, a także za sprawdzenie, czy postać jest na poruszających się platformach w celu późniejszej zmiany jej rodzica.
-W tym momencie, kiedy kontakt został odkryty, jesteśmy w stanie stwierdzić dokładnie, kiedy występuje kolizja między dwoma konkretnymi obiektami i pracować na nich lub ograniczać je zależnie od tego.
+Ta część kodu odpowiada za sprawdzenie, czy postać dotyka ziemi w~celu ustawienia zmiennej na odpowiadającą jej wartość, a~także za sprawdzenie, czy postać jest na poruszających się platformach w~celu późniejszej zmiany jej rodzica.
+W tym momencie, kiedy kontakt został odkryty, jesteśmy w~stanie stwierdzić dokładnie, kiedy występuje kolizja między dwoma konkretnymi obiektami i~pracować na nich lub ograniczać je zależnie od tego.
 
 \subsection{Poruszanie się oraz kolizje postaci}
-Za poruszanie się w projekcie ,,The Lore'' odpowiedzialne są dwie klasy: CharacterController.cs i PlayerMovement.cs. Ta pierwsza odpowiedzialna jest za sam ruch, skok i wyświetlanie postaci w dobrym kierunku, natomiast druga zajmuje się resztą animacji od przesuwania przedmiotów po używanie umiejętności. Ze względu na to, że w projekcie użyty jest model bryły sztywnej Unity, otwiera on wiele ścieżek pracy nad postacią. Aby wprowadzić postać, w ruch musimy znać kierunek, w którym chcemy, żeby się poruszyła oraz docelową prędkość.
+Za poruszanie się w~projekcie ,,The Lore'' odpowiedzialne są dwie klasy: CharacterController.cs i~PlayerMovement.cs. Ta pierwsza odpowiedzialna jest za sam ruch, skok i~wyświetlanie postaci w~dobrym kierunku, natomiast druga zajmuje się resztą animacji od przesuwania przedmiotów po używanie umiejętności. Ze względu na to, że w~projekcie użyty jest model bryły sztywnej Unity, otwiera on wiele ścieżek pracy nad postacią. Aby wprowadzić postać, w~ruch musimy znać kierunek, w~którym chcemy, żeby się poruszyła oraz docelową prędkość.
 
 
 \begin{lstlisting}[breaklines=true,
@@ -1184,8 +1184,8 @@ m_Rigidbody2D.velocity = Vector3.SmoothDamp(
               m_MovementSmoothing);
 \end{lstlisting}
 
-Zmienna \textbf{\textit{targetVelocity}} odpowiedzialna jest za określenie konkretnego ruchu, który chcemy, żeby wykonała postać. Warto zauważyć, że końcowy wynik jest wygładzany przy pomocy wbudowanej do wektora metody \textbf{\textit{SmoothDamp}} \cite{physics2}, co oznacza, że ruch nie jest sztywny i ma swoje ograniczenia czasowe w trakcie jego wykonywania. W praktyce przenosi się to na bardziej intuicyjny sposób poruszania się, jak i poprawę wizualną samego ruchu.
-Kolejną wcześniej wspomnianą funkcjonalnością, którą zajmuje się ta klasa, jest zmienianie kierunku grafiki w zależności od kierunku, w którym się poruszamy.
+Zmienna \textbf{\textit{targetVelocity}} odpowiedzialna jest za określenie konkretnego ruchu, który chcemy, żeby wykonała postać. Warto zauważyć, że końcowy wynik jest wygładzany przy pomocy wbudowanej do wektora metody \textbf{\textit{SmoothDamp}} \cite{physics2}, co oznacza, że ruch nie jest sztywny i~ma swoje ograniczenia czasowe w~trakcie jego wykonywania. W~praktyce przenosi się to na bardziej intuicyjny sposób poruszania się, jak i~poprawę wizualną samego ruchu.
+Kolejną wcześniej wspomnianą funkcjonalnością, którą zajmuje się ta klasa, jest zmienianie kierunku grafiki w~zależności od kierunku, w~którym się poruszamy.
 
 
 \begin{lstlisting}[breaklines=true,
@@ -1210,14 +1210,14 @@ else if (move < 0  &&  m_FacingRight  &&  !Statics.isOnRope)
 }
 \end{lstlisting}
 
-Metoda \textbf{\textit{Flip()}} odpowiedzialna jest za zmianę skali lokalnej postaci poprzez pomnożenie jej wartości przez -1 i wykonywana jest po sprawdzeniu wstępnych założeń.
+Metoda \textbf{\textit{Flip()}} odpowiedzialna jest za zmianę skali lokalnej postaci poprzez pomnożenie jej wartości przez -1 i~wykonywana jest po sprawdzeniu wstępnych założeń.
 
-Kolejnym sposobem implementacji ruchu jest odejście od używania wbudowanego modelu bryły sztywnej oraz wartości prędkości do niej przypisanej i zamiast tego używanie przejścia poprzez aktualizację wartości pozycji postaci. Problemy, jakie generuje to rozwiązanie to konieczność przeliczania praw tarcia i ruchu oraz przypisywania ich w kodzie i analogicznej zmiany pozycji pokrywającej te prawa. Przez rozbudowany system fizyki w Unity takie rozwiązanie nie ma większego sensu i powoduje konieczność włożenia dodatkowej pracy. Niemniej jednak istnieją sytuacje, w których takie rozwiązanie sprawdza się lepiej niż np. symulacja bujania się na linach czy nawet sam skok.
-Jednymi z głównych kolizji odpowiedzialnych za sam etap poruszania się są kolizje z podłożem oraz ze ścianami (ze względu na wymiar gry kolizja z sufitem nie jest brana pod uwagę). Podobnie jak wspomniano wcześniej, kolizje te definiują, kiedy możemy przejść dalej oraz kiedy postać ma możliwość skoku, która odnawia się za każdym razem, kiedy postać ponownie dotknie podłoża. Warto pamiętać, żeby oddzielić warstwy podłoża od warstw innych obiektów posiadających kolizje, gdyż może to przynieść niechciane efekty w postaci zwiększonej ilości skoków w obszarze obiektu posiadającego kolizję.
+Kolejnym sposobem implementacji ruchu jest odejście od używania wbudowanego modelu bryły sztywnej oraz wartości prędkości do niej przypisanej i~zamiast tego używanie przejścia poprzez aktualizację wartości pozycji postaci. Problemy, jakie generuje to rozwiązanie to konieczność przeliczania praw tarcia i~ruchu oraz przypisywania ich w~kodzie i~analogicznej zmiany pozycji pokrywającej te prawa. Przez rozbudowany system fizyki w~Unity takie rozwiązanie nie ma większego sensu i~powoduje konieczność włożenia dodatkowej pracy. Niemniej jednak istnieją sytuacje, w~których takie rozwiązanie sprawdza się lepiej niż np. symulacja bujania się na linach czy nawet sam skok.
+Jednymi z~głównych kolizji odpowiedzialnych za sam etap poruszania się są kolizje z~podłożem oraz ze ścianami (ze względu na wymiar gry kolizja z~sufitem nie jest brana pod uwagę). Podobnie jak wspomniano wcześniej, kolizje te definiują, kiedy możemy przejść dalej oraz kiedy postać ma możliwość skoku, która odnawia się za każdym razem, kiedy postać ponownie dotknie podłoża. Warto pamiętać, żeby oddzielić warstwy podłoża od warstw innych obiektów posiadających kolizje, gdyż może to przynieść niechciane efekty w~postaci zwiększonej ilości skoków w~obszarze obiektu posiadającego kolizję.
 
 \subsection{Skakanie} 
-Skok jest kluczowym elementem w grach, niezależnie od tego, czy mowa o grach platformowych, czy MMO-RPG, skakanie jest nie tylko jedynym lub jednym z głównych sposobów dostania się na wyższe poziomy, ale również główną mechaniką dotyczącą przemieszczania się. Niektórzy użytkownicy preferują ciągły skok jako alternatywę dla biegania tylko dlatego, że wydaje się ona szybsza. Większość gier obala jednak tezę, że skok jest szybszy niż bieg, ale są też takie gry, które specjalnie implementują taką mechanikę, jednym z takich przykładów jest Counter Strike: Global Offensive, gdzie poprzez umiejętne wykorzystanie skoku można poruszać się kilkukrotnie szybciej, niż biegnąc. Skakanie jest preferowaną metodą poruszania się też ze względu na większą ilość możliwości ruchu w trakcie skoku.
-Czym tak naprawdę jest skok w grach 2D i jak dużo wspólnego ma z rzeczywistą fizyką? Bardzo dużo gier symuluje skok jak najbardziej zbliżony do rzeczywistej fizyki, istnieją jednak gry, które implementują inne rozwiązanie. Dobrym przykładem jest znana gra platformowa Mario, ale również takie gry jak Limbo, Cuphead, speedrunners gdzie podczas skoku stawia się na inne rozwiązanie. \cite{jumping1} 
+Skok jest kluczowym elementem w~grach, niezależnie od tego, czy mowa o~grach platformowych, czy MMO-RPG, skakanie jest nie tylko jedynym lub jednym z~głównych sposobów dostania się na wyższe poziomy, ale również główną mechaniką dotyczącą przemieszczania się. Niektórzy użytkownicy preferują ciągły skok jako alternatywę dla biegania tylko dlatego, że wydaje się ona szybsza. Większość gier obala jednak tezę, że skok jest szybszy niż bieg, ale są też takie gry, które specjalnie implementują taką mechanikę, jednym z~takich przykładów jest Counter Strike: Global Offensive, gdzie poprzez umiejętne wykorzystanie skoku można poruszać się kilkukrotnie szybciej, niż biegnąc. Skakanie jest preferowaną metodą poruszania się też ze względu na większą ilość możliwości ruchu w~trakcie skoku.
+Czym tak naprawdę jest skok w~grach 2D i~jak dużo wspólnego ma z~rzeczywistą fizyką? Bardzo dużo gier symuluje skok jak najbardziej zbliżony do rzeczywistej fizyki, istnieją jednak gry, które implementują inne rozwiązanie. Dobrym przykładem jest znana gra platformowa Mario, ale również takie gry jak Limbo, Cuphead, speedrunners gdzie podczas skoku stawia się na inne rozwiązanie. \cite{jumping1} 
 
 \begin{figure}[h]
 	\centering
@@ -1226,7 +1226,7 @@ Czym tak naprawdę jest skok w grach 2D i jak dużo wspólnego ma z rzeczywistą
 \end{figure}
 
 \newpage
-Jak można zauważyć na obrazku, skok nie jest parabolą, tak jak byłoby w~przypadku realistycznej sytuacji. W niektórych grach 2D tworzy się symulację skoku polegającą na tym, że im dłużej trzyma się przycisk skoku, tym dłużej jest się w powietrzu. W rzeczywistości polega to na ustawieniu czasu, w którym siła może działać na postać i ograniczenia jej górnego limitu. W praktyce kiedy tylko przestaniemy trzymać przycisk skoku, postać automatycznie zacznie lecieć w dół, a jeśli go przytrzymamy, zawiśnie ona na chwilę w~powietrzu. Stało się to na tyle powszechne, że taka symulacja skoku wydaje się bardziej naturalna niż dodanie do niego wertykalnej siły jednorazowo, czyli zgodnie z prawami fizyki. \cite{jumping2} \\ W naszym projekcie zdecydowaliśmy się na rzeczywistą symulację fizyki. Stworzenie skoku w taki sposób pozwala na większą przewidywalność miejsca lądowania, kosztem mniejszej kontroli samego skoku. Implementacja skoku w projekcie The Lore prezentuje się następująco:
+Jak można zauważyć na obrazku, skok nie jest parabolą, tak jak byłoby w~przypadku realistycznej sytuacji. W~niektórych grach 2D tworzy się symulację skoku polegającą na tym, że im dłużej trzyma się przycisk skoku, tym dłużej jest się w~powietrzu. W~rzeczywistości polega to na ustawieniu czasu, w~którym siła może działać na postać i~ograniczenia jej górnego limitu. W~praktyce kiedy tylko przestaniemy trzymać przycisk skoku, postać automatycznie zacznie lecieć w~dół, a~jeśli go przytrzymamy, zawiśnie ona na chwilę w~powietrzu. Stało się to na tyle powszechne, że taka symulacja skoku wydaje się bardziej naturalna niż dodanie do niego wertykalnej siły jednorazowo, czyli zgodnie z~prawami fizyki. \cite{jumping2} \\ W~naszym projekcie zdecydowaliśmy się na rzeczywistą symulację fizyki. Stworzenie skoku w~taki sposób pozwala na większą przewidywalność miejsca lądowania, kosztem mniejszej kontroli samego skoku. Implementacja skoku w~projekcie The Lore prezentuje się następująco:
 
 \begin{lstlisting}[breaklines=true,
 language={[Sharp]C},
@@ -1251,10 +1251,10 @@ if(!m_Grounded && jump && extraJumps > 0 && !Statics.isOnRope){
 }
 \end{lstlisting}
 \newpage
-Obsługa skoku w naszym projekcie polega zatem na jednorazowym dodaniu siły do postaci w trakcie skoku. Rozważana sytuacja jest bardziej skomplikowana, jeśli chodzi o wielokrotny skok, ze względu na jednokrotne dodanie siły. Przed ponownym skokiem aktualna prędkość wertykalna musi zostać ustawiona na 0 ze względu na to, że skok dodaje wartość siły do aktualnej wartości działającej na postać. W trakcie wielokrotnego skoku bez ustawienia tej wartości na 0 przyczyniłoby się to do spowolnienia, a nie wykonania kolejnego skoku.
+Obsługa skoku w~naszym projekcie polega zatem na jednorazowym dodaniu siły do postaci w~trakcie skoku. Rozważana sytuacja jest bardziej skomplikowana, jeśli chodzi o~wielokrotny skok, ze względu na jednokrotne dodanie siły. Przed ponownym skokiem aktualna prędkość wertykalna musi zostać ustawiona na 0 ze względu na to, że skok dodaje wartość siły do aktualnej wartości działającej na postać. W~trakcie wielokrotnego skoku bez ustawienia tej wartości na 0 przyczyniłoby się to do spowolnienia, a~nie wykonania kolejnego skoku.
 
 \subsection{Otoczenie wpływające na fizykę postaci}
-W grach niejednokrotnie pojawiają się obiekty oddziałujące na fizykę naszej postaci. Ich symulacja często wiąże się z niewymiernym odwzorowaniem rzeczywistej fizyki. W tym podrozdziale głównym opisywanym narzędziem, z którego korzystamy, będzie wcześniej wspomniane wykrywanie kolizji między konkretnymi obiektami. Jeśli chcemy, żeby obiekt lub nasza postać zachowywała się w konkretny sposób, po kontakcie ze sobą trzeba ten kontakt i konkretny obiekt najpierw wykryć. Dobre nazewnictwo warstw i obiektów przydaje się nie tylko do symulowania samej fizyki, ale również do łatwego nawigowania po animacjach, a nawet włączania samej animacji z poziomu skryptu, a nie animatora. Na samym początku warto spojrzeć na skrypt służący do przesuwania skrzyń.
+W grach niejednokrotnie pojawiają się obiekty oddziałujące na fizykę naszej postaci. Ich symulacja często wiąże się z~niewymiernym odwzorowaniem rzeczywistej fizyki. W~tym podrozdziale głównym opisywanym narzędziem, z~którego korzystamy, będzie wcześniej wspomniane wykrywanie kolizji między konkretnymi obiektami. Jeśli chcemy, żeby obiekt lub nasza postać zachowywała się w~konkretny sposób, po kontakcie ze sobą trzeba ten kontakt i~konkretny obiekt najpierw wykryć. Dobre nazewnictwo warstw i~obiektów przydaje się nie tylko do symulowania samej fizyki, ale również do łatwego nawigowania po animacjach, a~nawet włączania samej animacji z~poziomu skryptu, a~nie animatora. Na samym początku warto spojrzeć na skrypt służący do przesuwania skrzyń.
 
 
 \begin{lstlisting}[breaklines=true,
@@ -1278,8 +1278,8 @@ void MoveObject(){
 }
 \end{lstlisting}
 
-Jest to bardzo prosty skrypt, w którym jedyne siły dochodzące do dotychczas oddziałujących to waga skrzyń, które chcemy przesunąć. To ciężar skrzyń sprawia, że postać po zbliżeniu się do skrzyni i próbie jej przesunięcia znacznie spowalnia i skutkuje to ruchem skrzyni, której fizyka jest symulowana poprzez model bryły sztywnej dodany bezpośrednio do skrzyni.
-W naszym projekcie są jeszcze 2 obiekty oddziałujące na fizykę postaci, pierwszym z nich są ruchome platformy. Symulacja stania na platformie jest uproszczona ze względu na grywalność i jest ona niczym innym jak dodaniem platformy jako rodzica naszej postaci, co skutkuje tym, że platforma nie porusza się w kontekście postaci (ruch na platformie jest taki sam jak na ziemi). Mimo to dodana została siła poruszającej się platformy przy samym wyskoku. Jeśli obiekt, na którym znajduje się postać, jest w ruchu, to po wyskoku do góry postać nasza powinna poruszać się w tym samym kierunku i z taką samą prędkością co platforma w trakcie wyskoku. Dlatego skok w którąkolwiek stronę będzie wypadkową siły skoku oraz prędkości poruszającej się aktualnie platformy.
+Jest to bardzo prosty skrypt, w~którym jedyne siły dochodzące do dotychczas oddziałujących to waga skrzyń, które chcemy przesunąć. To ciężar skrzyń sprawia, że postać po zbliżeniu się do skrzyni i~próbie jej przesunięcia znacznie spowalnia i~skutkuje to ruchem skrzyni, której fizyka jest symulowana poprzez model bryły sztywnej dodany bezpośrednio do skrzyni.
+W naszym projekcie są jeszcze 2 obiekty oddziałujące na fizykę postaci, pierwszym z~nich są ruchome platformy. Symulacja stania na platformie jest uproszczona ze względu na grywalność i~jest ona niczym innym jak dodaniem platformy jako rodzica naszej postaci, co skutkuje tym, że platforma nie porusza się w~kontekście postaci (ruch na platformie jest taki sam jak na ziemi). Mimo to dodana została siła poruszającej się platformy przy samym wyskoku. Jeśli obiekt, na którym znajduje się postać, jest w~ruchu, to po wyskoku do góry postać nasza powinna poruszać się w~tym samym kierunku i~z taką samą prędkością co platforma w~trakcie wyskoku. Dlatego skok w~którąkolwiek stronę będzie wypadkową siły skoku oraz prędkości poruszającej się aktualnie platformy.
 
 \begin{lstlisting}[breaklines=true,
 language={[Sharp]C},
@@ -1292,8 +1292,8 @@ if (onMovingPlatform && !m_Grounded)
    onMovingPlatform = false;
 }
 \end{lstlisting}
-Przez to, że aktualna prędkość przyjmuje wartości ujemne, gdy porusza się w lewą stronę, a dodatnie, gdy porusza się w prawą, implementacja tego problemu ogranicza się do kilku linijek.
-Kolejnym obiektem oddziałującym na fizykę postaci w grze ,,The Lore'' są liny. Mechanika lin polega na tym, że jeśli postać znajduje się wystarczająco blisko odpowiedniego obiektu oraz przytrzyma przycisk chwytu to przestanie spadać i zawiśnie na linie. Ponadto w takiej sytuacji postać może poruszać całą liną i bujać się w celu przeskoczenia dalej. Problem ten jest dużo bardziej złożony, samo symulowanie lin w Unity działa bardzo dobrze, aczkolwiek dużo bardziej powszechnym rozwiązaniem jest ręczna symulacja i stworzenie do tego problemu animacji poklatkowej lub ewentualna zmiana pozycji postaci w taki sposób, aby uniknąć konkretnego usytuowania gracza względem liny i tym samym niepożądanego efektu. Problem ten w projekcie ,,The Lore'' został rozwiązany poprzez przesunięcie obiektu szukającego kolizji z linami na przód gracza i zmniejszenia go w taki sposób, aby pole, w którym może się złapać gracz było małe. Likwiduje to potencjalne problemy z niechcianym chwytem. Rozwiązanie takie sprawia, że mechanika jest poniekąd trudniejsza do ukończenia. Po testach użytkowników okazało się jednak, że wciąż nie jest ona wystarczająco trudna, dlatego usunięty został jeden z możliwych dodatkowych skoków po zeskoczeniu z liny.
+Przez to, że aktualna prędkość przyjmuje wartości ujemne, gdy porusza się w~lewą stronę, a~dodatnie, gdy porusza się w~prawą, implementacja tego problemu ogranicza się do kilku linijek.
+Kolejnym obiektem oddziałującym na fizykę postaci w~grze ,,The Lore'' są liny. Mechanika lin polega na tym, że jeśli postać znajduje się wystarczająco blisko odpowiedniego obiektu oraz przytrzyma przycisk chwytu to przestanie spadać i~zawiśnie na linie. Ponadto w~takiej sytuacji postać może poruszać całą liną i~bujać się w~celu przeskoczenia dalej. Problem ten jest dużo bardziej złożony, samo symulowanie lin w~Unity działa bardzo dobrze, aczkolwiek dużo bardziej powszechnym rozwiązaniem jest ręczna symulacja i~stworzenie do tego problemu animacji poklatkowej lub ewentualna zmiana pozycji postaci w~taki sposób, aby uniknąć konkretnego usytuowania gracza względem liny i~tym samym niepożądanego efektu. Problem ten w~projekcie ,,The Lore'' został rozwiązany poprzez przesunięcie obiektu szukającego kolizji z~linami na przód gracza i~zmniejszenia go w~taki sposób, aby pole, w~którym może się złapać gracz było małe. Likwiduje to potencjalne problemy z~niechcianym chwytem. Rozwiązanie takie sprawia, że mechanika jest poniekąd trudniejsza do ukończenia. Po testach użytkowników okazało się jednak, że wciąż nie jest ona wystarczająco trudna, dlatego usunięty został jeden z~możliwych dodatkowych skoków po zeskoczeniu z~liny.
 
 \newpage
 \begin{lstlisting}[breaklines=true,
@@ -1317,16 +1317,16 @@ if (colliders.Length > 0 && !Statics.isOnRope)
 
 \end{lstlisting}
 
-Problem trzymania się liny został rozwiązany przy użyciu połączenia stałego między postacią a jednym z obiektów lin, ponieważ lina sama w sobie składa się z kilkunastu fragmentów połączonych. Aby uniknąć błędów przy połączeniu, brana jest pod uwagę tylko jedna z wykrytych przez skrypt kolizji. Warto zaznaczyć też, że bujanie liną jest możliwe ze względu na możliwość ruchu postaci w powietrzu. Gdyby nie to rozwiązanie trzeba by było zmodyfikować klasę dotyczącą poruszania się tak, aby ruch był możliwy również w trakcie kontaktu z liną. Połączenie stałe między postacią a liną zostaje zerwane w momencie puszczenia przycisku akcji, po czym użytkownikowi przysługuje jeszcze jeden skok.
+Problem trzymania się liny został rozwiązany przy użyciu połączenia stałego między postacią a~jednym z~obiektów lin, ponieważ lina sama w~sobie składa się z~kilkunastu fragmentów połączonych. Aby uniknąć błędów przy połączeniu, brana jest pod uwagę tylko jedna z~wykrytych przez skrypt kolizji. Warto zaznaczyć też, że bujanie liną jest możliwe ze względu na możliwość ruchu postaci w~powietrzu. Gdyby nie to rozwiązanie trzeba by było zmodyfikować klasę dotyczącą poruszania się tak, aby ruch był możliwy również w~trakcie kontaktu z~liną. Połączenie stałe między postacią a~liną zostaje zerwane w~momencie puszczenia przycisku akcji, po czym użytkownikowi przysługuje jeszcze jeden skok.
 
 \section{Umiejętności postaci}
 \subsection{Omówienie zagadnienia umiejętności}
-Umiejętności postaci to nowe mechaniki wprowadzone do gry w celu zarówno zwiększenia dynamiki rozgrywki, jak i ulepszenia doznań użytkownika. Sekcja ta poświęcona będzie zarówno projektowi, jak i mechanikom wewnątrz całego drzewka umiejętności, a także całemu procesowi projektowemu i problemom związanym z poszczególnymi umiejętnościami. Przedstawione zostanie przygotowanie graficzne drzewka, jak i różne sposoby na implementację tych samych umiejętności.
+Umiejętności postaci to nowe mechaniki wprowadzone do gry w~celu zarówno zwiększenia dynamiki rozgrywki, jak i~ulepszenia doznań użytkownika. Sekcja ta poświęcona będzie zarówno projektowi, jak i~mechanikom wewnątrz całego drzewka umiejętności, a~także całemu procesowi projektowemu i~problemom związanym z~poszczególnymi umiejętnościami. Przedstawione zostanie przygotowanie graficzne drzewka, jak i~różne sposoby na implementację tych samych umiejętności.
 
 \subsection{Drzewko umiejętności}
-Drzewko umiejętności to dodatkowa mechanika w grze, pozwalająca użytkownikowi na rozwijanie poszczególnych gałęzi według własnych upodobań. To w tym miejscu gracz jest w stanie samemu określić, w jaki sposób projektować będzie rozwój postaci oraz w jaki sposób przebiegać będzie jego rozgrywka. W celu zwiększenia dynamiki rozgrywki można postawić głównie na umiejętności związane z poruszaniem się, jeśli jednak użytkownik jest bardziej zapobiegawczym typem gracza, bardziej prawdopodobnie skupi się na przetrwaniu i sile.
+Drzewko umiejętności to dodatkowa mechanika w~grze, pozwalająca użytkownikowi na rozwijanie poszczególnych gałęzi według własnych upodobań. To w~tym miejscu gracz jest w~stanie samemu określić, w~jaki sposób projektować będzie rozwój postaci oraz w~jaki sposób przebiegać będzie jego rozgrywka. W~celu zwiększenia dynamiki rozgrywki można postawić głównie na umiejętności związane z~poruszaniem się, jeśli jednak użytkownik jest bardziej zapobiegawczym typem gracza, bardziej prawdopodobnie skupi się na przetrwaniu i~sile.
 \subsubsection{Wstępny prototyp drzewka, a~widok końcowy}
-Drzewko umiejętności w projekcie ,,The Lore'' w fazie prototypowania prezentowało się następująco:
+Drzewko umiejętności w~projekcie ,,The Lore'' w~fazie prototypowania prezentowało się następująco:
 
 
 \begin{figure}[h]
@@ -1335,7 +1335,7 @@ Drzewko umiejętności w projekcie ,,The Lore'' w fazie prototypowania prezentow
 	\caption{Prototyp drzewka w~projekcie ,,The Lore''}
 \end{figure}
 
-Jak okazało się w kolejnych fazach pracy i testach użytkowników taka ilość umiejętności jest nieproporcjonalna do ilości treści i możliwości zdobytych poziomów w grze, dlatego w końcowej iteracji drzewo zostało ograniczone do 3 umiejętności na jedną gałąź. Widok końcowy bazujący na prototypie wygląda następująco:
+Jak okazało się w~kolejnych fazach pracy i~testach użytkowników taka ilość umiejętności jest nieproporcjonalna do ilości treści i~możliwości zdobytych poziomów w~grze, dlatego w~końcowej iteracji drzewo zostało ograniczone do 3 umiejętności na jedną gałąź. Widok końcowy bazujący na prototypie wygląda następująco:
 
 
 \begin{figure}[h]
@@ -1344,7 +1344,7 @@ Jak okazało się w kolejnych fazach pracy i testach użytkowników taka ilość
 	\caption{Aktualne drzewko umiejętności w~projekcie ,,The Lore''}
 \end{figure}
 \newpage
-Górny licznik wyświetla, ile umiejętności jesteśmy w stanie w danym momencie rozwinąć, tzn. ile dostępnych punktów umiejętności jest aktualnie odblokowanych. Liczba ta jest przeliczana w następujący sposób:
+Górny licznik wyświetla, ile umiejętności jesteśmy w~stanie w~danym momencie rozwinąć, tzn. ile dostępnych punktów umiejętności jest aktualnie odblokowanych. Liczba ta jest przeliczana w~następujący sposób:
 
 
 \begin{lstlisting}[breaklines=true,
@@ -1355,7 +1355,7 @@ caption={Fragment klasy \texttt{UI\_SkillTree.cs}}
 text = (GLOBAL_DATA.Instance.Level - 1 - unlockedSkills)
 \end{lstlisting}
 
-W praktyce w sytuacji braku odblokowanych umiejętności wskaźnik wyświetla zawsze o jeden punkt mniej niż aktualny poziom postaci. Przez to wystarczy odjąć od tego jeszcze długość listy obiektów typu \textbf{SkillButton} i końcowy wynik pokazuje aktualną ilość punktów. Podobne sprawdzenie używane jest w klasie \textbf{PlayerSkills.cs}, w celu weryfikacji czy użytkownik może daną umiejętność rozwinąć. Kolejnym ważnym punktem, przy sprawdzaniu poszczególnych umiejętności, jest ich hierarchia, czyli odblokowywanie umiejętności z danej gałęzi w odpowiedniej kolejności. Tym zadaniem zajmuje się następujący fragment kodu:
+W praktyce w~sytuacji braku odblokowanych umiejętności wskaźnik wyświetla zawsze o~jeden punkt mniej niż aktualny poziom postaci. Przez to wystarczy odjąć od tego jeszcze długość listy obiektów typu \textbf{SkillButton} i~końcowy wynik pokazuje aktualną ilość punktów. Podobne sprawdzenie używane jest w~klasie \textbf{PlayerSkills.cs}, w~celu weryfikacji czy użytkownik może daną umiejętność rozwinąć. Kolejnym ważnym punktem, przy sprawdzaniu poszczególnych umiejętności, jest ich hierarchia, czyli odblokowywanie umiejętności z~danej gałęzi w~odpowiedniej kolejności. Tym zadaniem zajmuje się następujący fragment kodu:
 
 \newpage
 \begin{lstlisting}[breaklines=true,
@@ -1379,10 +1379,10 @@ return SkillType.None;
 }
 \end{lstlisting}
 
-Zwracana wcześniejsza umiejętność przy próbie odblokowania pozwala nam określić, która umiejętność jest warunkiem do odblokowania danej umiejętności, co znacznie ułatwia sprawdzanie, wystarczy przeszukać listę odblokowanych umiejętności i sprawdzić, czy wcześniejsza w hierarchii istnieje w danym kontekście.
+Zwracana wcześniejsza umiejętność przy próbie odblokowania pozwala nam określić, która umiejętność jest warunkiem do odblokowania danej umiejętności, co znacznie ułatwia sprawdzanie, wystarczy przeszukać listę odblokowanych umiejętności i~sprawdzić, czy wcześniejsza w~hierarchii istnieje w~danym kontekście.
 
 \subsubsection{Przykłady z~innych gier}
-Jest wiele gier, które wykorzystują drzewka umiejętności po to, żeby ułatwić użytkownikowi rozgrywkę. Istnieją jednak takie gry, których podejście do drzewek umiejętności jest inne, są implementowane po to, żeby gracz poradził sobie na wyższych poziomach trudności lub nawet są mechaniką, bez której samej gry nie jesteśmy w stanie przejść. Dobrym przykładem takiej gry jest Path of Exile, w której liczba ścieżek w drzewku, które możemy wybrać, jest ogromna, a samo drzewko prezentuje się następująco:
+Jest wiele gier, które wykorzystują drzewka umiejętności po to, żeby ułatwić użytkownikowi rozgrywkę. Istnieją jednak takie gry, których podejście do drzewek umiejętności jest inne, są implementowane po to, żeby gracz poradził sobie na wyższych poziomach trudności lub nawet są mechaniką, bez której samej gry nie jesteśmy w~stanie przejść. Dobrym przykładem takiej gry jest Path of Exile, w~której liczba ścieżek w~drzewku, które możemy wybrać, jest ogromna, a~samo drzewko prezentuje się następująco:
 
 \begin{figure}[h]
 	\centering
@@ -1390,7 +1390,7 @@ Jest wiele gier, które wykorzystują drzewka umiejętności po to, żeby ułatw
 	\caption{Drzewko Umiejętności z~gry Path of Exile }
 \end{figure}
 \newpage
-W omawianym projekcie zastosowano prostszy model drzewka ze względu na ograniczoną liczbę poziomów oraz możliwości ich zdobycia. Przykładem użycia podobnego drzewka umiejętności jest gra Ori And The Blind Forest, w której drzewko to wygląda następująco:
+W omawianym projekcie zastosowano prostszy model drzewka ze względu na ograniczoną liczbę poziomów oraz możliwości ich zdobycia. Przykładem użycia podobnego drzewka umiejętności jest gra Ori And The Blind Forest, w~której drzewko to wygląda następująco:
 
 \begin{figure}[h]
 	\centering
@@ -1398,12 +1398,12 @@ W omawianym projekcie zastosowano prostszy model drzewka ze względu na ogranicz
 	\caption{Drzewko Umiejętności z~gry Ori And The Blind Forest}
 \end{figure}
 \subsection{Umiejętności}
-W tej sekcji skupimy się głównie na umiejętnościach zaimplementowanych w projekcie, problemach(jeśli owe istniały) i innym sposobie rozwiązania tych samych problemów w trakcie tworzenia umiejętności.
+W tej sekcji skupimy się głównie na umiejętnościach zaimplementowanych w~projekcie, problemach(jeśli owe istniały) i~innym sposobie rozwiązania tych samych problemów w~trakcie tworzenia umiejętności.
 
 \subsubsection{Umiejętności siły}
-Zwiększenie mocy – odpowiedzialne za zwiększenie siły ataku podstawowego do 130-250\% przez 2 sekundy. Wartość z tego przedziału jest losowana z każdym użyciem umiejętności.
-Eksplozja – Postać ładuje obszar dookoła siebie o określonym promieniu i zadaje obrażenia każdemu wrogowi znajdującemu się w tym obszarze, dodany do tego został system cząstek dla lepszej wizualizacji efektu.
-Strzał z kuli – Postać wystrzeliwuje horyzontalnie kulkę lecącą ze stałą prędkością w kierunku, w którym aktualnie patrzy się postać, umiejętność ta jest zrobiona ciągłym aktualizowaniem pozycji kulki o daną, stałą wartość i zadawanie obrażeń każdemu przeciwnikowi, którego napotka na swojej ścieżce. Kolejnym sposobem rozwiązania tego problemu jest stworzenie kuli jako bryły sztywnej oraz symulowanie trajektorii lotu kuli. Na potrzeby projektu oraz w danym kontekście oczekiwanym rezultatem był jednak lot po prostej, poziomej drodze, dlatego zdecydowaliśmy się na pierwsze rozwiązanie.
+Zwiększenie mocy – odpowiedzialne za zwiększenie siły ataku podstawowego do 130-250\% przez 2 sekundy. Wartość z~tego przedziału jest losowana z~każdym użyciem umiejętności.
+Eksplozja – Postać ładuje obszar dookoła siebie o~określonym promieniu i~zadaje obrażenia każdemu wrogowi znajdującemu się w~tym obszarze, dodany do tego został system cząstek dla lepszej wizualizacji efektu.
+Strzał z~kuli – Postać wystrzeliwuje horyzontalnie kulkę lecącą ze stałą prędkością w~kierunku, w~którym aktualnie patrzy się postać, umiejętność ta jest zrobiona ciągłym aktualizowaniem pozycji kulki o~daną, stałą wartość i~zadawanie obrażeń każdemu przeciwnikowi, którego napotka na swojej ścieżce. Kolejnym sposobem rozwiązania tego problemu jest stworzenie kuli jako bryły sztywnej oraz symulowanie trajektorii lotu kuli. Na potrzeby projektu oraz w~danym kontekście oczekiwanym rezultatem był jednak lot po prostej, poziomej drodze, dlatego zdecydowaliśmy się na pierwsze rozwiązanie.
 
 \begin{figure}[h]
 	\centering
@@ -1411,10 +1411,10 @@ Strzał z kuli – Postać wystrzeliwuje horyzontalnie kulkę lecącą ze stał�
 	\caption{Ikony umiejętności siły z~projektu ,,The Lore''}
 \end{figure}
 \subsubsection{Umiejętności poruszania się}
-Umiejętności poruszania się służą głównie do łatwiejszego/płynniejszego przemieszczania się po planszy, jak i większej opcjonalności przy unikaniu ataków przeciwników, 3 umiejętności dotyczące poruszania się w naszym projekcie to:
-Sprint – Polega na zwiększeniu prędkości gracza w trakcie trzymania klawisza, mechanikę tę możemy kojarzyć między innymi z takich gier jak Super Mario Bros.
-Potrójny skok – Polega na możliwości wykonania dodatkowego skoku w trakcie lotu, domyślna wartość to dwa. Umiejętność ta pozwala na doskoczenie we wcześniej niedostępne miejsca, a także na większą swobodę w locie.
-Pęd – Trzecia i ostatnia umiejętność z gałęzi poruszania się polega na bardzo szybkim przemieszczeniu się horyzontalnym gracza. Jest to często wykorzystywana mechanika w grach platformowych takich jak np. Ori And The Blind Forest. Istnieje kilka sposobów rozwiązania tego problemu. Najłatwiejszym z nich jest zmiana pozycji postaciprzy pierwszej okoliczności, generuje to jednak problemy związane z ewentualnymi przeszkodami, jak i z płynnością takiego przejścia. Kolejnym rozwiązaniem, które zostało użyte w naszym projekcie, jest przez określoną ilość czasu aktualizowanie konkretnej pozycji gracza, ponownie pojawia się tu problem wchodzenia w ściany, natomiast jest on w tym wypadku dużo łatwiejszy do rozwiązania. Przez to, że pozycja nie jest zmieniana jednokrotnie, tylko stopniowo, przez pewien odstęp czasu jesteśmy w stanie sprawdzać, czy istnieje przed postacią jakaś przeszkoda w trakcie wykonywania się skryptu i opcjonalnie przestać wykonywać umiejętność w trakcie, gdy przeszkoda znajduje się przed postacią.
+Umiejętności poruszania się służą głównie do łatwiejszego/płynniejszego przemieszczania się po planszy, jak i~większej opcjonalności przy unikaniu ataków przeciwników, 3 umiejętności dotyczące poruszania się w~naszym projekcie to:
+Sprint – Polega na zwiększeniu prędkości gracza w~trakcie trzymania klawisza, mechanikę tę możemy kojarzyć między innymi z~takich gier jak Super Mario Bros.
+Potrójny skok – Polega na możliwości wykonania dodatkowego skoku w~trakcie lotu, domyślna wartość to dwa. Umiejętność ta pozwala na doskoczenie we wcześniej niedostępne miejsca, a~także na większą swobodę w~locie.
+Pęd – Trzecia i~ostatnia umiejętność z~gałęzi poruszania się polega na bardzo szybkim przemieszczeniu się horyzontalnym gracza. Jest to często wykorzystywana mechanika w~grach platformowych takich jak np. Ori And The Blind Forest. Istnieje kilka sposobów rozwiązania tego problemu. Najłatwiejszym z~nich jest zmiana pozycji postaciprzy pierwszej okoliczności, generuje to jednak problemy związane z~ewentualnymi przeszkodami, jak i~z płynnością takiego przejścia. Kolejnym rozwiązaniem, które zostało użyte w~naszym projekcie, jest przez określoną ilość czasu aktualizowanie konkretnej pozycji gracza, ponownie pojawia się tu problem wchodzenia w~ściany, natomiast jest on w~tym wypadku dużo łatwiejszy do rozwiązania. Przez to, że pozycja nie jest zmieniana jednokrotnie, tylko stopniowo, przez pewien odstęp czasu jesteśmy w~stanie sprawdzać, czy istnieje przed postacią jakaś przeszkoda w~trakcie wykonywania się skryptu i~opcjonalnie przestać wykonywać umiejętność w~trakcie, gdy przeszkoda znajduje się przed postacią.
 
 
 \begin{lstlisting}[breaklines=true,
@@ -1433,10 +1433,10 @@ if (dashValue < dashForce && dash && !touchingWall)
 	\caption{Ikony umiejętności poruszania się z~projektu ,,The Lore''}
 \end{figure}
 \subsubsection{Umiejętności przetrwania}
-Umiejętności przetrwania przydają się wtedy, kiedy bardzo dużo giniemy od przeciwników. Pozwalają one na dużo większą beztroskę w trakcie walki z przeciwnikami, jak i na uzupełnianie swojego życia poza nią. W naszym projekcie wyróżniamy takie umiejętności jak:
-Zwiększenie życia – Jest to umiejętność pasywna zwiększająca na stałe poziom zdrowia gracza ze 100 do 125, co przyczynia się do tego, że jesteśmy w stanie przetrwać więcej ciosów od przeciwników, tym samym gra bardziej wybacza nasze błędy.
-Odnowienie życia – Jest to umiejętność aktywna, w trakcie naciśnięcia przycisku do użycia umiejętności jesteśmy w stanie raz na 30 sekund odnowić swoje życie o 25, przyczynia się to do spowolnienia rozgrywki, jednocześnie dając możliwość odnowienia sobie życia przed lub w trakcie walki z mocniejszymi przeciwnikami.
-Nieśmiertelność – Jest to umiejętność aktywna pozwalająca nam przez 2 sekundy być odpornymi na każdy atak przeciwnika. Zastosowań tej umiejętności jest mnóstwo. Może ona posłużyć nam do ucieczki przed przeciwnikiem w kryzysowej sytuacji, jak i pomóc nam w zadaniu mu dodatkowych ciosów nie tracąc przy tym punktów zdrowia. 
+Umiejętności przetrwania przydają się wtedy, kiedy bardzo dużo giniemy od przeciwników. Pozwalają one na dużo większą beztroskę w~trakcie walki z~przeciwnikami, jak i~na uzupełnianie swojego życia poza nią. W~naszym projekcie wyróżniamy takie umiejętności jak:
+Zwiększenie życia – Jest to umiejętność pasywna zwiększająca na stałe poziom zdrowia gracza ze 100 do 125, co przyczynia się do tego, że jesteśmy w~stanie przetrwać więcej ciosów od przeciwników, tym samym gra bardziej wybacza nasze błędy.
+Odnowienie życia – Jest to umiejętność aktywna, w~trakcie naciśnięcia przycisku do użycia umiejętności jesteśmy w~stanie raz na 30 sekund odnowić swoje życie o~25, przyczynia się to do spowolnienia rozgrywki, jednocześnie dając możliwość odnowienia sobie życia przed lub w~trakcie walki z~mocniejszymi przeciwnikami.
+Nieśmiertelność – Jest to umiejętność aktywna pozwalająca nam przez 2 sekundy być odpornymi na każdy atak przeciwnika. Zastosowań tej umiejętności jest mnóstwo. Może ona posłużyć nam do ucieczki przed przeciwnikiem w~kryzysowej sytuacji, jak i~pomóc nam w~zadaniu mu dodatkowych ciosów nie tracąc przy tym punktów zdrowia. 
 
 
 \begin{figure}[h]
@@ -1446,7 +1446,7 @@ Nieśmiertelność – Jest to umiejętność aktywna pozwalająca nam przez 2 s
 \end{figure}
 
 \section{Podsumowanie}
-Podsumowując, w rozdziale tym został przedstawiony proces tworzenia postaci, przeniesienia jej do środowiska pracy oraz samą pracę na niej, jeśli chodzi o poruszanie się i główne aspekty z tym związane. Warto pamiętać, że nie wszystkie gry odwzorowują fizykę w taki sposób, jak wygląda ona rzeczywiście, dlatego dobrze jest znać zagrania, którymi kierują się deweloperzy przy projektowaniu odpowiednich mechanik, a w grach 2D istnieje dużo ukrytych sposobów rozwiązywania problemów i innego przedstawienia fizyki, do którego większość użytkowników jest przyzwyczajona, przez co dokładna symulacja fizyki dla przeciętnego gracza wydaje się mniej poprawna niż użycie tych sztuczek.
+Podsumowując, w~rozdziale tym został przedstawiony proces tworzenia postaci, przeniesienia jej do środowiska pracy oraz samą pracę na niej, jeśli chodzi o~poruszanie się i~główne aspekty z~tym związane. Warto pamiętać, że nie wszystkie gry odwzorowują fizykę w~taki sposób, jak wygląda ona rzeczywiście, dlatego dobrze jest znać zagrania, którymi kierują się deweloperzy przy projektowaniu odpowiednich mechanik, a~w grach 2D istnieje dużo ukrytych sposobów rozwiązywania problemów i~innego przedstawienia fizyki, do którego większość użytkowników jest przyzwyczajona, przez co dokładna symulacja fizyki dla przeciętnego gracza wydaje się mniej poprawna niż użycie tych sztuczek.
 
 \begin{thebibliography}{100} 
 
