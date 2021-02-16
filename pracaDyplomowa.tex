@@ -620,7 +620,7 @@ Po wewnętrznej dyskusji wybrano opcję wydzielenia do osobnej sceny. W~toku tes
 
 \section{Przesuwane puzzle}
 \subsection{Omówienie zagadnienia i~ogólne założenia}
-\par Przesuwane puzzle to układanka, złożona zazwyczaj z~kwadratowej liczby elementów, najczęściej jest to szesnaście pól. Pola są jednakowych rozmiarów i~oznaczone są liczbami od 1 do (n-1), gdzie n to liczba dostępnych pól w~układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzli względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w~odpowiedniej kolejności, według rosnącego porządku liczb lub powstania odpowiedniego obrazka. Trudno określić kto odpowiada za stworzenie zagadki. Wiadome jest, że w~1878 roku pochodzący ze Stanów Zjednoczonych Samuel Loyd wypromował układankę, jednak prawdopodobnie nie jest to jego pomysł. Dość popularną nazwą na rozgrywkę jest ,,piętnastka'', określająca ilość dostępnych pól w~najpopularniejszym ułożeniu – 4 na 4.  \cite{przesuwane_puzzle}
+\par Przesuwane puzzle to układanka, złożona zazwyczaj z~kwadratowej liczby elementów, najczęściej jest to szesnaście pól. Pola są jednakowych rozmiarów i~oznaczone są liczbami od 1 do (\(n\)-1), gdzie \(n\) to liczba dostępnych pól w~układance. Jedno pole jest puste, pozwala to na przeniesienie sąsiednich elementów puzzli względem siebie. Rozgrywka kończy się, gdy ułożymy puzzle w~odpowiedniej kolejności, według rosnącego porządku liczb lub powstania odpowiedniego obrazka. Trudno określić kto odpowiada za stworzenie zagadki. Wiadome jest, że w~1878 roku pochodzący ze Stanów Zjednoczonych Samuel Loyd wypromował układankę, jednak prawdopodobnie nie jest to jego pomysł. Dość popularną nazwą na rozgrywkę jest ,,piętnastka'', określająca ilość dostępnych pól w~najpopularniejszym ułożeniu – 4 na 4.  \cite{przesuwane_puzzle}
 
 W~grze ,,The Lore'' gracze staną przed rozwiązaniem zagadki, gdzie do dyspozycji mają dziewięć pól. Podczas projektowania układanki w~grze uznano, iż zagadka z~piętnastoma elementami może być dość trudna, a~korzyści płynące z~rozwiązania jej będą nieadekwatne do poświęconego czasu, stąd ilość pól jest mniejsza niż w~najpopularniejszej wersji rozgrywki.
 \subsection{Algorytmika}
@@ -634,10 +634,10 @@ W~grze ,,The Lore'' gracze staną przed rozwiązaniem zagadki, gdzie do dyspozyc
 \caption{Koordynaty każdego pola. Przykład z~gry ,,The Lore''}
 \end{figure}
 
-Tak jak na załączonym przykładzie, wartość x rośnie w~prawą stronę, natomiast y w~górę, gdzie x dotyczy położenia w~poziomie, a~y w~pionie. W~założeniach przedstawiona została logika, która mówiła, iż element może zostać przemieszczony wtedy i~tylko wtedy, gdy pole obok niego jest wolne, czyli nie posiada żadnego PuzzleBlock – elementu z~liczbą lub obrazkiem. Dla lepszego efektu wizualnego, w~grze ,,The Lore'' element porusza się stopniowo, aby sprawiał wrażenie, iż porusza się realistycznie. Z~racji, iż w~Unity każda akcja wykonuje się podczas pokazywania kolejnej klatki, element porusza się w~minimalnym stopniu w~trakcie jednej klatki. 
+Tak jak na załączonym przykładzie, wartość \(x\) rośnie w~prawą stronę, natomiast \(y\) w~górę, gdzie \(x\) dotyczy położenia w~poziomie, a~\(y\) w~pionie. W~założeniach przedstawiona została logika, która mówiła, iż element może zostać przemieszczony wtedy i~tylko wtedy, gdy pole obok niego jest wolne, czyli nie posiada żadnego PuzzleBlock – elementu z~liczbą lub obrazkiem. Dla lepszego efektu wizualnego, w~grze ,,The Lore'' element porusza się stopniowo, aby sprawiał wrażenie, iż porusza się realistycznie. Z~racji, iż w~Unity każda akcja wykonuje się podczas pokazywania kolejnej klatki, element porusza się w~minimalnym stopniu w~trakcie jednej klatki. 
 
 \subsubsection{Plansza – Puzzle. Losowanie kolejności puzzli}
-\par Plansza rozgrywki posiada 8 elementów PuzzleBlock oraz jedno puste pole.  Algorytm powinien wylosować dla 8 pól ich położenie na planszy – tak jak w~wyżej przedstawionym przykładzie. W~tym celu na początku należy wylosować dla każdego bloku wartość od 0 do 8. W~C\# można to zrobić przy użyciu funkcji  \emph{System.Random().Next(a, b)}, który losuje wartości z~zakresu \emph{<a, b)}. Przykładowo:
+\par Plansza rozgrywki posiada 8 elementów PuzzleBlock oraz jedno puste pole.  Algorytm powinien wylosować dla 8 pól ich położenie na planszy – tak jak w~wyżej przedstawionym przykładzie. W~tym celu na początku należy wylosować dla każdego bloku wartość od 0 do 8. W~C\# można to zrobić przy użyciu funkcji  \emph{System.Random().Next(a, b)}, który losuje wartości z~zakresu \(<a, b)\). Przykładowo:
 \begin{lstlisting}[
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
@@ -656,7 +656,7 @@ private int randomPosition()
 }
 \end{lstlisting}
 
-Gdzie \textbf{isOnBoard[pos]} jest tablicą, która weryfikuje, czy dane pole nie jest już zajęte. Jeśli jest, należy ponownie wylosować wartość dla PuzzleBlock. Oczywiście to nie koniec – z~tej wartości trzeba stworzyć położenie w~postaci (x, y), gdzie x to położenie w~poziomie, a~y w~pionie. W~tym celu jedna z~tych wartości będzie resztą dzielenia wylosowanej pozycji przez trzy (ilość pól w~linii), a~druga ilorazem całkowitym pozycji i~liczby trzy. 
+Gdzie \texttt{isOnBoard[pos]} jest tablicą, która weryfikuje, czy dane pole nie jest już zajęte. Jeśli jest, należy ponownie wylosować wartość dla PuzzleBlock. Oczywiście to nie koniec – z~tej wartości trzeba stworzyć położenie w~postaci (\(x\), \(y\)), gdzie \(x\) to położenie w~poziomie, a~\(y\) w~pionie. W~tym celu jedna z~tych wartości będzie resztą dzielenia wylosowanej pozycji przez trzy (ilość pól w~linii), a~druga ilorazem całkowitym pozycji i~liczby trzy. 
 Kolejną ważną rzeczą będzie weryfikacja, czy obecne ułożenie puzzli jest wykonalne.
 
 \subsubsection{Plansza – Puzzle. Weryfikacja kolejności puzzli}
