@@ -1161,7 +1161,7 @@ for (int i = 0; i < colliders.Length; i++)
 }
 \end{lstlisting}
 
-W skrypcie jest sprawdzana konkretna warstwa lub konkretny obiekt, z którym oczekujemy konkretnego działania po kolizji.
+W skrypcie jest sprawdzana konkretna warstwa lub konkretny obiekt, z~którym oczekujemy konkretnego działania po kolizji.
 Ta część kodu odpowiada za sprawdzenie, czy postać dotyka ziemi w celu ustawienia zmiennej na odpowiadającą jej wartość, a także za sprawdzenie, czy postać jest na poruszających się platformach w celu późniejszej zmiany jej rodzica.
 W tym momencie, kiedy kontakt został odkryty, jesteśmy w stanie stwierdzić dokładnie, kiedy występuje kolizja między dwoma konkretnymi obiektami i pracować na nich lub ograniczać je zależnie od tego.
 
@@ -1226,26 +1226,26 @@ Czym tak naprawdę jest skok w grach 2D i jak dużo wspólnego ma z rzeczywistą
 \end{figure}
 
 \newpage
-Jak można zauważyć na obrazku, skok nie jest parabolą, tak jak byłoby to w przypadku realistycznej sytuacji. W niektórych grach 2D tworzy się symulację skoku polegającą na tym, że im dłużej trzyma się przycisk skoku, tym dłużej jest się w powietrzu. W rzeczywistości polega to na ustawieniu czasu, w którym siła może działać na postać i ograniczenia jej górnego limitu. W praktyce wygląda to tak, że kiedy tylko przestaniemy trzymać przycisk skoku, postać automatycznie zacznie lecieć w dół, a jeśli go przytrzymamy, postać na chwilę zawiśnie w powietrzu. Stało się to na tyle powszechne, że taka symulacja skoku wydaje się bardziej naturalna niż dodanie do niego wertykalnej siły jednorazowo, czyli zgodnie z prawami fizyki. \cite{jumping2} \\ W naszym projekcie postawiliśmy jednak na rzeczywistą symulację fizyki. Stworzenie skoku w taki sposób pozwala na większą przewidywalność miejsca lądowania, natomiast na mniejszą kontrolę samego skoku. Sama implementacja skoku w projekcie The Lore prezentuje się następująco:
+Jak można zauważyć na obrazku, skok nie jest parabolą, tak jak byłoby to w~`przypadku realistycznej sytuacji. W niektórych grach 2D tworzy się symulację skoku polegającą na tym, że im dłużej trzyma się przycisk skoku, tym dłużej jest się w powietrzu. W rzeczywistości polega to na ustawieniu czasu, w którym siła może działać na postać i ograniczenia jej górnego limitu. W praktyce wygląda to tak, że kiedy tylko przestaniemy trzymać przycisk skoku, postać automatycznie zacznie lecieć w dół, a jeśli go przytrzymamy, postać na chwilę zawiśnie w~powietrzu. Stało się to na tyle powszechne, że taka symulacja skoku wydaje się bardziej naturalna niż dodanie do niego wertykalnej siły jednorazowo, czyli zgodnie z prawami fizyki. \cite{jumping2} \\ W naszym projekcie postawiliśmy jednak na rzeczywistą symulację fizyki. Stworzenie skoku w taki sposób pozwala na większą przewidywalność miejsca lądowania, natomiast na mniejszą kontrolę samego skoku. Sama implementacja skoku w projekcie The Lore prezentuje się następująco:
 
 \begin{lstlisting}[breaklines=true,
 language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{CharacterController.cs}}
 ]
-if (m_Grounded && jump){
+if(m_Grounded && jump){
    m_Grounded = false;
    m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
    jump = false;
    onMovingPlatform = false;
 }
-if (!m_Grounded && jump && extraJumps > 0 && !Statics.isOnRope)
-{
+if(!m_Grounded && jump && extraJumps > 0 && !Statics.isOnRope){
    m_Rigidbody2D.velocity =
    = new Vector2(m_Rigidbody2D.velocity.x, 0);
    animator.SetBool("doubleJump", true);
-   m_Rigidbody2D
-   .AddForce(new Vector2(0f, m_JumpForce * extraJumpDifficulty));
+   m_Rigidbody2D.AddForce(new Vector2
+                         (0f,m_JumpForce * extraJumpDifficulty)
+                         );
    jump = false;
    extraJumps--;
 }
@@ -1262,14 +1262,17 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{PlayerMovement.cs}}
 ]
-void MoveObject()
-{
-   if (Physics2D.OverlapCircleAll(actionPoint.position, boxMoveRange, 
-   boxLayer).Length > 0 && !animator.GetBool("IsJumping"))
-   {
-      Physics2D.OverlapCircleAll(actionPoint.position, boxMoveRange,
-      boxLayer)[0] .GetComponent<BoxMoving>()
-      .MoveBox(direction);
+void MoveObject(){
+   if (Physics2D.OverlapCircleAll(actionPoint.position, 
+                                  boxMoveRange, 
+                                  boxLayer
+                                  ).Length > 0 
+   && !animator.GetBool("IsJumping")){
+      Physics2D.OverlapCircleAll(actionPoint.position,
+                                  boxMoveRange,
+                                  boxLayer)[0]
+                                 .GetComponent<BoxMoving>()
+                                 .MoveBox(direction);
       animator.SetTrigger("PushObject");
    }
 }
