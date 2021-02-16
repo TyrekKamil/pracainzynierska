@@ -715,7 +715,7 @@ for (int i= 0; i< numbersOrdered.Length - 1; i++) {
 }
 
 \end{lstlisting}
-\par Gdzie \textbf{inversions}, to liczba znalezionych inwersji, a~\textbf{numberOrdered} to lista kolejności puzzli w~stanie wejściowym. Jeżeli wartość \textbf{x} znajduje się w~liście \textbf{numberOrdered} przed wartością \textbf{y} i~jest od niej większa, to wtedy licznik inwersji zwiększa się o~jeden.
+\par Gdzie \textbf{inversions}, to liczba znalezionych inwersji, a~\textbf{numberOrdered} to lista kolejności puzzli w~stanie wejściowym. Jeżeli wartość \(x\) znajduje się w~liście \textbf{numberOrdered} przed wartością \(y\) i~jest od niej większa, to wtedy licznik inwersji zwiększa się o~jeden.
 Oczywiście pozostaje prosta weryfikacja, czy liczba inwersji jest nieparzysta – w~takim wypadku puzzle będą nierozwiązywalne.
 \begin{lstlisting}[
 	language={[Sharp]C},
@@ -761,7 +761,7 @@ y = \left\{ \begin{array}{ll}
 100 - (x / 25) * 10 & \textrm{gdy $x<250$}\\
 \end{array} \right.
 $$
-Gdzie \textbf{x} jest liczbą wykonanych ruchów.
+Gdzie \(x\) jest liczbą wykonanych ruchów.
 Po zakończeniu mini-gry gracz jest informowany o~ilości zdobytego doświadczenia.
 \begin{figure}[h]
 	\centering
@@ -843,7 +843,8 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{UI.cs}}
 ]
-if (recentPipe.right && (i+ 1) % 8 != 7 && pipeSlots[i + 1].Pipe.left 
+if (recentPipe.right && (i+ 1) % 8 != 7 
+&& pipeSlots[i + 1].Pipe.left 
 && !cameFrom.Equals("right"))
 \end{lstlisting}
 Gdzie \textbf{recentPipe.right} to sprawdzanie, czy obecna rura może skręcić w~prawo, \textbf{((i~+ 1) \% 8 != 7)} jest weryfikacją, czy rura znajduje się przy najbardziej wysuniętym na prawo \textbf{PipeSlot}. Następnie należy zweryfikować, czy sąsiedni slot może być skrętny w~lewo. Podobnie należy sprawdzić to dla wszystkich stron, z~odpowiednimi wartościami dla danych przypadków. Jeżeli minie czas, a~dany \textbf{PipeSlot} nie będzie miał odpowiedniego połączenia, użytkownik jest informowany o~porażce. Jeżeli zaś algorytm wykryje, iż takie połączenie istnieje, a~naszym obecnym indeksem na planszy jest 39 (liczba pól – 1), to algorytm przenosi gracza do poziomu gry, z~którego rozpoczął rozgrywkę.
@@ -1013,7 +1014,7 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Usunięcie ściany – skrypt C\#}
 ]
-node[x ,y] &= ~neighbour.SharedWall;
+node[x, y] &= ~neighbour.SharedWall;
 \end{lstlisting}
 
 Gdzie \textbf{SharedWall} mówi o~tym, czy pomiędzy dwoma obiektami znajduje się ściana. Oczywiście, informacja o~ścianie powinna zostać zaktualizowana również u~sąsiada. W~tej sytuacji są dwa wyjścia. Pierwszy z~nich, z~lekka naiwny i~niezbyt przyjazne dla oka dewelopera to stworzenie czterech warunków, które definiują dla danego przypadku jak pobrać pozycję przeciwną, dla sąsiada po lewej stronie – prawo, dla sąsiada na dole – góra i~tak dalej. W~ten sposób możemy zdobyć węzeł i~zmienić jego stan, a~następnie dodać nowy element do stosu. Drugim, rozsądniejszym pomysłem jest zadeklarowanie metody, która mogłaby od razu zwrócić nam \textbf{NodeState} naszego sąsiada, który od razu mógłby być szybko poprawiony. Z~pomocą przychodzi tutaj prosta instrukcja switch(), która pozwala nam na zarządzanie czterema przypadkami, z~którymi będziemy mieli do czynienia.
