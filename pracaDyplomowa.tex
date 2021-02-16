@@ -91,7 +91,7 @@
 Przedmiotem pracy jest przedstawienie projektowania gry platformowej „The Lore: story of the fallen warrior” w~oparciu o~silnik Unity. Gra posiada elementy zręcznościowe oraz zagadki logiczne, przez co przechodzenie kolejnych etapów gry wymaga szybkiego podejmowania logicznych decyzji. \par
 Na początku zostanie przedstawiony zamysł projektu i~w~jaki sposób można nim zarządzać. Zaprezentowana będzie istota pracy nad projektem, co jest ważne, czego należy przestrzegać i~na czym się skupić. W~jaki sposób został podzielony projekt informatyczny oraz z~czym związane są poszczególne etapy pracy. Następnie przedstawione zostaną metodyki, które od lat służą za zbiór drogowskazów w~procesie realizacji projektu. Przedstawione zostanie również wykorzystanie tych wskazówek w~projekcie gry komputerowej ,,The Lore''. \par
 W~następnej części pracy przedstawiona zostanie definicja zagadki logicznej oraz jej kilka przykładów. Opisany zostanie sposób obsadzenia mini-gier w~grze opartej na silniku Unity. W~kontekście projektu „The Lore” przedstawione są algorytmy stojące za logiką zaimplementowanych mini-gier. Dodatkowo przedstawiono metodę projektowania mini-gry niezawartej w~projekcie – algorytmu generującego labirynt. \par
-W~ostatnim rozdziale przedstawiony zostanie opis procesu projektowania\\ i~tworzenia postaci oraz mechanik z~nią związanych. Elementy te zostaną przedstawione począwszy od projektowania graficznego po tworzenie dodatkowych funkcjonalności takich jak drzewko umiejętności. Przedstawione zostaną również różnice między silnikiem fizyki w~grze a~fizyką w~prawdziwym świecie, problemy i~rozwiązania fizyki oddziałującej na postać zarówno jeśli chodzi\\ o~sam ruch jak i~o~obiekty w~terenie, które na zachowanie tej postaci wpływają.
+W~ostatnim rozdziale przedstawiony zostanie opis procesu projektowania i~tworzenia postaci oraz mechanik z~nią związanych. Elementy te zostaną przedstawione począwszy od projektowania graficznego po tworzenie dodatkowych funkcjonalności takich jak drzewko umiejętności. Przedstawione zostaną również różnice między silnikiem fizyki w~grze a~fizyką w~prawdziwym świecie, problemy i~rozwiązania fizyki oddziałującej na postać zarówno jeśli chodzi o~sam ruch jak i~o~obiekty w~terenie, które na zachowanie tej postaci wpływają.
 \end{streszczenie}
 \begin{abstract}
 The subject of the thesis is the presentation and design of the platform game ,,The Lore: Story of The Fallen Warrior” based on Unity engine. The game includes arcade parts as well as logic games, thus completion of specific parts of the game requires fast decision-making. \par
@@ -1059,14 +1059,15 @@ Teraz używając czterech warunków, dla każdej strony, można zweryfikować, c
 \chapter{Fizyka postaci}
 \section{Tworzenie postaci}
 \subsection{Omówienie zagadnienia procesu tworzenia postaci}
-Zagadnienie procesu tworzenia postaci polega na przygotowaniu grafik w odpowiedni sposób tak, żeby można było swobodnie wprowadzić i pracować na projekcie postaci w Unity, a także stworzenie odpowiednich komponentów przygotowanych bezpośrednio pod animowanie odpowiednich kończyn, jak i późniejszej pracy na kolizjach. Chodzi więc o wszystkie aspekty przygotowania graficznego postaci, jak i późniejszego wprowadzenia jej do projektu w taki sposób, żeby można było tworzyć na niej odpowiednie kolizje, animacje i skrypty odpowiadające za poruszanie się.
+Zagadnienie procesu tworzenia postaci polega na przygotowaniu grafik tak, żeby można było swobodnie wprowadzić i pracować na projekcie postaci w Unity. Proces ten obejmuje również stworzenie odpowiednich komponentów przygotowanych bezpośrednio w celu animowania odpowiednich kończyn, jak i późniejszej pracy na kolizjach. Przedstawione są więc aspekty przygotowania graficznego postaci, jak i późniejszego wprowadzenia jej do projektu w taki sposób, żeby można było tworzyć na niej odpowiednie kolizje, animacje i skrypty odpowiadające za poruszanie się.
 \subsection{Proces graficzny tworzenia postaci}
-Tworzenie postaci zawsze zaczyna się od projektu graficznego, który jest kluczowym punktem do późniejszego animowania postaci. W tym miejscu warto zastanowić się nad ograniczeniami i korzyściami, jakie daje nam stworzenie projektu w odpowiedni sposób. Istnieją 2 najbardziej popularne sposoby tworzenia graficznego postaci, które pozwalają nam na animowanie jej:
-Statyczny bohater, będący bazą do tworzenia animacji po klatkowych, które później używane są bezpośrednio w projekcie. Główną zaletą takiego rozwiązania są bardzo dobrze wyglądające animacje, wynikające z braku ograniczeń ilości zmian w postaci w trakcie animowania.
-Proces ten wymaga jednak bardzo dużo czasu poświęconego na modelowanie postaci w konkretnych pozach, symulowanie konkretnych ruchów oraz tworzenie zmian w postaci takich jak np. poruszające się włosy przy skoku.
+Tworzenie postaci zaczyna się od projektu graficznego, który jest kluczowym punktem do późniejszego animowania postaci. Należy wziąć pod uwagę wszystkie ograniczenia i korzyścii, jakie daje nam stworzenie projektu w odpowiedni sposób. Istnieją 2 najbardziej popularne sposoby tworzenia graficznego postaci, które pozwalają na animowanie jej.
 
-Alternatywą dla tego rozwiązania jest użycie kinematyki odwrotnej, która bazuje na systemie kości w ciele postaci, połączeń i ograniczeń ich ruchów. Sposób ten jest dużo bardziej wydajny czasowo, nie wymaga dużych umiejętności w animowaniu i pozwala na wprowadzanie nowych animacji wynikających z rozwoju projektu wewnątrz środowiska Unity. Animacja stworzona przez użycie kinematyki odwrotnej jest wykonywana w czasie rzeczywistym, przez co nie musimy tworzyć odpowiedniej ilości klatek, żeby wyglądała płynnie (ma tyle klatek ile gra w konkretnym momencie wykonywania animacji).
-W praktyce przekłada się to na konieczność tworzenia grafiki w odpowiedni sposób. Musimy podzielić postać na osobne warstwy poszczególnie odpowiadające za ilość kończyn, które powinny się ruszać w końcowym projekcie.\\
+Pierwsza możliwość to statyczny bohater, będący bazą do tworzenia animacji poklatkowych, które później używane są bezpośrednio w projekcie. Główną zaletą takiego rozwiązania są bardzo dobrze wyglądające animacje, wynikające z braku ograniczeń ilości zmian w postaci w trakcie animowania.
+Proces ten wymaga jednak dużego nakładu czasu poświęconego na modelowanie postaci w konkretnych pozach, symulowanie konkretnych ruchów oraz tworzenie zmian w postaci takich jak np. poruszające się włosy przy skoku.
+
+Alternatywą dla tego rozwiązania jest użycie kinematyki odwrotnej, która bazuje na systemie kości w ciele postaci, połączeń i ograniczeń ich ruchów. Rozwiązanie to jest dużo bardziej wydajne czasowo, nie wymaga dużych umiejętności w animowaniu i pozwala na wprowadzanie nowych animacji wynikających z rozwoju projektu wewnątrz środowiska Unity. Animacja stworzona przez użycie kinematyki odwrotnej jest wykonywana w czasie rzeczywistym, przez co nie ma potrzeby tworzenia odpowiedniej ilości klatek, żeby wyglądała płynnie (ma tyle samo klatek co gra w konkretnym momencie wykonywania animacji).
+W praktyce przekłada się to na konieczność tworzenia grafiki w odpowiedni sposób. Należy podzielić postać na osobne warstwy odpowiadające za ilość kończyn, które powinny się ruszać w końcowym projekcie.\\
 
 \begin{figure}[h]
 	\centering
@@ -1074,9 +1075,10 @@ W praktyce przekłada się to na konieczność tworzenia grafiki w odpowiedni sp
 	\caption{Projekt graficzny postaci w~edytorze Gimp}
 \end{figure}
 
-Postać w naszym projekcie jest podzielona odpowiednio na głowę, tors, ręce i nogi. Ilość możliwych komponentów nie jest ograniczona. Tak przygotowany projekt graficzny w formacie PSB jest gotowy do importu w środowisku Unity, a poszczególne warstwy są widoczne jako oddzielne komponenty. Tym samym projekt jest gotowy do dalszej pracy.
+Postać w rozważanym projekcie jest podzielona odpowiednio na głowę, tors, ręce i nogi. Ilość możliwych komponentów nie jest ograniczona. Tak przygotowany projekt graficzny w formacie PSB jest gotowy do importu w środowisku Unity, a poszczególne warstwy są widoczne jako oddzielne komponenty. Tym samym projekt jest gotowy do dalszej pracy.
+
 \subsection{Wdrożenie postaci do projektu w~Unity}
-W celu zaimportowania postaci w Unity z projektu graficznego potrzebujemy biblioteki o nazwie \textbf{\textit{PSDImporter}}, która pozwala na bezproblemowe wdrożenie projektu w tym formacie jako gotowy do pracy \textbf{\textit{*sprite}}. W kolejnym etapie musimy nadać postaci kości odpowiadające konkretnym kończynom oraz geometrię postaci.
+W celu zaimportowania postaci w Unity z projektu graficznego niezbędna jest biblioteka o nazwie \textbf{\textit{PSDImporter}}, która pozwala na bezproblemowe wdrożenie projektu w tym formacie jako gotowy do pracy \textbf{\textit{*sprite}}. W kolejnym etapie należy nadać postaci kości odpowiadające konkretnym kończynom oraz geometrię postaci.
 
 \begin{figure}[h]
 	\centering
@@ -1084,8 +1086,8 @@ W celu zaimportowania postaci w Unity z projektu graficznego potrzebujemy biblio
 	\caption{Widok postaci w~środowisku Unity – kości}
 \end{figure}
 
-Geometria postaci to siatka, która definiuje to, w jaki sposób postać może się zgiąć w trakcie animowania, a kości powodują ograniczenie ruchów w taki sposób, aby były one naturalne, jednocześnie łącząc ze sobą wcześniej powstałe warstwy. W celu uniknięcia przesuwania się torsu w trakcie poruszania rękami lub nogami należy wykluczyć zależność tych kości między sobą. W praktyce poruszając ręką, nie ruszamy przy tym całym kręgosłupem.
-Następnym i ostatnim krokiem wdrożeniowym jest zapisanie zmian i przeniesienie wygenerowanej postaci do sceny oraz dodanie do każdej kończyny postaci kinematyki odwrotnej. Tak spreparowana postać jest gotowa do pracy w animatorze Unity.
+Geometria postaci to siatka, która definiuje, w jaki sposób postać może się zgiąć w trakcie animowania, a kości powodują ograniczenie ruchów w taki sposób, aby były one naturalne, jednocześnie łącząc ze sobą wcześniej powstałe warstwy. W celu uniknięcia przesuwania się torsu w trakcie poruszania rękami lub nogami należy wykluczyć zależność tych kości między sobą. W praktyce podczas ruchu ręką nie jest zaangażowany cały kręgosłup.
+Następnym i ostatnim krokiem wdrożeniowym jest zapisanie zmian i przeniesienie wygenerowanej postaci do sceny oraz dodanie do każdej kończyny kinematyki odwrotnej. Tak spreparowana postać jest gotowa do pracy w animatorze Unity.
 
 
 
