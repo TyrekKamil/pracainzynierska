@@ -1137,7 +1137,7 @@ language={[Sharp]C},
 rulecolor=\color{blue!80!black},
 caption={Fragment klasy \texttt{CharacterController.cs}}
 ]
-for (int i~= 0; i < colliders.Length; i++)
+for (int i = 0; i < colliders.Length; i++)
 {
    if (colliders[i]
                   .gameObject
@@ -1373,7 +1373,7 @@ public SkillType GetSkillRequirement(SkillType skillType) {
       case SkillType.Explode: return SkillType.Bullet;
       //Green Skills Requirements
       case SkillType.RegenerationHP: return SkillType.ExtraHP;
-      case SkillType.Immortality: return SkillType.RegenerationHP;
+      case SkillType.Immortality: return SkillType.RegenHP;
    }
 return SkillType.None;
 }
